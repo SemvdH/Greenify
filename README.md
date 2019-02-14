@@ -45,7 +45,7 @@ I will try to make sure to adhere to the structure we establish as a group which
 # Merel Steenbergen (masteenbergen)
 ![Picture:](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Merel_Steenbergen.jpg)
 
-##Personal Development Plan
+## Personal Development Plan
 
 My strong points:
 1.	I’m a natural leader. I like to know how everyone is doing, if 
@@ -92,3 +92,43 @@ action plan:
 ⋅⋅* try to keep up with what needs to be done
 ⋅⋅* don't be hesitant on asking people for help
 ⋅⋅* deliver things I need to do on time
+
+# Ceren Ugurlu (4851609, cugurlu)
+
+![My Picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/ceren_ugurlu.jpeg)
+
+## Personal Development Plan:
+
+- This is my core quadrant: ![My Core Quadrant](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Ceren_Ugurlu_Core_Quadrant.png)
+
+My strong points:
+- I am an ambitious person in order to achieve my goal I can study a lot
+- If I have a task and have promised to finish it, I finish it
+- These are useful for teamwork because hard work and being aware of responsibilities provide advantages for the project
+
+My weaker points:
+- Sometimes I can be a stressed and anxious person. If we have a difficulty about time management etc. I can get stressed. But if we work efficiently as a team, I do not think this is going to be a problem
+
+### G – Goal
+My goals in this project:
+- Developing my Java skills
+- Learning how to work effectively as a team
+- Getting a high grade
+
+I am aiming to successfully finish the parts that belong to me in our project. To achieve this, I should develop my Java skills. I want to contribute to my group and to learn new things from my teammates. When we finish our project, I will be achieved my goal.
+
+### R – Reality
+This is my first team project. I have never experienced this before. I have done some similar programs in different languages but this is the first one in Java. This is both exciting and hard. There are many things I need to do but I like to study and develop myself. 
+
+### O – Options
+There are two options to achieve and not to achieve but I do not want to count the second one as an option because we are a team. And teamwork means that many different perspectives and a lot of human power. Therefore, I can say that there is not any reason for an unsuccessful result. If it happens, it is also not a problem. It shows that I need to develop myself. I would try to learn new things from my mistakes.
+
+### W – Will
+I will try to do my best to be successful in our project and I am going to start right now for this. The first step I can take is creating a plan with my group mates and to start our project according to this plan.
+
+Action Plan:
+- Determining the things we have to done
+- Deciding important parts as a group (such as which libraries we are going to use etc.)
+- Distributing this work equally to team members
+- Starting to code (informing each other about the steps we have took)
+- While everyone is working on their part, to inform each other about the progress is very important because some parts can be connected. When two people's parts are connected they should act according to that otherwise it can lead problems or a non-compiling code)
