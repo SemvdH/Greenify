@@ -41,3 +41,26 @@ During this quarter the project will be my only option towards achieving this go
 
 ### W – Will
 I will try to make sure to adhere to the structure we establish as a group which describes how we will work together. This way, we all do the work we are supposed to do, and none of us will be overloaded with work. I will also try to make use of all the tools available to us which can improve the quality of programming together (scrum, git, GitLab etc.). 
+
+# Sem van der Hoeven (4896726, semvanderhoeve)
+![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
+
+## Personal development plan
+![Core cuadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
+
+### G - Goal
+My goal with this project is most of all to be able to efficiently work with a group of people. This is important to me because  I have not worked on a (development) project with a (big) group of people before. I believe I have succeeded in this goal when our project is finished and we have got a passing grade.
+
+### R - Reality
+With this project I am already setting the first step towards reaching my goal, as we have already started working as a group. 
+
+### O - Options
+The options I have to reach my goal are basically this project, as this is the only big project we will be doing as a team in this year. I want to obviously try to learn as much as I can during this project, especially abour working in a group. The only thing I think would be stopping this is if members of the group had different opinions on how things should be done. but so far everyone is on the same track :D.
+
+### W - Will
+I am going to try my hardest to follow the rules we have set up, and to deliver everything I am supposed to. I will try to do this everytime I get the chance to do so. Right now the first step I can take is to work on this personal development plan, so that I already have my part of what we needed to do finished. My teammates can help me achieve this goal by helping if I have questions or don't understand something/am getting stuck with something.
+action plan:
+⋅⋅* finish my part of the readme we have to finish 
+⋅⋅* try to keep up with what needs to be done
+⋅⋅* don't be hesitant on asking people for help
+⋅⋅* deliver things I need to do on time
