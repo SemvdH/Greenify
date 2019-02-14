@@ -55,16 +55,16 @@ What are two of your weaker points?
 1.	I’m a bit of a control freak. Sometimes I find it hard to let other people do things and to mind my own business. 
 2.	I’m competitive. This can be a good thing, because I’m very passionate and really give it 100% if I like something, but it can also lead to hurt feelings when I’m not paying attention. 
  
-Step 2: 
-    G - Goal
+
+###    G - Goal
 I want to improve on letting other people handle things that I actually want to do myself. I also want to improve my programming and am aiming to not make it a competition, but to really make it a group project. This is important, because you almost never work alone in software developing, which is what I want to do after the studies. 
     
-    R - Reality (Your current situation)
+###    R - Reality (Your current situation)
 I’ve already been working on my teamwork skills since high school. I had a subject that had only projects. I’ve also worked with Scrum before, which really helps you focus on your development without letting your project out of sight. I’m better at working together and listening to tips than I was before. 
 
-    O - Options (Look at possible options)
+###    O - Options (Look at possible options)
 Actively watching myself and letting my teammates know that they need to be clear with me if they don’t like something I say or do are the best ways for me to improve. I would rather improve by myself, but for my goals it is better to let my team guide me. It’s about teamwork after all.
 
-    W - Will (Motivation, plan of action)
+###     W - Will (Motivation, plan of action)
 I’m just going to keep working on myself and hope my teammates will work with me. It also helps to work in different teams to get a much more diverse experience. Every team is different, so I’m just going to wait what this team will bring me and how I will have to adjust myself to make the team efficient. 
 
