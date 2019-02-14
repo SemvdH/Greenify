@@ -43,8 +43,8 @@ During this quarter the project will be my only option towards achieving this go
 I will try to make sure to adhere to the structure we establish as a group which describes how we will work together. This way, we all do the work we are supposed to do, and none of us will be overloaded with work. I will also try to make use of all the tools available to us which can improve the quality of programming together (scrum, git, GitLab etc.).
 
 # Merel Steenbergen (masteenbergen)
-
-Personal Development Plan
+Picture: [](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Merel_Steenbergen.jpg)
+##Personal Development Plan
 
 My strong points:
 1.	I’m a natural leader. I like to know how everyone is doing, if 
@@ -55,6 +55,7 @@ What are two of your weaker points?
 1.	I’m a bit of a control freak. Sometimes I find it hard to let other people do things and to mind my own business. 
 2.	I’m competitive. This can be a good thing, because I’m very passionate and really give it 100% if I like something, but it can also lead to hurt feelings when I’m not paying attention. 
  
+Core quadrant: [](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Core_quadrant_Merel.png)
 
 ###    G - Goal
 I want to improve on letting other people handle things that I actually want to do myself. I also want to improve my programming and am aiming to not make it a competition, but to really make it a group project. This is important, because you almost never work alone in software developing, which is what I want to do after the studies. 
