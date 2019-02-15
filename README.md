@@ -132,3 +132,29 @@ Action Plan:
 - Distributing this work equally to team members
 - Starting to code (informing each other about the steps we have took)
 - While everyone is working on their part, to inform each other about the progress is very important because some parts can be connected. When two people's parts are connected they should act according to that otherwise it can lead problems or a non-compiling code)
+
+# Mika Wauben (4834739, mlwauben)
+![My picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/mlwaubenpic.jpg)
+
+## Personal Development Plan
+![My core quadrant](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/mlwaubenCoreQuadrant.jpg)
+
+ My strong points:
+ 1. I am observing and think before I speak. 
+ 2. I like things to be organised and efficient and will work hard to get them that way.
+
+ My weaker points:
+ 1. I like to do things alone. I rather figure something out myself instead of asking for help, even if this takes way too long.
+ 2. I tend to stay quiet if I'm not absolutely sure my contribution is right or useful. 
+
+###    G - Goal
+My goal during this course is getting more experienced in working with things like github, libraries, scrumboard, etc. and asking for help if I need it, since being stuck on something isn’t going to help my groupmates.
+    
+###    R - Reality
+Every minute that we’re working on the project, I’m also actively working on my goal. 
+
+###    O - Options
+By working on the project with the chosen programs, I’ll get more experienced in using them. Using those programs for other projects as well will only improve my knowledge. By being active in the groupchat and during the (mandatory) get togethers, asking stuff will be easier. 
+
+###     W - Will
+I will reach my goal by working actively together with my teammates using lots of the useful programs given.    
