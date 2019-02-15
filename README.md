@@ -154,7 +154,7 @@ My goal during this course is getting more experienced in working with things li
 Every minute that we’re working on the project, I’m also actively working on my goal. 
 
 ###    O - Options
-By working on the project with the chosen programs, I’ll get more experienced in using them. Using those programs for other projects as well will only improve my knowledge. By being active in the groupchat and during the (mandatory) get togethers, asking stuff will be easier. 
+By working on the project with the chosen programs, I’ll get more experienced in using them. Using those programs for other projects as well will only improve my knowledge. By being active in the groupchat and during the meetings, asking stuff will be easier. 
 
 ###     W - Will
 I will reach my goal by working actively together with my teammates using lots of the useful programs given.    
