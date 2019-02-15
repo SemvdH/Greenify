@@ -24,7 +24,7 @@ Run `maven site`
 
 # Daan Sneep (4849515, dsneep)
 
-![](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Daan_Sneep.png "The one and only")
+![My Picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Daan_Sneep.png "The one and only")
 
 ## Personal Development Plan
 
