@@ -158,3 +158,41 @@ By working on the project with the chosen programs, I’ll get more experienced 
 
 ###     W - Will
 I will reach my goal by working actively together with my teammates using lots of the useful programs given.    
+
+
+# Kristin Peneva (4926587, kpeneva)
+![picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/KristinPeneva.jpg)
+
+## Personal Development Plan
+![CoreQuadrant](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/corequadrant-KP.png)
+
+    Strong points:
+   1. I believe I am a good leader.
+   2. I am ambitious and hardworking.
+   
+
+    Weaker points:
+   1. I prefer to work alone, but If I am working in a team, usually I tend to be bossy
+   2. I easily get lost into details and want to do extra unnecessry things, which results in slowing down my work.
+ 
+
+### G - Goal
+  During this course I would like to further develop my teamwork and my time management skills. I would also
+ would like to improve my programming skills and to learn new things. Learning how to communicate and colaborate
+ with other people will be essential for my future career. Furthermore, computer science is one of the most fast-paced areas
+at the moment,so having strong programming skills will be necessary for successing in the future.
+
+### R - Reality (Your current situation)
+ with this project I will understand and experience first hand how working on a big programming project is and how to divide
+all the work but at the same time work efficiently as a team.
+
+### O - Options 
+
+As a beginer at programming, doing the necessary amount of work will help me keep up with my fellow teammates so we could 
+deliver on time our project.
+
+### W - Will (Motivation, plan of action)
+
+I am going to work hard,really hard to achieve my goal and also to make the project successful.During the whole process of
+creating this project I will stick to the deadlines and do the required workload. I belive by doing so, I will be able to achieve 
+my goal. If however I stumble upon a problem, I will try and ask for help from my fellow teammates.
