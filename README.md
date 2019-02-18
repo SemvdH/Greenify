@@ -74,7 +74,7 @@ I’m just going to keep working on myself and hope my teammates will work with 
 ![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
 
 ## Personal development plan
-![Core cuadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
+![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
 
 ### G - Goal
 My goal with this project is most of all to be able to efficiently work with a group of people. This is important to me because  I have not worked on a (development) project with a (big) group of people before. I believe I have succeeded in this goal when our project is finished and we have got a passing grade.
