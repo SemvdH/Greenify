@@ -1,4 +1,4 @@
-# CSE1105 Template Repository
+﻿# CSE1105 Template Repository
 
 This a template repository to help you get started on making the best project possible!
 
@@ -88,7 +88,7 @@ The options I have to reach my goal are basically this project, as this is the o
 ### W - Will
 I am going to try my hardest to follow the rules we have set up, and to deliver everything I am supposed to. I will try to do this everytime I get the chance to do so. Right now the first step I can take is to work on this personal development plan, so that I already have my part of what we needed to do finished. My teammates can help me achieve this goal by helping if I have questions or don't understand something/am getting stuck with something.
 action plan:
-⋅⋅* finish my part of the readme we have to finish 
+⋅⋅* finish my part of the readme that we have to finish 
 ⋅⋅* try to keep up with what needs to be done
 ⋅⋅* don't be hesitant on asking people for help
 ⋅⋅* deliver things I need to do on time
