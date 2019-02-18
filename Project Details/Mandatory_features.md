@@ -7,4 +7,4 @@ The user must be able to indicate he or she has acted contributingly towards her
 * Lowering the temperature of your home
 * Installing solar panels
 
-The score should be expressed in the amount of CO2 you save, and should be shared/compared with your friends. The user should also receive badges or achievements etc. for achieving certain scores. Bonus features are do add additional points to the grade.
+The score should be expressed in the amount of CO2 you save, and should be shared/compared with your friends. The user should also receive badges or achievements etc. for achieving certain scores. Bonus features **do** add additional points to the grade.
