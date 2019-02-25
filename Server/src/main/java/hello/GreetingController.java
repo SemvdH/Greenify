@@ -13,6 +13,7 @@ public class GreetingController {
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+        //increment the id every time the page is refreshed (a new user visits the page)
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
