@@ -228,4 +228,10 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+### Server and Client ###
+Server/.gradle
+Server/.idea
+
+Client/.gradle
+Client/.idea
 # End of https://www.gitignore.io/api/java,maven,eclipse,intellij,visualstudiocode
