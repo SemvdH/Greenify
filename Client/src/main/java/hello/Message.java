@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
-    private long id;
-    private String content;
+    private static long id;
+    private static String content;
 
     public Message() {
     }
 
-    public long getId() {
+    public static long getId() {
         return id;
     }
 
@@ -19,7 +19,7 @@ public class Message {
         this.id = id;
     }
 
-    public String getContent() {
+    public static String getContent() {
         return content;
     }
 
