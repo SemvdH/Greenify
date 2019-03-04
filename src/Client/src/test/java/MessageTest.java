@@ -1,4 +1,8 @@
-import hello.Message;
+package test.java;
+
+
+
+import main.java.hello.Message;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

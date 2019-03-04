@@ -1,4 +1,4 @@
-package hello;
+package main.java.hello;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,9 +29,9 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "id='" + id + '\'' +
-                ", content=" + content +
-                '}';
+        return "Message{"
+                + "id='" + id + '\''
+                + ", content=" + content
+                + '}';
     }
 }

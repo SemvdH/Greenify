@@ -1,14 +1,15 @@
-import hello.Greeting;
-import hello.GreetingController;
-import org.junit.jupiter.api.Test;
+package test.java;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import main.java.hello.GreetingController;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 public class GreetingControllerTest {
     @Test
     void nullTest() {
         GreetingController controller = new GreetingController();
-        assertThat(controller).isNotNull();
+//        Assert.assertThat(controller).isNotNull();
+        Assert.assertNotNull(controller);
     }
 }
 
