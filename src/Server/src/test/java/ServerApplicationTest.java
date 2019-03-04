@@ -1,5 +1,7 @@
+package test.java;
+
 import org.junit.Test;
-public class ApplicationTest {
+public class ServerApplicationTest {
     @Test
     public void main() {
     }
