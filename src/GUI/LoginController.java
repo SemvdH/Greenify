@@ -28,6 +28,12 @@ public class LoginController {
     @FXML
     private Button loginbutton;
 
+    /**
+     * redirects to the main stage when the login credentials are correct
+     * @param event the entered username and password, and clicking the button
+     * @throws Exception
+     * @author Sem van der Hoeven
+     */
     public void Login(ActionEvent event) throws Exception {
         //if the entered username and password are correct
         if (usertext.getText().equals("user") && passwordField.getText().equals("pass")) {

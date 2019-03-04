@@ -8,10 +8,19 @@ import javafx.stage.Stage;
 
 public class GUIMain extends Application {
 
+    /**
+     * launches the stage
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     *
+     * @param primaryStage the stage to be started
+     * @throws Exception when the fxml file can't be found
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         //link fxml file
