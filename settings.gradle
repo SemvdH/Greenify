@@ -1,3 +1,5 @@
 rootProject.name = 'OOPP'
 
-include 'src:GoGreen'
+//include 'src:Client'
+//include 'src:Common'
+//include 'src:Server'
