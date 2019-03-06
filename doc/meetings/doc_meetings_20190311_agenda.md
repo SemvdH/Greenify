@@ -40,4 +40,4 @@ To be done.
     - questions that rose during the meeting
 
 ## Closing
-****Let's focus on the vegetarian meal option --> No more distractions!!
+**Let's focus on the vegetarian meal option --> No more distractions!!**
