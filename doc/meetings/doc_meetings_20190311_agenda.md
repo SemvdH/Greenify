@@ -19,9 +19,16 @@
  - Discuss what we did last week (see scrumboard)
     - Does anyone have blocking issues?
  
- - Gitlab    - CI
-        -Got branches and merge right        -Also cleaned the repo        -Gradle file fixed?        -Do we finally have a name for our application?        -Next week is all about the vegetarian meal feature. We now did all the preparations and can work on the activity### post meeting
-Change
+ - Gitlab    
+ - CI
+ -Got branches and merge right
+ -Also cleaned the repo
+ -Gradle file fixed?   
+ -Do we finally have a name for our application?   
+ -Next week is all about the vegetarian meal feature. We now did all the preparations and can work on the activity
+
+### post meeting
+To be done.
 
 
 ## Any other business
@@ -33,4 +40,4 @@ Change
     - questions that rose during the meeting
 
 ## Closing
-> Let's focus on the vegetarian meal option --> No more distractions!!
+****Let's focus on the vegetarian meal option --> No more distractions!!
