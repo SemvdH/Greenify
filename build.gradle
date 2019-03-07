@@ -79,5 +79,5 @@ jacocoTestReport {
 }
 
 bootJar {
-    mainClassName = 'GUI.LoginController'
+    mainClassName = 'Client.Application'
 }
