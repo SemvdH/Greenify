@@ -1,5 +1,0 @@
-rootProject.name = 'OOPP'
-
-include 'Server'
-include 'Client'
-include 'Common'
