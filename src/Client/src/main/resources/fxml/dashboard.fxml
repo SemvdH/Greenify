@@ -34,12 +34,26 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false" />
-      <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false" />
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+         <children>
+            <Text layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+         <children>
+            <Text layoutX="94.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
       <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
          <children>
             <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
-            <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!">
+            <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="30.0" />
                </font>

@@ -50,18 +50,21 @@ public class DashBoardController {
     }
 
     public void displayDashboard(ActionEvent event) {
+        System.out.println("display dashboard");
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
     }
 
     public void displayActivities(ActionEvent event) {
+        System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
         activitiesPane.setVisible(true);
     }
 
     public void displayUser(ActionEvent event) {
+        System.out.println("display user");
         dashboardPane.setVisible(false);
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
