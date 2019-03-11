@@ -29,6 +29,7 @@ Score schema + register ideas
 + Password
 ### Add activities
 + Eating a vegetarian meal
++ -Since different types of meat have different emission rates, I've calculated an average. On peace of meat (100 gram) costs about 150 grams of CO2. That means you save about 225 grams of CO2 by eating a vegetarian meal. (Based on an average of 150 gr meat and 150 gr CO2 per 100 gr meat.)
 + Buying local produce
 > What did you buy? |
 > (What season is it? Calendar)
@@ -114,4 +115,5 @@ The amount of CO2 emissions resulting from such uses varies according to the qua
 https://ec.europa.eu/clima/sites/campaign/pdf/table_appliances_en.pdf
 VERY GOOD! 
 https://www.ovoenergy.com/guides/energy-guides/how-much-heating-energy-do-you-use.html
+
 
