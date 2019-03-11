@@ -19,10 +19,12 @@
 # Edit at https://www.gitignore.io/?templates=java,maven,eclipse,intellij,visualstudiocode
 
 ### our project ###
-Client/.idea/
-Client/.gradle/
-Server/.idea/
-Server/.gradle/
+# src/**/.idea/
+# src/**/.gradle/
+
+!src/GoGreen/build/reports
+
+
 
 ### Eclipse ###
 
@@ -84,10 +86,10 @@ local.properties
 
 ### Eclipse Patch ###
 # Eclipse Core
-.project
+# .project
 
 # JDT-specific (Eclipse Java Development Tools)
-.classpath
+# .classpath
 
 # Annotation Processing
 .apt_generated
@@ -216,3 +218,24 @@ buildNumber.properties
 .history
 
 # End of https://www.gitignore.io/api/java,maven,eclipse,intellij,visualstudiocode
+
+### Gradle ###
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+### Gradle Patch ###
+**/build/
+
+# End of https://www.gitignore.io/api/gradle
