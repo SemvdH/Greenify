@@ -1,20 +1,11 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
-        classpath("org.openjfx:javafx-plugin:0.0.7")
     }
 }
-//plugins {
-//    id "org.openjfx.javafxplugin" version "0.0.7"
-//}
-
-
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -23,22 +14,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
-apply plugin: 'application'
-
-application {
-    mainClassName = 'gogreen.client.Application'
-}
-
-
-
-
-//apply plugin: 'org.openjfx.javafxplugin'
-
-tasks.withType(Checkstyle) {
-    reports {
-        html.destination rootProject.file("build/reports/checkstyle.html")
-    }
-}
 
 repositories {
     mavenCentral()
@@ -58,10 +33,6 @@ bootJar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-test {
-    useJUnitPlatform()
-}
-
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework:spring-web")
@@ -69,45 +40,4 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
-//    compile project('src:Common')
-    compileOnly 'org.projectlombok:lombok:1.18.6'
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("com.h2database:h2")
-    annotationProcessor 'org.projectlombok:lombok:1.18.6'
-    testCompile(
-            'junit:junit:4.12',
-            'org.junit.jupiter:junit-jupiter-api:5.4.0'
-    )
-    testRuntime(
-            'org.junit.jupiter:junit-jupiter-engine:5.4.0',
-            'org.junit.vintage:junit-vintage-engine:5.4.0'
-    )
 }
-
-jacoco {
-    toolVersion = "0.8.3"
-    reportsDir = file("$buildDir/customJacocoReportDir")
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
-    }
-}
-
-//bootJar {
-//    mainClassName = 'Client.Application'
-//}
-
-
-
-task application(type: JavaExec, dependsOn: classes) {
-    main = 'Cient.Application'
-}
-
-
-
-
-
