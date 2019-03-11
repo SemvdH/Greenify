@@ -6,13 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application extends javafx.application.Application {
@@ -40,12 +36,19 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         fxmlLoader.setLocation(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
+
+//        fxmlLoader.setLocation(this.getClass().getClassLoader().getResource("fxml/dashboard.fxml"));
+
+
         rootNode = fxmlLoader.load();
 
 //        rootNode = FXMLLoader.load(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
 
         primaryStage.setTitle("GoGreen");
         Scene scene = new Scene(rootNode);
+
+        //        scene.getStylesheets().add(getClass().getResource("stylesheets/dashboardStyle.css").toExternalForm());
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }

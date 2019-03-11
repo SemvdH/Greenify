@@ -58,7 +58,7 @@ dependencies {
 }
 
 jacoco {
-    toolVersion = "0.8.2"
+    toolVersion = "0.8.3"
     reportsDir = file("$buildDir/customJacocoReportDir")
 }
 
@@ -68,6 +68,10 @@ jacocoTestReport {
         csv.enabled false
         html.destination file("${buildDir}/jacocoHtml")
     }
+}
+
+checkstyle {
+    toolVersion = "7.6.1"
 }
 
 

@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane prefHeight="602.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gogreen.client.controller.DashBoardController">
+   <children>
+      <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #545b4f;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Go Green" textAlignment="CENTER" textFill="#07a11c">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="dashboardButton" layoutY="88.0" mnemonicParsing="false" onAction="#displayDashboard" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="dashboard">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="activitiesButton" layoutY="133.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="activities">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="userButton" layoutY="178.0" mnemonicParsing="false" onAction="#displayUser" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="you">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false" />
+      <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false" />
+      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
+         <children>
+            <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
+            <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="583.0" layoutY="41.0" mnemonicParsing="false" style="-fx-background-color: #167526;" text="+" textFill="#e0fcdb">
+               <font>
+                  <Font name="Eras Bold ITC" size="28.0" />
+               </font>
+            </Button>
+            <!--<ComboBox fx:id="addActivity" layoutX="532.0" layoutY="28.0" prefWidth="150.0" promptText="Add an Activity" style="-fx-background-color: #1f951f;">-->
+               <!--<items>-->
+                  <!--<FXCollections fx:factory="observableArrayList">-->
+                     <!--<String fx:value="Ate a vegetarian meal" />-->
+                  <!--</FXCollections>-->
+               <!--</items>-->
+            <!--</ComboBox>-->
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

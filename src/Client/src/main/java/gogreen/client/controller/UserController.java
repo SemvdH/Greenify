@@ -4,7 +4,6 @@ import gogreen.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -34,6 +33,8 @@ public class UserController {
 
     @FXML
     private Button signupButton;
+
+
 
 //    @Value("${my.url}")
 //    private String myUrl;
@@ -68,11 +69,28 @@ public class UserController {
         }
 
         userService.registerUser(usernameField.getText(), passwordField.getText());
+
+    // load the dashboard stage
 //        Parent parent = FXMLLoader.load(this.getClass().getClassLoader().getResource("/fxml/dashboard.fxml"));
+//
 //        Scene scene = new Scene(parent);
 //        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        app_stage.setScene(scene);
+//        app_stage.setFullScreen(true);
 //        app_stage.show();
+
+        //on,y works once, when already logged in once, need to restart client for it to work again
+        openDashboard();
+
+    }
+
+    public void openDashboard() throws IOException {
+        Parent dash = FXMLLoader.load(this.getClass().getClassLoader().getResource("fxml/Dashboard.fxml"));
+        Scene scene = new Scene(dash);
+        Stage app_stage = new Stage();
+        app_stage.setScene(scene);
+//        app_stage.setFullScreen(true);
+        app_stage.show();
     }
 
     public static class AlertHelper {
