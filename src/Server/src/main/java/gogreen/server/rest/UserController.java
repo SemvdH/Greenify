@@ -13,14 +13,14 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/registerUser")
-    public UserDTO registerUser(@RequestParam(value="name") String name,
-                                @RequestParam(value="password") String password) {
+    public UserDTO registerUser(@RequestParam(value = "name") String name,
+                                @RequestParam(value = "password") String password) {
         return userService.registerUser(name, password);
     }
 
     @RequestMapping("/login")
-    public UserDTO login(@RequestParam(value="name") String name,
-                         @RequestParam(value="password") String password) {
+    public UserDTO login(@RequestParam(value = "name") String name,
+                         @RequestParam(value = "password") String password) {
         return userService.login(name, password);
     }
 }

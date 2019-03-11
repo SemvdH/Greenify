@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,8 +19,8 @@ public class DashBoardController {
     public AnchorPane userPane;
     public AnchorPane activitiesPane;
     public Label welcomebacktext;
-//    public Button addActivityButton;
-//    public ComboBox addActivity;
+    //    public Button addActivityButton;
+    //    public ComboBox addActivity;
 
     @FXML
     public Label dashboardText;
@@ -33,22 +32,10 @@ public class DashBoardController {
 
     DropShadow shadow = new DropShadow();
 
-    public void handleClickAction(MouseEvent event) {
-        if (event.getTarget() == dashboardButton) {
-            dashboardPane.setVisible(true);
-            userPane.setVisible(false);
-            activitiesPane.setVisible(false);
-        } else if (event.getTarget() == activitiesButton){
-            dashboardPane.setVisible(false);
-            userPane.setVisible(false);
-            activitiesPane.setVisible(true);
-        } else if (event.getTarget() == userButton) {
-            dashboardPane.setVisible(false);
-            userPane.setVisible(true);
-            activitiesPane.setVisible(false);
-        }
-    }
-
+    /**
+     * displays the dashboard pane.
+     * @param event the event (clicking the button)
+     */
     public void displayDashboard(ActionEvent event) {
         System.out.println("display dashboard");
         dashboardPane.setVisible(true);
@@ -56,6 +43,10 @@ public class DashBoardController {
         activitiesPane.setVisible(false);
     }
 
+    /**
+     * displays the activities pane.
+     * @param event the event (clicking the button)
+     */
     public void displayActivities(ActionEvent event) {
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -63,19 +54,23 @@ public class DashBoardController {
         activitiesPane.setVisible(true);
     }
 
+    /**
+     * displays the user profile pane.
+     * @param event the event (clicking the button)
+     */
     public void displayUser(ActionEvent event) {
         System.out.println("display user");
         dashboardPane.setVisible(false);
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
     }
-    public void addShadow(MouseEvent event) {
-        userButton.setEffect(shadow);
-    }
-
-    public void removeShadow(MouseEvent event) {
-        userButton.setEffect(null);
-
-    }
+    //    public void addShadow(MouseEvent event) {
+    //        userButton.setEffect(shadow);
+    //    }
+    //
+    //    public void removeShadow(MouseEvent event) {
+    //        userButton.setEffect(null);
+    //
+    //    }
 
 }

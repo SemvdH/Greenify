@@ -19,6 +19,12 @@ public class UserService {
         return builder.build();
     }
 
+    /**
+     * registers the user.
+     * @param name the username of the user
+     * @param password the password of the user
+     * @return a userDTO
+     */
     public UserDTO registerUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);

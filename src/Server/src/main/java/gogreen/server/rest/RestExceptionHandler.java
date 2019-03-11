@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class RestExceptionHandler {
     @ExceptionHandler(ApplicationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse applicationException (ApplicationException ex) {
+    public ErrorResponse applicationException(ApplicationException ex) {
         return new ErrorResponse(ex.getMessage());
     }
 }

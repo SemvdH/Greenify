@@ -15,6 +15,12 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * registers the user.
+     * @param name the username of the user
+     * @param password the password of the user
+     * @return a userDTO of the registered user
+     */
     public UserDTO registerUser(String name, String password) {
         User user = userRepository.findByName(name);
         if (user != null) {
@@ -26,6 +32,12 @@ public class UserService {
         return new UserDTO(user.getId(), user.getName());
     }
 
+    /**
+     * logs the user in.
+     * @param name the username of the user
+     * @param password the password of the user
+     * @return a userDTO of the logged in user
+     */
     public UserDTO login(String name, String password) {
         User user = userRepository.findByName(name);
         if (user == null) {
