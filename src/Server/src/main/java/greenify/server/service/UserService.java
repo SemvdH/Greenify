@@ -1,9 +1,9 @@
-package gogreen.server.service;
+package greenify.server.service;
 
-import gogreen.common.ApplicationException;
-import gogreen.common.UserDTO;
-import gogreen.server.data.model.User;
-import gogreen.server.data.repository.UserRepository;
+import greenify.common.ApplicationException;
+import greenify.common.UserDTO;
+import greenify.server.data.model.User;
+import greenify.server.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

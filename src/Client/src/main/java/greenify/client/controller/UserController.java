@@ -1,6 +1,6 @@
-package gogreen.client.controller;
+package greenify.client.controller;
 
-import gogreen.client.rest.UserService;
+import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

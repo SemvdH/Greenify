@@ -1,4 +1,4 @@
-package gogreen.client;
+package greenify.client;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

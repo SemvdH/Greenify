@@ -1,6 +1,6 @@
-package gogreen.client.rest;
+package greenify.client.rest;
 
-import gogreen.common.UserDTO;
+import greenify.common.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-import gogreen.server.data.model.User;
+import greenify.server.data.model.User;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,7 +7,7 @@ public class UserTest {
     @Test
     public void setAndGetTest() {
         User user = new User(1L, "greenify", "password");
-        User testUser = new User();
+        User testUser = new User(null, null, null);
         testUser.setId(1L);
         testUser.setName("greenify");
         testUser.setPassword("password");

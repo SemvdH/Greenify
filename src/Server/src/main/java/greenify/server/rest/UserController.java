@@ -1,7 +1,7 @@
-package gogreen.server.rest;
+package greenify.server.rest;
 
-import gogreen.common.UserDTO;
-import gogreen.server.service.UserService;
+import greenify.common.UserDTO;
+import greenify.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

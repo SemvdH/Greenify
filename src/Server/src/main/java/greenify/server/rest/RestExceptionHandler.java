@@ -1,7 +1,7 @@
-package gogreen.server.rest;
+package greenify.server.rest;
 
-import gogreen.common.ApplicationException;
-import gogreen.common.ErrorResponse;
+import greenify.common.ApplicationException;
+import greenify.common.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

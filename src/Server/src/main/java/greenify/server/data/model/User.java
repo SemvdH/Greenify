@@ -1,4 +1,4 @@
-package gogreen.server.data.model;
+package greenify.server.data.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -54,5 +54,23 @@ public class User {
      */
     public String getPassword() {
         return password;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+
+        return "User(id=" + this.id + ", name=" + this.name + ", password=" + this.password + ")";
     }
 }

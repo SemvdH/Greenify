@@ -1,5 +1,5 @@
-import gogreen.client.rest.UserService;
-import gogreen.common.UserDTO;
+import greenify.client.rest.UserService;
+import greenify.common.UserDTO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

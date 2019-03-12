@@ -1,4 +1,4 @@
-package gogreen.common;
+package greenify.common;
 
 public class UserDTO {
     private Long id;

@@ -1,4 +1,4 @@
-import gogreen.client.Application;
+import greenify.client.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;

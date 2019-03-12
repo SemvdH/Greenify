@@ -1,6 +1,6 @@
-package gogreen.server.data.repository;
+package greenify.server.data.repository;
 
-import gogreen.server.data.model.User;
+import greenify.server.data.model.User;
 
 public interface UserRepository {
     User findByName(String name);
