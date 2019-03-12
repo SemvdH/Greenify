@@ -1,5 +1,3 @@
-package gogreen.server.rest;
-
 import gogreen.common.UserDTO;
 import gogreen.server.Application;
 import org.junit.Assert;
