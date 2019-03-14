@@ -12,7 +12,7 @@ public class ActivityDTO {
     public ActivityDTO(Long id, String name, String description, int score) {
         this.id = id;
         this.name = name;
-        this.description=description;
+        this.description = description;
         this.score= score;
     }
 
