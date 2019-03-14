@@ -2,34 +2,15 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
-//apply plugin: 'checkstyle'
-//
-//checkstyle {
-//    version = '7.8.1'
-//    config = 'checkstyle/checkstyle.xml' as File
-//}
-//
-//checkstyleMain {
-//    source ='src/main/java'
-//}
-//
-//checkstyleTest {
-//    source ='src/test/java'
-//}
-//
-//tasks.withType(Checkstyle) {
-//    reports {
-//        xml.enabled false
-//        html.enabled true
-//        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
-//    }
-//}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -39,6 +20,15 @@ repositories {
 }
 
 dependencies {
+    testCompile("junit:junit")
+    testCompile(
+            'junit:junit:4.12',
+            'org.junit.jupiter:junit-jupiter-api:5.4.0'
+    )
+    testRuntime(
+            'org.junit.jupiter:junit-jupiter-engine:5.4.0',
+            'org.junit.vintage:junit-vintage-engine:5.4.0'
+    )
 }
 
 jacoco {
