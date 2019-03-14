@@ -22,7 +22,7 @@
 # src/**/.idea/
 # src/**/.gradle/
 
-!src/GoGreen/build/reports
+
 
 
 
@@ -208,10 +208,7 @@ buildNumber.properties
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
@@ -221,7 +218,10 @@ buildNumber.properties
 
 ### Gradle ###
 .gradle
+
+## keep the build directory, as it contains the reports for the ci 
 build/
+!**/Client/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -236,6 +236,8 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 ### Gradle Patch ###
+
+## keep the build directory, as it contains the reports for the ci 
 **/build/
 
 # End of https://www.gitignore.io/api/gradle
