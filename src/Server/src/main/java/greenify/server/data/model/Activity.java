@@ -6,17 +6,26 @@ import lombok.NoArgsConstructor;
 import javax.accessibility.AccessibleValue;
 import javax.persistence.*;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Scanner;
 
 @Entity
 @Data
 @Table(name = "activities")
-//@AllArgsConstructor
 public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
+//@AllArgsConstructor
+public abstract class Activity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
     String name;
     String description;
     int score;
@@ -39,7 +48,8 @@ public class Activity {
      * gets the id.
      * @return the id
      */
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -72,7 +82,7 @@ public class Activity {
      * sets the id.
      * @param id the you want to assign to this.id.
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,7 +109,6 @@ public class Activity {
     public void setScore(int score) {
         this.score = score;
     }
-
 
     /**
      * Returns a human readable object. It's in JSON.
@@ -131,4 +140,5 @@ public class Activity {
     public int hashCode() {
         return Objects.hash(id, name, description, score);
     }
+
 }
