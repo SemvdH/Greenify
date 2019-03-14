@@ -8,17 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//@AllArgsConstructor
 @Entity
 @Data
-//@AllArgsConstructor
 @NoArgsConstructor
 public class User {
 
-    @Id
+    private @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    String name;
-    String password;
+    private String name;
+    private String password;
 
     /**
      * makes a user object.

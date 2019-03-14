@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 
-<AnchorPane prefHeight="602.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gogreen.client.controller.DashBoardController">
+<AnchorPane prefHeight="602.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #545b4f;">
          <children>
@@ -34,13 +34,18 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0">
          <children>
             <Text layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
+            <Button layoutX="60.0" layoutY="173.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 50%;" text="Add a vegetarian meal!" textFill="#cce4ca">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false">
          <children>
@@ -50,7 +55,7 @@
                </font>
             </Text>
          </children></AnchorPane>
-      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
+      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0" visible="false">
          <children>
             <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
             <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
@@ -58,7 +63,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="583.0" layoutY="41.0" mnemonicParsing="false" style="-fx-background-color: #167526;" text="+" textFill="#e0fcdb">
+            <Button layoutX="583.0" layoutY="41.0" mnemonicParsing="false" onAction="#displayActivities" style="-fx-background-color: #167526;" text="+" textFill="#e0fcdb">
                <font>
                   <Font name="Eras Bold ITC" size="28.0" />
                </font>

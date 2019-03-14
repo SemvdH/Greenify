@@ -23,14 +23,12 @@ public class DashBoardController {
     //    public ComboBox addActivity;
 
     @FXML
-    public Label dashboardText;
-    public Label activitiesText;
-    public Label userText;
     public Button dashboardButton;
     public Button activitiesButton;
     public Button userButton;
 
     DropShadow shadow = new DropShadow();
+
 
     /**
      * displays the dashboard pane.
@@ -41,6 +39,7 @@ public class DashBoardController {
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
+        // welcomebacktext.setText("Welcome back, " + UserController.getUsernameText() + "!");
     }
 
     /**

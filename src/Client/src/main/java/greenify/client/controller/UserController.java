@@ -23,7 +23,7 @@ public class UserController {
     UserService userService;
 
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
 
     @FXML
     private PasswordField passwordField;
@@ -33,6 +33,8 @@ public class UserController {
 
     @FXML
     private Button signupButton;
+
+
 
 
     //    @Value("${my.url}")
@@ -98,6 +100,11 @@ public class UserController {
         //        app_stage.setFullScreen(true);
         appStage.show();
     }
+
+//    public final String getUsernameText() {
+//
+//        return user.getName();
+//    }
 
 
     public static class AlertHelper {
