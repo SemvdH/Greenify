@@ -5,6 +5,7 @@ package greenify.common;
 // The motivation for its use is that communication between processes is usually done
 // resorting to remote interfaces (e.g., web services), where each call is an expensive operation.
 public class UserDTO {
+
     private Long id;
     private String name;
 
@@ -20,7 +21,15 @@ public class UserDTO {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

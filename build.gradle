@@ -21,10 +21,8 @@ apply plugin: 'checkstyle'
 apply plugin: 'application'
 
 application {
-    mainClassName = 'greenify.client.Application'
+    mainClassName = 'greenify.server.Application'
 }
-
-//apply plugin: 'org.openjfx.javafxplugin'
 
 tasks.withType(Checkstyle) {
     reports {
@@ -36,16 +34,32 @@ repositories {
     mavenCentral()
 }
 
-//client bootjar
-bootJar {
-    baseName = 'gs-consuming-rest'
-    version =  '0.1.0'
+allprojects {
+    task hello {
+        doLast { task ->
+            println "I'm $task.project.name"
+        }
+    }
 }
 
-//server bootjar
+////client bootjar
+//bootJar {
+//    baseName = 'gs-consuming-rest'
+//    version =  '0.1.0'
+//}
+//
+////server bootjar
+//bootJar {
+//    baseName = 'gs-rest-service'
+//    version =  '0.1.0'
+//}
+
 bootJar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+    enabled = false
+}
+
+jar {
+    enabled = true
 }
 
 sourceCompatibility = 1.8
