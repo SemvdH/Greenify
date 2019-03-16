@@ -17,10 +17,4 @@ public class UserController {
                                 @RequestParam(value = "password") String password) {
         return userService.registerUser(name, password);
     }
-
-    @RequestMapping("/login")
-    public UserDTO login(@RequestParam(value = "name") String name,
-                         @RequestParam(value = "password") String password) {
-        return userService.login(name, password);
-    }
 }
