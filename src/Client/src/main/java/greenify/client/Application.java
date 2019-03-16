@@ -37,23 +37,10 @@ public class Application extends javafx.application.Application {
     public void start(Stage primaryStage) throws Exception {
         fxmlLoader.setLocation(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
 
-        //        fxmlLoader.setLocation(
-        //        this.getClass().getClassLoader().getResource("fxml/dashboard.fxml")
-        //        );
-
-
         rootNode = fxmlLoader.load();
-
-        //        rootNode = FXMLLoader.load(
-        //        this.getClass().getClassLoader().getResource("fxml/sample.fxml")
-        //        );
 
         primaryStage.setTitle("GoGreen");
         Scene scene = new Scene(rootNode);
-
-        //        scene.getStylesheets().add(
-        //        getClass().getResource("stylesheets/dashboardStyle.css").toExternalForm()
-        //        );
 
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.RegisterWindowController">
+   <children>
+      <ImageView fitHeight="312.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../registerBackground.png" />
+         </image>
+      </ImageView>
+      <Text fill="#00650d" layoutX="103.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <TextField fx:id="userNameText" layoutX="69.0" layoutY="94.0" promptText="Username">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Button fx:id="signupButton" layoutX="115.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleSignUpButton" style="-fx-background-color: #005e07;" text="Sign up!" textFill="#c4eec9">
+         <font>
+            <Font name="Corbel Bold" size="14.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passwordField" layoutX="69.0" layoutY="138.0" promptText="Password">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="passwordField2" layoutX="69.0" layoutY="182.0" promptText="Re-enter password">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

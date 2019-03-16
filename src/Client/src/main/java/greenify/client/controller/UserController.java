@@ -81,6 +81,9 @@ public class UserController {
         //        app_stage.setScene(scene);
         //        app_stage.setFullScreen(true);
         //        app_stage.show();
+
+        Stage current = (Stage) owner;
+        current.close();
         openDashboard();
 
     }
@@ -126,6 +129,21 @@ public class UserController {
             alert.initOwner(owner);
             alert.show();
         }
+    }
+
+    //method to open the register window
+    public void handleRegisterButtonAction(ActionEvent event) throws Exception{
+        //load the fxml file
+        Parent registerWindow = FXMLLoader.load (
+                this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml")
+        );
+        //make the window use the scene
+        Scene registerscene = new Scene(registerWindow);
+        Stage registerStage = new Stage();
+        //open the window
+        registerStage.setScene(registerscene);
+        registerStage.setTitle("Enter register credentials");
+        registerStage.show();
     }
 
 }
