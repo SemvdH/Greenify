@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,8 +25,9 @@ public class DashBoardController {
     public Button dashboardButton;
     public Button activitiesButton;
     public Button userButton;
+    public Label scoreField;
 
-    DropShadow shadow = new DropShadow();
+//    DropShadow shadow = new DropShadow();
 
 
     /**
@@ -35,10 +35,13 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayDashboard(ActionEvent event) {
+
         System.out.println("display dashboard");
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
+
+
         // welcomebacktext.setText("Welcome back, " + UserController.getUsernameText() + "!");
     }
 
@@ -63,6 +66,8 @@ public class DashBoardController {
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
     }
+
+
     //    public void addShadow(MouseEvent event) {
     //        userButton.setEffect(shadow);
     //    }

@@ -26,7 +26,7 @@ public class UserService {
         if (user != null) {
             throw new ApplicationException("User already exists");
         } else {
-            user = userRepository.save(new User(null, name, password));
+            user = userRepository.save(new User(null, name, password, 0));
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
         return new UserDTO(user.getId(), user.getName());
@@ -38,15 +38,16 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO of the logged in user
      */
-    public UserDTO login(String name, String password) {
-        User user = userRepository.findByName(name);
-        if (user == null) {
-            throw new ApplicationException("User does not exist");
-        } else {
-            if (!user.getPassword().equals(password)) {
-                throw new ApplicationException("Wrong password");
-            }
-        }
-        return new UserDTO(user.getId(), user.getName());
-    }
+//    public UserDTO login(String name, String password) {
+//        User user = userRepository.findByName(name);
+//        if (user == null) {
+//            throw new ApplicationException("User does not exist");
+//        } else {
+//            if (!user.getPassword().equals(password)) {
+//                throw new ApplicationException("Wrong password");
+//            }
+//        }
+//        return new UserDTO(user.getId(), user.getName());
+//    }
 }
+

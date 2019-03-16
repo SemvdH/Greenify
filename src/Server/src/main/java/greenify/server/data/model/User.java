@@ -1,35 +1,43 @@
 package greenify.server.data.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-//@AllArgsConstructor
+@EnableAutoConfiguration
 @Entity
 @Data
-@NoArgsConstructor
+@Table(name = "users")
 public class User {
 
-    private @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String password;
+
+    private int veganMeal;
+
+    public User() {}
 
     /**
      * makes a user object.
      * @param id the id of the user.
      * @param name the supplied username
      * @param password the supplied password
+     * @param veganMeal the supplied number of vegan meal
      */
-    public User(Long id, String name, String password) {
+    public User(Long id, String name, String password, int veganMeal) {
         this.id = id;
         this.name = name;
         this.password = password;
+        this.veganMeal = veganMeal;
     }
 
     /**
@@ -40,6 +48,8 @@ public class User {
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     /**
      * gets the name.
      * @return the name
@@ -47,6 +57,8 @@ public class User {
     public String getName() {
         return name;
     }
+
+    public void setName(String name) { this.name = name; }
 
     /**
      * gets the password.
@@ -56,21 +68,15 @@ public class User {
         return password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPassword(String password) { this.password = password; }
+
+    /**
+     * gets the number of vegan meal.
+     * @return the veganMeal
+     */
+    public int getVeganMeal() {
+        return veganMeal;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-
-        return "User(id=" + this.id + ", name=" + this.name + ", password=" + this.password + ")";
-    }
+    public void setVeganMeal(int veganMeal) { this.veganMeal = veganMeal; }
 }

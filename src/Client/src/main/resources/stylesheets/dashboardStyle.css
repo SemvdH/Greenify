@@ -3,3 +3,52 @@
     /*-fx-border-color: #f9f9f9;*/
     /*-fx-border-radius: 0%;*/
 /*}*/
+
+/*@font-face {*/
+  /*font-family: 'Nunito Sans';*/
+  /*src: url('https://fonts.googleapis.com/css?family=Nunito+Sans:200');*/
+/*}*/
+
+@font-face {
+  font-family: 'Designio Regular ';
+  src: url('stylesheets/DesignioRegular.otf');
+}
+
+/*@font-face {*/
+  /*font-family: 'Big Designer';*/
+  /*src: url('Big Designer.ttf');*/
+/*}*/
+/*test if fonts work*/
+/*@font-face {*/
+  /*font-family: 'ConcertOne';*/
+  /*src: url('https://fonts.googleapis.com/css?family=Concert+One');*/
+/*}*/
+.root {
+  -fx-background-color:  #f9fffb;
+  -fx-font-family: "Big Designer";
+  /*-fx-font-family: Designio;*/
+  /*-fx-font-family: "Nunito Sans";*/
+  /*-fx-font-family: "Concert One";*/
+}
+
+#dashboardButton {
+  -fx-background-color: #5a635c;
+
+}
+#dashboardButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
+
+#userButton {
+  -fx-background-color: #5a635c;
+}
+#userButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
+
+#activitiesButton {
+  -fx-background-color: #5a635c;
+}
+#activitiesButton:pressed {
+  -fx-background-color: #b7e2c2;
+}

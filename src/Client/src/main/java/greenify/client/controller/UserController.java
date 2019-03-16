@@ -34,21 +34,6 @@ public class UserController {
     @FXML
     private Button signupButton;
 
-
-
-
-    //    @Value("${my.url}")
-    //    private String myUrl;
-
-    //    @FXML
-    //    private void initialize(ActionEvent event) throws IOException {
-    //        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-    //        Scene scene = new Scene(parent);
-    //        Stage app_stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-    //        app_stage.setScene(scene);
-    //        app_stage.show();
-    //    }
-
     @FXML
     protected void handleLoginButtonAction(ActionEvent event) throws IOException {
         Window owner = loginButton.getScene().getWindow();
@@ -94,21 +79,17 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
+//        Font.loadFont(getClass().getResourceAsStream("stylesheets/DesignioRegular.otf"), 21);
         Parent dash = FXMLLoader.load(
                 this.getClass().getClassLoader().getResource("fxml/Dashboard.fxml")
         );
         Scene scene = new Scene(dash);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         //        app_stage.setFullScreen(true);
         appStage.show();
     }
-
-//    public final String getUsernameText() {
-//
-//        return user.getName();
-//    }
-
 
     public static class AlertHelper {
         /**

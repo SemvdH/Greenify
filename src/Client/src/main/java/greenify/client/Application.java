@@ -21,11 +21,6 @@ public class Application extends javafx.application.Application {
         launch(args);
     }
 
-    //    @Bean
-    //    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-    //        return builder.build();
-    //    }
-
     @Override
     public void init() throws Exception {
         springContext = SpringApplication.run(Application.class);
@@ -50,14 +45,4 @@ public class Application extends javafx.application.Application {
     public void stop() {
         springContext.stop();
     }
-
-    //    @Bean
-    //    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-    //        return args -> {
-    //            User user = restTemplate.getForObject(
-    //                    "http://localhost:8080/user", User.class);
-    //            log.info(user.toString());
-    //
-    //        };
-    //    }
 }
