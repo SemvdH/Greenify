@@ -20,9 +20,9 @@ apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
 apply plugin: 'application'
 
-//application {
-//    mainClassName = 'greenify.server.Application'
-//}
+application {
+    mainClassName = 'greenify.server.Application'
+}
 
 tasks.withType(Checkstyle) {
     reports {
