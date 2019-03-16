@@ -34,21 +34,6 @@ public class UserController {
     @FXML
     private Button signupButton;
 
-
-
-
-    //    @Value("${my.url}")
-    //    private String myUrl;
-
-    //    @FXML
-    //    private void initialize(ActionEvent event) throws IOException {
-    //        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-    //        Scene scene = new Scene(parent);
-    //        Stage app_stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-    //        app_stage.setScene(scene);
-    //        app_stage.show();
-    //    }
-
     @FXML
     protected void handleLoginButtonAction(ActionEvent event) throws IOException {
         Window owner = loginButton.getScene().getWindow();
@@ -70,17 +55,6 @@ public class UserController {
         }
 
         userService.registerUser(usernameField.getText(), passwordField.getText());
-
-        // load the dashboard stage
-        //        Parent parent = FXMLLoader.load(
-        //        this.getClass().getClassLoader().getResource("/fxml/dashboard.fxml")
-        //        );
-        //
-        //        Scene scene = new Scene(parent);
-        //        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //        app_stage.setScene(scene);
-        //        app_stage.setFullScreen(true);
-        //        app_stage.show();
         openDashboard();
 
     }
@@ -100,12 +74,6 @@ public class UserController {
         //        app_stage.setFullScreen(true);
         appStage.show();
     }
-
-//    public final String getUsernameText() {
-//
-//        return user.getName();
-//    }
-
 
     public static class AlertHelper {
         /**
