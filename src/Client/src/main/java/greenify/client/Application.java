@@ -31,9 +31,12 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         fxmlLoader.setLocation(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
+
         rootNode = fxmlLoader.load();
+
         primaryStage.setTitle("GoGreen");
         Scene scene = new Scene(rootNode);
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
