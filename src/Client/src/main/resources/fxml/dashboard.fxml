@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -11,37 +13,39 @@
 
 <AnchorPane prefHeight="602.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
-      <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #545b4f;">
+      <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Go Green" textAlignment="CENTER" textFill="#07a11c">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Go Green" textAlignment="CENTER" textFill="#71bc84">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="dashboardButton" layoutY="88.0" mnemonicParsing="false" onAction="#displayDashboard" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="dashboard">
+            <Button fx:id="dashboardButton" layoutY="88.0" mnemonicParsing="false" onAction="#displayDashboard" prefHeight="45.0" prefWidth="216.0" text="dashboard">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="activitiesButton" layoutY="133.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="activities">
+            <Button fx:id="activitiesButton" layoutY="133.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="45.0" prefWidth="216.0" text="activities">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="userButton" layoutY="178.0" mnemonicParsing="false" onAction="#displayUser" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #5a635c;" text="you">
+            <Button fx:id="userButton" layoutY="178.0" mnemonicParsing="false" onAction="#displayUser" prefHeight="45.0" prefWidth="216.0" text="you">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
+            <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
          </children></AnchorPane>
-      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0">
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
          <children>
             <Text layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button layoutX="60.0" layoutY="173.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 50%;" text="Add a vegetarian meal!" textFill="#cce4ca">
+            <Button layoutX="60.0" layoutY="116.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Add a vegetarian meal" textFill="#e0ffe1">
                <font>
                   <Font size="14.0" />
                </font>
@@ -54,8 +58,22 @@
                   <Font size="30.0" />
                </font>
             </Text>
+            <VBox layoutX="517.0" layoutY="28.0" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+               <children>
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" textAlignment="CENTER" wrappingWidth="100.79296875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="scoreField" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="score" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children></AnchorPane>
-      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
          <children>
             <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
             <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
@@ -63,11 +81,19 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="583.0" layoutY="41.0" mnemonicParsing="false" onAction="#displayActivities" style="-fx-background-color: #167526;" text="+" textFill="#e0fcdb">
+            <Button layoutX="567.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="62.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" textFill="#e0fcdb">
                <font>
                   <Font name="Eras Bold ITC" size="28.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="81.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../addActivity1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
+
             <!--<ComboBox fx:id="addActivity" layoutX="532.0" layoutY="28.0" prefWidth="150.0" promptText="Add an Activity" style="-fx-background-color: #1f951f;">-->
                <!--<items>-->
                   <!--<FXCollections fx:factory="observableArrayList">-->

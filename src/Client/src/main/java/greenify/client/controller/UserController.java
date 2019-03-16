@@ -91,10 +91,12 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
+//        Font.loadFont(getClass().getResourceAsStream("stylesheets/DesignioRegular.otf"), 21);
         Parent dash = FXMLLoader.load(
                 this.getClass().getClassLoader().getResource("fxml/Dashboard.fxml")
         );
         Scene scene = new Scene(dash);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         //        app_stage.setFullScreen(true);
