@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class Application extends javafx.application.Application {
     private static ConfigurableApplicationContext springContext;
@@ -19,16 +21,16 @@ public class Application extends javafx.application.Application {
         launch(args);
     }
 
-    public static Parent load(java.net.URL url) {
+    /**
+     * This method takes an url and return a parent.
+     * @param url which is being loaded.
+     * @return parent object.
+     */
+    public static Parent load(java.net.URL url) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(springContext::getBean);
         loader.setLocation(url);
-        try {
-            return loader.load();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return loader.load();
     }
 
     @Override

@@ -1,9 +1,12 @@
 import greenify.client.rest.UserService;
-import greenify.common.UserDTO;
+import greenify.common.UserDto;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,32 +25,32 @@ public class UserServiceTest {
 
     @Test
     public void userRegisterTest() throws Exception {
-        UserDTO testUser = new UserDTO(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric");
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/registerUser?name=Eric&password=password"),
-                UserDTO.class))
+                UserDto.class))
                 .thenReturn(testUser);
 
-        UserDTO user = userService.registerUser("Eric", "password");
+        UserDto user = userService.registerUser("Eric", "password");
         Assert.assertEquals(testUser, user);
     }
 
     @Test
     public void userLoginTest() throws Exception {
-        UserDTO testUser = new UserDTO(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric");
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/loginUser?name=Eric&password=password"),
-                UserDTO.class))
+                UserDto.class))
                 .thenReturn(testUser);
-        UserDTO user = userService.loginUser("Eric", "password");
+        UserDto user = userService.loginUser("Eric", "password");
         Assert.assertEquals(testUser, user);
     }
 
     @Test
     public void addVeganMealTest() throws Exception {
-        UserDTO testUser = new UserDTO(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric");
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/addVeganMeal?id=1&name=Eric"),
-                UserDTO.class))
+                UserDto.class))
                 .thenReturn(testUser);
-        UserDTO user = userService.addVeganMeal(1L, "Eric");
+        UserDto user = userService.addVeganMeal(1L, "Eric");
         Assert.assertEquals(testUser, user);
     }
 }

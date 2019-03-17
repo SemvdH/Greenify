@@ -4,7 +4,6 @@ import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -24,15 +23,9 @@ public class UserController {
     UserService userService;
 
     @FXML
-    public TextField usernameField;
-
-    @FXML
+    private TextField usernameField;
     private PasswordField passwordField;
-
-    @FXML
     private Button loginButton;
-
-    @FXML
     private Button signupButton;
 
     @FXML
@@ -65,9 +58,11 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
-        Parent dash = Application.load (this.getClass().getClassLoader().getResource("fxml/dashboard.fxml"));
+        Parent dash = Application.load(this.getClass().getClassLoader()
+                                        .getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader()
+                .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         appStage.show();
@@ -94,13 +89,16 @@ public class UserController {
         }
     }
 
-    public void handleRegisterButtonAction(ActionEvent event) throws Exception{
-        //load the fxml file
-        Parent registerWindow = Application.load (this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml"));
-        //make the window use the scene
+    /**
+     * The method handles register button.
+     * @param event User clicks to the button
+     * @throws Exception when the file couldn't find
+     */
+    public void handleRegisterButtonAction(ActionEvent event) throws Exception {
+        Parent registerWindow = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/RegisterWindow.fxml"));
         Scene registerScene = new Scene(registerWindow);
         Stage registerStage = new Stage();
-        //open the window
         registerStage.setScene(registerScene);
         registerStage.setTitle("Enter register credentials");
         registerStage.show();
