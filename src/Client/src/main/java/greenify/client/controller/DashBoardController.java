@@ -6,40 +6,28 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class DashBoardController {
+    @Autowired
+    UserService userService;
 
     private int count = 0;
 
     @FXML
-    public AnchorPane menuBar;
-    public AnchorPane dashboardPane;
-    public AnchorPane userPane;
-    public AnchorPane activitiesPane;
-    public Label welcomebacktext;
-    public Button dashboardButton;
-    public Button activitiesButton;
-    public Button userButton;
-    public Label scoreField;
-
-    //activities buttons
-    @FXML
-    public Button veganMealButton;
-    public Button localProduceButton;
-    public Button bikeButton;
-    public Button publicTransportButton;
-    public Button temperatureButton;
-    public Button solarPanelButton;
-
-    //activities counters
-    public Label veganMealCounter;
-    public Label localProduceCounter;
-    public Label bikeCounter;
-    public Label publicTransportCounter;
-    public Label temperatureCounter;
-    public Label solarPanelCounter;
+    private AnchorPane menuBar;
+    private AnchorPane dashboardPane;
+    private AnchorPane userPane;
+    private AnchorPane activitiesPane;
+    private Label welcomebacktext;
+    private Button dashboardButton;
+    private Button activitiesButton;
+    private Button userButton;
+    private Button veganMealButton;
+    private Label counter;
+    private Label scoreField;
 
     /**
      * displays the dashboard pane.
@@ -47,16 +35,9 @@ public class DashBoardController {
      */
     public void displayDashboard(ActionEvent event) {
         System.out.println("display dashboard");
-
-        //        UserService service = new UserService();
-        //        UserDTO user = service.getName(null);
-        //        String name = user.getName();
-        //        welcomebacktext.setText("Welcome back, " + name);
-
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
-
     }
 
     /**
@@ -87,10 +68,10 @@ public class DashBoardController {
      */
     public void addVeganMeal(ActionEvent event) {
         count++;
-        veganMealCounter.setText("Count: " + count);
-        UserService service = new UserService();
-        service.addVeganMeal(null, null);
+        counter.setText("Count: " + count);
+        System.out.println(userService);
+        userService.addVeganMeal(userService.currentUser.getId(),
+                                userService.currentUser.getName());
         System.out.println("Vegetarian meal is added");
-
     }
 }

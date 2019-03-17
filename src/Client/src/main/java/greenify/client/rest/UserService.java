@@ -1,6 +1,6 @@
 package greenify.client.rest;
 
-import greenify.common.UserDTO;
+import greenify.common.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +16,8 @@ public class UserService {
 
     @Autowired
     RestTemplate restTemplate;
+
+    public UserDto currentUser;
 
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -37,7 +39,10 @@ public class UserService {
                 .queryParam("password", password);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        UserDto result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), UserDto.class);
+        this.currentUser = result;
+        return result;
     }
 
     /**
@@ -55,7 +60,10 @@ public class UserService {
                 .queryParam("password", password);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        UserDto result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), UserDto.class);
+        this.currentUser = result;
+        return result;
     }
 
     /**
@@ -73,7 +81,7 @@ public class UserService {
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
     }
 
     /**

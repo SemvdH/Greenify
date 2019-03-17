@@ -1,19 +1,19 @@
 package greenify.server.data.model;
 
-import greenify.server.data.model.User;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.Test;
 
 public class UserTest {
     @Test
     public void setAndGetTest() {
-        User user = new User(1L, "greenify", "password", 3);
         User testUser = new User();
         testUser.setId(1L);
         testUser.setName("greenify");
         testUser.setPassword("password");
         testUser.setVeganMeal(3);
+        User user = new User(1L, "greenify", "password", 3);
         assertTrue(user.getId().equals(1L));
         assertEquals(user.getName(), "greenify");
         assertEquals(user.getPassword(), "password");
