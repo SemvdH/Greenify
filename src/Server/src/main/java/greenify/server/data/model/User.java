@@ -91,4 +91,21 @@ public class User {
     public void setVeganMeal(int veganMeal) {
         this.veganMeal = veganMeal;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof User){
+            User that = (User)other;
+            if(that.id != this.id)
+                return false;
+            if(!that.name.equals(this.name))
+                return false;
+            if(!that.password.equals(this.password))
+                return false;
+            if(that.veganMeal != this.veganMeal)
+                return false;
+            return true;
+        }
+        return false;
+    }
 }

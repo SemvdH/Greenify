@@ -1,6 +1,7 @@
 package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
@@ -35,6 +36,14 @@ public class UserTest {
         assertEquals(first.getName(), second.getName());
         assertEquals(first.getPassword(), second.getPassword());
         assertEquals(first.getVeganMeal(), second.getVeganMeal());
+        assertTrue(first.equals(second));
+    }
+
+    @Test
+    public void instanceOfTest() {
+        User first = new User();
+        Object second = new Object();
+        assertFalse(first.equals(second));
     }
 
     @Test
@@ -42,7 +51,7 @@ public class UserTest {
         User first = new User(1L, "greenify", "password", 3);
         User second = new User(1L, "greenify", "password", 3);
         assertTrue(first.equals(second) && second.equals(first));
-        assertTrue(first.hashCode() == second.hashCode());
+        assertEquals(first, second);
     }
 }
 

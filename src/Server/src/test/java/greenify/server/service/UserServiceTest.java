@@ -51,14 +51,29 @@ public class UserServiceTest {
         assertEquals(found.getName(), name);
     }
 
+    @Test
+    public void getAllUserTest() {
+        assertEquals(userRepository.findAll(), userService.getAllUsers());
+    }
+
     //    @Test
-    //    public void addVeganMealTest() {
-    //        User user = new User(1L, "x", "y", 3);
-    //        userRepository.save(user);
-    //        System.out.println(userRepository);
-    //        userService.addVeganMeal(1L, "x");
-    //        assertEquals(user.getVeganMeal(), 7);
+    //    public void validRegisterTest() {
+    //        String name = "new";
+    //        String password = "user";
+    //        if(userRepository.findByName(name) == null) {
+    //            UserDto found = userService.registerUser(name, password);
+    //            assertEquals(found.getName(), name);
+    //        }
     //    }
+
+    //        @Test
+    //        public void addVeganMealTest() {
+    //            User user = new User(1L, "name", "password", 0);
+    //            User user = userRepository.findByName("x");
+    //            int veganMeal = user.getVeganMeal();
+    //            userService.addVeganMeal(user.getId(), user.getName());
+    //            assertEquals(user.getVeganMeal(), veganMeal++);
+    //        }
 
     @Test
     public void invalidLoginTest() {
