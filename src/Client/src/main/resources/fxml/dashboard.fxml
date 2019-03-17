@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-
-<AnchorPane prefHeight="602.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="602.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
@@ -45,11 +40,16 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button layoutX="60.0" layoutY="116.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Add a vegetarian meal" textFill="#e0ffe1">
+            <Button fx:id="veganMealButton" layoutX="60.0" layoutY="116.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" onAction="#addVeganMeal" text="Add a vegetarian meal" textFill="#e0ffe1">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="counter" layoutX="288.0" layoutY="110.0" prefHeight="44.0" prefWidth="115.0" text="Count: ">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false">
          <children>
@@ -93,14 +93,6 @@
                   </ImageView>
                </graphic>
             </Button>
-
-            <!--<ComboBox fx:id="addActivity" layoutX="532.0" layoutY="28.0" prefWidth="150.0" promptText="Add an Activity" style="-fx-background-color: #1f951f;">-->
-               <!--<items>-->
-                  <!--<FXCollections fx:factory="observableArrayList">-->
-                     <!--<String fx:value="Ate a vegetarian meal" />-->
-                  <!--</FXCollections>-->
-               <!--</items>-->
-            <!--</ComboBox>-->
          </children>
       </AnchorPane>
    </children>
