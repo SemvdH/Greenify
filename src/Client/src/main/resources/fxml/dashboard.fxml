@@ -15,7 +15,7 @@
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Go Green" textAlignment="CENTER" textFill="#71bc84">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Greenify" textAlignment="CENTER" textFill="#71bc84">
                <font>
                   <Font size="36.0" />
                </font>
