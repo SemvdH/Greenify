@@ -1,0 +1,3 @@
+<module name="SuppressionFilter">
+    <property name="file" value="quality/checkstyle/suppressions.xml" />
+</module>

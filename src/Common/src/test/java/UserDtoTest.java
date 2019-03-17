@@ -1,14 +1,14 @@
-import greenify.common.UserDTO;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class UserDTOTest {
+import greenify.common.UserDto;
+import org.junit.Test;
+
+public class UserDtoTest {
     @Test
     public void setAndGetTest() {
-        UserDTO user = new UserDTO(1L, "greenify");
-        UserDTO testUser = new UserDTO();
+        UserDto user = new UserDto(1L, "greenify");
+        UserDto testUser = new UserDto();
         testUser.setId(1L);
         testUser.setName("greenify");
         assertTrue(user.getId() == 1L);
@@ -17,8 +17,8 @@ public class UserDTOTest {
 
     @Test
     public void equalsTest() {
-        UserDTO first = new UserDTO(1L, "greenify");
-        UserDTO second = new UserDTO(1L, "greenify");
+        UserDto first = new UserDto(1L, "greenify");
+        UserDto second = new UserDto(1L, "greenify");
         assertEquals(first.getId(), second.getId());
         assertEquals(first.getName(), second.getName());
     }

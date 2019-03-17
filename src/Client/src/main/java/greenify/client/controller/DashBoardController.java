@@ -17,17 +17,17 @@ public class DashBoardController {
     private int count = 0;
 
     @FXML
-    public AnchorPane menuBar;
-    public AnchorPane dashboardPane;
-    public AnchorPane userPane;
-    public AnchorPane activitiesPane;
-    public Label welcomebacktext;
-    public Button dashboardButton;
-    public Button activitiesButton;
-    public Button userButton;
-    public Button veganMealButton;
-    public Label counter;
-    public Label scoreField;
+    private AnchorPane menuBar;
+    private AnchorPane dashboardPane;
+    private AnchorPane userPane;
+    private AnchorPane activitiesPane;
+    private Label welcomebacktext;
+    private Button dashboardButton;
+    private Button activitiesButton;
+    private Button userButton;
+    private Button veganMealButton;
+    private Label counter;
+    private Label scoreField;
 
     /**
      * displays the dashboard pane.
@@ -70,7 +70,8 @@ public class DashBoardController {
         count++;
         counter.setText("Count: " + count);
         System.out.println(userService);
-        userService.addVeganMeal(userService.currentUser.getId(), userService.currentUser.getName());
+        userService.addVeganMeal(userService.currentUser.getId(),
+                                userService.currentUser.getName());
         System.out.println("Vegetarian meal is added");
     }
 }

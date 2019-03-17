@@ -1,8 +1,9 @@
-import greenify.common.ErrorResponse;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import greenify.common.ErrorResponse;
+
+import org.junit.Test;
 
 public class ErrorResponseTest {
     @Test
