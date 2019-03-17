@@ -6,12 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class DashBoardController {
     @Autowired
     UserService userService;
+
+    private int count = 0;
 
     @FXML
     public AnchorPane menuBar;
@@ -66,8 +69,8 @@ public class DashBoardController {
     public void addVeganMeal(ActionEvent event) {
         count++;
         counter.setText("Count: " + count);
-        UserService service = new UserService();
-        service.addVeganMeal(null, null);
+        System.out.println(userService);
+        userService.addVeganMeal(userService.currentUser.getId(), userService.currentUser.getName());
         System.out.println("Vegetarian meal is added");
     }
 }

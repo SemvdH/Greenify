@@ -21,13 +21,33 @@ public class UserServiceTest {
     UserService userService;
 
     @Test
-    public void mocking() throws Exception {
+    public void userRegisterTest() throws Exception {
         UserDTO testUser = new UserDTO(1L, "Eric");
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/registerUser?name=Eric&password=password"),
                 UserDTO.class))
                 .thenReturn(testUser);
 
         UserDTO user = userService.registerUser("Eric", "password");
+        Assert.assertEquals(testUser, user);
+    }
+
+    @Test
+    public void userLoginTest() throws Exception {
+        UserDTO testUser = new UserDTO(1L, "Eric");
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/loginUser?name=Eric&password=password"),
+                UserDTO.class))
+                .thenReturn(testUser);
+        UserDTO user = userService.loginUser("Eric", "password");
+        Assert.assertEquals(testUser, user);
+    }
+
+    @Test
+    public void addVeganMealTest() throws Exception {
+        UserDTO testUser = new UserDTO(1L, "Eric");
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/addVeganMeal?id=1&name=Eric"),
+                UserDTO.class))
+                .thenReturn(testUser);
+        UserDTO user = userService.addVeganMeal(1L, "Eric");
         Assert.assertEquals(testUser, user);
     }
 }

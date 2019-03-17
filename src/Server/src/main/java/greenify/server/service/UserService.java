@@ -23,10 +23,10 @@ public class UserService {
      */
     public UserDTO registerUser(String name, String password) {
         User user = userRepository.findByName(name);
-        if (user != null) {
-            throw new ApplicationException("User already exists");
-        } else {
+        if (user == null) {
             user = userRepository.save(new User(null, name, password, 0));
+        } else {
+            throw new ApplicationException("User already exists");
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
         return new UserDTO(user.getId(), user.getName());
@@ -61,6 +61,7 @@ public class UserService {
         int count = user.getVeganMeal();
         count++;
         user.setVeganMeal(count);
+        userRepository.save(user);
         logger.info("Added vegan meal to user(id=" + user.getId() + ", name=" + user.getName() + ")");
     }
 }
