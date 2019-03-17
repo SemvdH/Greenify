@@ -3,20 +3,20 @@ package greenify.server.data.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.accessibility.AccessibleValue;
+import javax.persistence.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 @Entity
 @Data
+@Table(name = "activities")
 //@AllArgsConstructor
-public abstract class Activity {
+public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    long id;
     String name;
     String description;
     int score;
@@ -28,10 +28,10 @@ public abstract class Activity {
      * @param description the description of the feature.
      * @param score the amount of points a user gets for doing this activity.
      */
-    public void User(Long id, String name, String description, int score) {
+    public Activity(long id, String name, String description, int score) {
         this.id = id;
         this.name = name;
-        this.description = setDes(description);
+        this.description = description;
         this.score = score;
     }
 
@@ -39,7 +39,7 @@ public abstract class Activity {
      * gets the id.
      * @return the id
      */
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -52,14 +52,27 @@ public abstract class Activity {
     }
 
     /**
-     * gets the password.
-     * @return the password
+     * gets the description.
+     * @return the description
      */
     public String getDescription() {
         return description;
     }
 
-    public void setId(Long id) {
+    /**
+     * gets the score.
+     * @return the score
+     */
+    public int getScore() {
+        return score;
+    }
+
+
+    /**
+     * sets the id.
+     * @param id the you want to assign to this.id.
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -75,12 +88,8 @@ public abstract class Activity {
      * sets the description.
      * @param description the description to be set.
      */
-    public String setDes(String description){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the description");
-        description = scan.nextLine();
-        scan.close();
-        return description;
+    public void setDescription(String description){
+        this.description = description;
     }
 
     /**
@@ -91,6 +100,7 @@ public abstract class Activity {
         this.score = score;
     }
 
+
     /**
      * Returns a human readable object. It's in JSON.
      * @return the JSON form of the object.
@@ -98,5 +108,27 @@ public abstract class Activity {
     @Override
     public String toString() {
         return "Activity(id=" + this.id + ", name=" + this.name + ", description=" + this.description + ", score=" + this.score + ")";
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof Activity){
+            Activity that = (Activity)other;
+            if(that.id != this.id)
+                return false;
+            if(!that.name.equals(this.name))
+                return false;
+            if(!that.description.equals(this.description))
+                return false;
+            if(that.score != this.score)
+                return false;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, score);
     }
 }
