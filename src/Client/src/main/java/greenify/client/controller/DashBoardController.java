@@ -5,32 +5,29 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class DashBoardController {
     @Autowired
     UserService userService;
 
-    @FXML
-    public AnchorPane menuBar;
-    public AnchorPane dashboardPane;
-    public AnchorPane userPane;
-    public AnchorPane activitiesPane;
-    public Label welcomebacktext;
-    //    public Button addActivityButton;
-    //    public ComboBox addActivity;
+    private int count = 0;
 
     @FXML
-    public Label dashboardText;
-    public Label activitiesText;
-    public Label userText;
-    public Button dashboardButton;
-    public Button activitiesButton;
-    public Button userButton;
-
-    DropShadow shadow = new DropShadow();
+    private AnchorPane menuBar;
+    private AnchorPane dashboardPane;
+    private AnchorPane userPane;
+    private AnchorPane activitiesPane;
+    private Label welcomebacktext;
+    private Button dashboardButton;
+    private Button activitiesButton;
+    private Button userButton;
+    private Button veganMealButton;
+    private Label counter;
+    private Label scoreField;
 
     /**
      * displays the dashboard pane.
@@ -64,13 +61,17 @@ public class DashBoardController {
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
     }
-    //    public void addShadow(MouseEvent event) {
-    //        userButton.setEffect(shadow);
-    //    }
-    //
-    //    public void removeShadow(MouseEvent event) {
-    //        userButton.setEffect(null);
-    //
-    //    }
 
+    /**
+     * adds a vegetarian meal.
+     * @param event the event (clicking the button)
+     */
+    public void addVeganMeal(ActionEvent event) {
+        count++;
+        counter.setText("Count: " + count);
+        System.out.println(userService);
+        userService.addVeganMeal(userService.currentUser.getId(),
+                                userService.currentUser.getName());
+        System.out.println("Vegetarian meal is added");
+    }
 }

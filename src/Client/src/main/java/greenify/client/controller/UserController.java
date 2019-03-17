@@ -1,9 +1,9 @@
 package greenify.client.controller;
 
+import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -24,28 +24,9 @@ public class UserController {
 
     @FXML
     private TextField usernameField;
-
-    @FXML
     private PasswordField passwordField;
-
-    @FXML
     private Button loginButton;
-
-    @FXML
     private Button signupButton;
-
-
-    //    @Value("${my.url}")
-    //    private String myUrl;
-
-    //    @FXML
-    //    private void initialize(ActionEvent event) throws IOException {
-    //        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-    //        Scene scene = new Scene(parent);
-    //        Stage app_stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-    //        app_stage.setScene(scene);
-    //        app_stage.show();
-    //    }
 
     @FXML
     protected void handleLoginButtonAction(ActionEvent event) throws IOException {
@@ -55,7 +36,6 @@ public class UserController {
                     "Please enter your username");
             return;
         } else {
-            //            newUser.setUsername(usernameField.getText());
             System.out.println("Username is " + usernameField.getText());
         }
         if (passwordField.getText().isEmpty()) {
@@ -63,22 +43,11 @@ public class UserController {
                     "Please enter a password");
             return;
         } else {
-            //            newUser.setPassword(passwordField.getText());
             System.out.println("Password is " + passwordField.getText());
         }
-
-        userService.registerUser(usernameField.getText(), passwordField.getText());
-
-        // load the dashboard stage
-        //        Parent parent = FXMLLoader.load(
-        //        this.getClass().getClassLoader().getResource("/fxml/dashboard.fxml")
-        //        );
-        //
-        //        Scene scene = new Scene(parent);
-        //        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //        app_stage.setScene(scene);
-        //        app_stage.setFullScreen(true);
-        //        app_stage.show();
+        userService.loginUser(usernameField.getText(), passwordField.getText());
+        Stage current = (Stage) owner;
+        current.close();
         openDashboard();
 
     }
@@ -89,16 +58,15 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
-        Parent dash = FXMLLoader.load(
-                this.getClass().getClassLoader().getResource("fxml/Dashboard.fxml")
-        );
+        Parent dash = Application.load(this.getClass().getClassLoader()
+                                        .getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
+        scene.getStylesheets().add(getClass().getClassLoader()
+                .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
-        //        app_stage.setFullScreen(true);
         appStage.show();
     }
-
 
     public static class AlertHelper {
         /**
@@ -119,6 +87,21 @@ public class UserController {
             alert.initOwner(owner);
             alert.show();
         }
+    }
+
+    /**
+     * The method handles register button.
+     * @param event User clicks to the button
+     * @throws Exception when the file couldn't find
+     */
+    public void handleRegisterButtonAction(ActionEvent event) throws Exception {
+        Parent registerWindow = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/RegisterWindow.fxml"));
+        Scene registerScene = new Scene(registerWindow);
+        Stage registerStage = new Stage();
+        registerStage.setScene(registerScene);
+        registerStage.setTitle("Enter register credentials");
+        registerStage.show();
     }
 
 }

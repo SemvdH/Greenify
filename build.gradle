@@ -16,44 +16,26 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'jacoco'
-apply plugin: 'checkstyle'
 apply plugin: 'application'
 
 application {
-    mainClassName = 'greenify.client.Application'
-}
-
-//apply plugin: 'org.openjfx.javafxplugin'
-
-tasks.withType(Checkstyle) {
-    reports {
-        html.destination rootProject.file("build/reports/checkstyle.html")
-    }
+    mainClassName = 'greenify.server.Application'
 }
 
 repositories {
     mavenCentral()
 }
 
-//client bootjar
 bootJar {
-    baseName = 'gs-consuming-rest'
-    version =  '0.1.0'
+    enabled = false
 }
 
-//server bootjar
-bootJar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+jar {
+    enabled = true
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-test {
-    useJUnitPlatform()
-}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
@@ -76,22 +58,6 @@ dependencies {
     )
 }
 
-jacoco {
-    toolVersion = "0.8.3"
-    reportsDir = file("$buildDir/customJacocoReportDir")
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
-    }
-}
-
-task application(type: JavaExec, dependsOn: classes) {
-    main = 'Cient.Application'
-}
 
 
 

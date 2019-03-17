@@ -1,5 +1,31 @@
-.button {
-  -fx-border-width: 0px 0px 1px 0px;
-    -fx-border-color: #f9f9f9;
-    -fx-border-radius: 0%;
+@font-face {
+  font-family: 'Designio Regular ';
+  src: url('stylesheets/DesignioRegular.otf');
+}
+
+.root {
+  -fx-background-color:  #f9fffb;
+  -fx-font-family: "Big Designer";
+}
+
+#dashboardButton {
+  -fx-background-color: #5a635c;
+
+}
+#dashboardButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
+
+#userButton {
+  -fx-background-color: #5a635c;
+}
+#userButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
+
+#activitiesButton {
+  -fx-background-color: #5a635c;
+}
+#activitiesButton:pressed {
+  -fx-background-color: #b7e2c2;
 }

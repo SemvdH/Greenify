@@ -10,51 +10,39 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class Application extends javafx.application.Application {
-    private ConfigurableApplicationContext springContext;
-    private Parent rootNode;
-    private FXMLLoader fxmlLoader;
+    private static ConfigurableApplicationContext springContext;
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    //    @Bean
-    //    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-    //        return builder.build();
-    //    }
+    /**
+     * This method takes an url and return a parent.
+     * @param url which is being loaded.
+     * @return parent object.
+     */
+    public static Parent load(java.net.URL url) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setControllerFactory(springContext::getBean);
+        loader.setLocation(url);
+        return loader.load();
+    }
 
     @Override
     public void init() throws Exception {
         springContext = SpringApplication.run(Application.class);
-        fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(springContext::getBean);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        fxmlLoader.setLocation(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
-
-        //        fxmlLoader.setLocation(
-        //        this.getClass().getClassLoader().getResource("fxml/dashboard.fxml")
-        //        );
-
-
-        rootNode = fxmlLoader.load();
-
-        //        rootNode = FXMLLoader.load(
-        //        this.getClass().getClassLoader().getResource("fxml/sample.fxml")
-        //        );
-
-        primaryStage.setTitle("GoGreen");
+        Parent rootNode = load(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
+        primaryStage.setTitle("Greenify");
         Scene scene = new Scene(rootNode);
-
-        //        scene.getStylesheets().add(
-        //        getClass().getResource("stylesheets/dashboardStyle.css").toExternalForm()
-        //        );
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -63,14 +51,4 @@ public class Application extends javafx.application.Application {
     public void stop() {
         springContext.stop();
     }
-
-    //    @Bean
-    //    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-    //        return args -> {
-    //            User user = restTemplate.getForObject(
-    //                    "http://localhost:8080/user", User.class);
-    //            log.info(user.toString());
-    //
-    //        };
-    //    }
 }

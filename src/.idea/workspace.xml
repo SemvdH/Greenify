@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Server/src/test/java/greenify/server/rest/UserControllerTest.java" description="@WebMvcTest(UserController.class)" line="1" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="317f638e-9a63-4072-b3f3-0ddf783c2024" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -13,6 +16,9 @@
     <ignored path="$PROJECT_DIR$/Server/.gradle/" />
     <ignored path="$PROJECT_DIR$/Server/build/" />
     <ignored path="$PROJECT_DIR$/Server/out/" />
+    <ignored path="$PROJECT_DIR$/../.gradle/" />
+    <ignored path="$PROJECT_DIR$/../build/" />
+    <ignored path="$PROJECT_DIR$/../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,36 +61,40 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/..">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OOPP" type="f1a62948:ProjectNode" />
+                <item name="src" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OOPP" type="f1a62948:ProjectNode" />
-                <item name=":Server" type="2d1252cf:ModuleNode" />
+                <item name="src" type="f1a62948:ProjectNode" />
+                <item name=":src:Client" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OOPP" type="f1a62948:ProjectNode" />
-                <item name=":Server" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OOPP" type="f1a62948:ProjectNode" />
-                <item name=":Server" type="2d1252cf:ModuleNode" />
+                <item name="src" type="f1a62948:ProjectNode" />
+                <item name=":src:Client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="OOPP" type="f1a62948:ProjectNode" />
-                <item name=":Server" type="2d1252cf:ModuleNode" />
+                <item name="src" type="f1a62948:ProjectNode" />
+                <item name=":src:Client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="src" type="f1a62948:ProjectNode" />
+                <item name=":src:Client" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -93,34 +103,41 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="src" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="34" selection-start-line="34" selection-end-line="48" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/test/java/UserServiceTest.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="561">
+              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#664#665#0" expanded="true" />
+                <element signature="e#692#693#0" expanded="true" />
+                <element signature="e#1592#1593#0" expanded="true" />
+                <element signature="e#1628#1629#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/DashBoardController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,19 +146,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/repository/UserJpaRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="190">
+              <caret line="97" column="48" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,10 +158,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/rest/UserService.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/RegisterWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="24" column="108" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="108" />
+            <state relative-caret-position="171">
+              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,10 +170,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/controller/UserController.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/rest/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,13 +182,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/Application.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/test/java/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -195,30 +200,72 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>add a v</find>
+      <find>add</find>
+      <find>sig</find>
+      <find>regis</find>
+      <find>greenify</find>
+      <find>userC</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Common/src/main/java/gogreen/common/UserDTO.java" />
-        <option value="$PROJECT_DIR$/Common/src/main/java/gogreen/common/ApplicationException.java" />
-        <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/model/User.java" />
-        <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/repository/UserJpaRepository.java" />
-        <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/rest/UserController.java" />
-        <option value="$PROJECT_DIR$/Common/src/main/java/gogreen/common/ErrorResponse.java" />
-        <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/rest/ExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/Server/src/test/java/gogreen/server/rest/UserControllerTest.java" />
-        <option value="$PROJECT_DIR$/Client/src/main/resources/fxml/sample.fxml" />
         <option value="$PROJECT_DIR$/Client/src/main/java/gogreen/client/controller/UserController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/gogreen/client/Application.java" />
         <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/service/UserService.java" />
         <option value="$PROJECT_DIR$/Client/src/test/java/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/config/checkstyle/checkstyle.xml" />
-        <option value="$PROJECT_DIR$/Common/build.gradle" />
-        <option value="$PROJECT_DIR$/Client/build.gradle" />
         <option value="$PROJECT_DIR$/Server/src/main/java/gogreen/server/rest/RestExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/Server/build.gradle" />
         <option value="$PROJECT_DIR$/Common/src/test/java/gogreen/common/UserDTOTest.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/gogreen/client/rest/UserService.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/data/repository/UserJpaRepository.java" />
+        <option value="$PROJECT_DIR$/Common/src/test/java/ErrorResponseTest.java" />
+        <option value="$PROJECT_DIR$/Common/src/main/java/greenify/common/ErrorResponse.java" />
+        <option value="$PROJECT_DIR$/Common/src/main/java/greenify/common/UserDTO.java" />
+        <option value="$PROJECT_DIR$/Common/src/test/java/UserDTOTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/UserTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/MainControllerTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/resources/application.properties" />
+        <option value="$PROJECT_DIR$/Server/src/application.properties" />
+        <option value="$PROJECT_DIR$/Server/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/resources/stylesheets/dashboardStyle.css" />
+        <option value="$PROJECT_DIR$/Client/src/main/resources/fxml/dashboard.fxml" />
+        <option value="$PROJECT_DIR$/Client/src/main/resources/fxml/sample.fxml" />
+        <option value="$PROJECT_DIR$/Client/src/main/resources/fxml/RegisterWindow.fxml" />
+        <option value="$PROJECT_DIR$/Client/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/Client/src/test/java/ApplicationStartTest.java" />
+        <option value="$PROJECT_DIR$/Client/src/test/java/ApplicationTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/UserRepoIntegrationTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/UserRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/greenify/server/data/repository/UserRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/rest/MainController.java" />
+        <option value="$PROJECT_DIR$/../quality/checkstyle/suppression.xml" />
+        <option value="$PROJECT_DIR$/../quality/checkstyle/CSE1105.checkstyle.xml" />
+        <option value="$PROJECT_DIR$/../quality/checkstyle/checkstyle.xml" />
+        <option value="$PROJECT_DIR$/../build.gradle" />
+        <option value="$PROJECT_DIR$/Server/build.gradle" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/data/model/User.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/data/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/rest/UserController.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/greenify/server/service/UserService.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/ApplicationTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/greenify/server/rest/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/greenify/server/service/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/Server/src/test/java/greenify/server/data/model/UserTest.java" />
+        <option value="$PROJECT_DIR$/Common/build.gradle" />
+        <option value="$PROJECT_DIR$/Client/build.gradle" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/greenify/client/Application.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/DashBoardController.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/RegisterWindowController.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/greenify/client/rest/UserService.java" />
         <option value="$PROJECT_DIR$/Client/src/test/java/UserServiceTest.java" />
       </list>
     </option>
@@ -230,29 +277,111 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="OOPP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OOPP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="greenify" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="greenify" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="client" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="greenify" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="client" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="greenify" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="client" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="rest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="test" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="src" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="OOPP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="Client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="test" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,15 +390,20 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="ToolWindowCheckStyle.ShowToolbar" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552069533575" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552838592101" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quality/checkstyle/checkstyle.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="org.infernus.idea.checkstyle.CheckStyleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="gogreen.client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ceren\Desktop\lastGreenify\template-master\quality\checkstyle" />
+      <recent name="C:\Users\ceren\Desktop\lastGreenify\template-master\src\Server\src\test\java\greenify\server\rest" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -284,8 +418,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.OOPP:Server [bootRun]">
-    <configuration name="OOPP:Client [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.src:Client [check]">
+    <configuration name="src:Client [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/Client" />
@@ -296,7 +430,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootRun" />
+            <option value="bootJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -304,7 +438,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="OOPP:Client [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="src:Client [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/Client" />
@@ -315,7 +449,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="test" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -323,10 +457,10 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="OOPP:Server [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="src:Client [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Server" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Client" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -334,7 +468,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootRun" />
+            <option value="check" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -342,13 +476,43 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="All in OOPP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OOPP" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="src:Client [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="src:Common [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Common" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="OOPP.Server.test" />
@@ -365,22 +529,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OOPP.Client.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UserServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.OOPP:Server [bootRun]" />
-        <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.All in OOPP" />
-        <item itemvalue="Gradle.OOPP:Client [bootRun]" />
-        <item itemvalue="Gradle.OOPP:Client [test]" />
+        <item itemvalue="Gradle.src:Client [check]" />
+        <item itemvalue="Gradle.src:Client [bootJar]" />
+        <item itemvalue="Gradle.src:Client [build]" />
+        <item itemvalue="Gradle.src:Client [clean]" />
+        <item itemvalue="Gradle.src:Common [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -398,35 +553,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 07m 00s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Server_[check] - 2019.03.17 at 16h 28m 10s.xml">
+      <configuration name="src:Server [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 09m 27s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Server_[check] - 2019.03.17 at 16h 30m 10s.xml">
+      <configuration name="src:Server [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 30m 41s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Server_[check] - 2019.03.17 at 16h 31m 50s.xml">
+      <configuration name="src:Server [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 34m 21s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Server_[check] - 2019.03.17 at 16h 32m 11s.xml">
+      <configuration name="src:Server [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 36m 15s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Server_[check] - 2019.03.17 at 16h 33m 39s.xml">
+      <configuration name="src:Server [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="UserServiceTest - 2019.03.06 at 22h 36m 33s.xml">
-      <configuration name="UserServiceTest" configurationId="JUnit" />
+    <history-entry file="src_Common_[check] - 2019.03.17 at 16h 34m 35s.xml">
+      <configuration name="src:Common [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="UserControllerTest - 2019.03.06 at 22h 37m 15s.xml">
-      <configuration name="UserControllerTest" configurationId="JUnit" />
+    <history-entry file="src_Common_[check] - 2019.03.17 at 16h 36m 03s.xml">
+      <configuration name="src:Common [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="OOPP_Client_[test] - 2019.03.06 at 22h 41m 25s.xml">
-      <configuration name="OOPP:Client [test]" configurationId="GradleRunConfiguration" />
+    <history-entry file="src_Common_[check] - 2019.03.17 at 16h 36m 42s.xml">
+      <configuration name="src:Common [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="UserServiceTest - 2019.03.06 at 23h 07m 59s.xml">
-      <configuration name="UserServiceTest" configurationId="JUnit" />
+    <history-entry file="src_Common_[check] - 2019.03.17 at 16h 36m 49s.xml">
+      <configuration name="src:Common [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="UserControllerTest - 2019.03.06 at 23h 08m 31s.xml">
-      <configuration name="UserControllerTest" configurationId="JUnit" />
+    <history-entry file="src_Client_[check] - 2019.03.17 at 16h 57m 46s.xml">
+      <configuration name="src:Client [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -441,68 +596,68 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.17785235" />
-      <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.17315437" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49570817" weight="0.76510066" />
+      <window_info id="Structure" order="1" sideWeight="0.5042194" side_tool="true" weight="0.4590604" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4986577" weight="0.3286119" />
+      <window_info id="Favorites" order="6" sideWeight="0.50429183" side_tool="true" weight="0.7295423" />
+      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4986577" weight="0.32719547" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.88724834" weight="0.4546742" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.88590604" visible="true" weight="0.407932" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49932885" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.11275168" side_tool="true" weight="0.43201134" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32719547" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49932885" weight="0.32719547" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.11409396" side_tool="true" weight="0.41926345" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="CheckStyle" order="12" weight="0.32577905" />
+      <window_info anchor="bottom" id="CheckStyle" order="12" weight="0.33144477" />
       <window_info anchor="right" id="Coverage" order="0" sideWeight="0.8077922" side_tool="true" visible="true" weight="0.4395973" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Maven" order="5" weight="0.32885906" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.1922078" weight="0.4395973" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Gradle" order="9" sideWeight="0.1922078" visible="true" weight="0.11543624" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.17516778" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" weight="0.67785233" />
       <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.17315437" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4986577" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4986577" weight="0.32719547" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.88724834" weight="0.4546742" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.88590604" visible="true" weight="0.41926345" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49932885" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.11275168" side_tool="true" weight="0.43201134" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32719547" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49932885" weight="0.32719547" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.11409396" side_tool="true" visible="true" weight="0.41926345" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="CheckStyle" order="12" weight="0.32577905" />
-      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.8258824" side_tool="true" weight="0.51342285" />
+      <window_info anchor="bottom" id="CheckStyle" order="12" weight="0.3295129" />
+      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.8077922" side_tool="true" visible="true" weight="0.4395973" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Maven" order="5" weight="0.32885906" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.17411764" weight="0.2181208" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Gradle" order="9" sideWeight="0.1922078" weight="0.23959732" />
     </layout-to-restore>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -510,127 +665,294 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/model/User.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/Application.java" />
+    <entry file="file://$PROJECT_DIR$/../settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/build/reports/tests/test/index.html" />
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/resources/application.properties" />
+    <entry file="file://$PROJECT_DIR$/Server/src/application.properties" />
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.9.RELEASE/e1e6cff03e69e4db489d723c9a1c91afe8e0c637/spring-test-5.0.9.RELEASE-sources.jar!/org/springframework/test/context/cache/DefaultCacheAwareContextLoaderDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/MainControllerTest.java" />
+    <entry file="file://$PROJECT_DIR$/Common/src/test/java/ErrorResponseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/data/repository/UserJpaRepository.java" />
+    <entry file="file://$PROJECT_DIR$/Common/src/main/java/greenify/common/UserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/resources/stylesheets/dashboardStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/resources/fxml/RegisterWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/resources/fxml/dashboard.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        <state relative-caret-position="102">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/rest/UserController.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/main/resources/fxml/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        <state relative-caret-position="323">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="53" selection-start-column="53" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/test/java/ApplicationStartTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/test/java/ApplicationTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/UserRepoIntegrationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/5.0.9.RELEASE/ab4feec73b188109eb1a3aa8aed83c1f97ed1168/spring-core-5.0.9.RELEASE-sources.jar!/org/springframework/util/Assert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/src/main/java/greenify/common/ApplicationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/src/main/java/greenify/common/ErrorResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/rest/RestExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/greenify/server/data/repository/UserRepositoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/rest/MainController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#303#304#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../quality/checkstyle/suppression.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../quality/checkstyle/CSE1105.checkstyle.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../quality/checkstyle/checkstyle.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-518">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/data/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="92" column="4" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#1400#1401#0" expanded="true" />
+            <element signature="e#1433#1434#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+            <element signature="e#1617#1618#0" expanded="true" />
+            <element signature="e#1658#1659#0" expanded="true" />
+            <element signature="e#1774#1775#0" expanded="true" />
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1853#1854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/data/repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/build/reports/tests/test/index.html" />
-    <entry file="file://$PROJECT_DIR$/Client/src/test/java/UserControllerTest.java" />
-    <entry file="file://$PROJECT_DIR$/config/checkstyle/suppressions.xml" />
-    <entry file="file://$PROJECT_DIR$/Client/src/main/resources/fxml/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/rest/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        <state relative-caret-position="295">
+          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/checkstyle/checkstyle.xml" />
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/greenify/server/rest/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/greenify/server/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/greenify/server/data/model/UserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/greenify/server/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/src/test/java/UserDtoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Common/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="32" selection-start-line="10" selection-end-line="32" />
+        <state relative-caret-position="85">
+          <caret line="36" column="1" selection-start-line="22" selection-end-line="36" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="37" selection-start-line="15" selection-end-line="37" />
+        <state relative-caret-position="336">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/Application.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.project">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/src/main/java/gogreen/common/ErrorResponse.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/test/java/ApplicationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#116#117#0" expanded="true" />
-            <element signature="e#154#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/src/main/java/gogreen/common/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/src/test/java/gogreen/common/UserDTOTest.java" />
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/rest/RestExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/src/main/java/gogreen/common/ApplicationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#134#135#0" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/test/java/gogreen/server/rest/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
+        <state relative-caret-position="187">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -639,15 +961,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        <state relative-caret-position="170">
+          <caret line="34" selection-start-line="34" selection-end-line="48" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/gogreen/server/data/repository/UserJpaRepository.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="561">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
+            <element signature="e#1628#1629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/RegisterWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/DashBoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="97" column="48" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/greenify/client/rest/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -656,48 +1022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/test/java/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/rest/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="24" column="108" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/gogreen/client/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
         </state>
       </provider>
     </entry>

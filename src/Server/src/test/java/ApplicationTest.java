@@ -1,16 +1,12 @@
-import greenify.server.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
+@SpringBootConfiguration
 public class ApplicationTest {
-    @Test
-    public void applicationContextLoaded() {
-    }
 
     @Test
-    public void applicationContextTest() {
-        Application.main(new String[] {});
-    }
+    public void contextLoads() throws Exception{ }
 }
