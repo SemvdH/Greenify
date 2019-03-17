@@ -2,8 +2,8 @@ package greenify.server.rest;
 
 import greenify.common.UserDto;
 import greenify.server.data.model.User;
-import greenify.server.data.repository.UserRepository;
 import greenify.server.service.UserService;
+import greenify.server.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
