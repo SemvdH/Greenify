@@ -48,10 +48,10 @@ public class DashBoardController {
     public void displayDashboard(ActionEvent event) {
         System.out.println("display dashboard");
 
-//        UserService service = new UserService();
-//        UserDTO user = service.getName(null);
-//        String name = user.getName();
-//        welcomebacktext.setText("Welcome back, " + name);
+        //        UserService service = new UserService();
+        //        UserDTO user = service.getName(null);
+        //        String name = user.getName();
+        //        welcomebacktext.setText("Welcome back, " + name);
 
         dashboardPane.setVisible(true);
         userPane.setVisible(false);

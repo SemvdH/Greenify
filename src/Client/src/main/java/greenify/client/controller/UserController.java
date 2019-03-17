@@ -68,7 +68,9 @@ public class UserController {
                 this.getClass().getClassLoader().getResource("fxml/dashboard.fxml")
         );
         Scene scene = new Scene(dash);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass()
+                .getClassLoader()
+                .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         appStage.show();
@@ -95,9 +97,15 @@ public class UserController {
         }
     }
 
-    public void handleRegisterButtonAction(ActionEvent event) throws Exception{
+    /**
+     * handles the click of the 'sign up' button.
+     * opens a new stage where the user can register.
+     * @param event the click of the button
+     * @throws Exception an exception if the fxml file is not found
+     */
+    public void handleRegisterButtonAction(ActionEvent event) throws Exception {
         //load the fxml file
-        Parent registerWindow = FXMLLoader.load (
+        Parent registerWindow = FXMLLoader.load(
                 this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml")
         );
         //make the window use the scene

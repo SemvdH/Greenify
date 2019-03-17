@@ -33,6 +33,6 @@ public class UserController {
 
     @GetMapping("/getUsername")
     public void getUsername(@RequestParam(value = "id") Long id) {
-    userService.getUsername(id);
+        userService.getUsername(id);
     }
 }

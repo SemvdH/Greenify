@@ -48,7 +48,9 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * gets the name.
@@ -58,7 +60,9 @@ public class User {
         return name;
     }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * gets the password.
@@ -68,7 +72,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * gets the number of vegan meal.
@@ -78,5 +84,7 @@ public class User {
         return veganMeal;
     }
 
-    public void setVeganMeal(int veganMeal) { this.veganMeal = veganMeal; }
+    public void setVeganMeal(int veganMeal) {
+        this.veganMeal = veganMeal;
+    }
 }
