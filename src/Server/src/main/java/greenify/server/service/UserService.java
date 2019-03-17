@@ -26,7 +26,7 @@ public class UserService {
         if (user != null) {
             throw new ApplicationException("User already exists");
         } else {
-            user = userRepository.save(new User(null, name, password));
+            user = userRepository.save(new User(null, name, password, 0));
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
         return new UserDTO(user.getId(), user.getName());
