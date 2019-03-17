@@ -1,31 +1,22 @@
 package greenify.server.data.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.accessibility.AccessibleValue;
 import javax.persistence.*;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Scanner;
 
 @Entity
 @Data
 @Table(name = "activities")
+
 public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
-//@AllArgsConstructor
-public abstract class Activity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
     String name;
     String description;
     int score;
@@ -48,7 +39,6 @@ public abstract class Activity {
      * gets the id.
      * @return the id
      */
-
     public Long getId() {
         return id;
     }
@@ -110,6 +100,7 @@ public abstract class Activity {
         this.score = score;
     }
 
+
     /**
      * Returns a human readable object. It's in JSON.
      * @return the JSON form of the object.
@@ -140,5 +131,4 @@ public abstract class Activity {
     public int hashCode() {
         return Objects.hash(id, name, description, score);
     }
-
 }
