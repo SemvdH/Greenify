@@ -64,5 +64,12 @@ public class UserService {
         user.setVeganMeal(count);
         logger.info("Added vegan meal to user(id=" + user.getId() + ", name=" + user.getName() + ")");
     }
+
+    public String getUsername(Long id) {
+        User user = userRepository.findById(id);
+        String name = user.getName();
+        logger.info("retrieved username from user with username=" + name + ", id=" + id);
+        return name;
+    }
 }
 
