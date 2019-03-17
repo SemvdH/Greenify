@@ -1,7 +1,7 @@
 package greenify.server.service;
 
 import greenify.common.ApplicationException;
-import greenify.common.UserDTO;
+import greenify.common.UserDto;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO of the registered user
      */
-    public UserDTO registerUser(String name, String password) {
+    public UserDto registerUser(String name, String password) {
         User user = userRepository.findByName(name);
         if (user != null) {
             throw new ApplicationException("User already exists");
@@ -29,7 +29,7 @@ public class UserService {
             user = userRepository.save(new User(null, name, password, 0));
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
-        return new UserDTO(user.getId(), user.getName());
+        return new UserDto(user.getId(), user.getName());
     }
 
 
@@ -39,7 +39,7 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO of the logged in user
      */
-    public UserDTO loginUser(String name, String password) {
+    public UserDto loginUser(String name, String password) {
         User user = userRepository.findByName(name);
         if (user == null) {
             throw new ApplicationException("User does not exist");
@@ -48,7 +48,7 @@ public class UserService {
                 throw new ApplicationException("Wrong password");
             }
         }
-        return new UserDTO(user.getId(), user.getName());
+        return new UserDto(user.getId(), user.getName());
     }
 
     /**
