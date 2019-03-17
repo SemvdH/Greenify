@@ -38,6 +38,8 @@ public class DashBoardController {
     private Label counter;
     @FXML
     private Label scoreField;
+    @FXML
+    private Label veganMealCounter;
 
     /**
      * displays the dashboard pane.
@@ -78,7 +80,7 @@ public class DashBoardController {
      */
     public void addVeganMeal(ActionEvent event) {
         count++;
-        counter.setText("Count: " + count);
+        veganMealCounter.setText("Count: " + count);
         System.out.println(userService);
         userService.addVeganMeal(userService.currentUser.getId(),
                                 userService.currentUser.getName());
