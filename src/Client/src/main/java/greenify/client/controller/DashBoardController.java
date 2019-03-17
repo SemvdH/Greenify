@@ -18,15 +18,25 @@ public class DashBoardController {
 
     @FXML
     private AnchorPane menuBar;
+    @FXML
     private AnchorPane dashboardPane;
+    @FXML
     private AnchorPane userPane;
+    @FXML
     private AnchorPane activitiesPane;
+    @FXML
     private Label welcomebacktext;
+    @FXML
     private Button dashboardButton;
+    @FXML
     private Button activitiesButton;
+    @FXML
     private Button userButton;
+    @FXML
     private Button veganMealButton;
+    @FXML
     private Label counter;
+    @FXML
     private Label scoreField;
 
     /**
