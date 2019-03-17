@@ -33,7 +33,7 @@ public class RegisterWindowController {
      */
     @FXML
     public void handleSignUpButton(ActionEvent event) {
-    //set the window to the current window (for displaying the alerts)
+        //set the window to the current window (for displaying the alerts)
         Window owner = signupButton.getScene().getWindow();
         //check if the username field is empty
         if (userNameText.getText().isEmpty()) {

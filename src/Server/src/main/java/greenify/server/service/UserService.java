@@ -23,14 +23,15 @@ public class UserService {
      */
     public UserDTO registerUser(String name, String password) {
         User user = userRepository.findByName(name);
-        if (user == null) {
-            user = userRepository.save(new User(null, name, password, 0));
-        } else {
+        if (user != null) {
             throw new ApplicationException("User already exists");
+        } else {
+            user = userRepository.save(new User(null, name, password, 0));
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
         return new UserDTO(user.getId(), user.getName());
     }
+
 
     /**
      * logs the user in.
@@ -54,15 +55,26 @@ public class UserService {
      * add vegan meal to the user.
      * @param id the id of the user
      * @param name the name of the user
-     * @return a userDTO of the user added vegan meal
      */
     public void addVeganMeal(Long id, String name) {
         User user = userRepository.findByName(name);
         int count = user.getVeganMeal();
         count++;
         user.setVeganMeal(count);
-        userRepository.save(user);
-        logger.info("Added vegan meal to user(id=" + user.getId() + ", name=" + user.getName() + ")");
+        logger.info("Added vegan meal to user(id=" 
+                + user.getId() + ", name=" + user.getName() + ")");
+    }
+
+    /**
+     * gets the username of the user with the specified id.
+     * @param id the id of the user
+     * @return the username of the user
+     */
+    public String getUsername(Long id) {
+        User user = userRepository.findById(id);
+        String name = user.getName();
+        logger.info("retrieved username from user with username=" + name + ", id=" + id);
+        return name;
     }
 }
 

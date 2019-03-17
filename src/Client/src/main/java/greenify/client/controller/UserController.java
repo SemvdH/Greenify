@@ -1,6 +1,5 @@
 package greenify.client.controller;
 
-import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,9 +64,13 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
-        Parent dash = Application.load (this.getClass().getClassLoader().getResource("fxml/dashboard.fxml"));
+        Parent dash = FXMLLoader.load(
+                this.getClass().getClassLoader().getResource("fxml/dashboard.fxml")
+        );
         Scene scene = new Scene(dash);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass()
+                .getClassLoader()
+                .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         appStage.show();
@@ -94,14 +97,22 @@ public class UserController {
         }
     }
 
-    public void handleRegisterButtonAction(ActionEvent event) throws Exception{
+    /**
+     * handles the click of the 'sign up' button.
+     * opens a new stage where the user can register.
+     * @param event the click of the button
+     * @throws Exception an exception if the fxml file is not found
+     */
+    public void handleRegisterButtonAction(ActionEvent event) throws Exception {
         //load the fxml file
-        Parent registerWindow = Application.load (this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml"));
+        Parent registerWindow = FXMLLoader.load(
+                this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml")
+        );
         //make the window use the scene
-        Scene registerScene = new Scene(registerWindow);
+        Scene registerscene = new Scene(registerWindow);
         Stage registerStage = new Stage();
         //open the window
-        registerStage.setScene(registerScene);
+        registerStage.setScene(registerscene);
         registerStage.setTitle("Enter register credentials");
         registerStage.show();
     }
