@@ -19,7 +19,7 @@
 # Edit at https://www.gitignore.io/?templates=java,maven,eclipse,intellij,visualstudiocode
 
 ### our project ###
-# src/**/.idea/
+src/**/.idea/
 # src/**/.gradle/
 
 
