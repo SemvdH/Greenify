@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ActivityTest {
     @Test
     public void setAndGetTest() {
-        Activity activity = new Activity(1, "Vegetarian", "Eating", 100);
+        Activity activity = new Activity(1L, "Vegetarian", "Eating", 100);
         Activity testActivity = new Activity(0, null, null, 0);
-        testActivity.setId(1);
+        testActivity.setId(1L);
         testActivity.setName("Vegetarian");
         testActivity.setDescription("Eating");
         testActivity.setScore(100);
-        assertEquals(activity.getId(), 1);
+        assertTrue(activity.getId().equals(1L));
         assertEquals(activity.getName(), "Vegetarian");
         assertEquals(activity.getDescription(), "Eating");
         assertEquals(activity.getScore(), 100);
