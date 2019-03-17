@@ -26,16 +26,11 @@ public class Application extends javafx.application.Application {
      * @param url which is being loaded.
      * @return parent object.
      */
-     public static Parent load(java.net.URL url) {
+    public static Parent load(java.net.URL url) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(springContext::getBean);
         loader.setLocation(url);
-        try {
-            return loader.load();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return loader.load();
     }
 
     @Override

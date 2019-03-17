@@ -1,8 +1,8 @@
-import greenify.common.UserDto;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import greenify.common.UserDto;
+import org.junit.Test;
 
 public class UserDtoTest {
     @Test

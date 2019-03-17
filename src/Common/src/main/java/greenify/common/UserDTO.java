@@ -5,7 +5,6 @@ package greenify.common;
 // The motivation for its use is that communication between processes is usually done
 // resorting to remote interfaces (e.g., web services), where each call is an expensive operation.
 public class UserDto {
-
     private Long id;
     private String name;
 
