@@ -13,7 +13,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class UserService {
-
     @Autowired
     RestTemplate restTemplate;
 
@@ -28,10 +27,9 @@ public class UserService {
      * registers the user.
      * @param name the username of the user
      * @param password the password of the user
-     * @return a built userDTO with the required information
+     * @return a userDTO
      */
-    @SuppressWarnings("Duplicates")
-    public UserDTO registerUser(String name, String password) {
+    public UserDto registerUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
@@ -46,13 +44,12 @@ public class UserService {
     }
 
     /**
-     * logd the user in.
+     * sign ins the user.
      * @param name the username of the user
      * @param password the password of the user
-     * @return a built userDTO with the required information
+     * @return a userDTO
      */
-    @SuppressWarnings("Duplicates")
-    public UserDTO loginUser(String name, String password) {
+    public UserDto loginUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
@@ -67,13 +64,12 @@ public class UserService {
     }
 
     /**
-     * adds a vegetarian meal to the user.
+     * a user adds vegan meal.
      * @param id the id of the user
      * @param name the username of the user
-     * @return a built userDTO with the required information
+     * @return a userDTO
      */
-    @SuppressWarnings("Duplicates")
-    public UserDTO addVeganMeal(Long id, String name) {
+    public UserDto addVeganMeal(Long id, String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")
@@ -82,21 +78,5 @@ public class UserService {
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
-    }
-
-    /**
-     * gets the username from the user.
-     * @param id the id of the user
-     * @return a UserDTO with the required information
-     */
-    @SuppressWarnings("Duplicates")
-    public UserDTO getName(Long id) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getUsername")
-                .queryParam("id", id);
-        HttpEntity<?> entity = new HttpEntity<>(headers);
-        System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
     }
 }
