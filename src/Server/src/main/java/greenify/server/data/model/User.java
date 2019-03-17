@@ -3,17 +3,15 @@ package greenify.server.data.model;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @EnableAutoConfiguration
 @Entity
 @Data
 @Table(name = "users")
+
 public class User {
 
     @Id
@@ -76,9 +74,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     /**
      * gets the number of vegan meal.
@@ -88,7 +84,58 @@ public class User {
         return veganMeal;
     }
 
-    public void setVeganMeal(int veganMeal) {
-        this.veganMeal = veganMeal;
+    public void setVeganMeal(int veganMeal) { this.veganMeal = veganMeal; }
+
+    /**
+     * checks if two users are equal.
+     * @param other the object to compare the user with
+     * @return a boolean value of true if the user is equal to the object
+     */
+    @Override
+    public boolean equals(Object other) {
+
+        if (this == other) {
+            return true;
+        }
+        if (other == null) {
+            return false;
+        }
+        if (getClass() != other.getClass()) {
+            return false;
+        }
+        if (other instanceof User) {
+            User that = (User) other;
+            return this.getName().equals(that.getName())
+                    && this.getId().equals(that.getId())
+                    && this.getPassword().equals(that.getPassword())
+                    && this.getVeganMeal() == that.getVeganMeal();
+        }
+        return false;
+    }
+
+    /**
+     * creates a string of the user object.
+     * in the form of: User(id=, name=, password=, veganMeal=)
+     * @return a string of the user object
+     */
+    @Override
+    public String toString() {
+        return "User(id="
+                + this.id
+                + ", name="
+                + this.name
+                + ", password="
+                + this.password
+                + ", veganMeal="
+                + this.veganMeal + ")";
+    }
+
+    /**
+     * hashes the User object.
+     * @return a hashcode for the user object
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, password, veganMeal);
     }
 }
