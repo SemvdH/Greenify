@@ -16,13 +16,25 @@ public class UserTest {
         assertEquals(user.getName(), "greenify");
         assertEquals(user.getPassword(), "password");
         assertEquals(user.getVeganMeal(), 3);
-        assertEquals(user, testUser);
+
+    }
+
+    @Test
+    public void equalsMethodTest() {
+        User user = new User(1L, "greenify", "password", 3);
+        User testUser = new User();
+        testUser.setId(1L);
+        testUser.setName("greenify");
+        testUser.setPassword("password");
+        testUser.setVeganMeal(3);
+        assertTrue(user.equals(testUser));
     }
 
     @Test
     public void toStringTest() {
         User user = new User(1L, "greenify", "password", 3);
-        assertEquals("User(id=1, name=greenify, password=password, veganMeal=3)", user.toString());
+        System.out.println("String is " + user.toString());
+        assertTrue("User(id=1, name=greenify, password=password, veganMeal=3)".equals(user.toString()));
     }
 
     @Test
