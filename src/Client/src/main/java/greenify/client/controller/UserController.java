@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,9 +65,7 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
-        Parent dash = FXMLLoader.load(
-                this.getClass().getClassLoader().getResource("fxml/dashboard.fxml")
-        );
+        Parent dash = Application.load (this.getClass().getClassLoader().getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
         scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
@@ -97,14 +96,12 @@ public class UserController {
 
     public void handleRegisterButtonAction(ActionEvent event) throws Exception{
         //load the fxml file
-        Parent registerWindow = FXMLLoader.load (
-                this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml")
-        );
+        Parent registerWindow = Application.load (this.getClass().getClassLoader().getResource("fxml/RegisterWindow.fxml"));
         //make the window use the scene
-        Scene registerscene = new Scene(registerWindow);
+        Scene registerScene = new Scene(registerWindow);
         Stage registerStage = new Stage();
         //open the window
-        registerStage.setScene(registerscene);
+        registerStage.setScene(registerScene);
         registerStage.setTitle("Enter register credentials");
         registerStage.show();
     }

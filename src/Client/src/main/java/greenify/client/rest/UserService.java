@@ -15,6 +15,8 @@ public class UserService {
     @Autowired
     RestTemplate restTemplate;
 
+    public UserDTO currentUser;
+
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
@@ -32,6 +34,44 @@ public class UserService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
                 .queryParam("name", name)
                 .queryParam("password", password);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        UserDTO result = this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        this.currentUser = result;
+        return result;
+    }
+
+    /**
+     * sign ins the user.
+     * @param name the username of the user
+     * @param password the password of the user
+     * @return a userDTO
+     */
+    public UserDTO loginUser(String name, String password) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
+                .queryParam("name", name)
+                .queryParam("password", password);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        UserDTO result = this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        this.currentUser = result;
+        return result;
+    }
+
+    /**
+     * a user adds vegan meal.
+     * @param id the id of the user
+     * @param name the username of the user
+     * @return a userDTO
+     */
+    public UserDTO addVeganMeal(Long id, String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")
+                .queryParam("id", id)
+                .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
