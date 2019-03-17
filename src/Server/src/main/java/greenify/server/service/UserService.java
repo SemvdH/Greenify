@@ -8,10 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
     Logger logger = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     UserRepository userRepository;
 
@@ -63,6 +66,13 @@ public class UserService {
         userRepository.save(user);
         logger.info("Added vegan meal to user(id=" + user.getId()
                 + ", name=" + user.getName() + ")");
+    }
+
+    @GetMapping(path = "/all")
+    @ResponseBody
+    public Iterable<User> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return userRepository.findAll();
     }
 }
 

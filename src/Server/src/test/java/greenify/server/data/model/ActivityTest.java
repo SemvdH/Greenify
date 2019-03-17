@@ -1,18 +1,19 @@
-import greenify.server.data.model.Activity;
-import org.junit.Test;
+package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.Test;
+
 public class ActivityTest {
     @Test
     public void setAndGetTest() {
-        Activity activity = new Activity(1L, "Vegetarian", "Eating", 100);
         Activity testActivity = new Activity(0, null, null, 0);
         testActivity.setId(1L);
         testActivity.setName("Vegetarian");
         testActivity.setDescription("Eating");
         testActivity.setScore(100);
+        Activity activity = new Activity(1L, "Vegetarian", "Eating", 100);
         assertTrue(activity.getId().equals(1L));
         assertEquals(activity.getName(), "Vegetarian");
         assertEquals(activity.getDescription(), "Eating");
@@ -23,7 +24,8 @@ public class ActivityTest {
     @Test
     public void toStringTest() {
         Activity activity = new Activity(1, "Solar panels", "Installed", 10000);
-        assertEquals("Activity(id=1, name=Solar panels, description=Installed, score=10000)", activity.toString());
+        assertEquals("Activity(id=1, name=Solar panels, "
+                + "description=Installed, score=10000)", activity.toString());
     }
 
     @Test
@@ -43,6 +45,5 @@ public class ActivityTest {
         Activity second = new Activity(1, "Solar panels", "Installed", 10000);
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());
-//        assertTrue(first.hashCode() == second.hashCode());
     }
 }
