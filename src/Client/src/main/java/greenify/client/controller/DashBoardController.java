@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class DashBoardController {
-
-    private int count = 0;
+    @Autowired
+    UserService userService;
 
     @FXML
     public AnchorPane menuBar;

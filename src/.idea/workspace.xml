@@ -76,20 +76,20 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="src" type="f1a62948:ProjectNode" />
-                <item name="OOPP" type="2d1252cf:ModuleNode" />
+                <item name=":src:Server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="src" type="f1a62948:ProjectNode" />
-                <item name="OOPP" type="2d1252cf:ModuleNode" />
+                <item name=":src:Server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="src" type="f1a62948:ProjectNode" />
-                <item name="OOPP" type="2d1252cf:ModuleNode" />
+                <item name=":src:Server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
@@ -353,7 +353,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.src::Users:ceren:Desktop:lastGreenify:template-master [bootRun]">
+  <component name="RunManager" selected="Gradle.src:Client [bootRun]">
     <configuration name="src:Client [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -414,7 +414,7 @@
     <configuration name="src::Users:ceren:Desktop:lastGreenify:template-master [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/.." />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Server" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -466,9 +466,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.src::Users:ceren:Desktop:lastGreenify:template-master [bootRun]" />
-        <item itemvalue="Gradle.src::Users:ceren:Desktop:lastGreenify:template-master [build]" />
-        <item itemvalue="Gradle.src::Users:ceren:Desktop:lastGreenify:template-master [clean]" />
         <item itemvalue="Gradle.src:Client [bootRun]" />
         <item itemvalue="Gradle.src:Server [bootRun]" />
       </list>
@@ -508,15 +505,6 @@
     </history-entry>
     <history-entry file="All_in_OOPP_src_Client_test - 2019.03.16 at 13h 51m 04s.xml">
       <configuration name="All in OOPP.src.Client.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="src_Client_[test] - 2019.03.16 at 22h 30m 29s.xml">
-      <configuration name="src:Client [test]" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="src_Common_[test] - 2019.03.16 at 22h 30m 45s.xml">
-      <configuration name="src:Common [test]" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="src_Server_[test] - 2019.03.16 at 22h 31m 00s.xml">
-      <configuration name="src:Server [test]" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="TodoView">

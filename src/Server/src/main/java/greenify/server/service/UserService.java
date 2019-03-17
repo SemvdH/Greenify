@@ -32,7 +32,6 @@ public class UserService {
         return new UserDTO(user.getId(), user.getName());
     }
 
-
     /**
      * logs the user in.
      * @param name the username of the user

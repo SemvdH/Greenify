@@ -12,7 +12,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class UserService {
-
     @Autowired
     RestTemplate restTemplate;
 
@@ -33,28 +32,6 @@ public class UserService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
                 .queryParam("name", name)
                 .queryParam("password", password);
-        HttpEntity<?> entity = new HttpEntity<>(headers);
-        System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
-    }
-
-    public UserDTO loginUser(String name, String password) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
-                .queryParam("name", name)
-                .queryParam("password", password);
-        HttpEntity<?> entity = new HttpEntity<>(headers);
-        System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
-    }
-
-    public UserDTO addVeganMeal(Long id, String name) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")
-                .queryParam("id", id)
-                .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
