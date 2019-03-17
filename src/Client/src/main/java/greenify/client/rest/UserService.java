@@ -31,7 +31,7 @@ public class UserService {
      * @return a built userDTO with the required information
      */
     @SuppressWarnings("Duplicates")
-    public UserDTO registerUser(String name, String password) {
+    public UserDto registerUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
@@ -52,7 +52,7 @@ public class UserService {
      * @return a built userDTO with the required information
      */
     @SuppressWarnings("Duplicates")
-    public UserDTO loginUser(String name, String password) {
+    public UserDto loginUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
@@ -73,7 +73,7 @@ public class UserService {
      * @return a built userDTO with the required information
      */
     @SuppressWarnings("Duplicates")
-    public UserDTO addVeganMeal(Long id, String name) {
+    public UserDto addVeganMeal(Long id, String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")
@@ -90,13 +90,13 @@ public class UserService {
      * @return a UserDTO with the required information
      */
     @SuppressWarnings("Duplicates")
-    public UserDTO getName(Long id) {
+    public UserDto getName(Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getUsername")
                 .queryParam("id", id);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
     }
 }

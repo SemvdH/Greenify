@@ -1,15 +1,15 @@
 package greenify.common;
 
-public class ActivityDTO {
+public class ActivityDto {
     private Long id;
     private String name;
     private String description;
     private int score;
 
-    public ActivityDTO() {
+    public ActivityDto() {
     }
 
-    public ActivityDTO(Long id, String name, String description, int score) {
+    public ActivityDto(Long id, String name, String description, int score) {
         this.id = id;
         this.name = name;
         this.description = description;
