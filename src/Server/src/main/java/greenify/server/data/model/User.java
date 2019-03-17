@@ -50,7 +50,9 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * gets the name.
@@ -60,7 +62,9 @@ public class User {
         return name;
     }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * gets the password.

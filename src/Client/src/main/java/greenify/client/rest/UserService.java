@@ -1,11 +1,12 @@
 package greenify.client.rest;
 
-import greenify.common.UserDTO;
+import greenify.common.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.*;
-import org.springframework.stereotype.Component;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,7 +16,7 @@ public class UserService {
     @Autowired
     RestTemplate restTemplate;
 
-    public UserDTO currentUser;
+    public UserDto currentUser;
 
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -28,7 +29,7 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO
      */
-    public UserDTO registerUser(String name, String password) {
+    public UserDto registerUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
@@ -36,7 +37,8 @@ public class UserService {
                 .queryParam("password", password);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        UserDTO result = this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        UserDto result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), UserDto.class);
         this.currentUser = result;
         return result;
     }
@@ -47,7 +49,7 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO
      */
-    public UserDTO loginUser(String name, String password) {
+    public UserDto loginUser(String name, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
@@ -55,7 +57,8 @@ public class UserService {
                 .queryParam("password", password);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        UserDTO result = this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        UserDto result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), UserDto.class);
         this.currentUser = result;
         return result;
     }
@@ -66,7 +69,7 @@ public class UserService {
      * @param name the username of the user
      * @return a userDTO
      */
-    public UserDTO addVeganMeal(Long id, String name) {
+    public UserDto addVeganMeal(Long id, String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")
@@ -74,6 +77,6 @@ public class UserService {
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDTO.class);
+        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
     }
 }

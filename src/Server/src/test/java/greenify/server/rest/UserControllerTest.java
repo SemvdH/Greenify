@@ -1,6 +1,6 @@
 //package greenify.server.rest;
 //
-//import greenify.common.UserDTO;
+//import greenify.common.UserDto;
 //import greenify.server.data.model.User;
 //import greenify.server.service.UserService;
 //import org.junit.Test;
@@ -40,16 +40,18 @@
 //    @Test
 //    public void getVehicleWhenRequestingTextShouldReturnMakeAndModel() throws Exception {
 //        given(this.userService.loginUser("name", "password"))
-//                .willReturn(new UserDTO(1L, "name"));
+//                .willReturn(new UserDto(1L, "name"));
 //        this.mvc.perform(get("/loginUser").accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk()).andExpect(content().json("name=name, password=password"));
+//                .andExpect(status().isOk())
+//                .andExpect(content()
+//                .json("name=name, password=password"));
 //    }
 //
 //
 //    @Test
 //    public void givenEmployees_whenGetEmployees_thenReturnJsonArray() throws Exception {
 //        User alex = new User(1L, "alex", "password", 0);
-//        UserDTO user = userService.loginUser("alex", "password");
+//        UserDto user = userService.loginUser("alex", "password");
 //        given(userService.loginUser("alex", "password")).willReturn(user);
 //        mvc.perform(get("/loginUser")
 //                .contentType(MediaType.ALL))
