@@ -12,6 +12,9 @@
 #dashboardButton {
   -fx-background-color: #5a635c;
 }
+#dashboardButton:hover {
+  -fx-background-color: #677069;
+}
 #dashboardButton:pressed {
   -fx-background-color: #b7e2c2;
 }
@@ -19,12 +22,18 @@
 #userButton {
   -fx-background-color: #5a635c;
 }
+#userButton:hover {
+  -fx-background-color: #677069;
+}
 #userButton:pressed {
   -fx-background-color: #b7e2c2;
 }
 
 #activitiesButton {
   -fx-background-color: #5a635c;
+}
+#activitiesButton:hover {
+  -fx-background-color: #677069;
 }
 #activitiesButton:pressed {
   -fx-background-color: #b7e2c2;

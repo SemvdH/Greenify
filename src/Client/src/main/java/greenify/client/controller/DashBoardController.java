@@ -71,6 +71,7 @@ public class DashBoardController {
      */
     public void displayActivities(ActionEvent event) {
         addFadeTransition(activitiesPane);
+
         totalVeganMealCounter.setText("" + userService.currentUser.getVeganMeal());
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -98,6 +99,8 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void addVeganMeal(ActionEvent event) {
+        FadeTransition updateTrans = new FadeTransition(Duration.millis(200), totalVeganMealCounter);
+
         count++;
         int net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
