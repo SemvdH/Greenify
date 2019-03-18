@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'Designio Regular ';
-  src: url('stylesheets/DesignioRegular.otf');
+  font-family: 'Designio Regular';
+  src: url('DesignioRegular.otf');
 }
 
 .root {
   -fx-background-color:  #f9fffb;
-  -fx-font-family: "Big Designer";
+  /*-fx-font-family: "Designio Regular";*/
+  -fx-font-family: Corbel;    /*this doesn't work for some reason*/
 }
 
 #dashboardButton {
   -fx-background-color: #5a635c;
-
 }
 #dashboardButton:pressed {
   -fx-background-color: #b7e2c2;
@@ -29,3 +29,4 @@
 #activitiesButton:pressed {
   -fx-background-color: #b7e2c2;
 }
+
