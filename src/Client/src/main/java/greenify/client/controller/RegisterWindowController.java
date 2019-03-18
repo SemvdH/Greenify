@@ -29,7 +29,7 @@ public class RegisterWindowController {
 
     /**
      * signs the user up.
-     * @param event the click of the signup button
+     * @param event the click of the sign up button
      */
     @FXML
     public void handleSignUpButton(ActionEvent event) {
@@ -59,6 +59,7 @@ public class RegisterWindowController {
             return;
         }
 
+        //register the user with the provided username and password
         userService.registerUser(userNameText.getText(), passwordField.getText());
 
         //close the register window after the user has entered all the credentials

@@ -51,6 +51,7 @@ public class UserService {
         System.out.println(builder.build().encode().toUri());
 
         //the result to be sent is a userDto
+        //encodes the userDTO object to a Uri so the database can work with it
         UserDto result = this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), UserDto.class);
         this.currentUser = result;

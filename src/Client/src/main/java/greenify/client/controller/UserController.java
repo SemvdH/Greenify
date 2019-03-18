@@ -58,7 +58,7 @@ public class UserController {
         if (passwordField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
                     "Please enter a password");
-            //checks if the password field id filled,
+            //checks if the password field is filled,
             // and gives an alert if it is not.
             return;
         } else {
@@ -117,9 +117,11 @@ public class UserController {
     }
 
     /**
-     * The method handles register button.
-     * @param event User clicks to the button
-     * @throws Exception when the file couldn't be found
+     * The method handles the clicking of the register button.
+     * it then opens the register window where the user can register
+     * (handled by RegisterWindowController)
+     * @param event User clicks on the button
+     * @throws Exception when the fxml file couldn't be found
      */
     public void handleRegisterButtonAction(ActionEvent event) throws Exception {
         Parent registerWindow = Application.load(this.getClass().getClassLoader()

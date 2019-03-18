@@ -16,8 +16,12 @@ public class UserController {
 
     //registers a user in the userService
     @RequestMapping("/registerUser")
+    //requestMapping is for the communication (GET, POST, PUT requests)
+    //as with Web and Database Technology
     public UserDto registerUser(@RequestParam(value = "name") String name,
                                 @RequestParam(value = "password") String password) {
+        //the requestParams are the parameters that are sent with the request
+        //so in this case that it wants to register with the name and password
         return userService.registerUser(name, password);
     }
 
@@ -28,10 +32,18 @@ public class UserController {
         return userService.loginUser(name, password);
     }
 
-    //adds a vegan meal to the user
+
+
+    /**
+     * adds a vegetarian meal to the user.
+     * @param id the id of the user
+     * @param name thr username of the user
+     */
     @RequestMapping("/addVeganMeal")
     public void addVeganMeal(@RequestParam(value = "id") Long id,
                                 @RequestParam(value = "name") String name) {
+        //here the requestParams are the id and name, because that is needed for the
+        //addVeganMeal method of the userService
         userService.addVeganMeal(id, name);
     }
 }
