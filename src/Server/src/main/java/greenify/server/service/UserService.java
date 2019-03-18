@@ -27,7 +27,8 @@ public class UserService {
     public UserDto registerUser(String name, String password) {
         User user = userRepository.findByName(name);
         if (user == null) {
-            user = userRepository.save(new User(null, name, password, 0));
+            user = new User(null, name, password, 0);
+            userRepository.save(user);
         } else {
             throw new ApplicationException("User already exists");
         }
