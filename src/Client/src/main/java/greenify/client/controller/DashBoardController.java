@@ -18,16 +18,28 @@ public class DashBoardController {
 
     @FXML
     private AnchorPane menuBar;
+    @FXML
     private AnchorPane dashboardPane;
+    @FXML
     private AnchorPane userPane;
+    @FXML
     private AnchorPane activitiesPane;
+    @FXML
     private Label welcomebacktext;
+    @FXML
     private Button dashboardButton;
+    @FXML
     private Button activitiesButton;
+    @FXML
     private Button userButton;
+    @FXML
     private Button veganMealButton;
+    @FXML
     private Label counter;
+    @FXML
     private Label scoreField;
+    @FXML
+    private Label veganMealCounter;
 
     /**
      * displays the dashboard pane.
@@ -68,7 +80,7 @@ public class DashBoardController {
      */
     public void addVeganMeal(ActionEvent event) {
         count++;
-        counter.setText("Count: " + count);
+        veganMealCounter.setText("Count: " + count);
         System.out.println(userService);
         userService.addVeganMeal(userService.currentUser.getId(),
                                 userService.currentUser.getName());
