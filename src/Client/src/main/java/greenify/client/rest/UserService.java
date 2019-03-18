@@ -31,14 +31,26 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO
      */
+    @SuppressWarnings("Duplicates")
+    //this suppressWarnings is to get rid of the errors of duplicate code
+    //because the methods are very similar
     public UserDto registerUser(String name, String password) {
+        //headers for http
         HttpHeaders headers = new HttpHeaders();
+        //set the accept header in JSÖN value
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        //connect to the server with the needed url
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
                 .queryParam("name", name)
+                //getting the name from the database
                 .queryParam("password", password);
+        //getting the password from the database
+
+        //create a http entity to be sent
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
+
+        //the result to be sent is a userDto
         UserDto result = this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), UserDto.class);
         this.currentUser = result;
@@ -51,7 +63,9 @@ public class UserService {
      * @param password the password of the user
      * @return a userDTO
      */
+    @SuppressWarnings("Duplicates")
     public UserDto loginUser(String name, String password) {
+        //this method is almost the same as the registerUser one, but with a different link
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
@@ -71,7 +85,9 @@ public class UserService {
      * @param name the username of the user
      * @return a userDTO
      */
+    @SuppressWarnings("Duplicates")
     public UserDto addVeganMeal(Long id, String name) {
+        //this method is almost the same as the registerUser one, but with a different link
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addVeganMeal")

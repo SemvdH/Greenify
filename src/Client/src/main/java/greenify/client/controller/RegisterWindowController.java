@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+//class that controls the actions for the register window
 @Controller
 public class RegisterWindowController {
 
