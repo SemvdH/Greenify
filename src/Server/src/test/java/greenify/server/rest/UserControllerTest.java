@@ -34,7 +34,7 @@ public class UserControllerTest {
     @Test
     public void registerUserTest() throws Exception {
         given(this.userService.registerUser("name", "password"))
-                .willReturn(new UserDto(1L, "name"));
+                .willReturn(new UserDto(1L, "name", 0));
         mvc.perform(get("/registerUser")
                 .param("name", "name")
                 .param("password", "password")
@@ -46,7 +46,7 @@ public class UserControllerTest {
     @Test
     public void loginUserTest() throws Exception {
         given(this.userService.loginUser("ceren", "password"))
-                .willReturn(new UserDto(1L, "ceren"));
+                .willReturn(new UserDto(1L, "ceren", 0));
         mvc.perform(get("/loginUser")
                 .param("name", "ceren")
                 .param("password", "password")

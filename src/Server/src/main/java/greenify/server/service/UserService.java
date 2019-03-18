@@ -32,7 +32,7 @@ public class UserService {
             throw new ApplicationException("User already exists");
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
-        return new UserDto(user.getId(), user.getName());
+        return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
     }
 
     /**
@@ -50,7 +50,7 @@ public class UserService {
                 throw new ApplicationException("Wrong password");
             }
         }
-        return new UserDto(user.getId(), user.getName());
+        return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
     }
 
     /**

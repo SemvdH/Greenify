@@ -3,8 +3,7 @@ package greenify.client.controller;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,17 +16,19 @@ public class DashBoardController {
     private int count = 0;
 
     @FXML
-    private AnchorPane menuBar;
     private AnchorPane dashboardPane;
+
+    @FXML
     private AnchorPane userPane;
+
+    @FXML
     private AnchorPane activitiesPane;
-    private Label welcomebacktext;
-    private Button dashboardButton;
-    private Button activitiesButton;
-    private Button userButton;
-    private Button veganMealButton;
-    private Label counter;
-    private Label scoreField;
+
+    @FXML
+    private TextField counter;
+
+    @FXML
+    private TextField totalCount;
 
     /**
      * displays the dashboard pane.
@@ -45,6 +46,7 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
+        totalCount.setText("Total Count: " + userService.currentUser.getVeganMeal());
         System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
@@ -68,6 +70,8 @@ public class DashBoardController {
      */
     public void addVeganMeal(ActionEvent event) {
         count++;
+        int net = userService.currentUser.getVeganMeal() + count;
+        totalCount.setText("Total Count: " + net);
         counter.setText("Count: " + count);
         System.out.println(userService);
         userService.addVeganMeal(userService.currentUser.getId(),

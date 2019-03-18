@@ -8,6 +8,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -78,5 +80,10 @@ public class UserService {
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
+    }
+
+    @RequestMapping("/userData")
+    public int getVeganData(@RequestParam(value = "veganMeal") int veganMeal) {
+        return veganMeal;
     }
 }
