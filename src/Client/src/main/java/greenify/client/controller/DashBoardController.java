@@ -3,7 +3,6 @@ package greenify.client.controller;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +16,19 @@ public class DashBoardController {
     private int count = 0;
 
     @FXML
-    private AnchorPane menuBar;
-    @FXML
     private AnchorPane dashboardPane;
+
     @FXML
     private AnchorPane userPane;
+
     @FXML
     private AnchorPane activitiesPane;
-    @FXML
-    private Label welcomebacktext;
-    @FXML
-    private Button dashboardButton;
-    @FXML
-    private Button activitiesButton;
-    @FXML
-    private Button userButton;
-    @FXML
-    private Button veganMealButton;
-    @FXML
-    private Label counter;
-    @FXML
-    private Label scoreField;
+
     @FXML
     private Label veganMealCounter;
+
+    @FXML
+    private Label totalVeganMealCounter;
 
     /**
      * displays the dashboard pane.
@@ -57,6 +46,7 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
+        totalVeganMealCounter.setText("" + userService.currentUser.getVeganMeal());
         System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
@@ -80,10 +70,12 @@ public class DashBoardController {
      */
     public void addVeganMeal(ActionEvent event) {
         count++;
-        veganMealCounter.setText("Count: " + count);
+        int net = userService.currentUser.getVeganMeal() + count;
+        totalVeganMealCounter.setText("" + net);
+        veganMealCounter.setText("" + count);
         System.out.println(userService);
         userService.addVeganMeal(userService.currentUser.getId(),
-                                userService.currentUser.getName());
+                userService.currentUser.getName());
         System.out.println("Vegetarian meal is added");
     }
 }

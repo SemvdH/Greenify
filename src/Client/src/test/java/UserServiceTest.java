@@ -25,7 +25,7 @@ public class UserServiceTest {
 
     @Test
     public void userRegisterTest() throws Exception {
-        UserDto testUser = new UserDto(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric", 0);
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/registerUser?name=Eric&password=password"),
                 UserDto.class))
                 .thenReturn(testUser);
@@ -36,7 +36,7 @@ public class UserServiceTest {
 
     @Test
     public void userLoginTest() throws Exception {
-        UserDto testUser = new UserDto(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric", 0);
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/loginUser?name=Eric&password=password"),
                 UserDto.class))
                 .thenReturn(testUser);
@@ -46,7 +46,7 @@ public class UserServiceTest {
 
     @Test
     public void addVeganMealTest() throws Exception {
-        UserDto testUser = new UserDto(1L, "Eric");
+        UserDto testUser = new UserDto(1L, "Eric", 0);
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/addVeganMeal?id=1&name=Eric"),
                 UserDto.class))
                 .thenReturn(testUser);

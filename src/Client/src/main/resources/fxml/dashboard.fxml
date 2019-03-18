@@ -1,166 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="602.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
-    <children>
-        <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
-            <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Greenify" textAlignment="CENTER" textFill="#71bc84">
-                    <font>
-                        <Font size="36.0" />
-                    </font>
-                </Label>
-                <Button fx:id="dashboardButton" layoutY="88.0" mnemonicParsing="false" onAction="#displayDashboard" prefHeight="45.0" prefWidth="216.0" text="dashboard">
-                    <font>
+<AnchorPane prefHeight="602.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+   <children>
+      <AnchorPane fx:id="menuBar" prefHeight="603.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="90.0" prefWidth="216.0" text="Greenify" textAlignment="CENTER" textFill="#71bc84">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="dashboardButton" layoutY="88.0" mnemonicParsing="false" onAction="#displayDashboard" prefHeight="45.0" prefWidth="216.0" text="dashboard">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="activitiesButton" layoutY="133.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="45.0" prefWidth="216.0" text="activities">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="userButton" layoutY="178.0" mnemonicParsing="false" onAction="#displayUser" prefHeight="45.0" prefWidth="216.0" text="you">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+         <children>
+            <Text fill="#002c0c" layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Pane layoutX="20.0" layoutY="93.0" prefHeight="471.0" prefWidth="280.0" style="-fx-background-color: #f4fff4;">
+               <children>
+                  <Button fx:id="veganMealButton" layoutX="60.0" layoutY="55.0" mnemonicParsing="false" onAction="#addVeganMeal" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Eating a vegetarian meal" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="localProduceButton" layoutX="71.0" layoutY="100.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Buying local produce" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="bikeButton" layoutX="48.0" layoutY="145.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Using a bike instead of a car" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="publicTransportButton" layoutX="18.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Using public transport instead of a car" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="temperatureButton" layoutX="31.0" layoutY="235.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Lowering your home temperature" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="solarPanelButton" layoutX="68.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Installing solar panels" textFill="#e0ffe1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="310.0" layoutY="93.0" prefHeight="471.0" prefWidth="150.0" style="-fx-background-color: #f4fff4;">
+               <children>
+                  <Text layoutX="48.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count" textAlignment="CENTER">
+                     <font>
                         <Font size="21.0" />
-                    </font>
-                </Button>
-                <Button fx:id="activitiesButton" layoutY="133.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="45.0" prefWidth="216.0" text="activities">
-                    <font>
+                     </font>
+                  </Text>
+                  <Label fx:id="veganMealCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="55.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="localProduceCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="100.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bikeCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publicTransportCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="190.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="temperatureCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="235.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="solarPanelCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="280.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="470.0" layoutY="93.0" prefHeight="471.0" prefWidth="150.0" style="-fx-background-color: #f4fff4;">
+               <children>
+                  <Text layoutX="7.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities done">
+                     <font>
                         <Font size="21.0" />
-                    </font>
-                </Button>
-                <Button fx:id="userButton" layoutY="178.0" mnemonicParsing="false" onAction="#displayUser" prefHeight="45.0" prefWidth="216.0" text="you">
-                    <font>
-                        <Font size="21.0" />
-                    </font>
-                </Button>
-                <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-            </children></AnchorPane>
-        <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
-            <children>
-                <Text fill="#002c0c" layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                </Text>
-                <Pane layoutX="60.0" layoutY="93.0" prefHeight="471.0" prefWidth="291.0" style="-fx-background-color: #f4fff4;">
-                    <children>
-                        <Button fx:id="veganMealButton" layoutX="60.0" layoutY="55.0" mnemonicParsing="false" onAction="#addVeganMeal" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Eating a vegetarian meal" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="localProduceButton" layoutX="71.0" layoutY="100.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Buying local produce" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="bikeButton" layoutX="48.0" layoutY="145.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Using a bike instead of a car" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="publicTransportButton" layoutX="18.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Using public transport instead of a car" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="temperatureButton" layoutX="31.0" layoutY="235.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Lowering your home temperature" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="solarPanelButton" layoutX="68.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Installing solar panels" textFill="#e0ffe1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </Pane>
-                <Pane layoutX="372.0" layoutY="93.0" prefHeight="471.0" prefWidth="291.0" style="-fx-background-color: #f4fff4;">
-                    <children>
-                        <Text layoutX="78.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities done">
-                            <font>
-                                <Font size="21.0" />
-                            </font>
-                        </Text>
-                        <Label fx:id="veganMealCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="55.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="localProduceCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="100.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="bikeCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="145.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="publicTransportCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="190.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="temperatureCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="235.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="solarPanelCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="280.0" prefHeight="30.0" prefWidth="115.0" text="0">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-            </children></AnchorPane>
-        <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false">
-            <children>
-                <Text layoutX="94.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                </Text>
-                <VBox layoutX="517.0" layoutY="28.0" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
-                    <children>
-                        <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" textAlignment="CENTER" wrappingWidth="100.79296875">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Text>
-                        <Label fx:id="scoreField" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="score" textAlignment="CENTER">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
-            </children></AnchorPane>
-        <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
-            <children>
-                <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
-                <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                </Label>
-                <Button layoutX="567.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="62.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" textFill="#e0fcdb">
-                    <font>
-                        <Font name="Eras Bold ITC" size="28.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="81.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../addActivity1.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-            </children>
-        </AnchorPane>
-    </children>
+                     </font>
+                  </Text>
+                  <Label fx:id="totalVeganMealCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="55.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalLocalProduceCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="100.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalBikeCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalPublicTransportCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="190.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalTemperatureCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="235.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalSolarPanelCounter" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="280.0" prefHeight="30.0" prefWidth="115.0" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="userPane" layoutX="215.0" layoutY="-1.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+         <children>
+            <Text layoutX="94.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <VBox layoutX="517.0" layoutY="28.0" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+               <children>
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" textAlignment="CENTER" wrappingWidth="100.79296875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="scoreField" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="score" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
+         <children>
+            <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
+            <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="567.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="62.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" textFill="#e0fcdb">
+               <font>
+                  <Font name="Eras Bold ITC" size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="81.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../addActivity1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

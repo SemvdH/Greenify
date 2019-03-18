@@ -1,6 +1,7 @@
 package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
@@ -37,6 +38,13 @@ public class ActivityTest {
         assertEquals(first.getDescription(), second.getDescription());
         assertEquals(first.getScore(), second.getScore());
         assertTrue(first.equals(second));
+    }
+
+    @Test
+    public void notEqualsTest() {
+        Activity first = new Activity(1, "Solar panels", "Installed", 10000);
+        Activity second = new Activity(2, "Solar panels", "Installed", 10000);
+        assertFalse(first.equals(second));
     }
 
     @Test

@@ -1,17 +1,17 @@
 package greenify.server.data.model;
 
 import lombok.Data;
-import javax.persistence.*;
+
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
 @Table(name = "activities")
-
 public class Activity {
 
     @Id
@@ -88,7 +88,7 @@ public class Activity {
      * sets the description.
      * @param description the description to be set.
      */
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -107,22 +107,18 @@ public class Activity {
      */
     @Override
     public String toString() {
-        return "Activity(id=" + this.id + ", name=" + this.name + ", description=" + this.description + ", score=" + this.score + ")";
+        return "Activity(id=" + this.id + ", name=" + this.name + ", description="
+                + this.description + ", score=" + this.score + ")";
     }
 
     @Override
     public boolean equals(Object other) {
-        if(other instanceof Activity){
+        if (other instanceof Activity) {
             Activity that = (Activity)other;
-            if(that.id != this.id)
-                return false;
-            if(!that.name.equals(this.name))
-                return false;
-            if(!that.description.equals(this.description))
-                return false;
-            if(that.score != this.score)
-                return false;
-            return true;
+            if (that.id == this.id && that.name.equals(this.name)
+                    && that.description.equals(this.description) && that.score == this.score) {
+                return true;
+            }
         }
         return false;
     }
