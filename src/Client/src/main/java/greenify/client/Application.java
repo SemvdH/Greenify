@@ -43,6 +43,8 @@ public class Application extends javafx.application.Application {
         Parent rootNode = load(this.getClass().getClassLoader().getResource("fxml/sample.fxml"));
         primaryStage.setTitle("Greenify");
         Scene scene = new Scene(rootNode);
+        scene.getStylesheets()
+                .add(getClass().getClassLoader().getResource("stylesheets/LoginWindowStyle.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

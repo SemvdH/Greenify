@@ -30,6 +30,14 @@ public class DashBoardController {
     @FXML
     private Label totalVeganMealCounter;
 
+    @FXML
+    private Label welcomebacktext;
+
+    public void initialize() {
+        welcomebacktext.setText("Welcome back " + userService.currentUser.getName() + "!");
+    }
+
+
     /**
      * displays the dashboard pane.
      * @param event the event (clicking the button)
@@ -39,6 +47,7 @@ public class DashBoardController {
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
+
     }
 
     /**

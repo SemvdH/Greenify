@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.UserController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="943.0" layoutX="-1.0" pickOnBounds="true">
@@ -13,15 +17,15 @@
             </image></ImageView>
         <Text fill="#23773d" layoutX="283.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go Green" textAlignment="CENTER" wrappingWidth="374.936767578125">
             <font>
-                <Font name="Californian FB" size="72.0" />
+                <Font name="Corbel" size="72.0" />
             </font>
         </Text>
         <Button fx:id="loginButton" layoutX="419.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="26.0" prefWidth="96.0" text="Login" textAlignment="CENTER" />
         <Button fx:id="signupButton" layoutX="42.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="10.0" prefWidth="96.0" text="Sign up!" />
         <PasswordField fx:id="passwordField" layoutX="318.0" layoutY="210.0" prefHeight="42.0" prefWidth="303.0" promptText="Password" />
-        <Hyperlink layoutX="392.0" layoutY="308.0" prefHeight="42.0" prefWidth="173.0" text="Forgot Password?" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
+        <Hyperlink alignment="CENTER" layoutX="384.0" layoutY="301.0" prefHeight="42.0" prefWidth="173.0" text="Forgot Password?" textAlignment="CENTER" textFill="#3db25a" textOverrun="LEADING_WORD_ELLIPSIS">
             <font>
-                <Font name="Bodoni MT Bold" size="18.0" />
+                <Font name="Corbel Bold" size="18.0" />
             </font>
         </Hyperlink>
         <Text fill="#23773d" layoutX="20.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not Member?" textAlignment="CENTER" wrappingWidth="146.13673400878906">
