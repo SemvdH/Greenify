@@ -11,6 +11,9 @@ import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+//Class that controls the dashboard fxml file (the GUI Screen)
+
+
 @Controller
 public class DashBoardController {
     @Autowired
@@ -36,12 +39,19 @@ public class DashBoardController {
     @FXML
     private Label welcomebacktext;
 
-    FadeTransition fadeTrans;
+    FadeTransition fadeTrans;       //transition for switching between the different panels
 
+    /**
+     * loads the 'welcome back' text before anything else.
+     */
     public void initialize() {
         welcomebacktext.setText("Welcome back, " + userService.currentUser.getName() + "!");
     }
 
+    /**
+     * adds a fade transition for switching between the different panes.
+     * @param node the node on which the transition needs to act
+     */
     public void addFadeTransition(Node node) {
 
         fadeTrans = new FadeTransition(Duration.millis(400), node);
