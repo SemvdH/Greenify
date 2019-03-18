@@ -11,6 +11,7 @@ import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -49,6 +50,13 @@ public class UserServiceTest {
         String password = "password";
         UserDto found = userService.loginUser(name, password);
         assertEquals(found.getName(), name);
+    }
+
+    @Test
+    public void userRegisterTest() {
+        User user = new User(1L, "name", "password", 0);
+        UserDto registered = userService.registerUser(user.getName(), user.getPassword());
+        assertEquals(registered.getName(), "name");
     }
 
     @Test
