@@ -71,7 +71,6 @@ public class UserController {
                 .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
-        appStage.setTitle("Greenify - " + usernameField.getText());
         appStage.show();
     }
 
