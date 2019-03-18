@@ -1,8 +1,8 @@
 package greenify.server.data.model;
 
 import lombok.Data;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@EnableAutoConfiguration
 @Entity
 @Data
 @Table(name = "users")
@@ -92,20 +91,31 @@ public class User {
         this.veganMeal = veganMeal;
     }
 
+
+    /**
+     * Returns a human readable object. It's in JSON.
+     * @return the JSON form of the object.
+     */
+    @Override
+    public String toString() {
+        return "User(id=" + this.id + ", name=" + this.name + ", password="
+                + this.password + ", veganMeal=" + this.veganMeal + ")";
+    }
+
     @Override
     public boolean equals(Object other) {
-        if(other instanceof User){
+        if (other instanceof User) {
             User that = (User)other;
-            if(that.id != this.id)
-                return false;
-            if(!that.name.equals(this.name))
-                return false;
-            if(!that.password.equals(this.password))
-                return false;
-            if(that.veganMeal != this.veganMeal)
-                return false;
-            return true;
+            if (that.id == this.id && that.name.equals(this.name)
+                    && that.password.equals(this.password) && that.veganMeal == this.veganMeal) {
+                return true;
+            }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, password, veganMeal);
     }
 }

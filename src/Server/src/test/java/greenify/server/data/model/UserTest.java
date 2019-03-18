@@ -40,6 +40,13 @@ public class UserTest {
     }
 
     @Test
+    public void notEqualsTest() {
+        User first = new User(1L, "greenify", "password", 3);
+        User second = new User(1L, "greenify", "password", 7);
+        assertFalse(first.equals(second));
+    }
+
+    @Test
     public void instanceOfTest() {
         User first = new User();
         Object second = new Object();
@@ -50,8 +57,8 @@ public class UserTest {
     public void hashCodeTest() {
         User first = new User(1L, "greenify", "password", 3);
         User second = new User(1L, "greenify", "password", 3);
-        assertTrue(first.equals(second) && second.equals(first));
         assertEquals(first, second);
+        assertEquals(first.hashCode(), second.hashCode());
     }
 }
 
