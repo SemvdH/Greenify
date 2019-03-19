@@ -15,7 +15,7 @@
             <image>
                 <Image url="@../pinkleaf.jpg" />
             </image></ImageView>
-        <Text fill="#23773d" layoutX="283.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go Green" textAlignment="CENTER" wrappingWidth="374.936767578125">
+        <Text fill="#23773d" layoutX="283.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Greenify" textAlignment="CENTER" wrappingWidth="374.936767578125">
             <font>
                 <Font name="Corbel" size="72.0" />
             </font>
