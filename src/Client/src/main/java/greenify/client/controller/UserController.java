@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+//class that controls the actions for the login screen
 @Controller
 public class UserController {
     @Autowired
@@ -34,12 +35,22 @@ public class UserController {
     @FXML
     private Button signupButton;
 
+    /**
+     * handles when the user clicks on the login button.
+     * it checks if the username and password fields are filled
+     * and gives alerts if they aren't filled in.
+     * @param event the click of the login button
+     * @throws IOException an exception for logging in the user
+     */
     @FXML
     protected void handleLoginButtonAction(ActionEvent event) throws IOException {
-        Window owner = loginButton.getScene().getWindow();
+
+        Window owner = loginButton.getScene().getWindow(); //get the current window
         if (usernameField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
                     "Please enter your username");
+            //checks if the username field is filled,
+            // and gives an alert if it is not
             return;
         } else {
             System.out.println("Username is " + usernameField.getText());
@@ -47,13 +58,18 @@ public class UserController {
         if (passwordField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
                     "Please enter a password");
+            //checks if the password field is filled,
+            // and gives an alert if it is not.
             return;
         } else {
             System.out.println("Password is " + passwordField.getText());
         }
+        //log the user in with the userService method
         userService.loginUser(usernameField.getText(), passwordField.getText());
         Stage current = (Stage) owner;
+        //after logging in, close the login window
         current.close();
+        //open the other dashboard window
         openDashboard();
 
     }
@@ -64,16 +80,21 @@ public class UserController {
      * @author sem
      */
     public void openDashboard() throws IOException {
+        //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
                                         .getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
+        //add the stylesheet for the CSS
         scene.getStylesheets().add(getClass().getClassLoader()
                 .getResource("stylesheets/dashboardStyle.css").toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
+        //set the title
+        appStage.setTitle("Greenify - " + usernameField.getText());
         appStage.show();
     }
 
+    //class for showing the alerts
     public static class AlertHelper {
         /**
          * alerts for the login screen.
@@ -96,9 +117,11 @@ public class UserController {
     }
 
     /**
-     * The method handles register button.
-     * @param event User clicks to the button
-     * @throws Exception when the file couldn't find
+     * The method handles the clicking of the register button.
+     * it then opens the register window where the user can register
+     * (handled by RegisterWindowController)
+     * @param event User clicks on the button
+     * @throws Exception when the fxml file couldn't be found
      */
     public void handleRegisterButtonAction(ActionEvent event) throws Exception {
         Parent registerWindow = Application.load(this.getClass().getClassLoader()

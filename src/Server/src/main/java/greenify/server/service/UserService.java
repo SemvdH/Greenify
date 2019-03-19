@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+//userService class that gets used by the server to handle requests for users
 @Service
 public class UserService {
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     UserRepository userRepository;
+    //userRepository to talk with the database
 
     /**
      * registers the user.
@@ -26,13 +28,16 @@ public class UserService {
      */
     public UserDto registerUser(String name, String password) {
         User user = userRepository.findByName(name);
+        //find the name of the user in the database
         if (user == null) {
             user = new User(null, name, password, 0);
+            //if the user isn't already in the database, save it in there
             userRepository.save(user);
         } else {
             throw new ApplicationException("User already exists");
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
+        //return a transferable user object that has been saved
         return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
     }
 
@@ -44,13 +49,16 @@ public class UserService {
      */
     public UserDto loginUser(String name, String password) {
         User user = userRepository.findByName(name);
+        //again find the name
         if (user == null) {
             throw new ApplicationException("User does not exist");
+            //if it doesn't exist or the password is wrong, throw an exception
         } else {
             if (!user.getPassword().equals(password)) {
                 throw new ApplicationException("Wrong password");
             }
         }
+        //return a transferable user object that has been logged in
         return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
     }
 
@@ -62,8 +70,10 @@ public class UserService {
     public void addVeganMeal(Long id, String name) {
         User user = userRepository.findByName(name);
         int count = user.getVeganMeal();
+        //find the user and update their vegetarian meal count
         count++;
         user.setVeganMeal(count);
+        //save it to the database
         userRepository.save(user);
         logger.info("Added vegan meal to user(id=" + user.getId()
                 + ", name=" + user.getName() + ")");
