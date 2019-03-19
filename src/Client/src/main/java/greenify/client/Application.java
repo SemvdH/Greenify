@@ -53,10 +53,6 @@ public class Application extends javafx.application.Application {
         primaryStage.setTitle("Greenify");
         //set the scene
         Scene scene = new Scene(rootNode);
-        //add the stylesheet
-        scene.getStylesheets()
-                .add(getClass().getClassLoader().getResource("stylesheets/LoginWindowStyle.css")
-                        .toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

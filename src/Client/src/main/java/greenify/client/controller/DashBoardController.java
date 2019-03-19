@@ -39,7 +39,7 @@ public class DashBoardController {
     @FXML
     private Label welcomebacktext;
 
-    FadeTransition fadeTrans;       //transition for switching between the different panels
+    private FadeTransition fadeTrans;
 
     /**
      * loads the 'welcome back' text before anything else.
@@ -59,7 +59,6 @@ public class DashBoardController {
         fadeTrans.setToValue(1.0);
         fadeTrans.play();
     }
-
 
     /**
      * displays the dashboard pane.
@@ -81,7 +80,6 @@ public class DashBoardController {
      */
     public void displayActivities(ActionEvent event) {
         addFadeTransition(activitiesPane);
-
         totalVeganMealCounter.setText("" + userService.currentUser.getVeganMeal());
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -100,8 +98,6 @@ public class DashBoardController {
         dashboardPane.setVisible(false);
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
-
-
     }
 
     /**
@@ -109,8 +105,6 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void addVeganMeal(ActionEvent event) {
-        FadeTransition updateTrans = new FadeTransition(Duration.millis(200), totalVeganMealCounter);
-
         count++;
         int net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
