@@ -50,6 +50,7 @@ public class DashBoardController {
     public Button userButton;
     public Line pathLine;
     public AnchorPane menuBar;
+    public Button addNewActivityButton;
 
     FadeTransition fadeTrans;       //transition for switching between the different panels
 
@@ -65,6 +66,7 @@ public class DashBoardController {
         dashboardButton.setSkin(new MyButtonSkin(dashboardButton));
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
+
 
 
     }
@@ -101,9 +103,12 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
+
+
         addFadeTransition(activitiesPane);
 
-        totalVeganMealCounter.setText("" + userService.currentUser.getVeganMeal());
+        int net = userService.currentUser.getVeganMeal() + count;
+        totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
@@ -141,8 +146,9 @@ public class DashBoardController {
         System.out.println("Vegetarian meal is added");
     }
 
+    //sets the slide in transition for startup
     public void addSlideTransition(Node node, Line path1) {
-        PathTransition pathTrans = new PathTransition(Duration.millis(1500), path1, node);
+        PathTransition pathTrans = new PathTransition(Duration.millis(1100), path1, node);
         pathTrans.play();
     }
 

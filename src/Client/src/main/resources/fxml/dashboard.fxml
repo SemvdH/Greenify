@@ -196,7 +196,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button contentDisplay="RIGHT" layoutX="496.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add a new activity" textFill="#29721a">
+            <Button fx:id="addNewActivityButton" contentDisplay="RIGHT" layoutX="496.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add a new activity" textFill="#29721a">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
                </font>
