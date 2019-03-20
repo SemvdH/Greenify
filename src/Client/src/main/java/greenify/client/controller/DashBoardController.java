@@ -1,12 +1,17 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
+import javafx.animation.PathTransition;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,13 +44,29 @@ public class DashBoardController {
     @FXML
     private Label welcomebacktext;
 
+    @FXML
+    public Button dashboardButton;
+    public Button activitiesButton;
+    public Button userButton;
+    public Line pathLine;
+    public AnchorPane menuBar;
+
     FadeTransition fadeTrans;       //transition for switching between the different panels
 
     /**
-     * loads the 'welcome back' text before anything else.
+     * loads the the necessary things before anything else.
      */
     public void initialize() {
+        //sets the text of the 'welcome back' text to include the username
         welcomebacktext.setText("Welcome back, " + userService.currentUser.getName() + "!");
+        //adds the slide transition to the menu bar
+        addSlideTransition(menuBar, pathLine);
+        //adds animations to the navigation buttons
+        dashboardButton.setSkin(new MyButtonSkin(dashboardButton));
+        activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
+        userButton.setSkin(new MyButtonSkin(userButton));
+
+
     }
 
     /**
@@ -109,7 +130,6 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void addVeganMeal(ActionEvent event) {
-        FadeTransition updateTrans = new FadeTransition(Duration.millis(200), totalVeganMealCounter);
 
         count++;
         int net = userService.currentUser.getVeganMeal() + count;
@@ -119,5 +139,26 @@ public class DashBoardController {
         userService.addVeganMeal(userService.currentUser.getId(),
                 userService.currentUser.getName());
         System.out.println("Vegetarian meal is added");
+    }
+
+    public void addSlideTransition(Node node, Line path1) {
+        PathTransition pathTrans = new PathTransition(Duration.millis(1500), path1, node);
+        pathTrans.play();
+    }
+
+    //class for the animations on the navigation buttons
+    public class MyButtonSkin extends ButtonSkin {
+        public MyButtonSkin(Button button) {
+            super(button);
+            final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100));
+            scaleUp.setNode(button);
+            scaleUp.setToX(1.1);
+            button.setOnMouseEntered(e -> scaleUp.playFromStart());
+
+            final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100));
+            scaleDown.setNode(button);
+            scaleDown.setToX(1.0);
+            button.setOnMouseExited(e -> scaleDown.playFromStart());
+        }
     }
 }

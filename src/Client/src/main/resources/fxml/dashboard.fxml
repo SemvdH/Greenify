@@ -44,8 +44,9 @@
             </Button>
             <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Line fx:id="pathLine" endX="100.0" endY="28.0" fill="#1b9736" layoutX="5.0" layoutY="273.0" startX="-100.0" startY="28.0" stroke="#5a635c" />
          </children></AnchorPane>
-      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="711.0" visible="false">
+      <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="720.0" visible="false">
          <children>
             <Text fill="#002c0c" layoutX="101.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Activities" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
@@ -88,7 +89,7 @@
             </Pane>
             <Pane layoutX="310.0" layoutY="93.0" prefHeight="471.0" prefWidth="150.0" style="-fx-background-color: #f4fff4;">
                <children>
-                  <Text layoutX="21.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Done today" textAlignment="CENTER">
+                  <Text layoutX="11.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Done recently" textAlignment="CENTER">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -195,9 +196,9 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="567.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="62.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" textFill="#e0fcdb">
+            <Button contentDisplay="RIGHT" layoutX="496.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add a new activity" textFill="#29721a">
                <font>
-                  <Font name="Eras Bold ITC" size="28.0" />
+                  <Font name="Corbel Bold" size="14.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="81.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
@@ -216,4 +217,3 @@
       </AnchorPane>
    </children>
 </AnchorPane>
-
