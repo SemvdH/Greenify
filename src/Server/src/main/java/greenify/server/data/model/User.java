@@ -2,6 +2,8 @@ package greenify.server.data.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,8 @@ public class User {
 
     private int veganMeal;
 
+    private ArrayList<User> friends;
+
     public User() {}
 
     /**
@@ -41,6 +45,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.veganMeal = veganMeal;
+        this.friends = new ArrayList<User>();
     }
 
     /**
@@ -91,6 +96,13 @@ public class User {
         this.veganMeal = veganMeal;
     }
 
+    public List<User> getFriends(){
+        return this.friends;
+    }
+
+    public void addFriend(User user){
+        friends.add(user);
+    }
 
     /**
      * Returns a human readable object. It's in JSON.

@@ -79,6 +79,20 @@ public class UserService {
                 + ", name=" + user.getName() + ")");
     }
 
+    /**
+     * add vegan meal to the user.
+     * @param id the id of the user
+     * @param name the name of the user
+     */
+    public void addFriend(Long id, String name, String friend) {
+        User user = userRepository.findByName(name);
+        User add = userRepository.findByName(friend);
+        user.addFriend(user);
+        userRepository.save(user);
+        logger.info("Added friend to user(id=" + user.getId()
+                + ", name=" + user.getName() + ")");
+    }
+
     @GetMapping(path = "/all")
     @ResponseBody
     public Iterable<User> getAllUsers() {

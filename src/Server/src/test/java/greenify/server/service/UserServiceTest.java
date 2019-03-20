@@ -18,6 +18,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
     @TestConfiguration
@@ -71,4 +74,18 @@ public class UserServiceTest {
             userService.loginUser(null, null);
         });
     }
+
+    @Test
+    public void addFriendTest() {
+        User user = new User(1l,"Merel", "password", 0);
+        User friend = new User(2l, "Ellis", "pass", 0);
+        userService.registerUser("Merel", "password");
+        userService.registerUser("Ellis", "pass");
+        assertEquals(user.getFriends(), new ArrayList<User>());
+        userService.addFriend(1l,"Merel", "Ëllis");
+        List<User> ellis = new ArrayList<User>();
+        ((ArrayList) ellis).add(friend);
+        assertEquals(user.getFriends(), ellis);
+    }
+
 }
