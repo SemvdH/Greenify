@@ -50,7 +50,7 @@ public class UserController {
      * @param id the id of the user
      * @param name thr username of the user
      */
-    @RequestMapping("/addVeganMeal")
+    @RequestMapping("/addFriend")
     public void addVeganMeal(@RequestParam(value = "id") Long id,
                              @RequestParam(value = "name") String name,
                              @RequestParam(value = "friend") String friend) {
