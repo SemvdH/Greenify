@@ -38,8 +38,17 @@
 #activitiesButton:pressed {
   -fx-background-color: #b7e2c2;
 }
+#friendsButton {
+  -fx-background-color: #5a635c;
+}
+#friendsButton:hover {
+  -fx-background-color: #677069;
+}
+#friendsButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
 
 #addNewActivityButton:pressed {
-  -fx-background-color: #e8e8e8;
+  -fx-border-color: #497251;
 }
 
