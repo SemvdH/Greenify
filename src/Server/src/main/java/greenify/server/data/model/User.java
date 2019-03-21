@@ -1,5 +1,7 @@
 package greenify.server.data.model;
 
+import greenify.common.ApplicationException;
+import greenify.server.Application;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -101,7 +103,12 @@ public class User {
     }
 
     public void addFriend(User user){
-        friends.add(user);
+        if(!user.equals(this)) {
+            friends.add(user);
+        }
+        else {
+            throw new ApplicationException("Cannnot add yourself as a friend");
+        }
     }
 
     /**
