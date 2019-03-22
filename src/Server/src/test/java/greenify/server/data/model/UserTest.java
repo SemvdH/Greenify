@@ -27,6 +27,7 @@ public class UserTest {
         assertEquals(user.getPassword(), "password");
         assertEquals(user.getVeganMeal(), 3);
         assertEquals(user, testUser);
+        assertEquals(user.getFriends(), new ArrayList<User>());
     }
 
     @Test
@@ -99,6 +100,26 @@ public class UserTest {
             user.addFriend(user);
         });
         assertEquals(user.getFriends(), new ArrayList<User>());
+    }
+
+    @Test
+    public void JsonTest(){
+        User user = new User(1l, "user", "friends", 0);
+        User friend = new User(2l, "friend", "friends", 0);
+        assertEquals(user.getFriends(), new ArrayList<User>());
+        user.addFriend(friend);
+        ArrayList<User> list = new ArrayList<User>();
+        list.add(friend);
+        assertEquals(user.getFriends(), list);
+        System.out.println(user.toString());
+    }
+
+    @Test
+    public void friendsToStringTest(){
+        User user = new User(4l, "user", "pass", 0);
+        User friend = new User (5l, "friend", "pass", 0);
+        user.addFriend(friend);
+        System.out.println(user.friendsToString());
     }
 }
 

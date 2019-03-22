@@ -111,14 +111,27 @@ public class User {
         }
     }
 
+    public String friendsToString(){
+        String result = "";
+        for(User u : friends){
+            result += u.getId() + ", ";
+        }
+        result = result.substring(0, result.lastIndexOf(","));
+        return result;
+    }
+
     /**
      * Returns a human readable object. It's in JSON.
      * @return the JSON form of the object.
      */
     @Override
     public String toString() {
-        return "User(id=" + this.id + ", name=" + this.name + ", password="
-                + this.password + ", veganMeal=" + this.veganMeal + ")";
+        String result = "User(id=" + this.id + ", name=" + this.name + ", password="
+                + this.password + ", veganMeal=" + this.veganMeal + ", friends=[";
+        result += friendsToString() + "])";
+
+//                result += ")";
+                return result;
     }
 
     @Override
