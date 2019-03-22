@@ -42,14 +42,17 @@ public class UserServiceTest {
      */
     @Before
     public void setUp() {
-        User alex = new User(1L, "alex", "password", 0);
-        when(userRepository.findByName(alex.getName()))
-                .thenReturn(alex);
+        User user = new User(1L, "user", "password", 0);
+        when(userRepository.findByName(user.getName()))
+                .thenReturn(user);
+        User friend = new User(2L, "friend", "password", 0);
+        when(userRepository.findByName(friend.getName()))
+                .thenReturn(friend);
     }
 
     @Test
     public void validLoginTest() {
-        String name = "alex";
+        String name = "user";
         String password = "password";
         UserDto found = userService.loginUser(name, password);
         assertEquals(found.getName(), name);
@@ -57,8 +60,8 @@ public class UserServiceTest {
 
     @Test
     public void userRegisterTest() {
-        User user = new User(1L, "name", "password", 0);
-        UserDto registered = userService.registerUser(user.getName(), user.getPassword());
+        User test = new User(1L, "name", "password", 0);
+        UserDto registered = userService.registerUser(test.getName(), test.getPassword());
         assertEquals(registered.getName(), "name");
     }
 
@@ -69,7 +72,6 @@ public class UserServiceTest {
 
     @Test
     public void invalidLoginTest() {
-        User user = null;
         assertThrows(ApplicationException.class, () -> {
             userService.loginUser(null, null);
         });
@@ -77,20 +79,10 @@ public class UserServiceTest {
 
     @Test
     public void addFriendTest() {
-        User user = new User(1l,"Merel", "password", 0);
-        User friend = new User(2l, "Ellis", "pass", 0);
-        userService.registerUser("Merel", "password");
-        userService.registerUser("Ellis", "pass");
-        assertEquals(user.getFriends(), new ArrayList<User>());
-
-        //STILL TELLS ME NULL
-        System.out.println(userRepository.findByName("Merel"));
-
-
-//        userService.addFriend(1l,"Merel", "Ellis");
-//        List<User> ellis = new ArrayList<User>();
-//        ((ArrayList) ellis).add(friend);
-//        assertEquals(user.getFriends(), ellis);
+        userService.addFriend(1L,"user", "friend");
+        List<User> test = new ArrayList<User>();
+        test.add(userRepository.findByName("friend"));
+        assertEquals(userRepository.findByName("user").getFriends(), test);
     }
 
 }

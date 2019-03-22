@@ -87,7 +87,7 @@ public class UserService {
     public void addFriend(Long id, String name, String friend) {
         User user = userRepository.findByName(name);
         User add = userRepository.findByName(friend);
-        user.addFriend(user);
+        user.addFriend(add);
         userRepository.save(user);
         logger.info("Added friend to user(id=" + user.getId()
                 + ", name=" + user.getName() + ")");
