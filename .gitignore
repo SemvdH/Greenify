@@ -86,10 +86,12 @@ local.properties
 
 ### Eclipse Patch ###
 # Eclipse Core
-# .project
+.project
+**/.project
 
 # JDT-specific (Eclipse Java Development Tools)
-# .classpath
+.classpath
+**/.classpath
 
 # Annotation Processing
 .apt_generated
