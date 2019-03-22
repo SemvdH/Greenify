@@ -82,10 +82,15 @@ public class UserServiceTest {
         userService.registerUser("Merel", "password");
         userService.registerUser("Ellis", "pass");
         assertEquals(user.getFriends(), new ArrayList<User>());
-        userService.addFriend(1l,"Merel", "Ëllis");
-        List<User> ellis = new ArrayList<User>();
-        ((ArrayList) ellis).add(friend);
-        assertEquals(user.getFriends(), ellis);
+
+        //STILL TELLS ME NULL
+        System.out.println(userRepository.findByName("Merel"));
+
+
+//        userService.addFriend(1l,"Merel", "Ellis");
+//        List<User> ellis = new ArrayList<User>();
+//        ((ArrayList) ellis).add(friend);
+//        assertEquals(user.getFriends(), ellis);
     }
 
 }

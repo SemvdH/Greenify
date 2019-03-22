@@ -33,7 +33,7 @@ public class UserTest {
     @Test
     public void toStringTest() {
         User user = new User(1L, "greenify", "password", 3);
-        assertEquals("User(id=1, name=greenify, password=password, veganMeal=3)", user.toString());
+        assertEquals("User(id=1, name=greenify, password=password, veganMeal=3, friends=[])", user.toString());
     }
 
     @Test

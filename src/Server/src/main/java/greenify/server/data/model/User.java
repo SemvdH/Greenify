@@ -114,9 +114,11 @@ public class User {
     public String friendsToString(){
         String result = "";
         for(User u : friends){
-            result += u.getId() + ", ";
+            result += u.getName() + ", ";
         }
-        result = result.substring(0, result.lastIndexOf(","));
+        if(result.endsWith(", ")){
+            result = result.substring(0, result.lastIndexOf(","));
+        }
         return result;
     }
 
