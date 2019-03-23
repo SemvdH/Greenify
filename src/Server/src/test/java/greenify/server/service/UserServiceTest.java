@@ -18,9 +18,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
     @TestConfiguration
@@ -42,17 +39,14 @@ public class UserServiceTest {
      */
     @Before
     public void setUp() {
-        User user = new User(1L, "user", "password", 0);
-        when(userRepository.findByName(user.getName()))
-                .thenReturn(user);
-        User friend = new User(2L, "friend", "password", 0);
-        when(userRepository.findByName(friend.getName()))
-                .thenReturn(friend);
+        User alex = new User(1L, "alex", "password", 0);
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
     }
 
     @Test
     public void validLoginTest() {
-        String name = "user";
+        String name = "alex";
         String password = "password";
         UserDto found = userService.loginUser(name, password);
         assertEquals(found.getName(), name);
@@ -60,8 +54,8 @@ public class UserServiceTest {
 
     @Test
     public void userRegisterTest() {
-        User test = new User(1L, "name", "password", 0);
-        UserDto registered = userService.registerUser(test.getName(), test.getPassword());
+        User user = new User(1L, "name", "password", 0);
+        UserDto registered = userService.registerUser(user.getName(), user.getPassword());
         assertEquals(registered.getName(), "name");
     }
 
@@ -72,17 +66,9 @@ public class UserServiceTest {
 
     @Test
     public void invalidLoginTest() {
+        User user = null;
         assertThrows(ApplicationException.class, () -> {
             userService.loginUser(null, null);
         });
     }
-
-    @Test
-    public void addFriendTest() {
-        userService.addFriend(1L,"user", "friend");
-        List<User> test = new ArrayList<User>();
-        test.add(userRepository.findByName("friend"));
-        assertEquals(userRepository.findByName("user").getFriends(), test);
-    }
-
 }
