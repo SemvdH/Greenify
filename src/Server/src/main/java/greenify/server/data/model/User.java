@@ -1,7 +1,11 @@
 package greenify.server.data.model;
 
+import greenify.common.ApplicationException;
+import greenify.server.Application;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +31,8 @@ public class User {
 
     private int veganMeal;
 
+    private ArrayList<User> friends;
+
     public User() {}
 
     /**
@@ -41,6 +47,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.veganMeal = veganMeal;
+        this.friends = new ArrayList<User>();
     }
 
     /**
@@ -91,6 +98,29 @@ public class User {
         this.veganMeal = veganMeal;
     }
 
+    public List<User> getFriends(){
+        return this.friends;
+    }
+
+    public void addFriend(User user){
+        if(!user.equals(this)) {
+            friends.add(user);
+        }
+        else {
+            throw new ApplicationException("Cannnot add yourself as a friend");
+        }
+    }
+
+    public String friendsToString(){
+        String result = "";
+        for(User u : friends){
+            result += u.getName() + ", ";
+        }
+        if(result.endsWith(", ")){
+            result = result.substring(0, result.lastIndexOf(","));
+        }
+        return result;
+    }
 
     /**
      * Returns a human readable object. It's in JSON.
@@ -98,8 +128,12 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User(id=" + this.id + ", name=" + this.name + ", password="
-                + this.password + ", veganMeal=" + this.veganMeal + ")";
+        String result = "User(id=" + this.id + ", name=" + this.name + ", password="
+                + this.password + ", veganMeal=" + this.veganMeal + ", friends=[";
+        result += friendsToString() + "])";
+
+//                result += ")";
+                return result;
     }
 
     @Override

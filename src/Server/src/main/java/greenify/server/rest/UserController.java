@@ -32,8 +32,6 @@ public class UserController {
         return userService.loginUser(name, password);
     }
 
-
-
     /**
      * adds a vegetarian meal to the user.
      * @param id the id of the user
@@ -45,5 +43,19 @@ public class UserController {
         //here the requestParams are the id and name, because that is needed for the
         //addVeganMeal method of the userService
         userService.addVeganMeal(id, name);
+    }
+
+    /**
+     * adds a friend to the user.
+     * @param id the id of the user
+     * @param name thr username of the user
+     */
+    @RequestMapping("/addFriend")
+    public void addVeganMeal(@RequestParam(value = "id") Long id,
+                             @RequestParam(value = "name") String name,
+                             @RequestParam(value = "friend") String friend) {
+        //here the requestParams are the id and name of the user and the name of the friend,
+        // because that is needed for the addFriendmethod of the userService
+        userService.addFriend(id, name, friend);
     }
 }

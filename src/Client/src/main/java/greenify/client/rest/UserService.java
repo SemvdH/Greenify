@@ -99,6 +99,26 @@ public class UserService {
         return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
     }
 
+    /**
+     * a user adds vegan meal.
+     * @param id the id of the user
+     * @param name the username of the user
+     * @return a userDTO
+     */
+    @SuppressWarnings("Duplicates")
+    public UserDto addFriend(Long id, String name, String friend) {
+        //this method is almost the same as the registerUser one, but with a different link
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addFriend")
+                .queryParam("id", id)
+                .queryParam("name", name)
+                .queryParam("friend", friend);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        return this.restTemplate.getForObject(builder.build().encode().toUri(), UserDto.class);
+    }
+
     @RequestMapping("/userData")
     public int getVeganData(@RequestParam(value = "veganMeal") int veganMeal) {
         return veganMeal;
