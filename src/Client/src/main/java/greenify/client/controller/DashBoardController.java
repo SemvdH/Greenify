@@ -24,35 +24,40 @@ public class DashBoardController {
     @Autowired
     UserService userService;
 
+    private FadeTransition fadeTrans;       //transition for switching between the different panels
+    private int net;
     private int count = 0;
 
     @FXML
     private AnchorPane dashboardPane;
-
     @FXML
     private AnchorPane userPane;
-
     @FXML
     private AnchorPane activitiesPane;
-
+    @FXML
+    private AnchorPane friendsPane;
     @FXML
     private Label veganMealCounter;
-
     @FXML
     private Label totalVeganMealCounter;
-
     @FXML
     private Label welcomebacktext;
-
     @FXML
-    public Button dashboardButton;
-    public Button activitiesButton;
-    public Button userButton;
-    public Line pathLine;
-    public AnchorPane menuBar;
-    public Button addNewActivityButton;
+    private Button dashboardButton;
+    @FXML
+    private Button activitiesButton;
+    @FXML
+    private Button userButton;
+    @FXML
+    private Button friendsButton;
+    @FXML
+    private Line pathLine;
+    @FXML
+    private AnchorPane menuBar;
+    @FXML
+    private Button addNewActivityButton;
 
-    FadeTransition fadeTrans;       //transition for switching between the different panels
+
 
     /**
      * loads the the necessary things before anything else.
@@ -66,6 +71,7 @@ public class DashBoardController {
         dashboardButton.setSkin(new MyButtonSkin(dashboardButton));
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
+        friendsButton.setSkin(new MyButtonSkin(friendsButton));
 
 
 
@@ -94,7 +100,7 @@ public class DashBoardController {
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
-
+        friendsPane.setVisible(false);
 
     }
 
@@ -107,13 +113,13 @@ public class DashBoardController {
 
         addFadeTransition(activitiesPane);
 
-        int net = userService.currentUser.getVeganMeal() + count;
+        net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
         activitiesPane.setVisible(true);
-
+        friendsPane.setVisible(false);
     }
 
     /**
@@ -126,9 +132,20 @@ public class DashBoardController {
         dashboardPane.setVisible(false);
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
-
+        friendsPane.setVisible(false);
 
     }
+
+    public void displayFriends(ActionEvent event) {
+        addFadeTransition(friendsPane);
+        System.out.println("display friends");
+        dashboardPane.setVisible(false);
+        userPane.setVisible(false);
+        activitiesPane.setVisible(false);
+        friendsPane.setVisible(true);
+
+    }
+
 
     /**
      * adds a vegetarian meal.
@@ -137,7 +154,7 @@ public class DashBoardController {
     public void addVeganMeal(ActionEvent event) {
 
         count++;
-        int net = userService.currentUser.getVeganMeal() + count;
+        net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
         veganMealCounter.setText("" + count);
         System.out.println(userService);
@@ -154,11 +171,21 @@ public class DashBoardController {
 
     //class for the animations on the navigation buttons
     public class MyButtonSkin extends ButtonSkin {
+        /**
+         * adds a skin and scale animation to a button.
+         * the scale transition is for hovering over it so it then scales up
+         * and scales down when you stop hovering over it.
+         * @param button the button to add the animation to
+         */
         public MyButtonSkin(Button button) {
+            //inherit the button properties
             super(button);
+            //transition to scale up on hover
             final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100));
+            //add the node and the position to scale to
             scaleUp.setNode(button);
             scaleUp.setToX(1.1);
+            //play the transition when hovered over the button
             button.setOnMouseEntered(e -> scaleUp.playFromStart());
 
             final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100));

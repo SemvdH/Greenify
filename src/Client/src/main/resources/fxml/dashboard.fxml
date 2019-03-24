@@ -42,9 +42,15 @@
                   <Font size="21.0" />
                </font>
             </Button>
+            <Button fx:id="friendsButton" layoutY="224.0" mnemonicParsing="false" onAction="#displayFriends" prefHeight="45.0" prefWidth="216.0" text="friends">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
             <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line fx:id="pathLine" endX="100.0" endY="28.0" fill="#1b9736" layoutX="5.0" layoutY="273.0" startX="-100.0" startY="28.0" stroke="#5a635c" />
+            <Line endX="104.0" layoutX="109.0" layoutY="223.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
          </children></AnchorPane>
       <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="603.0" prefWidth="720.0" visible="false">
          <children>
@@ -188,7 +194,7 @@
                </children>
             </VBox>
          </children></AnchorPane>
-      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0">
+      <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="603.0" prefWidth="711.0" visible="false">
          <children>
             <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
             <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
@@ -213,6 +219,21 @@
                   <Font size="15.0" />
                </font>
             </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="friendsPane" layoutX="214.0" prefHeight="603.0" prefWidth="720.0">
+         <children>
+            <Text layoutX="94.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Friends" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <TableView fx:id="friendsTable" layoutX="60.0" layoutY="130.0" prefHeight="426.0" prefWidth="216.0" style="-fx-background-color: #e1fcd9;">
+              <columns>
+                <TableColumn fx:id="friendsColumn" prefWidth="107.0" text="Friend" />
+                <TableColumn fx:id="scoreColumn" prefWidth="108.0" text="Score" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
