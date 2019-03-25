@@ -1,0 +1,32 @@
+/*#calculatorShoppingButton:hover {*/
+    /*-fx-background-color: red;*/
+/*}*/
+/*#calculatorGetStartedButton:pressed {*/
+    /*-fx-background-color: red;*/
+    /*-fx-border-color: #677069;*/
+/*}*/
+
+#calculatorTabs .button {
+    -fx-background-color: transparent;
+}
+#calculatorTabs .button:pressed {
+    -fx-border-color: #677069;
+}
+#calculatorTabs .button:hover {
+    -fx-background-color: #707a72;
+}
+#calculatorTabs #saveButton {
+    -fx-background-color: #89a888;
+}
+
+.root {
+    -fx-font-family: Corbel;
+}
+
+.slider {
+    -show-value-on-interaction: true;
+    -fx-text-fill: red;
+}
+
+
+

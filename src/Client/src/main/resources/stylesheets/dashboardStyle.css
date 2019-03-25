@@ -48,7 +48,12 @@
   -fx-background-color: #b7e2c2;
 }
 
+
 #addNewActivityButton:pressed {
+  -fx-border-color: #497251;
+}
+
+#calculateFootPrintButton:pressed {
   -fx-border-color: #497251;
 }
 
