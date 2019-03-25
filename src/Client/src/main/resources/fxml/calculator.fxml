@@ -14,7 +14,7 @@
    <children>
       <AnchorPane fx:id="calculatorTabs" prefHeight="85.0" prefWidth="820.0" style="-fx-background-color: #677069;">
          <children>
-            <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="188.0">
+            <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="188.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -30,7 +30,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorTravelButton" contentDisplay="TOP" layoutX="273.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayTravel" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" text="Travel" textFill="#d4ddd6" AnchorPane.leftAnchor="273.0">
+            <Button fx:id="calculatorTravelButton" contentDisplay="TOP" layoutX="273.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayTravel" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Travel" textFill="#d4ddd6" AnchorPane.leftAnchor="273.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -47,7 +47,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorHomeButton" contentDisplay="TOP" layoutX="358.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayHome" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" text="Home" textFill="#d4ddd6" AnchorPane.leftAnchor="358.0">
+            <Button fx:id="calculatorHomeButton" contentDisplay="TOP" layoutX="358.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayHome" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Home" textFill="#d4ddd6" AnchorPane.leftAnchor="358.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorFoodButton" contentDisplay="TOP" layoutX="443.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayFood" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" text="Food" textFill="#d4ddd6" AnchorPane.leftAnchor="443.0">
+            <Button fx:id="calculatorFoodButton" contentDisplay="TOP" layoutX="443.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayFood" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Food" textFill="#d4ddd6" AnchorPane.leftAnchor="443.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -81,7 +81,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorShoppingButton" contentDisplay="TOP" layoutX="528.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayShopping" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" text="Shopping" textFill="#d4ddd6" AnchorPane.leftAnchor="528.0">
+            <Button fx:id="calculatorShoppingButton" contentDisplay="TOP" layoutX="528.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayShopping" prefHeight="81.0" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Shopping" textFill="#d4ddd6" AnchorPane.leftAnchor="528.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -98,7 +98,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="saveButton" layoutX="702.0" layoutY="30.0" mnemonicParsing="false" text="Save" />
+            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" mnemonicParsing="false" text="Save">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" AnchorPane.leftAnchor="0.0">
@@ -132,8 +135,9 @@
                   <Insets />
                </opaqueInsets>
             </Label>
+            <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
          </children></AnchorPane>
-      <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <ScrollPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
       <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
       <AnchorPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
       <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />

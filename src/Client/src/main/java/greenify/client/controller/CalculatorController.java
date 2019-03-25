@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class CalculatorController {
     @FXML
     private AnchorPane getStartedPane;
     @FXML
-    private AnchorPane travelPane;
+    private ScrollPane travelPane;
     @FXML
     private AnchorPane homePane;
     @FXML
@@ -47,6 +48,8 @@ public class CalculatorController {
     private Label annualIncomeLabel;
     @FXML
     private Button saveButton;
+    @FXML
+    private Button getStartedNextButton;
 
     public void initialize() {
         peopleInHouseholdSLider.setSnapToTicks(true);

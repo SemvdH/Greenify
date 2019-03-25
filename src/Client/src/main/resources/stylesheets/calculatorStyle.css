@@ -1,32 +1,35 @@
-/*#calculatorShoppingButton:hover {*/
-    /*-fx-background-color: red;*/
-/*}*/
-/*#calculatorGetStartedButton:pressed {*/
-    /*-fx-background-color: red;*/
-    /*-fx-border-color: #677069;*/
-/*}*/
 
-#calculatorTabs .button {
+#calculatorTabs .navButton {
     -fx-background-color: transparent;
+    -fx-font-size: 16px;
 }
-#calculatorTabs .button:pressed {
+#calculatorTabs .navButton:pressed {
     -fx-border-color: #677069;
 }
-#calculatorTabs .button:hover {
+#calculatorTabs .navButton:hover {
     -fx-background-color: #707a72;
 }
 #calculatorTabs #saveButton {
     -fx-background-color: #89a888;
+    -fx-font-size: 16px;
+    -fx-font-weight: regular;
 }
 
-.root {
+.nextButton {
+    -fx-background-color: #89a888;
+    -fx-font-size: 16px;
     -fx-font-family: Corbel;
+}
+.nextButton:hover {
+    -fx-background-color: #9ec19c;
 }
 
 .slider {
     -show-value-on-interaction: true;
     -fx-text-fill: red;
 }
+
+
 
 
 
