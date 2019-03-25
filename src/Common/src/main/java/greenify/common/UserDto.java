@@ -7,7 +7,6 @@ package greenify.common;
 public class UserDto {
     private Long id;
     private String name;
-    private int veganMeal;
 
     public UserDto() {
     }
@@ -16,12 +15,10 @@ public class UserDto {
      * The constructor method of UserDto.
      * @param id of the user
      * @param name of the user
-     * @param veganMeal the number of vegetarian meals eaten
      */
-    public UserDto(Long id, String name, int veganMeal) {
+    public UserDto(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.veganMeal = veganMeal;
     }
 
     public String getName() {
@@ -38,13 +35,5 @@ public class UserDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getVeganMeal() {
-        return veganMeal;
-    }
-
-    public void setVeganMeal(int veganMeal) {
-        this.veganMeal = veganMeal;
     }
 }
