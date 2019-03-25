@@ -55,10 +55,10 @@ Actively watching myself and letting my teammates know that they need to be clea
 I’m just going to keep working on myself and hope my teammates will work with me. It also helps to work in different teams to get a much more diverse experience. Every team is different, so I’m just going to wait what this team will bring me and how I will have to adjust myself to make the team efficient. 
 
 # Sem van der Hoeven (4896726, semvanderhoeve)
-![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
+![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
 
 ## Personal development plan
-![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
+![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
 
 ### G - Goal
 My goal with this project is most of all to be able to efficiently work with a group of people. This is important to me because  I have not worked on a (development) project with a (big) group of people before. I believe I have succeeded in this goal when our project is finished and we have got a passing grade.
