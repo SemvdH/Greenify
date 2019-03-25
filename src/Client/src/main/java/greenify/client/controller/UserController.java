@@ -82,7 +82,7 @@ public class UserController {
     public void openDashboard() throws IOException {
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
-                                        .getResource("fxml/dashboard.fxml"));
+                .getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
         //add the stylesheet for the CSS
         scene.getStylesheets().add(getClass().getClassLoader()

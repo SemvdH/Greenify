@@ -1,6 +1,7 @@
 package greenify.server.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
@@ -11,7 +12,6 @@ import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -34,12 +34,15 @@ public class UserServiceTest {
     @MockBean
     private UserRepository userRepository;
 
+    @MockBean
+    private CalculatorService calculatorService;
+
     /**
      * setUp method for test.
      */
     @Before
     public void setUp() {
-        User alex = new User(1L, "alex", "password", 0);
+        User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
     }
@@ -53,10 +56,93 @@ public class UserServiceTest {
     }
 
     @Test
+    public void loginExceptionTest() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.loginUser("alex", "greenify");
+        });
+    }
+
+    @Test
     public void userRegisterTest() {
-        User user = new User(1L, "name", "password", 0);
+        User user = new User(1L, "name", "password");
         UserDto registered = userService.registerUser(user.getName(), user.getPassword());
         assertEquals(registered.getName(), "name");
+    }
+
+    @Test
+    public void registerExceptionTest() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.registerUser("alex", "password");
+        });
+    }
+
+    @Test
+    public void setInputTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        userService.setInput("alex", "food_grains", "6.5");
+        assertEquals("6.5", alex.getFootPrintInputs().get("food_grains"));
+    }
+
+    @Test
+    public void setInputNullTest() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.setInput(null, "hello", "5.5");
+        });
+    }
+
+    @Test
+    public void setInputApplicationTestItem() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.setInput("alex", "hello", "3.5");
+        });
+    }
+
+    @Test
+    public void setInputApplicationTestValue() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.setInput("alex", "transportation_num_vehicles", "5.5");
+        });
+    }
+
+
+    @Test
+    public void setInputFootprintTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        when(calculatorService.calculateFootprint(alex))
+                .thenReturn(15f);
+        userService.setInput("alex", "food_grains", "6.5");
+        assertTrue(15f == alex.getFootPrint());
+    }
+
+    @Test
+    public void getInputTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        userService.setInput("alex", "food_grains", "6.5");
+        assertEquals("6.5", userService.getInput("alex", "food_grains"));
+    }
+
+    @Test
+    public void getInputExceptionTest() {
+        assertThrows(ApplicationException.class, () -> {
+            userService.getInput("alex", "hello");
+        });
+    }
+
+    @Test
+    public void getFootprintTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        when(calculatorService.calculateFootprint(alex))
+                .thenReturn(15f);
+        userService.setInput("alex", "food_grains", "6.5");
+        assertTrue(15f == userService.getFootprint("alex"));
     }
 
     @Test
