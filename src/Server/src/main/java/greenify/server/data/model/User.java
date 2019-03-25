@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.*;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,7 +23,9 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -35,6 +39,10 @@ public class User {
 
     @ElementCollection
     private Map<String,String> footPrintInputs = new HashMap<>();
+
+    @ManyToMany
+    @JoinColumn
+    private Collection<User> friends;
 
     public User() {}
 
@@ -101,6 +109,10 @@ public class User {
 
     public void setFootPrintInputs(Map<String, String> footPrintInputs) {
         this.footPrintInputs = footPrintInputs;
+    }
+
+    public ArrayList<User> getFriends(){
+        return (ArrayList<User>)this.friends;
     }
 
     public void setFootPrint(Float footPrint) {
