@@ -1,8 +1,13 @@
 package greenify.server.data.model;
 
+import greenify.server.InputValidator;
 import lombok.Data;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +30,11 @@ public class User {
     @NotNull
     private String password;
 
-    private int veganMeal;
+    @NotNull
+    private Float footPrint = 0.0f;
+
+    @ElementCollection
+    private Map<String,String> footPrintInputs = new HashMap<>();
 
     public User() {}
 
@@ -34,13 +43,12 @@ public class User {
      * @param id the id of the user.
      * @param name the supplied username
      * @param password the supplied password
-     * @param veganMeal the supplied number of vegan meal
      */
-    public User(Long id, String name, String password, int veganMeal) {
+    public User(Long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.veganMeal = veganMeal;
+        this.setFootPrintInputs(InputValidator.getDefaultValues());
     }
 
     /**
@@ -80,15 +88,23 @@ public class User {
     }
 
     /**
-     * gets the number of vegan meal.
-     * @return the veganMeal
+     * gets the footPrint of user.
+     * @return the footPrint
      */
-    public int getVeganMeal() {
-        return veganMeal;
+    public Float getFootPrint() {
+        return footPrint;
     }
 
-    public void setVeganMeal(int veganMeal) {
-        this.veganMeal = veganMeal;
+    public Map<String, String> getFootPrintInputs() {
+        return footPrintInputs;
+    }
+
+    public void setFootPrintInputs(Map<String, String> footPrintInputs) {
+        this.footPrintInputs = footPrintInputs;
+    }
+
+    public void setFootPrint(Float footPrint) {
+        this.footPrint = footPrint;
     }
 
 
@@ -99,7 +115,7 @@ public class User {
     @Override
     public String toString() {
         return "User(id=" + this.id + ", name=" + this.name + ", password="
-                + this.password + ", veganMeal=" + this.veganMeal + ")";
+                + this.password + ")";
     }
 
     @Override
@@ -107,7 +123,7 @@ public class User {
         if (other instanceof User) {
             User that = (User)other;
             if (that.id == this.id && that.name.equals(this.name)
-                    && that.password.equals(this.password) && that.veganMeal == this.veganMeal) {
+                    && that.password.equals(this.password)) {
                 return true;
             }
         }
@@ -116,6 +132,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, veganMeal);
+        return Objects.hash(id, name, password);
     }
 }

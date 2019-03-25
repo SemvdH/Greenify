@@ -2,6 +2,7 @@ package greenify.server.service;
 
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
+import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.slf4j.Logger;
@@ -11,14 +12,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-//userService class that gets used by the server to handle requests for users
 @Service
 public class UserService {
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     UserRepository userRepository;
-    //userRepository to talk with the database
+
+    @Autowired
+    CalculatorService calculatorService;
 
     /**
      * registers the user.
@@ -28,17 +30,15 @@ public class UserService {
      */
     public UserDto registerUser(String name, String password) {
         User user = userRepository.findByName(name);
-        //find the name of the user in the database
         if (user == null) {
-            user = new User(null, name, password, 0);
-            //if the user isn't already in the database, save it in there
+            user = new User(null, name, password);
+            user.setFootPrintInputs(InputValidator.getDefaultValues());
             userRepository.save(user);
         } else {
             throw new ApplicationException("User already exists");
         }
         logger.info("Created user id=" + user.getId() + ", name=" + user.getName());
-        //return a transferable user object that has been saved
-        return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
+        return new UserDto(user.getId(), user.getName());
     }
 
     /**
@@ -49,34 +49,56 @@ public class UserService {
      */
     public UserDto loginUser(String name, String password) {
         User user = userRepository.findByName(name);
-        //again find the name
         if (user == null) {
             throw new ApplicationException("User does not exist");
-            //if it doesn't exist or the password is wrong, throw an exception
         } else {
             if (!user.getPassword().equals(password)) {
                 throw new ApplicationException("Wrong password");
             }
         }
-        //return a transferable user object that has been logged in
-        return new UserDto(user.getId(), user.getName(), user.getVeganMeal());
+        return new UserDto(user.getId(), user.getName());
     }
 
     /**
-     * add vegan meal to the user.
-     * @param id the id of the user
-     * @param name the name of the user
+     * The method sets input value.
+     * @param name of the user
+     * @param inputName is the name of the setting input
+     * @param value of the input
      */
-    public void addVeganMeal(Long id, String name) {
+    public void setInput(String name, String inputName, String value) {
         User user = userRepository.findByName(name);
-        int count = user.getVeganMeal();
-        //find the user and update their vegetarian meal count
-        count++;
-        user.setVeganMeal(count);
-        //save it to the database
-        userRepository.save(user);
-        logger.info("Added vegan meal to user(id=" + user.getId()
-                + ", name=" + user.getName() + ")");
+        if (user == null) {
+            throw new ApplicationException("User does not exist");
+        } else {
+            if (InputValidator.isValidItem(inputName)
+                    && InputValidator.isValidItemValue(inputName, value)) {
+                user.getFootPrintInputs().put(inputName, value);
+                user.setFootPrint(calculatorService.calculateFootprint(user));
+            } else {
+                throw new ApplicationException("Invalid input");
+            }
+        }
+    }
+
+    /**
+     * Gets the input value of an input.
+     * @param name of the user
+     * @param inputName name of the input
+     * @return input value
+     */
+    public String getInput(String name, String inputName) {
+        User user = userRepository.findByName(name);
+        if (InputValidator.isValidItem(inputName)) {
+            String item = user.getFootPrintInputs().get(inputName);
+            return item;
+        } else {
+            throw new ApplicationException("Invalid input");
+        }
+    }
+
+    public Float getFootprint(String name) {
+        User user = userRepository.findByName(name);
+        return calculatorService.calculateFootprint(user);
     }
 
     @GetMapping(path = "/all")

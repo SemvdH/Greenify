@@ -13,36 +13,54 @@ public class UserTest {
         testUser.setId(1L);
         testUser.setName("greenify");
         testUser.setPassword("password");
-        testUser.setVeganMeal(3);
-        User user = new User(1L, "greenify", "password", 3);
+        User user = new User(1L, "greenify", "password");
         assertTrue(user.getId().equals(1L));
         assertEquals(user.getName(), "greenify");
         assertEquals(user.getPassword(), "password");
-        assertEquals(user.getVeganMeal(), 3);
         assertEquals(user, testUser);
     }
 
     @Test
     public void toStringTest() {
-        User user = new User(1L, "greenify", "password", 3);
-        assertEquals("User(id=1, name=greenify, password=password, veganMeal=3)", user.toString());
+        User user = new User(1L, "greenify", "password");
+        assertEquals("User(id=1, name=greenify, password=password)", user.toString());
     }
 
     @Test
     public void equalsTest() {
-        User first = new User(1L, "greenify", "password", 3);
-        User second = new User(1L, "greenify", "password", 3);
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "greenify", "password");
         assertEquals(first.getId(), second.getId());
         assertEquals(first.getName(), second.getName());
         assertEquals(first.getPassword(), second.getPassword());
-        assertEquals(first.getVeganMeal(), second.getVeganMeal());
         assertTrue(first.equals(second));
     }
 
     @Test
+    public void equalsDifferentId() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(2L, "greenify", "password");
+        assertFalse(first.equals(second));
+    }
+
+    @Test
+    public void equalsDifferentName() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "hello", "password");
+        assertFalse(first.equals(second));
+    }
+
+    @Test
+    public void equalsDifferentPassword() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "greenify", "hi");
+        assertFalse(first.equals(second));
+    }
+
+    @Test
     public void notEqualsTest() {
-        User first = new User(1L, "greenify", "password", 3);
-        User second = new User(1L, "greenify", "password", 7);
+        User first = new User(1L, "greenify", "password");
+        User second = new User(2L, "greenify", "password");
         assertFalse(first.equals(second));
     }
 
@@ -55,8 +73,8 @@ public class UserTest {
 
     @Test
     public void hashCodeTest() {
-        User first = new User(1L, "greenify", "password", 3);
-        User second = new User(1L, "greenify", "password", 3);
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "greenify", "password");
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());
     }
