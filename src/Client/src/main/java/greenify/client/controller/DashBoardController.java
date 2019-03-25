@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
@@ -9,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
