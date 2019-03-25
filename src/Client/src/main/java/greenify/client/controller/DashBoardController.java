@@ -1,6 +1,5 @@
 package greenify.client.controller;
 
-import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
@@ -10,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
@@ -72,9 +72,6 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
-
-
-
     }
 
     /**
@@ -109,11 +106,7 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
-
-
         addFadeTransition(activitiesPane);
-
-        net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -144,23 +137,6 @@ public class DashBoardController {
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
 
-    }
-
-
-    /**
-     * adds a vegetarian meal.
-     * @param event the event (clicking the button)
-     */
-    public void addVeganMeal(ActionEvent event) {
-
-        count++;
-        net = userService.currentUser.getVeganMeal() + count;
-        totalVeganMealCounter.setText("" + net);
-        veganMealCounter.setText("" + count);
-        System.out.println(userService);
-        userService.addVeganMeal(userService.currentUser.getId(),
-                userService.currentUser.getName());
-        System.out.println("Vegetarian meal is added");
     }
 
     //sets the slide in transition for startup
