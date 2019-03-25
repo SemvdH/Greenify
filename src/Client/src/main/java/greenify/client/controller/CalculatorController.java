@@ -19,7 +19,7 @@ public class CalculatorController {
     UserService userService;
 
     @FXML
-    public Button calculatorGetStartedButton;
+    private Button calculatorGetStartedButton;
     @FXML
     private Button calculatorTravelButton;
     @FXML
@@ -51,6 +51,11 @@ public class CalculatorController {
     @FXML
     private Button getStartedNextButton;
 
+    /**
+     * initializes the window, performs some actions before loading all other things.
+     * it sets the sliders to snap to the ticks
+     * it adds listeners to all the sliders for updating the label next to them
+     */
     public void initialize() {
         peopleInHouseholdSLider.setSnapToTicks(true);
         annualIncomeSlider.setSnapToTicks(true);
@@ -73,6 +78,11 @@ public class CalculatorController {
         });
     }
 
+    /**
+     * displays the 'get started' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the button
+     */
     public void displayGetStarted(ActionEvent event) {
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
@@ -82,6 +92,11 @@ public class CalculatorController {
 
     }
 
+    /**
+     * displays the 'travel' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the button
+     */
     public void displayTravel(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
@@ -90,6 +105,11 @@ public class CalculatorController {
         shoppingPane.setVisible(false);
     }
 
+    /**
+     * displays the 'home' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the button
+     */
     public void displayHome(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
@@ -98,6 +118,11 @@ public class CalculatorController {
         shoppingPane.setVisible(false);
     }
 
+    /**
+     * displays the 'food' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the button
+     */
     public void displayFood(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
@@ -106,6 +131,11 @@ public class CalculatorController {
         shoppingPane.setVisible(false);
     }
 
+    /**
+     * displays the 'shopping' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the button
+     */
     public void displayShopping(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
