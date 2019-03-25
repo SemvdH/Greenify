@@ -49,7 +49,7 @@
             </Text>
             <Pane layoutX="20.0" layoutY="93.0" prefHeight="471.0" prefWidth="280.0" style="-fx-background-color: #f4fff4;">
                <children>
-                  <Button fx:id="veganMealButton" layoutX="60.0" layoutY="55.0" mnemonicParsing="false" onAction="#addVeganMeal" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Eating a vegetarian meal" textFill="#e0ffe1">
+                  <Button fx:id="veganMealButton" layoutX="60.0" layoutY="55.0" mnemonicParsing="false" style="-fx-background-color: #009623; -fx-border-radius: 25px;" text="Eating a vegetarian meal" textFill="#e0ffe1">
                      <font>
                         <Font size="14.0" />
                      </font>
