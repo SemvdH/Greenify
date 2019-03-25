@@ -4,14 +4,8 @@ import greenify.common.ApplicationException;
 import greenify.server.Application;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.*;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,7 +14,9 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -31,7 +27,12 @@ public class User {
 
     private int veganMeal;
 
-    private ArrayList<User> friends;
+//    @ElementCollection
+//    @CollectionTable(name = "friends", joinColumns = @JoinColumn(name = "id"))
+//    @Column(name = "friendId")
+    @ManyToMany
+    @JoinColumn
+    private Collection<User> friends;
 
     public User() {}
 
@@ -98,8 +99,8 @@ public class User {
         this.veganMeal = veganMeal;
     }
 
-    public List<User> getFriends(){
-        return this.friends;
+    public ArrayList<User> getFriends(){
+        return (ArrayList<User>)this.friends;
     }
 
     public void addFriend(User user){
