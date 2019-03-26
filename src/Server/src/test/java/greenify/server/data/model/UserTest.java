@@ -96,7 +96,6 @@ public class UserTest {
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
-        System.out.print(second);
         first.addFriend(second);
         ArrayList<User> test = new ArrayList<User>();
         test.add(second);
@@ -109,6 +108,16 @@ public class UserTest {
         assertEquals(test.getFriends(), new ArrayList<User>());
         assertThrows(ApplicationException.class, () -> {
             test.addFriend(test);
-        });    }
+        });
+    }
+
+
+    @Test
+    public void friendsToStringTest(){
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        first.addFriend(second);
+        assertEquals(first.friendsToString(), "friends=[{name=merel, footprint=0.0}]");
+    }
 }
 

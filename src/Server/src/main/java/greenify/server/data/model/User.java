@@ -143,6 +143,17 @@ public class User {
                 + this.password + ")";
     }
 
+    public String friendsToString(){
+        String result = "friends=[";
+        for(User u : friends){
+            result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
+        }
+        if(result.endsWith(", ")){
+            return result.substring(0, result.lastIndexOf(",")) + "]";
+        }
+        return result + "]";
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other instanceof User) {
