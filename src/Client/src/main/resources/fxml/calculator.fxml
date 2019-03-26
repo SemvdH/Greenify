@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.CalculatorController">
+   <children>
+      <AnchorPane fx:id="calculatorTabs" prefHeight="85.0" prefWidth="820.0" style="-fx-background-color: #677069;">
+         <children>
+            <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="188.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/cloud.png" />
+                         <!--image credits:-->
+                         <!--image made by Smashicons https://www.flaticon.com/authors/smashicons-->
+                         <!--from https://www.flaticon.com/
+                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0-->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calculatorTravelButton" contentDisplay="TOP" layoutX="273.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayTravel" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Travel" textFill="#d4ddd6" AnchorPane.leftAnchor="273.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/world.png" />
+                         <!--image credits:
+                         made by prettycons https://www.flaticon.com/authors/prettycons
+                         from https://www.flaticon.com/
+                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                         -->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calculatorHomeButton" contentDisplay="TOP" layoutX="358.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayHome" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Home" textFill="#d4ddd6" AnchorPane.leftAnchor="358.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/home.png" />
+                         <!--image credits:
+                         made by Smashicons https://www.flaticon.com/authors/smashicons
+                         from https://www.flaticon.com/
+                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                         -->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calculatorFoodButton" contentDisplay="TOP" layoutX="443.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayFood" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Food" textFill="#d4ddd6" AnchorPane.leftAnchor="443.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/coffee-cup.png" />
+                         <!--image credits:
+                         made by pixel-perfect https://www.flaticon.com/authors/pixel-perfect
+                         from https://www.flaticon.com/
+                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                         -->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calculatorShoppingButton" contentDisplay="TOP" layoutX="528.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayShopping" prefHeight="81.0" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Shopping" textFill="#d4ddd6" AnchorPane.leftAnchor="528.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/shopping-cart.png" />
+                         <!--image credits:
+                         made by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar
+                         from https://www.flaticon.com/
+                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                         -->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" mnemonicParsing="false" text="Save">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <Text layoutX="224.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. How many people live in your household?">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Slider fx:id="peopleInHouseholdSLider" blockIncrement="1.0" layoutX="260.0" layoutY="147.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label fx:id="peopleInHouseHoldLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="70.0" prefHeight="38.0" prefWidth="44.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Text layoutX="207.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. What is your gross annual household income?">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Slider fx:id="annualIncomeSlider" layoutX="224.0" layoutY="302.0" majorTickUnit="10.0" minorTickCount="0" prefHeight="38.0" prefWidth="388.0" showTickLabels="true" showTickMarks="true" />
+            <Text fill="#757575" layoutX="373.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="in 1000 euros">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="annualIncomeLabel" layoutX="634.0" layoutY="232.0" prefHeight="30.0" prefWidth="150.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
+         </children></AnchorPane>
+      <ScrollPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <AnchorPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+   </children>
+</AnchorPane>

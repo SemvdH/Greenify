@@ -17,6 +17,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
     @TestConfiguration
@@ -44,6 +46,9 @@ public class UserServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
+        User lola = new User(2L, "lola", "password");
+        when(userRepository.findByName(lola.getName()))
+                .thenReturn(lola);
     }
 
     @Test
@@ -142,6 +147,26 @@ public class UserServiceTest {
     @Test
     public void invalidLoginTest() {
         assertThrows(ApplicationException.class, () -> userService.loginUser(null, null));
+    }
+
+    @Test
+    public void addFriendTest() {
+        User alex = userRepository.findByName("alex");
+        User lola = userRepository.findByName("lola");
+        assertEquals(lola.getFriends(), alex.getFriends());
+        userService.addFriend("alex", "lola");
+        ArrayList<User> test = new ArrayList<User>();
+        test.add(lola);
+        assertEquals(alex.getFriends(), test);
+    }
+
+    @Test
+    public void leaderboardTest() {
+        User alex = userRepository.findByName("alex");
+        User lola = userRepository.findByName("lola");
+        userService.addFriend("alex", "lola");
+        assertEquals(userService.getLeaderboard("alex"), "friends=[{name=lola, footprint=0.0}]");
+
     }
 
 }
