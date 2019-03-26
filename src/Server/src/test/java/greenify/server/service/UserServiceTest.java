@@ -1,6 +1,5 @@
 package greenify.server.service;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -172,7 +171,7 @@ public class UserServiceTest {
         userService.addFriend("alex", "lola");
         ArrayList<User> test = new ArrayList<User>();
         test.add(lola);
-        assertArrayEquals(alex.getFriends(), test);
+        assertEquals(alex.getFriends(), test);
     }
 
     @Test
