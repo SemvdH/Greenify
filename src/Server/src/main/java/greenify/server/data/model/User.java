@@ -27,9 +27,6 @@ public class User {
 
     private int veganMeal;
 
-//    @ElementCollection
-//    @CollectionTable(name = "friends", joinColumns = @JoinColumn(name = "id"))
-//    @Column(name = "friendId")
     @ManyToMany
     @JoinColumn
     private Collection<User> friends;
