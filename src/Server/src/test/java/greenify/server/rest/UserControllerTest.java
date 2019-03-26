@@ -57,5 +57,6 @@ public class UserControllerTest {
 
     @Test
     public void setInputTest() {
+
    }
 }

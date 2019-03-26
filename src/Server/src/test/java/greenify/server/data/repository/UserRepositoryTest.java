@@ -1,7 +1,9 @@
 package greenify.server.data.repository;
 
 import static org.junit.Assert.assertEquals;
+
 import greenify.server.data.model.User;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
