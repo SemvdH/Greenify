@@ -4,8 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,7 +14,6 @@ import java.io.IOException;
 @SpringBootApplication
 public class Application extends javafx.application.Application {
     private static ConfigurableApplicationContext springContext;
-    //private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     /**
      * This (main) method starts launch.
