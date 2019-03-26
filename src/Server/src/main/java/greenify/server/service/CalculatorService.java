@@ -16,21 +16,27 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Service
-public class CalculatorService {
-    Logger logger = LoggerFactory.getLogger(UserService.class);
-
+class CalculatorService {
     @Autowired
     RestTemplate restTemplate;
+
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
 
-    protected Float invokeExternalService(Map<String, String> map) {
-        /**
+    /**
+     * This method invokes the external service that calculates a footprint.
+     * @param map used variables to calculate a footprint
+     * @return a footprint
+     */
+    Float invokeExternalService(Map<String, String> map) {
+        /*
          * curl -X GET "https://apis.berkeley.edu/coolclimate/footprint-sandbox?input_location_mode=1
          * &input_location=48001&input_income=1&input_size=0&input_footprint_transportation_miles1=3
          * &input_footprint_transportation_mpg1=5&input_footprint_transportation_fuel1=0"
@@ -52,7 +58,7 @@ public class CalculatorService {
                 entity, String.class);
         logger.info(response.getStatusCode().toString());
         logger.info(response.getBody());
-        String result = response.getBody().substring(response.getBody()
+        String result = response.getBody().substring(Objects.requireNonNull(response.getBody())
                 .indexOf("<result_grand_total>")
                 + 20, response.getBody().indexOf("</result_grand_total>"));
         // to do: in not HTTP 200 or exception case throws exception
@@ -60,7 +66,12 @@ public class CalculatorService {
         return Float.parseFloat(result);
     }
 
-    public Float calculateFootprint(User user) {
+    /**
+     * The method calculates a users footprint.
+     * @param user the user
+     * @return the footprint of the user
+     */
+    Float calculateFootprint(User user) {
         return invokeExternalService(user.getFootPrintInputs());
     }
 }

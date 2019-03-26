@@ -8,13 +8,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+    //    private static Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
 
     @Mock
     RestTemplate restTemplate;

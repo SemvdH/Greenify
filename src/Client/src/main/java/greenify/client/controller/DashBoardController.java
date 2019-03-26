@@ -22,9 +22,9 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
-//Class that controls the dashboard fxml file (the GUI Screen)
-
-
+/**
+ * Class that controls the dashboard fxml file (the GUI Screen).
+ */
 @Controller
 public class DashBoardController {
     @Autowired
@@ -32,7 +32,6 @@ public class DashBoardController {
 
     private FadeTransition fadeTrans;       //transition for switching between the different panels
     private int net;
-    private int count = 0;
 
     @FXML
     private AnchorPane dashboardPane;
@@ -42,8 +41,6 @@ public class DashBoardController {
     private AnchorPane activitiesPane;
     @FXML
     private AnchorPane friendsPane;
-    @FXML
-    private Label veganMealCounter;
     @FXML
     private Label totalVeganMealCounter;
     @FXML
@@ -65,11 +62,8 @@ public class DashBoardController {
     @FXML
     private Button calculateFootPrintButton;
 
-
-
-
     /**
-     * loads the the necessary things before anything else.
+     * Loads the the necessary things before anything else.
      */
     public void initialize() {
         //sets the text of the 'welcome back' text to include the username
@@ -90,7 +84,7 @@ public class DashBoardController {
     }
 
     /**
-     * adds a fade transition for switching between the different panes.
+     * Adds a fade transition for switching between the different panes.
      * @param node the node on which the transition needs to act
      */
     public void addFadeTransition(Node node) {
@@ -103,7 +97,7 @@ public class DashBoardController {
 
 
     /**
-     * displays the dashboard pane.
+     * Displays the dashboard pane.
      * @param event the event (clicking the button)
      */
     public void displayDashboard(ActionEvent event) {
@@ -117,7 +111,7 @@ public class DashBoardController {
     }
 
     /**
-     * displays the activities pane.
+     * Displays the activities pane.
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
@@ -131,7 +125,7 @@ public class DashBoardController {
     }
 
     /**
-     * displays the user profile pane.
+     * Displays the user profile pane.
      * @param event the event (clicking the button)
      */
     public void displayUser(ActionEvent event) {
@@ -144,6 +138,10 @@ public class DashBoardController {
 
     }
 
+    /**
+     * Displays the friends pane.
+     * @param event the event (clicking the button)
+     */
     public void displayFriends(ActionEvent event) {
         addFadeTransition(friendsPane);
         System.out.println("display friends");
@@ -151,6 +149,7 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
+
     }
 
     //sets the slide in transition for startup
@@ -159,11 +158,16 @@ public class DashBoardController {
         pathTrans.play();
     }
 
+    /**
+     * Opens the calculator.
+     * @throws IOException if the Application doesn't load.
+     */
     public void openCalculator() throws IOException {
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/calculator.fxml"));
         Scene scene = new Scene(calc);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/calculatorStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader()
+                .getResource("stylesheets/calculatorStyle.css").toExternalForm());
         Stage calcStage = new Stage();
 
         calcStage.setScene(scene);

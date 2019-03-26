@@ -4,11 +4,11 @@ import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -34,7 +34,7 @@ public class User {
     private Float footPrint = 0.0f;
 
     @ElementCollection
-    private Map<String,String> footPrintInputs = new HashMap<>();
+    private Map<String, String> footPrintInputs = new HashMap<>();
 
     @ManyToMany
     @JoinColumn
@@ -43,7 +43,7 @@ public class User {
     public User() {}
 
     /**
-     * makes a user object.
+     * This method makes a user object.
      * @param id the id of the user.
      * @param name the supplied username
      * @param password the supplied password
@@ -57,53 +57,81 @@ public class User {
     }
 
     /**
-     * gets the id.
-     * @return the id
+     * This method gets the ID of the user.
+     * @return the id of the user
      */
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    /**
+     * This method sets the ID of the user.
+     * @param id the id of the user
+     */
+    void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * gets the name.
-     * @return the name
+     * This method gets the name of the user.
+     * @return the name of the user
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * This method sets the name of the user.
+     * @param name the name of the user
+     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * gets the password.
-     * @return the password
+     * This method gets the password of the user.
+     * @return the password of the user
      */
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    /**
+     * This method sets the password of the user.
+     * @param password the password of the user
+     */
+    void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * gets the footPrint of user.
-     * @return the footPrint
+     * This method gets the footPrint of user.
+     * @return the footprint of the user
      */
     public Float getFootPrint() {
         return footPrint;
     }
 
+    /**
+     * This method sets the footprint of a user.
+     * @param footPrint footprint of a user
+     */
+    public void setFootPrint(Float footPrint) {
+        this.footPrint = footPrint;
+    }
+
+    /**
+     * This method gets the footprint inputs of the user.
+     * @return footprint inputs of the user
+     */
     public Map<String, String> getFootPrintInputs() {
         return footPrintInputs;
     }
 
+    /**
+     * This method sets the footprint inputs of the user.
+     * @param footPrintInputs footprint inputs of the user
+     */
     public void setFootPrintInputs(Map<String, String> footPrintInputs) {
         this.footPrintInputs = footPrintInputs;
     }
@@ -126,13 +154,8 @@ public class User {
         }
     }
 
-    public void setFootPrint(Float footPrint) {
-        this.footPrint = footPrint;
-    }
-
-
     /**
-     * Returns a human readable object. It's in JSON.
+     * This method gets a human readable (JSON) object.
      * @return the JSON form of the object.
      */
     @Override
@@ -145,7 +168,7 @@ public class User {
      * Returns the name and score of the friends in JSON. Needed for the leaderboard.
      * @return a JSON object of the friendlist with only names and scores.
      */
-    public String friendsToString(){
+    public String friendsToString() {
         String result = "friends=[";
         for (User u : friends) {
             result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
@@ -156,18 +179,24 @@ public class User {
         return result + "]";
     }
 
+     /** This method checks whether two users are equal or not.
+     * @param other an other user
+     * @return users are (not) equal
+     */
     @Override
     public boolean equals(Object other) {
         if (other instanceof User) {
-            User that = (User)other;
-            if (that.id == this.id && that.name.equals(this.name)
-                    && that.password.equals(this.password)) {
-                return true;
-            }
+            User that = (User) other;
+            return that.id.equals(this.id) && that.name.equals(this.name)
+                    && that.password.equals(this.password);
         }
         return false;
     }
 
+    /**
+     * This method gets the hashcode of a user.
+     * @return hashcode of a user
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, name, password);

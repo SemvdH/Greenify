@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
-    Logger logger = LoggerFactory.getLogger(UserService.class);
+    @Autowired
+    CalculatorService calculatorService;
 
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    CalculatorService calculatorService;
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     /**
-     * registers the user.
-     * @param name the username of the user
-     * @param password the password of the user
-     * @return a userDTO of the registered user
+     * This method registers the user.
+     * @param name name of the user
+     * @param password password of the user
+     * @return the userDto of the user
      */
     public UserDto registerUser(String name, String password) {
         User user = userRepository.findByName(name);
@@ -42,10 +42,10 @@ public class UserService {
     }
 
     /**
-     * logs the user in.
-     * @param name the username of the user
-     * @param password the password of the user
-     * @return a userDTO of the logged in user
+     * This method logs in the user.
+     * @param name name of the user
+     * @param password password of the user
+     * @return the userDto of the user
      */
     public UserDto loginUser(String name, String password) {
         User user = userRepository.findByName(name);
@@ -60,6 +60,7 @@ public class UserService {
     }
 
     /**
+<<<<<<< HEAD
      * Adds a friend to the friendlist of the user.
      * @param name the username of the user
      * @param friend the name of the friend you want to add.
@@ -85,10 +86,10 @@ public class UserService {
     }
 
     /**
-     * The method sets input value.
-     * @param name of the user
-     * @param inputName is the name of the setting input
-     * @param value of the input
+     * This method sets input for a user.
+     * @param name name of the user
+     * @param inputName name of the input of the user
+     * @param value value of the input
      */
     public void setInput(String name, String inputName, String value) {
         User user = userRepository.findByName(name);
@@ -106,31 +107,37 @@ public class UserService {
     }
 
     /**
-     * Gets the input value of an input.
+     * This method gets the input value of an input.
      * @param name of the user
      * @param inputName name of the input
      * @return input value
      */
-    public String getInput(String name, String inputName) {
+    String getInput(String name, String inputName) {
         User user = userRepository.findByName(name);
         if (InputValidator.isValidItem(inputName)) {
-            String item = user.getFootPrintInputs().get(inputName);
-            return item;
+            return user.getFootPrintInputs().get(inputName);
         } else {
             throw new ApplicationException("Invalid input");
         }
     }
 
-    public Float getFootprint(String name) {
+    /**
+     * This method gets the footprint of a user.
+     * @param name name of the user
+     * @return footprint of the user
+     */
+    Float getFootprint(String name) {
         User user = userRepository.findByName(name);
         return calculatorService.calculateFootprint(user);
     }
 
+    /**
+     * This method gets a JSON of XML with all users.
+     * @return JSON/XML of all users
+     */
     @GetMapping(path = "/all")
     @ResponseBody
-    public Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
+    Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }
 }
-
