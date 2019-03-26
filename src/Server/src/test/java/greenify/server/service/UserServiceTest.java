@@ -174,4 +174,13 @@ public class UserServiceTest {
         assertEquals(alex.getFriends(), test);
     }
 
+    @Test
+    public void leaderboardTest() {
+        User alex = userRepository.findByName("alex");
+        User lola = userRepository.findByName("lola");
+        userService.addFriend("alex", "lola");
+        assertEquals(userService.getLeaderboard("alex"), "friends=[{name=lola, footprint=0.0}]");
+
+    }
+
 }

@@ -75,6 +75,16 @@ public class UserService {
     }
 
     /**
+     * Returns the friendlist of the user in JSON.
+     * @param name the username of the user
+     * @return a userDTO of the logged in user
+     */
+    public String getLeaderboard(String name) {
+        User user = userRepository.findByName(name);
+        return user.friendsToString();
+    }
+
+    /**
      * The method sets input value.
      * @param name of the user
      * @param inputName is the name of the setting input
