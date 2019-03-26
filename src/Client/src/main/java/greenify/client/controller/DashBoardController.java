@@ -158,11 +158,16 @@ public class DashBoardController {
         pathTrans.play();
     }
 
+    /**
+     * Opens the calculator.
+     * @throws IOException if the Application doesn't load.
+     */
     public void openCalculator() throws IOException {
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/calculator.fxml"));
         Scene scene = new Scene(calc);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/calculatorStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader()
+                .getResource("stylesheets/calculatorStyle.css").toExternalForm());
         Stage calcStage = new Stage();
 
         calcStage.setScene(scene);

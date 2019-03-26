@@ -99,6 +99,12 @@ public class UserService {
                 .encode().toUri(), String.class);
     }
 
+    /**
+     * Adds a friend to the user.
+     * @param name the username of the current user.
+     * @param friend the username of the friend you want to add.
+     * @return a userDTO
+     */
     @SuppressWarnings("Duplicates")
     public String addFriend(String name, String friend) {
         HttpHeaders headers = new HttpHeaders();

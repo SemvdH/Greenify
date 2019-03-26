@@ -4,11 +4,11 @@ import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -165,11 +165,10 @@ public class User {
     }
 
     /**
-<<<<<<< HEAD
      * Returns the name and score of the friends in JSON. Needed for the leaderboard.
      * @return a JSON object of the friendlist with only names and scores.
      */
-    public String friendsToString(){
+    public String friendsToString() {
         String result = "friends=[";
         for (User u : friends) {
             result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";

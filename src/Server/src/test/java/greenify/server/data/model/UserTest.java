@@ -1,9 +1,10 @@
 package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import greenify.common.ApplicationException;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import greenify.common.ApplicationException;
 
 import org.junit.Test;
 
