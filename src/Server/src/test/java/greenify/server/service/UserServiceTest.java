@@ -49,7 +49,8 @@ public class UserServiceTest {
                 .thenReturn(alex);
         User lola = new User(2L, "lola", "password");
         when(userRepository.findByName(lola.getName()))
-                .thenReturn(lola);    }
+                .thenReturn(lola);
+    }
 
     @Test
     public void validLoginTest() {

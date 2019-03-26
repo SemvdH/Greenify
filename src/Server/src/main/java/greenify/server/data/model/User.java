@@ -7,16 +7,11 @@ import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.*;
-import java.util.logging.Logger;
 import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -27,7 +22,6 @@ public class User {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -114,15 +108,19 @@ public class User {
         this.footPrintInputs = footPrintInputs;
     }
 
-    public ArrayList<User> getFriends(){
+    public ArrayList<User> getFriends() {
         return (ArrayList<User>)this.friends;
     }
 
-    public void addFriend(User user){
-        if(user.equals(this)){
+    /**
+     * Adds a friend to the friendslist of the user.
+     * @param user the friend you want to add.
+     */
+    public void addFriend(User user) {
+        if (user.equals(this)) {
             throw new ApplicationException("Cannot add yourself as a friend");
         }
-        else{
+        else {
             friends.add(user);
             System.out.print("Friend added!");
         }
@@ -143,12 +141,16 @@ public class User {
                 + this.password + ")";
     }
 
+    /**
+     * Returns the name and score of the friends in JSON. Needed for the leaderboard.
+     * @return a JSON object of the friendlist with only names and scores.
+     */
     public String friendsToString(){
         String result = "friends=[";
-        for(User u : friends){
+        for (User u : friends) {
             result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
         }
-        if(result.endsWith(", ")){
+        if (result.endsWith(", ")) {
             return result.substring(0, result.lastIndexOf(",")) + "]";
         }
         return result + "]";

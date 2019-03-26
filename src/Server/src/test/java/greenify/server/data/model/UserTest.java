@@ -84,7 +84,7 @@ public class UserTest {
     }
 
     @Test
-    public void getFriendEmpty(){
+    public void getFriendEmpty() {
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
@@ -92,7 +92,7 @@ public class UserTest {
     }
 
     @Test
-    public void addFriendTest(){
+    public void addFriendTest() {
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
@@ -103,7 +103,7 @@ public class UserTest {
     }
 
     @Test
-    public void addYourselfTest(){
+    public void addYourselfTest() {
         User test = new User(1L, "greenify", "password");
         assertEquals(test.getFriends(), new ArrayList<User>());
         assertThrows(ApplicationException.class, () -> {
@@ -113,7 +113,7 @@ public class UserTest {
 
 
     @Test
-    public void friendsToStringTest(){
+    public void friendsToStringTest() {
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         first.addFriend(second);
