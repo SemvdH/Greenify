@@ -1,18 +1,17 @@
 package greenify.server.data.model;
 
+import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,6 +20,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -36,6 +36,10 @@ public class User {
     @ElementCollection
     private Map<String,String> footPrintInputs = new HashMap<>();
 
+    @ManyToMany
+    @JoinColumn
+    private Collection<User> friends;
+
     public User() {}
 
     /**
@@ -49,6 +53,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.setFootPrintInputs(InputValidator.getDefaultValues());
+        this.friends = new ArrayList<User>();
     }
 
     /**
@@ -103,6 +108,24 @@ public class User {
         this.footPrintInputs = footPrintInputs;
     }
 
+    public ArrayList<User> getFriends() {
+        return (ArrayList<User>)this.friends;
+    }
+
+    /**
+     * Adds a friend to the friendslist of the user.
+     * @param user the friend you want to add.
+     */
+    public void addFriend(User user) {
+        if (user.equals(this)) {
+            throw new ApplicationException("Cannot add yourself as a friend");
+        }
+        else {
+            friends.add(user);
+            System.out.print("Friend added!");
+        }
+    }
+
     public void setFootPrint(Float footPrint) {
         this.footPrint = footPrint;
     }
@@ -116,6 +139,21 @@ public class User {
     public String toString() {
         return "User(id=" + this.id + ", name=" + this.name + ", password="
                 + this.password + ")";
+    }
+
+    /**
+     * Returns the name and score of the friends in JSON. Needed for the leaderboard.
+     * @return a JSON object of the friendlist with only names and scores.
+     */
+    public String friendsToString(){
+        String result = "friends=[";
+        for (User u : friends) {
+            result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
+        }
+        if (result.endsWith(", ")) {
+            return result.substring(0, result.lastIndexOf(",")) + "]";
+        }
+        return result + "]";
     }
 
     @Override

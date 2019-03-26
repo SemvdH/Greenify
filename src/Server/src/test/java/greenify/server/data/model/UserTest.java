@@ -2,9 +2,13 @@ package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import greenify.common.ApplicationException;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class UserTest {
     @Test
@@ -77,6 +81,43 @@ public class UserTest {
         User second = new User(1L, "greenify", "password");
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    public void getFriendEmpty() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        assertEquals(first.getFriends(), second.getFriends());
+        assertEquals(first.getFriends(), new ArrayList<User>());
+    }
+
+    @Test
+    public void addFriendTest() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        assertEquals(first.getFriends(), second.getFriends());
+        first.addFriend(second);
+        ArrayList<User> test = new ArrayList<User>();
+        test.add(second);
+        assertEquals(first.getFriends(), test);
+    }
+
+    @Test
+    public void addYourselfTest() {
+        User test = new User(1L, "greenify", "password");
+        assertEquals(test.getFriends(), new ArrayList<User>());
+        assertThrows(ApplicationException.class, () -> {
+            test.addFriend(test);
+        });
+    }
+
+
+    @Test
+    public void friendsToStringTest() {
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        first.addFriend(second);
+        assertEquals(first.friendsToString(), "friends=[{name=merel, footprint=0.0}]");
     }
 }
 

@@ -94,4 +94,18 @@ public class UserService {
                 .encode().toUri(), String.class);
         return result;
     }
+
+    @SuppressWarnings("Duplicates")
+    public String addFriend(String name, String friend) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addFriend")
+                .queryParam("name", name)
+                .queryParam("friend",friend);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        String result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), String.class);
+        return result;
+    }
 }
