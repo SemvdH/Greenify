@@ -1,6 +1,7 @@
 package greenify.client.controller;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
+import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
@@ -8,13 +9,18 @@ import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.io.IOException;
 
 //Class that controls the dashboard fxml file (the GUI Screen)
 
@@ -56,6 +62,9 @@ public class DashBoardController {
     private AnchorPane menuBar;
     @FXML
     private Button addNewActivityButton;
+    @FXML
+    private Button calculateFootPrintButton;
+
 
 
 
@@ -72,6 +81,12 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
+
+
+    }
+
+    public UserService getUserService() {
+        return userService;
     }
 
     /**
@@ -136,13 +151,24 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
-
     }
 
     //sets the slide in transition for startup
     public void addSlideTransition(Node node, Line path1) {
         PathTransition pathTrans = new PathTransition(Duration.millis(1100), path1, node);
         pathTrans.play();
+    }
+
+    public void openCalculator() throws IOException {
+        Parent calc = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/calculator.fxml"));
+        Scene scene = new Scene(calc);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("stylesheets/calculatorStyle.css").toExternalForm());
+        Stage calcStage = new Stage();
+
+        calcStage.setScene(scene);
+        calcStage.setTitle("Calculate CO2 footprint - " + userService.currentUser.getName());
+        calcStage.show();
     }
 
     //class for the animations on the navigation buttons
@@ -169,5 +195,6 @@ public class DashBoardController {
             scaleDown.setToX(1.0);
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
+
     }
 }
