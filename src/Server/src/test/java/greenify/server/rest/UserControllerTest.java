@@ -56,7 +56,6 @@ public class UserControllerTest {
     }
 
     @Test
-    public void setInputTest() throws Exception {
-
-    }
+    public void setInputTest() {
+   }
 }
