@@ -68,7 +68,8 @@ public class UserServiceTest {
 
     @Test
     public void registerExceptionTest() {
-        assertThrows(ApplicationException.class, () -> userService.registerUser("alex", "password"));
+        assertThrows(ApplicationException.class, () ->
+                userService.registerUser("alex", "password"));
     }
 
     @Test
@@ -92,7 +93,8 @@ public class UserServiceTest {
 
     @Test
     public void setInputApplicationTestValue() {
-        assertThrows(ApplicationException.class, () -> userService.setInput("tom", "transportation_num_vehicles", "5.5"));
+        assertThrows(ApplicationException.class, () ->
+                userService.setInput("tom", "transportation_num_vehicles", "5.5"));
     }
 
 
