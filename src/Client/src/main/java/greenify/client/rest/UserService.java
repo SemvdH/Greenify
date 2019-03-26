@@ -96,7 +96,7 @@ public class UserService {
     }
 
     @SuppressWarnings("Duplicates")
-    public String updaaddFriend(String name, String friend) {
+    public String addFriend(String name, String friend) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setInput")
