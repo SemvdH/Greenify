@@ -16,8 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Objects;
 
-//class that controls the actions for the login screen
+/**
+ * Class that controls the actions for the login screen.
+ */
 @Controller
 public class UserController {
     @Autowired
@@ -33,10 +36,10 @@ public class UserController {
     private Button loginButton;
 
     @FXML
-    private Button signupButton;
+    private Button signUpButton;
 
     /**
-     * handles when the user clicks on the login button.
+     * Handles when the user clicks on the login button.
      * it checks if the username and password fields are filled
      * and gives alerts if they aren't filled in.
      * @param event the click of the login button
@@ -75,18 +78,18 @@ public class UserController {
     }
 
     /**
-     * opens the dashboard stage.
+     * Opens the dashboard stage.
      * @throws IOException exception if fxml file can't be found
      * @author sem
      */
-    public void openDashboard() throws IOException {
+    private void openDashboard() throws IOException {
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(dash);
         //add the stylesheet for the CSS
-        scene.getStylesheets().add(getClass().getClassLoader()
-                .getResource("stylesheets/dashboardStyle.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader()
+                .getResource("stylesheets/dashboardStyle.css")).toExternalForm());
         Stage appStage = new Stage();
         appStage.setScene(scene);
         //set the title
@@ -94,8 +97,10 @@ public class UserController {
         appStage.show();
     }
 
-    //class for showing the alerts
-    public static class AlertHelper {
+    /**
+     * Class for showing the alerts.
+     */
+    static class AlertHelper {
         /**
          * alerts for the login screen.
          * @param alertType the type of alert
@@ -103,10 +108,10 @@ public class UserController {
          * @param title the title given to the displayed alert
          * @param message the message displayed in the alert
          */
-        public static void showAlert(Alert.AlertType alertType,
-                                     Window owner,
-                                     String title,
-                                     String message) {
+        static void showAlert(Alert.AlertType alertType,
+                              Window owner,
+                              String title,
+                              String message) {
             Alert alert = new Alert(alertType);
             alert.setTitle(title);
             alert.setHeaderText(null);

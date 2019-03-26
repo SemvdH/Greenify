@@ -17,7 +17,7 @@
             </font>
         </Text>
         <Button fx:id="loginButton" layoutX="419.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="26.0" prefWidth="96.0" text="Login" textAlignment="CENTER" />
-        <Button fx:id="signupButton" layoutX="42.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="10.0" prefWidth="96.0" text="Sign up!" />
+        <Button fx:id="signUpButton" layoutX="42.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="10.0" prefWidth="96.0" text="Sign up!" />
         <PasswordField fx:id="passwordField" layoutX="318.0" layoutY="210.0" prefHeight="42.0" prefWidth="303.0" promptText="Password" />
         <Hyperlink alignment="CENTER" layoutX="384.0" layoutY="301.0" prefHeight="42.0" prefWidth="173.0" text="Forgot Password?" textAlignment="CENTER" textFill="#3db25a" textOverrun="LEADING_WORD_ELLIPSIS">
             <font>
