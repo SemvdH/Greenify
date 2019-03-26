@@ -55,8 +55,8 @@ public class UserControllerTest {
                 .andExpect(status().isOk()).andExpect(content().json("{'id':1,'name':'ceren'}"));
     }
 
-    @Test
-    public void setInputTest() {
-
-   }
+    //@Test
+    //public void setInputTest() {
+    //
+    //}
 }

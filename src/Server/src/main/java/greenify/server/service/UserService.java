@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    @Autowired
+    CalculatorService calculatorService;
 
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    CalculatorService calculatorService;
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     /**
      * This method registers the user.
@@ -107,7 +107,7 @@ public class UserService {
     }
 
     /**
-     * This method returns the input value of an input.
+     * This method gets the input value of an input.
      * @param name of the user
      * @param inputName name of the input
      * @return input value
@@ -122,7 +122,7 @@ public class UserService {
     }
 
     /**
-     * This method returns the footprint of a user.
+     * This method gets the footprint of a user.
      * @param name name of the user
      * @return footprint of the user
      */
@@ -132,7 +132,7 @@ public class UserService {
     }
 
     /**
-     * This method returns a JSON of XML with all users.
+     * This method gets a JSON of XML with all users.
      * @return JSON/XML of all users
      */
     @GetMapping(path = "/all")

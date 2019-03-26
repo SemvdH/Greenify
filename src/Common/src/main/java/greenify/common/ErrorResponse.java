@@ -17,7 +17,7 @@ public class ErrorResponse {
     public ErrorResponse() { }
 
     /**
-     * This method returns the message.
+     * This method gets the message.
      * @return the message
      */
     public String getMessage() {

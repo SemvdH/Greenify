@@ -6,6 +6,7 @@
   resorting to remote interfaces (e.g., web services),
   where each call is an expensive operation.
  */
+
 package greenify.common;
 
 public class UserDto {

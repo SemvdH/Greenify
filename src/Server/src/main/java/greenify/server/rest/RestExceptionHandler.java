@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-//class that handles exceptions for the rest server
+/**
+ * This class handles exceptions for the REST server.
+ */
 @RestControllerAdvice
-public class RestExceptionHandler {
+class RestExceptionHandler {
     @ExceptionHandler(ApplicationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public static ErrorResponse applicationException(ApplicationException ex) {
+    static ErrorResponse applicationException(ApplicationException ex) {
         return new ErrorResponse(ex.getMessage());
     }
 }

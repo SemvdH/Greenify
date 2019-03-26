@@ -37,8 +37,7 @@ public class CalculatorServiceTest {
 
         @Bean
         public CalculatorService calculatorService() {
-            CalculatorService calculatorService = new CalculatorService();
-            return calculatorService;
+            return new CalculatorService();
         }
 
         @Bean
