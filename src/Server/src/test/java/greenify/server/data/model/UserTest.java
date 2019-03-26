@@ -2,8 +2,10 @@ package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import greenify.common.ApplicationException;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -90,7 +92,7 @@ public class UserTest {
     }
 
     @Test
-    public void addFriend(){
+    public void addFriendTest(){
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
@@ -100,5 +102,13 @@ public class UserTest {
         test.add(second);
         assertEquals(first.getFriends(), test);
     }
+
+    @Test
+    public void addYourselfTest(){
+        User test = new User(1L, "greenify", "password");
+        assertEquals(test.getFriends(), new ArrayList<User>());
+        assertThrows(ApplicationException.class, () -> {
+            test.addFriend(test);
+        });    }
 }
 
