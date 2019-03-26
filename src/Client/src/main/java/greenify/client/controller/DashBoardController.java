@@ -121,11 +121,7 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayActivities(ActionEvent event) {
-
-
         addFadeTransition(activitiesPane);
-
-        net = userService.currentUser.getVeganMeal() + count;
         totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -155,23 +151,6 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
-    }
-
-
-    /**
-     * adds a vegetarian meal.
-     * @param event the event (clicking the button)
-     */
-    public void addVeganMeal(ActionEvent event) {
-
-        count++;
-        net = userService.currentUser.getVeganMeal() + count;
-        totalVeganMealCounter.setText("" + net);
-        veganMealCounter.setText("" + count);
-        System.out.println(userService);
-        userService.addVeganMeal(userService.currentUser.getId(),
-                userService.currentUser.getName());
-        System.out.println("Vegetarian meal is added");
     }
 
     //sets the slide in transition for startup

@@ -6,26 +6,6 @@ Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getti
 **Checkstyle**:  
 Run `maven site`
 
-# Daan Sneep (4849515, dsneep)
-
-![My Picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Daan_Sneep.png "The one and only")
-
-## Personal Development Plan
-
-My Core Quadrant is visible ![here](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Daan_Sneep_PDP_Core_Quadrant.PNG)
-
-### G – Goal
-After completing this project, I want to be able to work on a programming project efficiently with other people. I have never attempted anything of this scale and find that it is a core requirement of becoming a good programmer, as in most companies programming is done within teams, not alone. 
-
-### R – Reality
-With this project I hope to work towards this goal. I have never programmed as a team on this scale, so this project will be the first step towards my goal. 
-
-### O – Options
-During this quarter the project will be my only option towards achieving this goal. If I am unhappy with my progress towards my goal by the end of this quarter, I must try to implement the same structure of teamwork in my next projects, and try to learn from the mistakes I made when working as a team in this project.
-
-### W – Will
-I will try to make sure to adhere to the structure we establish as a group which describes how we will work together. This way, we all do the work we are supposed to do, and none of us will be overloaded with work. I will also try to make use of all the tools available to us which can improve the quality of programming together (scrum, git, GitLab etc.).
-
 # Merel Steenbergen (masteenbergen)
 ![Picture:](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Merel_Steenbergen.jpg)
 
@@ -55,10 +35,10 @@ Actively watching myself and letting my teammates know that they need to be clea
 I’m just going to keep working on myself and hope my teammates will work with me. It also helps to work in different teams to get a much more diverse experience. Every team is different, so I’m just going to wait what this team will bring me and how I will have to adjust myself to make the team efficient. 
 
 # Sem van der Hoeven (4896726, semvanderhoeve)
-![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
+![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
 
 ## Personal development plan
-![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
+![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
 
 ### G - Goal
 My goal with this project is most of all to be able to efficiently work with a group of people. This is important to me because  I have not worked on a (development) project with a (big) group of people before. I believe I have succeeded in this goal when our project is finished and we have got a passing grade.

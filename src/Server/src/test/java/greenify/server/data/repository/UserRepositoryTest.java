@@ -17,7 +17,7 @@ public class UserRepositoryTest {
 
     @Test
     public void findByUsernameTest() throws Exception {
-        repository.save(new User(296L, "cugurlu", "password", 6));
+        repository.save(new User(296L, "cugurlu", "password"));
         User user = this.repository.findByName("cugurlu");
         assertEquals(user.getName(), "cugurlu");
     }
