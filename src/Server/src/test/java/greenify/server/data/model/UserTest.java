@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class UserTest {
     @Test
     public void setAndGetTest() {
@@ -77,6 +79,26 @@ public class UserTest {
         User second = new User(1L, "greenify", "password");
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    public void getFriendEmpty(){
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        assertEquals(first.getFriends(), second.getFriends());
+        assertEquals(first.getFriends(), new ArrayList<User>());
+    }
+
+    @Test
+    public void addFriend(){
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        assertEquals(first.getFriends(), second.getFriends());
+        System.out.print(second);
+        first.addFriend(second);
+        ArrayList<User> test = new ArrayList<User>();
+        test.add(second);
+        assertEquals(first.getFriends(), test);
     }
 }
 

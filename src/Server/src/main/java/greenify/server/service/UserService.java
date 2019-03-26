@@ -60,6 +60,21 @@ public class UserService {
     }
 
     /**
+     * Adds a friend to the friendlist of the user.
+     * @param name the username of the user
+     * @param friend the name of the friend you want to add.
+     * @return a userDTO of the logged in user
+     */
+    public void addFriend(String name, String friend) {
+        User user = userRepository.findByName(name);
+        User add = userRepository.findByName(friend);
+        if (add == null) {
+            throw new ApplicationException("User does not exist");
+        }
+        user.addFriend(add);
+    }
+
+    /**
      * The method sets input value.
      * @param name of the user
      * @param inputName is the name of the setting input

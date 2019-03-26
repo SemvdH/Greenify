@@ -1,5 +1,6 @@
 package greenify.server.data.model;
 
+import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.*;
+import java.util.logging.Logger;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -57,6 +59,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.setFootPrintInputs(InputValidator.getDefaultValues());
+        this.friends = new ArrayList<User>();
     }
 
     /**
@@ -113,6 +116,16 @@ public class User {
 
     public ArrayList<User> getFriends(){
         return (ArrayList<User>)this.friends;
+    }
+
+    public void addFriend(User user){
+        if(user.equals(this)){
+            throw new ApplicationException("Cannot add yourself as a friend");
+        }
+        else{
+            friends.add(user);
+            System.out.print("Friend added!");
+        }
     }
 
     public void setFootPrint(Float footPrint) {
