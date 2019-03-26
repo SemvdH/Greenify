@@ -52,7 +52,7 @@ public class User {
     }
 
     /**
-     * This method returns the ID of the user.
+     * This method gets the ID of the user.
      * @return the id of the user
      */
     public Long getId() {
@@ -68,7 +68,7 @@ public class User {
     }
 
     /**
-     * This method returns the name of the user.
+     * This method gets the name of the user.
      * @return the name of the user
      */
     public String getName() {
@@ -84,7 +84,7 @@ public class User {
     }
 
     /**
-     * This method returns the password of the user.
+     * This method gets the password of the user.
      * @return the password of the user
      */
     public String getPassword() {
@@ -100,7 +100,7 @@ public class User {
     }
 
     /**
-     * This method returns the footPrint of user.
+     * This method gets the footPrint of user.
      * @return the footprint of the user
      */
     public Float getFootPrint() {
@@ -116,7 +116,7 @@ public class User {
     }
 
     /**
-     * This method returns the footprint inputs of the user.
+     * This method gets the footprint inputs of the user.
      * @return footprint inputs of the user
      */
     public Map<String, String> getFootPrintInputs() {
@@ -132,7 +132,7 @@ public class User {
     }
 
     /**
-     * This method returns a human readable (JSON) object.
+     * This method gets a human readable (JSON) object.
      * @return the JSON form of the object.
      */
     @Override
@@ -157,7 +157,7 @@ public class User {
     }
 
     /**
-     * This method returns the hashcode of a user.
+     * This method gets the hashcode of a user.
      * @return hashcode of a user
      */
     @Override

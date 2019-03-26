@@ -1,5 +1,8 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import greenify.server.InputValidator;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -9,20 +12,20 @@ public class InputValidatorTest {
 
     @Test
     public void validItemIdTest() {
-        InputValidator inputValidator = new InputValidator();
-        Assert.assertEquals(inputValidator.isValidItem("transportation_num_vehicles"), true);
-        Assert.assertEquals(inputValidator.isValidItem("test"), false);
+        new InputValidator();
+        assertEquals(InputValidator.isValidItem("transportation_num_vehicles"), true);
+        assertEquals(InputValidator.isValidItem("test"), false);
     }
 
     @Test
     public void validItemValueTest() {
-        Assert.assertEquals(true, InputValidator
+        assertTrue(InputValidator
                 .isValidItemValue("transportation_num_vehicles", "4"));
-        Assert.assertEquals(false, InputValidator
+        assertFalse(InputValidator
                 .isValidItemValue("transportation_num_vehicles", "3.5"));
-        Assert.assertEquals(false, InputValidator.isValidItemValue( "food_grains", "hello"));
-        Assert.assertEquals(true, InputValidator.isValidItemValue("food_grains", "5"));
-        Assert.assertEquals(true, InputValidator.isValidItemValue("food_grains", "3.5"));
+        assertFalse(InputValidator.isValidItemValue("food_grains", "hello"));
+        assertTrue(InputValidator.isValidItemValue("food_grains", "5"));
+        assertTrue(InputValidator.isValidItemValue("food_grains", "3.5"));
     }
 
     @Test
@@ -54,6 +57,6 @@ public class InputValidatorTest {
                 put("shopping_services", "2413");
             }
         };
-        Assert.assertEquals(InputValidator.getDefaultValues(), map);
+        assertEquals(InputValidator.getDefaultValues(), map);
     }
 }

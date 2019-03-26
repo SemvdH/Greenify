@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+
 import greenify.common.ErrorResponse;
 import org.junit.Test;
 
