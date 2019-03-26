@@ -8,17 +8,15 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class UserService {
+    public UserDto currentUser;
+
     @Autowired
     RestTemplate restTemplate;
-
-    public UserDto currentUser;
 
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -26,7 +24,7 @@ public class UserService {
     }
 
     /**
-     * registers the user.
+     * Registers the user.
      * @param name the username of the user
      * @param password the password of the user
      * @return a userDTO
@@ -37,7 +35,7 @@ public class UserService {
     public UserDto registerUser(String name, String password) {
         //headers for http
         HttpHeaders headers = new HttpHeaders();
-        //set the accept header in JSÖN value
+        //set the accept header in JSON value
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         //connect to the server with the needed url
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
@@ -47,7 +45,7 @@ public class UserService {
         //getting the password from the database
 
         //create a http entity to be sent
-        HttpEntity<?> entity = new HttpEntity<>(headers);
+        new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
 
         //the result to be sent is a userDto
@@ -59,7 +57,7 @@ public class UserService {
     }
 
     /**
-     * sign ins the user.
+     * Signs in the user.
      * @param name the username of the user
      * @param password the password of the user
      * @return a userDTO
@@ -72,7 +70,7 @@ public class UserService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
                 .queryParam("name", name)
                 .queryParam("password", password);
-        HttpEntity<?> entity = new HttpEntity<>(headers);
+        new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         UserDto result = this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), UserDto.class);
@@ -80,6 +78,13 @@ public class UserService {
         return result;
     }
 
+    /**
+     * Updates the input of the user.
+     * @param name name of the user
+     * @param inputName name of the input
+     * @param value value of the input
+     * @return returns the result
+     */
     @SuppressWarnings("Duplicates")
     public String updateInput(String name, String inputName, String value) {
         HttpHeaders headers = new HttpHeaders();
@@ -88,11 +93,10 @@ public class UserService {
                 .queryParam("name", name)
                 .queryParam("inputName", inputName)
                 .queryParam("value",value);
-        HttpEntity<?> entity = new HttpEntity<>(headers);
+        new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        String result = this.restTemplate.getForObject(builder.build()
+        return this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), String.class);
-        return result;
     }
 
     @SuppressWarnings("Duplicates")

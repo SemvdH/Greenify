@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.shape.Line;
+//import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Duration;
@@ -18,7 +18,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.concurrent.TimeUnit;
 
-//class that controls the actions for the register window
+/**
+ * Class that controls the actions for the register window.
+ */
 @Controller
 public class RegisterWindowController {
 
@@ -32,12 +34,17 @@ public class RegisterWindowController {
     @FXML
     private PasswordField passwordField2;
     @FXML
-    private Button signupButton;
-    @FXML
-    private Line uNamePathLine;
+    private Button signUpButton;
+    //@FXML
+    //private Line uNamePathLine;
 
+    /**
+     * Initializes the animation.
+     * @throws InterruptedException exception when interrupted
+     */
     public void initialize() throws InterruptedException {
-        //        PathTransition pathTransUName = new PathTransition(Duration.millis(1100), uNamePathLine, userNameText);
+        //        PathTransition pathTransUName = new PathTransition(Duration.millis(1100),
+        //        uNamePathLine, userNameText);
         //        pathTransUName.play();
         addSlideAnimation(1100, userNameText, -300);
         addSlideAnimation(1100, passwordField, 300);
@@ -46,7 +53,13 @@ public class RegisterWindowController {
 
     }
 
-    public void addSlideAnimation(int duration, Node node, int from) {
+    /**
+     * Adds the slide animation.
+     * @param duration the duration
+     * @param node the node
+     * @param from from where
+     */
+    private void addSlideAnimation(int duration, Node node, int from) {
         TranslateTransition slideIn = new TranslateTransition(Duration.millis(duration), node);
         slideIn.setFromX(from);
         slideIn.setToX(0);
@@ -54,13 +67,13 @@ public class RegisterWindowController {
     }
 
     /**
-     * signs the user up.
+     * Signs up the user.
      * @param event the click of the sign up button
      */
     @FXML
     public void handleSignUpButton(ActionEvent event) {
         //set the window to the current window (for displaying the alerts)
-        Window owner = signupButton.getScene().getWindow();
+        Window owner = signUpButton.getScene().getWindow();
         //check if the username field is empty
         if (userNameText.getText().isEmpty()) {
             //if so, display an alert

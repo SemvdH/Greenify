@@ -16,7 +16,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class Application extends javafx.application.Application {
     private static ConfigurableApplicationContext springContext;
-//    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    //private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     /**
      * This (main) method starts launch.
@@ -53,7 +53,8 @@ public class Application extends javafx.application.Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent rootNode = load(this.getClass().getClassLoader().getResource("fxml/LoginWindow.fxml"));
+        Parent rootNode = load(this.getClass().getClassLoader()
+                .getResource("fxml/LoginWindow.fxml"));
         primaryStage.setTitle("Greenify");
         Scene scene = new Scene(rootNode);
         primaryStage.setScene(scene);
