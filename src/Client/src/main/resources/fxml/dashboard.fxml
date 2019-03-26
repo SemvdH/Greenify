@@ -201,7 +201,7 @@
       <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="703.0" prefWidth="820.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
-            <Label fx:id="welcomeBacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
+            <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="30.0" />
                </font>
