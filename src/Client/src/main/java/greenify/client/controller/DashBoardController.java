@@ -24,6 +24,9 @@ public class DashBoardController {
     @Autowired
     UserService userService;
 
+    private FadeTransition fadeTrans;       //transition for switching between the different panels
+    private int net;
+
     @FXML
     private AnchorPane dashboardPane;
     @FXML
@@ -32,12 +35,12 @@ public class DashBoardController {
     private AnchorPane activitiesPane;
     @FXML
     private AnchorPane friendsPane;
-    //@FXML
-    //private Label veganMealCounter;
+    @FXML
+    private Label veganMealCounter;
     @FXML
     private Label totalVeganMealCounter;
     @FXML
-    private Label welcomeBackText;
+    private Label welcomebacktext;
     @FXML
     private Button dashboardButton;
     @FXML
@@ -50,8 +53,8 @@ public class DashBoardController {
     private Line pathLine;
     @FXML
     private AnchorPane menuBar;
-    //@FXML
-    //private Button addNewActivityButton;
+    @FXML
+    private Button addNewActivityButton;
 
 
 
@@ -60,7 +63,7 @@ public class DashBoardController {
      */
     public void initialize() {
         //sets the text of the 'welcome back' text to include the username
-        welcomeBackText.setText("Welcome back, " + userService.currentUser.getName() + "!");
+        welcomebacktext.setText("Welcome back, " + userService.currentUser.getName() + "!");
         //adds the slide transition to the menu bar
         addSlideTransition(menuBar, pathLine);
         //adds animations to the navigation buttons
@@ -74,16 +77,14 @@ public class DashBoardController {
      * Adds a fade transition for switching between the different panes.
      * @param node the node on which the transition needs to act
      */
-    private void addFadeTransition(Node node) {
+    public void addFadeTransition(Node node) {
 
-        // FadeTransition is now a local variable
-        // net is now a local variable
-        //transition for switching between the different panels
-        FadeTransition fadeTrans = new FadeTransition(Duration.millis(400), node);
+        fadeTrans = new FadeTransition(Duration.millis(400), node);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1.0);
         fadeTrans.play();
     }
+
 
     /**
      * Displays the dashboard pane.
@@ -96,6 +97,7 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
+
     }
 
     /**
@@ -104,7 +106,6 @@ public class DashBoardController {
      */
     public void displayActivities(ActionEvent event) {
         addFadeTransition(activitiesPane);
-        int net = 0;
         totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
@@ -124,6 +125,7 @@ public class DashBoardController {
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
+
     }
 
     /**
@@ -137,10 +139,11 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
+
     }
 
     //sets the slide in transition for startup
-    private void addSlideTransition(Node node, Line path1) {
+    public void addSlideTransition(Node node, Line path1) {
         PathTransition pathTrans = new PathTransition(Duration.millis(1100), path1, node);
         pathTrans.play();
     }
@@ -153,7 +156,7 @@ public class DashBoardController {
          * and scales down when you stop hovering over it.
          * @param button the button to add the animation to
          */
-        MyButtonSkin(Button button) {
+        public MyButtonSkin(Button button) {
             //inherit the button properties
             super(button);
             //transition to scale up on hover
