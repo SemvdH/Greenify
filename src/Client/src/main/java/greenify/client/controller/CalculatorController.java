@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.StringConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -18,6 +19,7 @@ public class CalculatorController {
     @Autowired
     UserService userService;
 
+    //navigation panes
     @FXML
     private AnchorPane getStartedPane;
     @FXML
@@ -28,6 +30,8 @@ public class CalculatorController {
     private AnchorPane foodPane;
     @FXML
     private AnchorPane shoppingPane;
+
+    //'get started' pane
     @FXML
     private Slider peopleInHouseholdSlider;
     @FXML
@@ -38,6 +42,7 @@ public class CalculatorController {
     private Label annualIncomeLabel;
     @FXML
     private Button saveButton;
+
     //travel pane
     @FXML
     private TextField publicTransitField;
@@ -62,14 +67,23 @@ public class CalculatorController {
     @FXML
     private Label carTravelElectricLabel;
 
+    //home pane
+    @FXML
+    private Slider cleanEnergyPurchasedSlider;
+    @FXML
+    private Label cleanEnergyPurchasedLabel;
+    @FXML
+    private Slider waterUsageSlider;
+    @FXML
+    private Label waterUsageLabel;
+
     /**
      * initializes the window, performs some actions before loading all other things.
-     * it sets the sliders to snap to the ticks
-     * it adds listeners to all the sliders for updating the label next to them
+     * it sets the sliders to snap to the ticks.
+     * it adds listeners to all the sliders for updating the label they are associated with.
      */
     public void initialize() {
         peopleInHouseholdSlider.setSnapToTicks(true);
-        annualIncomeSlider.setSnapToTicks(true);
         //add listener to slider for amount of people in household
         peopleInHouseholdSlider.valueProperty().addListener(new ChangeListener<Number>() {
 
@@ -88,17 +102,83 @@ public class CalculatorController {
             }
         });
 
-        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel);
-        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel);
-        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel);
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " km/L");
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " km/L");
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " km/Le");
+
+        cleanEnergyPurchasedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                                Number oldValue, Number newValue) {
+                cleanEnergyPurchasedLabel.setText(newValue.intValue() + " %");
+            }
+        });
+
+        waterUsageSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                                Number oldValue, Number newValue) {
+                waterUsageLabel.setText(newValue.intValue() + "% of similar households");
+            }
+        });
+//        addLabelFormatterToSlider(waterUsageSlider);
+
+
+
+
     }
 
-    private void addSliderListenerCarUsage(Slider slider, Label label) {
+    /**
+     * Adds a label formatter to the given slider.
+     * sets the tick labels to be either 0, 1x, 2x or 3x.
+     * @param slider the slider to change the tick labels of.
+     */
+    private void addLabelFormatterToSlider(Slider slider) {
+        slider.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double object) {
+                if (object < 0.5) {
+                    return "0";
+                }
+                if (object < 1.5) {
+                    return "1x";
+                }
+                if (object < 2.5) {
+                    return "2x";
+                }
+                return "3x";
+            }
+
+            @Override
+            public Double fromString(String string) {
+                switch (string) {
+                    case "0":
+                        return 0d;
+                    case "1x":
+                        return 1d;
+                    case "2x":
+                        return 2d;
+                    case "3x":
+                        return 3d;
+
+                    default:
+                        return 3d;
+                }
+            }
+        });
+    }
+
+    /**
+     * adds the listener to the given slider and displays it's output on a given label.
+     * @param slider the slider to attach the listener to.
+     * @param label the label to display the slider output on.
+     */
+    private void addSliderListenerCarUsage(Slider slider, Label label, String unit) {
         slider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable,
                                 Number oldValue, Number newValue) {
-                label.setText(newValue.intValue() + "L/km");
+                label.setText(newValue.intValue() + unit);
             }
         });
     }
