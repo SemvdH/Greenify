@@ -8,13 +8,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
-    //    private static Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
 
     @Mock
     RestTemplate restTemplate;
@@ -42,6 +39,28 @@ public class UserServiceTest {
                 .thenReturn(testUser);
         UserDto user = userService.loginUser("Eric", "password");
         Assert.assertEquals(testUser, user);
+    }
+
+    @Test
+    public void getFootprint() throws Exception {
+        Float estimate = new Float(5);
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getFootprint?name=Eric"),
+                Float.class))
+                .thenReturn(estimate);
+        Float result = userService.getFootprint("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void setInputTest() throws Exception {
+        userService.updateInput("Eric", "input_size", "5");
+        Mockito.verify(userService).updateInput("Eric", "input_size", "5");
+    }
+
+    @Test
+    public void addFriendTest() throws Exception {
+        userService.addFriend("Eric", "Ceren");
+        Mockito.verify(userService).addFriend("Eric", "Ceren");
     }
 }
 

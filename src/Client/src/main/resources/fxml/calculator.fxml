@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.CalculatorController">
    <children>
@@ -22,10 +18,10 @@
                   <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/cloud.png" />
-                         <!--image credits:-->
-                         <!--image made by Smashicons https://www.flaticon.com/authors/smashicons-->
-                         <!--from https://www.flaticon.com/
-                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0-->
+                        <!--image credits:-->
+                        <!--image made by Smashicons https://www.flaticon.com/authors/smashicons-->
+                        <!--from https://www.flaticon.com/
+                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0-->
                      </image>
                   </ImageView>
                </graphic>
@@ -38,11 +34,11 @@
                   <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/world.png" />
-                         <!--image credits:
-                         made by prettycons https://www.flaticon.com/authors/prettycons
-                         from https://www.flaticon.com/
-                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
-                         -->
+                        <!--image credits:
+                        made by prettycons https://www.flaticon.com/authors/prettycons
+                        from https://www.flaticon.com/
+                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                        -->
                      </image>
                   </ImageView>
                </graphic>
@@ -55,11 +51,11 @@
                   <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/home.png" />
-                         <!--image credits:
-                         made by Smashicons https://www.flaticon.com/authors/smashicons
-                         from https://www.flaticon.com/
-                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
-                         -->
+                        <!--image credits:
+                        made by Smashicons https://www.flaticon.com/authors/smashicons
+                        from https://www.flaticon.com/
+                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                        -->
                      </image>
                   </ImageView>
                </graphic>
@@ -72,11 +68,11 @@
                   <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/coffee-cup.png" />
-                         <!--image credits:
-                         made by pixel-perfect https://www.flaticon.com/authors/pixel-perfect
-                         from https://www.flaticon.com/
-                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
-                         -->
+                        <!--image credits:
+                        made by pixel-perfect https://www.flaticon.com/authors/pixel-perfect
+                        from https://www.flaticon.com/
+                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                        -->
                      </image>
                   </ImageView>
                </graphic>
@@ -89,16 +85,16 @@
                   <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/shopping-cart.png" />
-                         <!--image credits:
-                         made by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar
-                         from https://www.flaticon.com/
-                         flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
-                         -->
+                        <!--image credits:
+                        made by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar
+                        from https://www.flaticon.com/
+                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                        -->
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" mnemonicParsing="false" text="Save">
+            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" onAction="#saveCalculation" mnemonicParsing="false" text="Save">
                <font>
                   <Font size="17.0" />
                </font></Button>
@@ -190,3 +186,4 @@
       <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
    </children>
 </AnchorPane>
+

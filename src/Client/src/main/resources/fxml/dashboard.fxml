@@ -190,7 +190,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label fx:id="footPrintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="134.0" text="co2 footprint" textAlignment="CENTER">
+                  <Label fx:id="footprintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="134.0" text="co2 footprint" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>

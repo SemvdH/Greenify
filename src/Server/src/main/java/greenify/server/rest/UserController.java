@@ -47,6 +47,39 @@ public class UserController {
     public void setInput(@RequestParam(value = "name") String name,
                          @RequestParam(value = "inputName") String inputName,
                          @RequestParam(value = "value") String value) {
+        System.out.println("Here is server controller");
         userService.setInput(name, inputName, value);
+    }
+
+    /**
+     * This method gets input for a user.
+     * @param name name of the user
+     * @param inputName name of the input of the user
+     */
+    @RequestMapping("/getInput")
+    public void getInput(@RequestParam(value = "name") String name,
+                         @RequestParam(value = "inputName") String inputName) {
+        userService.getInput(name, inputName);
+    }
+
+    /**
+     * This method gets footprint for a user.
+     * @param name name of the user
+     */
+    @RequestMapping("/getFootprint")
+    public Float getFootprint(@RequestParam(value = "name") String name) {
+        Float footprint = userService.getFootprint(name);
+        return footprint;
+    }
+
+    /**
+     * This method adds friend for a user.
+     * @param name name of the user
+     *
+     */
+    @RequestMapping("/addFriend")
+    public void addFriend(@RequestParam(value = "name") String name,
+                              @RequestParam(value = "friend") String friend) {
+        userService.addFriend(name, friend);
     }
 }

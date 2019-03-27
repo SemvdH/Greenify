@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -83,10 +84,9 @@ public class UserService {
      * @param name name of the user
      * @param inputName name of the input
      * @param value value of the input
-     * @return returns the result
      */
     @SuppressWarnings("Duplicates")
-    public String updateInput(String name, String inputName, String value) {
+    public void updateInput(String name, String inputName, String value) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setInput")
@@ -95,18 +95,35 @@ public class UserService {
                 .queryParam("value",value);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        return this.restTemplate.getForObject(builder.build()
+        ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
                 .encode().toUri(), String.class);
+    }
+
+    /**
+     * Gets the footprint of the user.
+     * @param name name of the user
+     * @return returns the footprint score
+     */
+    @SuppressWarnings("Duplicates")
+    public Float getFootprint(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFootprint")
+                .queryParam("name", name);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Float result = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), Float.class);
+        return result;
     }
 
     /**
      * Adds a friend to the user.
      * @param name the username of the current user.
      * @param friend the username of the friend you want to add.
-     * @return a userDTO
      */
     @SuppressWarnings("Duplicates")
-    public String addFriend(String name, String friend) {
+    public void addFriend(String name, String friend) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addFriend")
@@ -114,8 +131,7 @@ public class UserService {
                 .queryParam("friend",friend);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        String result = this.restTemplate.getForObject(builder.build()
+        ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
                 .encode().toUri(), String.class);
-        return result;
     }
 }
