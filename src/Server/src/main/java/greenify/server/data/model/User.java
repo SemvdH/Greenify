@@ -4,15 +4,9 @@ import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import javax.persistence.*;
-
 import javax.validation.constraints.NotNull;
+import java.util.*;
 
 @Entity
 @Data
@@ -147,8 +141,7 @@ public class User {
     public void addFriend(User user) {
         if (user.equals(this)) {
             throw new ApplicationException("Cannot add yourself as a friend");
-        }
-        else {
+        } else {
             friends.add(user);
             System.out.print("Friend added!");
         }
@@ -179,7 +172,8 @@ public class User {
         return result + "]";
     }
 
-     /** This method checks whether two users are equal or not.
+    /**
+     * This method checks whether two users are equal or not.
      * @param other an other user
      * @return users are (not) equal
      */

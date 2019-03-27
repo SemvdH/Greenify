@@ -7,8 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,7 @@ public class CalculatorController {
     @FXML
     private AnchorPane getStartedPane;
     @FXML
-    private ScrollPane travelPane;
+    private AnchorPane travelPane;
     @FXML
     private AnchorPane homePane;
     @FXML
@@ -39,7 +39,7 @@ public class CalculatorController {
     @FXML
     private AnchorPane shoppingPane;
     @FXML
-    private Slider peopleInHouseholdSLider;
+    private Slider peopleInHouseholdSlider;
     @FXML
     private Label peopleInHouseHoldLabel;
     @FXML
@@ -48,8 +48,12 @@ public class CalculatorController {
     private Label annualIncomeLabel;
     @FXML
     private Button saveButton;
+    //    @FXML
+    //    private Button getStartedNextButton;
     @FXML
-    private Button getStartedNextButton;
+    private TextField publicTransitField;
+    @FXML
+    private TextField airplaneTravelField;
 
     /**
      * initializes the window, performs some actions before loading all other things.
@@ -57,10 +61,10 @@ public class CalculatorController {
      * it adds listeners to all the sliders for updating the label next to them
      */
     public void initialize() {
-        peopleInHouseholdSLider.setSnapToTicks(true);
+        peopleInHouseholdSlider.setSnapToTicks(true);
         annualIncomeSlider.setSnapToTicks(true);
         //add listener to slider for amount of people in household
-        peopleInHouseholdSLider.valueProperty().addListener(new ChangeListener<Number>() {
+        peopleInHouseholdSlider.valueProperty().addListener(new ChangeListener<Number>() {
 
             public void changed(ObservableValue<? extends Number> observable,
                                 Number oldValue, Number newValue) {

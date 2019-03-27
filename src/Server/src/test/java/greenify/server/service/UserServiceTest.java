@@ -1,9 +1,5 @@
 package greenify.server.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
-
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
 import greenify.server.data.model.User;
@@ -18,6 +14,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {

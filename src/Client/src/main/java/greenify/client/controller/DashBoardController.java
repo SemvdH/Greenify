@@ -61,6 +61,8 @@ public class DashBoardController {
     private Button addNewActivityButton;
     @FXML
     private Button calculateFootPrintButton;
+    @FXML
+    private Label footPrintLabel;
 
     /**
      * Loads the the necessary things before anything else.

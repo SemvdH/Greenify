@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.CalculatorController">
    <children>
-      <AnchorPane fx:id="calculatorTabs" prefHeight="85.0" prefWidth="820.0" style="-fx-background-color: #677069;">
+      <AnchorPane fx:id="calculatorTabs" prefHeight="92.0" prefWidth="820.0" style="-fx-background-color: #677069;">
          <children>
             <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="188.0">
                <font>
@@ -104,14 +104,14 @@
                </font></Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" AnchorPane.leftAnchor="0.0">
          <children>
             <Text layoutX="224.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. How many people live in your household?">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <Slider fx:id="peopleInHouseholdSLider" blockIncrement="1.0" layoutX="260.0" layoutY="147.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Slider fx:id="peopleInHouseholdSlider" blockIncrement="1.0" layoutX="260.0" layoutY="147.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
             <Label fx:id="peopleInHouseHoldLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="70.0" prefHeight="38.0" prefWidth="44.0" text="0">
                <font>
                   <Font size="20.0" />
@@ -137,7 +137,54 @@
             </Label>
             <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
          </children></AnchorPane>
-      <ScrollPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0">
+         <children>
+            <ScrollPane layoutX="158.0" layoutY="109.0" prefHeight="215.0" prefWidth="499.0">
+               <content>
+                  <TextField prefHeight="33.0" prefWidth="497.0" />
+               </content></ScrollPane>
+            <Text layoutX="300.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How do you get around?">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
+            <Text fill="#727272" layoutX="370.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car travel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="355.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Public Transit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="publicTransitField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="394.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
+            <Text fill="#727272" layoutX="350.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airplane travel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="airplaneTravelField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="495.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="394.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="495.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Button fx:id="travelNextButton" layoutX="383.0" layoutY="559.0" mnemonicParsing="false" onAction="#displayHome" styleClass="nextButton" text="Next" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
       <AnchorPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
       <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
