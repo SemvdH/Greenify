@@ -4,9 +4,22 @@ import greenify.common.ApplicationException;
 import greenify.server.InputValidator;
 import lombok.Data;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.util.*;
 
 @Entity
 @Data
@@ -130,8 +143,20 @@ public class User {
         this.footPrintInputs = footPrintInputs;
     }
 
+    /**
+     * This method gets the friends of the user.
+     * @return friends list of the user
+     */
     public ArrayList<User> getFriends() {
         return (ArrayList<User>)this.friends;
+    }
+
+    /**
+     * This method sets the friend list of the user.
+     * @param friends friend list of the user
+     */
+    public void setFriends(Collection<User> friends) {
+        this.friends = friends;
     }
 
     /**
@@ -172,9 +197,8 @@ public class User {
         return result + "]";
     }
 
-    /**
-     * This method checks whether two users are equal or not.
-     * @param other an other user
+    /** This method checks whether two users are equal or not.
+     * * @param other an other user
      * @return users are (not) equal
      */
     @Override

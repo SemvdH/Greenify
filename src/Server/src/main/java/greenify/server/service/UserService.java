@@ -33,6 +33,8 @@ public class UserService {
         if (user == null) {
             user = new User(null, name, password);
             user.setFootPrintInputs(InputValidator.getDefaultValues());
+            Float footprint = calculatorService.calculateFootprint(user);
+            user.setFootPrint(footprint);
             userRepository.save(user);
         } else {
             throw new ApplicationException("User already exists");
@@ -64,7 +66,6 @@ public class UserService {
      * Adds a friend to the friendlist of the user.
      * @param name the username of the user
      * @param friend the name of the friend you want to add.
-     * @return a userDTO of the logged in user
      */
     public void addFriend(String name, String friend) {
         User user = userRepository.findByName(name);
@@ -99,7 +100,9 @@ public class UserService {
             if (InputValidator.isValidItem(inputName)
                     && InputValidator.isValidItemValue(inputName, value)) {
                 user.getFootPrintInputs().put(inputName, value);
+                userRepository.save(user);
                 user.setFootPrint(calculatorService.calculateFootprint(user));
+                userRepository.save(user);
             } else {
                 throw new ApplicationException("Invalid input");
             }
@@ -112,7 +115,7 @@ public class UserService {
      * @param inputName name of the input
      * @return input value
      */
-    String getInput(String name, String inputName) {
+    public String getInput(String name, String inputName) {
         User user = userRepository.findByName(name);
         if (InputValidator.isValidItem(inputName)) {
             return user.getFootPrintInputs().get(inputName);
@@ -126,9 +129,11 @@ public class UserService {
      * @param name name of the user
      * @return footprint of the user
      */
-    Float getFootprint(String name) {
+    public Float getFootprint(String name) {
         User user = userRepository.findByName(name);
-        return calculatorService.calculateFootprint(user);
+        user.setFootPrint(calculatorService.calculateFootprint(user));
+        userRepository.save(user);
+        return user.getFootPrint();
     }
 
     /**
@@ -137,7 +142,7 @@ public class UserService {
      */
     @GetMapping(path = "/all")
     @ResponseBody
-    Iterable<User> getAllUsers() {
+    public Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }
 }

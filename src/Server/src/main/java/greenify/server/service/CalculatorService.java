@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @Service
-class CalculatorService {
+public class CalculatorService {
     @Autowired
     RestTemplate restTemplate;
 
@@ -35,7 +35,7 @@ class CalculatorService {
      * @param map used variables to calculate a footprint
      * @return a footprint
      */
-    Float invokeExternalService(Map<String, String> map) {
+    public Float invokeExternalService(Map<String, String> map) {
         /*
          * curl -X GET "https://apis.berkeley.edu/coolclimate/footprint-sandbox?input_location_mode=1
          * &input_location=48001&input_income=1&input_size=0&input_footprint_transportation_miles1=3
@@ -49,7 +49,7 @@ class CalculatorService {
         headers.set("app_key", "b9167c4918cb2b3143614b595065d83b");
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl("https://apis.berkeley.edu/coolclimate/footprint-sandbox");
+                UriComponentsBuilder.fromHttpUrl("https://apis.berkeley.edu/coolclimate/footprint");
         for (String inputId : map.keySet()) {
             builder = builder.queryParam(inputId, map.get(inputId));
         }
@@ -71,7 +71,7 @@ class CalculatorService {
      * @param user the user
      * @return the footprint of the user
      */
-    Float calculateFootprint(User user) {
+    public Float calculateFootprint(User user) {
         return invokeExternalService(user.getFootPrintInputs());
     }
 }
