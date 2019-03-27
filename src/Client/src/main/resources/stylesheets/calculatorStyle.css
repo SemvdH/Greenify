@@ -36,6 +36,12 @@
     -fx-padding: 0 0 0 3px;
 }
 
+.km-indicator {
+    -fx-background-color: #89a888;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
 
 
 

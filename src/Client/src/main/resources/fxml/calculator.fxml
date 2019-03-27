@@ -141,7 +141,85 @@
          <children>
             <ScrollPane layoutX="158.0" layoutY="109.0" prefHeight="215.0" prefWidth="499.0">
                <content>
-                  <TextField prefHeight="33.0" prefWidth="497.0" />
+                  <AnchorPane prefHeight="505.0" prefWidth="497.0">
+                     <children>
+                        <Text fill="#505050" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="carTravelGasolineField" layoutX="14.0" layoutY="38.0" prefHeight="31.0" prefWidth="405.0" promptText="16.400" />
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="38.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelGasolineSlider" layoutX="14.0" layoutY="122.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="77.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelGasolineLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 L/km">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="239.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelDieselLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 L/km">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelDieselSlider" layoutX="14.0" layoutY="285.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="200.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="carTravelDieselField" layoutX="14.0" layoutY="200.0" prefHeight="31.0" prefWidth="405.0" promptText="15.400" />
+                        <Text fill="#505050" layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#505050" layoutX="14.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Electric">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="carTravelElectricField" layoutX="14.0" layoutY="365.0" prefHeight="31.0" prefWidth="405.0" promptText="15.400" />
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="365.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelElectricSlider" layoutX="14.0" layoutY="450.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="404.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelElectricLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 L/km">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
                </content></ScrollPane>
             <Text layoutX="300.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How do you get around?">
                <font>
@@ -157,13 +235,19 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="publicTransitField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="394.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
+            <TextField fx:id="publicTransitField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="394.0" prefHeight="31.0" prefWidth="499.0" promptText="0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
             <Text fill="#727272" layoutX="350.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airplane travel">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="airplaneTravelField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="495.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
+            <TextField fx:id="airplaneTravelField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="495.0" prefHeight="31.0" prefWidth="499.0" promptText="0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
             <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="394.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
                <children>
                   <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">

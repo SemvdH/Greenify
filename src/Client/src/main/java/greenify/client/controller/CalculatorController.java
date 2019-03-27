@@ -19,16 +19,6 @@ public class CalculatorController {
     UserService userService;
 
     @FXML
-    private Button calculatorGetStartedButton;
-    @FXML
-    private Button calculatorTravelButton;
-    @FXML
-    private Button calculatorHomeButton;
-    @FXML
-    private Button calculatorFoodButton;
-    @FXML
-    private Button calculatorShoppingButton;
-    @FXML
     private AnchorPane getStartedPane;
     @FXML
     private AnchorPane travelPane;
@@ -48,12 +38,29 @@ public class CalculatorController {
     private Label annualIncomeLabel;
     @FXML
     private Button saveButton;
-    //    @FXML
-    //    private Button getStartedNextButton;
+    //travel pane
     @FXML
     private TextField publicTransitField;
     @FXML
     private TextField airplaneTravelField;
+    @FXML
+    private TextField carTravelGasolineField;
+    @FXML
+    private Slider carTravelGasolineSlider;
+    @FXML
+    private Label carTravelGasolineLabel;
+    @FXML
+    private TextField carTravelDieselField;
+    @FXML
+    private Slider carTravelDieselSlider;
+    @FXML
+    private Label carTravelDieselLabel;
+    @FXML
+    private TextField carTravelElectricField;
+    @FXML
+    private Slider carTravelElectricSlider;
+    @FXML
+    private Label carTravelElectricLabel;
 
     /**
      * initializes the window, performs some actions before loading all other things.
@@ -78,6 +85,20 @@ public class CalculatorController {
             public void changed(ObservableValue<? extends Number> observable,
                                 Number oldValue, Number newValue) {
                 annualIncomeLabel.setText("" + (newValue.intValue() * 1000));
+            }
+        });
+
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel);
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel);
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel);
+    }
+
+    private void addSliderListenerCarUsage(Slider slider, Label label) {
+        slider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                                Number oldValue, Number newValue) {
+                label.setText(newValue.intValue() + "L/km");
             }
         });
     }
