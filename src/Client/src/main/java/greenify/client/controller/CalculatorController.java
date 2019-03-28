@@ -289,11 +289,28 @@ public class CalculatorController {
         shoppingPane.setVisible(true);
     }
 
-
-
-
-
-
-
-
+    /**
+     * The method saves the calculation.
+     * @param event user clicks to button
+     */
+    public void saveCalculation(ActionEvent event) {
+        getStartedPane.setVisible(false);
+        travelPane.setVisible(false);
+        homePane.setVisible(false);
+        foodPane.setVisible(false);
+        shoppingPane.setVisible(false);
+        if (!annualIncomeLabel.getText().equals(null)) {
+            userService.updateInput(userService.currentUser.getName(), "input_income",
+                    annualIncomeLabel.getText());
+        }
+        if (!peopleInHouseHoldLabel.getText().equals(null)) {
+            userService.updateInput(userService.currentUser.getName(), "input_population",
+                    peopleInHouseHoldLabel.getText());
+        }
+        userService.updateInput(userService.currentUser.getName(),
+                "input_footprint_housing_naturalgas_cuft", "0");
+        userService.updateInput(userService.currentUser.getName(),
+                "input_footprint_transportation_miles1", "0");
+    }
 }
+

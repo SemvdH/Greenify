@@ -31,7 +31,6 @@ public class DashBoardController {
     UserService userService;
 
     private FadeTransition fadeTrans;       //transition for switching between the different panels
-    private int net;
 
     @FXML
     private AnchorPane dashboardPane;
@@ -41,8 +40,6 @@ public class DashBoardController {
     private AnchorPane activitiesPane;
     @FXML
     private AnchorPane friendsPane;
-    @FXML
-    private Label totalVeganMealCounter;
     @FXML
     private Label welcomebacktext;
     @FXML
@@ -62,7 +59,7 @@ public class DashBoardController {
     @FXML
     private Button calculateFootPrintButton;
     @FXML
-    private Label footPrintLabel;
+    private Label footprintLabel;
 
     /**
      * Loads the the necessary things before anything else.
@@ -79,10 +76,6 @@ public class DashBoardController {
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
 
 
-    }
-
-    public UserService getUserService() {
-        return userService;
     }
 
     /**
@@ -118,7 +111,6 @@ public class DashBoardController {
      */
     public void displayActivities(ActionEvent event) {
         addFadeTransition(activitiesPane);
-        totalVeganMealCounter.setText("" + net);
         System.out.println("display activities");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
@@ -131,6 +123,9 @@ public class DashBoardController {
      * @param event the event (clicking the button)
      */
     public void displayUser(ActionEvent event) {
+        System.out.println(userService.currentUser.getName());
+        System.out.println(userService.getFootprint(userService.currentUser.getName()));
+        footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
         addFadeTransition(userPane);
         System.out.println("display user");
         dashboardPane.setVisible(false);
