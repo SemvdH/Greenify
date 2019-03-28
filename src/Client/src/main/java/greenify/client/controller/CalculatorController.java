@@ -1,12 +1,22 @@
 package greenify.client.controller;
 
 import greenify.client.rest.UserService;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -202,6 +212,14 @@ public class CalculatorController {
         });
     }
 
+    private void addSlideInAnimation(Node node) {
+        Timeline timeline = new Timeline();
+        KeyValue keyValue = new KeyValue(node.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyFrame keyFrame = new KeyFrame(Duration.millis(600), keyValue);
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+    }
+
     /**
      * displays the 'get started' section of the calculator.
      * Activated when the designated button (navigation button) is clicked
@@ -222,11 +240,14 @@ public class CalculatorController {
      * @param event the click of the button
      */
     public void displayTravel(ActionEvent event) {
+        addSlideInAnimation(travelPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
         homePane.setVisible(false);
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
+
+
     }
 
     /**

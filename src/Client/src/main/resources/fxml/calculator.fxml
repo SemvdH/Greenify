@@ -113,7 +113,7 @@
                </font></Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Text layoutX="224.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. How many people live in your household?">
                <font>
@@ -531,7 +531,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0">
+      <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
          <children>
             <Text layoutX="133.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much do you spend on each of the following?">
                <font>
