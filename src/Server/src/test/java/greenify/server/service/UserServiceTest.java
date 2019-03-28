@@ -1,5 +1,9 @@
 package greenify.server.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
 import greenify.server.data.model.User;
@@ -14,10 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
@@ -82,8 +82,9 @@ public class UserServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
-        userService.setInput("alex", "food_grains", "6.5");
-        assertEquals("6.5", alex.getFootPrintInputs().get("food_grains"));
+        userService.setInput("alex", "input_footprint_shopping_food_dairy_default", "6.5");
+        assertEquals("6.5", alex.getFootPrintInputs()
+                .get("input_footprint_shopping_food_dairy_default"));
     }
 
     @Test
@@ -93,13 +94,20 @@ public class UserServiceTest {
 
     @Test
     public void setInputApplicationTestItem() {
-        assertThrows(ApplicationException.class, () -> userService.setInput("tom", "hello", "3.5"));
+        assertThrows(ApplicationException.class, () -> userService
+                .setInput("alex", "hello", "3.5"));
     }
 
     @Test
     public void setInputApplicationTestValue() {
         assertThrows(ApplicationException.class, () ->
-                userService.setInput("tom", "transportation_num_vehicles", "5.5"));
+                userService.setInput("alex", "input_footprint_transportation_num_vehicles", "5.5"));
+    }
+
+    @Test
+    public void setInputExceptionTest() {
+        assertThrows(ApplicationException.class, () ->
+                userService.setInput("alex", "hi", "5.5"));
     }
 
     @Test
@@ -109,7 +117,7 @@ public class UserServiceTest {
                 .thenReturn(alex);
         when(calculatorService.calculateFootprint(alex))
                 .thenReturn(15f);
-        userService.setInput("alex", "food_grains", "6.5");
+        userService.setInput("alex", "input_footprint_shopping_food_dairy_default", "6.5");
         assertEquals(15f, alex.getFootPrint(), 0.0);
     }
 
@@ -118,8 +126,10 @@ public class UserServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
-        userService.setInput("alex", "food_grains", "6.5");
-        assertEquals("6.5", userService.getInput("alex", "food_grains"));
+        userService.setInput("alex",
+                "input_footprint_shopping_food_dairy_default", "6.5");
+        assertEquals("6.5", userService
+                .getInput("alex", "input_footprint_shopping_food_dairy_default"));
     }
 
     @Test
@@ -134,7 +144,7 @@ public class UserServiceTest {
                 .thenReturn(alex);
         when(calculatorService.calculateFootprint(alex))
                 .thenReturn(15f);
-        userService.setInput("alex", "food_grains", "6.5");
+        userService.setInput("alex", "input_footprint_shopping_food_dairy_default", "6.5");
         assertEquals(15f, userService.getFootprint("alex"), 0.0);
     }
 
@@ -157,6 +167,11 @@ public class UserServiceTest {
         ArrayList<User> test = new ArrayList<User>();
         test.add(lola);
         assertEquals(alex.getFriends(), test);
+    }
+
+    @Test
+    public void addFriendsExceptionTest() {
+        assertThrows(ApplicationException.class, () -> userService.addFriend("greenify", null));
     }
 
     @Test

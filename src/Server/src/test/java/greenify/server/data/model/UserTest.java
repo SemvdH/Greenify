@@ -9,6 +9,7 @@ import greenify.common.ApplicationException;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class UserTest {
 
@@ -119,5 +120,15 @@ public class UserTest {
         User second = new User(1L, "merel", "password");
         first.addFriend(second);
         assertEquals(first.friendsToString(), "friends=[{name=merel, footprint=0.0}]");
+    }
+
+    @Test
+    public void setFriendTest() {
+        Collection<User> friends = new ArrayList<>();
+        User first = new User(1L, "greenify", "password");
+        User second = new User(1L, "merel", "password");
+        friends.add(second);
+        first.setFriends(friends);
+        assertEquals(friends, first.getFriends());
     }
 }

@@ -1,6 +1,9 @@
 package greenify.server.rest;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -10,6 +13,7 @@ import greenify.common.UserDto;
 import greenify.server.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -55,8 +59,65 @@ public class UserControllerTest {
                 .andExpect(status().isOk()).andExpect(content().json("{'id':1,'name':'ceren'}"));
     }
 
-    //@Test
-    //public void setInputTest() {
-    //
-    //}
+    @Test
+    public void setInputTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg3Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/setInput")
+                .param("name", "ceren")
+                .param("inputName", "input_size")
+                .param("value", "7")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .setInput(arg1Captor.capture(), arg2Captor.capture(), arg3Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+        assertEquals("input_size", arg2Captor.getValue());
+        assertEquals("7", arg3Captor.getValue());
+    }
+
+    @Test
+    public void addFriendTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/addFriend")
+                .param("name", "ceren")
+                .param("friend", "merel")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .addFriend(arg1Captor.capture(), arg2Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+        assertEquals("merel", arg2Captor.getValue());
+    }
+
+    @Test
+    public void getInputTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getInput")
+                .param("name", "ceren")
+                .param("inputName", "input_size")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getInput(arg1Captor.capture(), arg2Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+        assertEquals("input_size", arg2Captor.getValue());
+    }
+
+    @Test
+    public void getFootprintTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getFootprint")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getFootprint(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
 }
