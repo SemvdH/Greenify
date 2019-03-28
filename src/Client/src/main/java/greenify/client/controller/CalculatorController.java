@@ -5,14 +5,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.StringConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.text.DecimalFormat;
 
 @Controller
 public class CalculatorController {
@@ -27,7 +25,7 @@ public class CalculatorController {
     @FXML
     private AnchorPane homePane;
     @FXML
-    private AnchorPane foodPane;
+    private ScrollPane foodPane;
     @FXML
     private AnchorPane shoppingPane;
 
@@ -77,6 +75,38 @@ public class CalculatorController {
     @FXML
     private Label waterUsageLabel;
 
+    //food pane
+    @FXML
+    private Slider meatFishEggsSlider;
+    @FXML
+    private Label meatFishEggsLabel;
+    @FXML
+    private Slider grainsBakedGoodsSlider;
+    @FXML
+    private Label grainsBakedGoodsLabel;
+    @FXML
+    private Slider dairySlider;
+    @FXML
+    private Label dairyLabel;
+    @FXML
+    private Slider fruitsVegetablesSlider;
+    @FXML
+    private Label fruitsVegetablesLabel;
+    @FXML
+    private Slider snacksDrinksSlider;
+    @FXML
+    private Label snacksDrinksLabel;
+
+    //shopping pane
+    @FXML
+    private Slider goodsSlider;
+    @FXML
+    private Label goodsLabel;
+    @FXML
+    private Slider servicesSlider;
+    @FXML
+    private Label servicesLabel;
+
     /**
      * initializes the window, performs some actions before loading all other things.
      * it sets the sliders to snap to the ticks.
@@ -121,51 +151,19 @@ public class CalculatorController {
                 waterUsageLabel.setText(newValue.intValue() + "% of similar households");
             }
         });
-//        addLabelFormatterToSlider(waterUsageSlider);
+
+        addSliderListenerDailyServing(meatFishEggsSlider, meatFishEggsLabel);
+        addSliderListenerDailyServing(grainsBakedGoodsSlider, grainsBakedGoodsLabel);
+        addSliderListenerDailyServing(dairySlider, dairyLabel);
+        addSliderListenerDailyServing(fruitsVegetablesSlider, fruitsVegetablesLabel);
+        addSliderListenerDailyServing(snacksDrinksSlider, snacksDrinksLabel);
+
+        addSliderListenerGoodsServices(goodsSlider, goodsLabel);
+        addSliderListenerGoodsServices(servicesSlider, servicesLabel);
 
 
 
 
-    }
-
-    /**
-     * Adds a label formatter to the given slider.
-     * sets the tick labels to be either 0, 1x, 2x or 3x.
-     * @param slider the slider to change the tick labels of.
-     */
-    private void addLabelFormatterToSlider(Slider slider) {
-        slider.setLabelFormatter(new StringConverter<Double>() {
-            @Override
-            public String toString(Double object) {
-                if (object < 0.5) {
-                    return "0";
-                }
-                if (object < 1.5) {
-                    return "1x";
-                }
-                if (object < 2.5) {
-                    return "2x";
-                }
-                return "3x";
-            }
-
-            @Override
-            public Double fromString(String string) {
-                switch (string) {
-                    case "0":
-                        return 0d;
-                    case "1x":
-                        return 1d;
-                    case "2x":
-                        return 2d;
-                    case "3x":
-                        return 3d;
-
-                    default:
-                        return 3d;
-                }
-            }
-        });
     }
 
     /**
@@ -179,6 +177,27 @@ public class CalculatorController {
             public void changed(ObservableValue<? extends Number> observable,
                                 Number oldValue, Number newValue) {
                 label.setText(newValue.intValue() + unit);
+            }
+        });
+    }
+
+    private void addSliderListenerDailyServing(Slider slider, Label label) {
+        DecimalFormat df = new DecimalFormat("0.0");
+        slider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                                Number oldValue, Number newValue) {
+                label.setText(df.format(newValue.doubleValue()) + " daily servings per person");
+            }
+        });
+    }
+
+    private void addSliderListenerGoodsServices(Slider slider, Label label) {
+        slider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                                Number oldValue, Number newValue) {
+                label.setText(newValue.intValue() + "€ / month");
             }
         });
     }
