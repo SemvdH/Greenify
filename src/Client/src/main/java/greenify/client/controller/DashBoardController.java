@@ -1,18 +1,25 @@
 package greenify.client.controller;
 
-import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
+import greenify.client.Friend;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -60,6 +67,18 @@ public class DashBoardController {
     private Button calculateFootPrintButton;
     @FXML
     private Label footprintLabel;
+    @FXML
+    private Button addFriendButton;
+    @FXML
+    private TableView<Friend> friendsTable;
+    @FXML
+    private TableColumn<Friend, String> friendsColumn;
+    @FXML
+    private TableColumn<Friend, Float> scoreColumn;
+    @FXML
+    private PieChart pieChart;
+    @FXML
+    private Label usernameLabel;
 
     /**
      * Loads the the necessary things before anything else.
@@ -74,8 +93,23 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
-
-
+        friendsColumn.setCellValueFactory(new PropertyValueFactory<>("Friend"));
+        scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        friendsTable.setItems(FriendController.getData());
+        if(pieChart != null) {
+            ObservableList<PieChart.Data> pieChartData =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Vegan Meal", 100),
+                            new PieChart.Data("Public Transport", 200),
+                            new PieChart.Data("Home Temperature", 50),
+                            new PieChart.Data("Bike", 75),
+                            new PieChart.Data("Local Product", 110),
+                            new PieChart.Data("Solar Panel", 300)
+                    );
+            pieChart.setTitle("FOOTPRINT DISTRIBUTION");
+            pieChart.setMaxSize(1000, 1000);
+            pieChart.setData(pieChartData);
+        }
     }
 
     /**
@@ -126,6 +160,7 @@ public class DashBoardController {
         System.out.println(userService.currentUser.getName());
         System.out.println(userService.getFootprint(userService.currentUser.getName()));
         footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
+        usernameLabel.setText("" + userService.currentUser.getName());
         addFadeTransition(userPane);
         System.out.println("display user");
         dashboardPane.setVisible(false);
@@ -146,7 +181,6 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
-
     }
 
     //sets the slide in transition for startup
@@ -169,6 +203,16 @@ public class DashBoardController {
 
         calcStage.setScene(scene);
         calcStage.setTitle("Calculate CO2 footprint - " + userService.currentUser.getName());
+        calcStage.show();
+    }
+
+    public void openAddFriend() throws IOException {
+        Parent calc = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/AddFriend.fxml"));
+        Scene scene = new Scene(calc);
+        Stage calcStage = new Stage();
+        calcStage.setScene(scene);
+        calcStage.setTitle("Add a new friend - " + userService.currentUser.getName());
         calcStage.show();
     }
 
