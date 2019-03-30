@@ -8,7 +8,6 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -19,7 +18,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -50,7 +48,7 @@ public class User {
     private Collection<User> friends;
 
     @ElementCollection
-    private List<Achievement> achievements;
+    private Map<String, Boolean> achievements;
 
     public User() {}
 
@@ -182,7 +180,7 @@ public class User {
      * This method sets the achievements of the user.
      * @param achievements achievements of the user
      */
-    public void setAchievements(List<Achievement> achievements) {
+    public void setAchievements(Map<String, Boolean> achievements) {
         this.achievements = achievements;
     }
 
@@ -190,7 +188,7 @@ public class User {
      * This method gets the achievements of the user.
      * @return achievements of the user
      */
-    public List<Achievement> getAchievements() {
+    public Map<String, Boolean> getAchievements() {
         return this.achievements;
     }
 

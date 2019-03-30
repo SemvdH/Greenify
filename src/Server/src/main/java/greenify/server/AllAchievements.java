@@ -3,8 +3,9 @@ package greenify.server;
 import greenify.server.data.model.Achievement;
 
 import java.util.Arrays;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AllAchievements {
     private static final List<Achievement> allAchievements = Arrays.asList(
@@ -16,8 +17,12 @@ public class AllAchievements {
      * This method gets default achievements.
      * @return the list of default achievements
      */
-    public static List<Achievement> getDefaults() {
-        return new ArrayList<>(allAchievements);
+    public static Map<String, Boolean> getDefaults() {
+        Map<String, Boolean> all = new HashMap<>();
+        for (Achievement achievement : allAchievements) {
+            all.put(achievement.getName(), achievement.isAchieved());
+        }
+        return all;
     }
 
 }
