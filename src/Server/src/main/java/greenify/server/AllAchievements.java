@@ -14,6 +14,15 @@ public class AllAchievements {
     );
 
     /**
+     * The method checks whether the achievement name is valid or not.
+     * @param achievementName the name of the achievement
+     * @return true or false
+     */
+    public static Boolean isValidAchievement(String achievementName) {
+        return allAchievements.stream().anyMatch(i -> i.getName().equals(achievementName));
+    }
+
+    /**
      * This method gets default achievements.
      * @return the list of default achievements
      */

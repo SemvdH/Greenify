@@ -38,6 +38,9 @@ public class UserServiceTest {
     @MockBean
     private CalculatorService calculatorService;
 
+    @MockBean
+    private AchievementService achievementService;
+
     /**
      * setUp method for test.
      */
@@ -180,6 +183,22 @@ public class UserServiceTest {
         User lola = userRepository.findByName("lola");
         userService.addFriend("alex", "lola");
         assertEquals(userService.getLeaderboard("alex"), "friends=[{name=lola, footprint=0.0}]");
+    }
 
+    @Test
+    public void setAchievementTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        userService.setAchievement("alex",
+                "Starting off", true);
+        assertEquals(true, userService
+                .getAchievement("alex", "Starting off"));
+    }
+
+    @Test
+    public void getAchievementTest() {
+        assertThrows(ApplicationException.class, () -> userService.getAchievement("alex", "hello"));
+        assertEquals(false, userService.getAchievement("alex", "Starting off"));
     }
 }

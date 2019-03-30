@@ -11,6 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class AllAchievementsTest {
 
     @Test
+    void isValidAchievementTest() {
+        new AllAchievements();
+        assertEquals(true, AllAchievements.isValidAchievement(
+                "Starting off"));
+        assertEquals(false, AllAchievements.isValidAchievement("test"));
+    }
+
+    @Test
     void getDefaultsTest() {
         List<Achievement> all = new ArrayList<Achievement>() {{
             add(new Achievement("Starting off", "You did your first green activity", false));
