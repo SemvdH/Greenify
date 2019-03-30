@@ -6,11 +6,11 @@ import javafx.beans.property.SimpleStringProperty;
 public class Friend {
 
     private SimpleStringProperty friend;
-    private SimpleFloatProperty friendScore;
+    private SimpleFloatProperty score;
 
     public Friend(String friend, Float friendScore) {
         this.friend =  new SimpleStringProperty(friend);
-        this.friendScore =  new SimpleFloatProperty(friendScore);
+        this.score =  new SimpleFloatProperty(friendScore);
     }
 
 
@@ -22,11 +22,11 @@ public class Friend {
         this.friend = new SimpleStringProperty(name);
     }
 
-    public Float getFriendScore() {
-        return friendScore.get();
+    public Float getScore() {
+        return score.get();
     }
 
     public void setScore(Float score) {
-        this.friendScore = new SimpleFloatProperty(score);
+        this.score = new SimpleFloatProperty(score);
     }
 }
