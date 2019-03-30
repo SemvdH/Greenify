@@ -143,7 +143,7 @@ public class UserService {
     }
 
     /**
-     * This methods sets a achievement
+     * This methods sets a achievement.
      * @param name name of the user
      * @param achievement name of the achievement
      * @param achieved (not) achieved
@@ -163,7 +163,7 @@ public class UserService {
     }
 
     /**
-     * This method gets whether the achievement is achieved
+     * This method gets whether the achievement is achieved.
      * @param name of the user
      * @param achievement name of the achievement
      * @return (not) achieved

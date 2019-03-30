@@ -82,4 +82,10 @@ public class UserController {
                               @RequestParam(value = "friend") String friend) {
         userService.addFriend(name, friend);
     }
+
+    /*    @RequestMapping("/addAchievement")
+    public void addAchievement(@RequestParam(value = "name") String name,
+                               @RequestParam(value = "achievement") String achievement) {
+        userService.achievementAchieved(name, achievement);
+        }*/
 }

@@ -75,8 +75,8 @@ public class Achievement {
      */
     @Override
     public String toString() {
-        return "Achievement(name=" + name + ", description=" + description +
-                ", achieved=" + achieved + ")";
+        return "Achievement(name=" + name + ", description=" + description
+                + ", achieved=" + achieved + ")";
     }
 
     /**
@@ -88,9 +88,9 @@ public class Achievement {
     public boolean equals(Object other) {
         if (other instanceof Achievement) {
             Achievement that = (Achievement) other;
-            return achieved == that.achieved &&
-                    name.equals(that.name) &&
-                    Objects.equals(description, that.description);
+            return achieved == that.achieved
+                    && name.equals(that.name)
+                    && Objects.equals(description, that.description);
         }
         return false;
     }

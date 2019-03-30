@@ -1,12 +1,8 @@
 package greenify.server.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-import greenify.common.ApplicationException;
-import greenify.common.UserDto;
-import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
@@ -17,8 +13,6 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
 
 @RunWith(SpringRunner.class)
 public class AchievementServiceTest {
@@ -66,7 +60,7 @@ public class AchievementServiceTest {
     }
 
     @Test
-    public void AchieveGettingStartedTest() {
+    public void achieveGettingStartedTest() {
         User alex = userRepository.findByName("alex");
         userService.setInput("alex", "input_size", "5");
         achievementService.achieveGettingStarted(alex);

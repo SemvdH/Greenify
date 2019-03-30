@@ -17,7 +17,7 @@ public class AchievementService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     /**
-     * This method updates all achievements of a user
+     * This method updates all achievements of a user.
      * @param user the user for whom the achievements change
      */
     public void updateAchievements(User user) {
@@ -26,7 +26,7 @@ public class AchievementService {
     }
 
     /**
-     * This method changes achiev1 when this is the case
+     * This method changes achiev1 when this is the case.
      * @param user user for whom achiev1 changes
      */
     public void achieveGettingStarted(User user) {
