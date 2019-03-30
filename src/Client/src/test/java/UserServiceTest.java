@@ -10,6 +10,9 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
 
@@ -48,6 +51,38 @@ public class UserServiceTest {
                 Float.class))
                 .thenReturn(estimate);
         Float result = userService.getFootprint("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void saveFootprint() throws Exception {
+        Float estimate = new Float(5);
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/saveFootprint?name=Eric"),
+                Float.class))
+                .thenReturn(estimate);
+        Float result = userService.saveFootprint("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void getFriendNamesTest() throws Exception {
+        List<String> estimate = new ArrayList<String>();
+        estimate.add("alex");
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getFriends?name=Eric"),
+                List.class))
+                .thenReturn(estimate);
+        List<String> result = userService.getFriendNames("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void getAllUsers() throws Exception {
+        List<String> estimate = new ArrayList<String>();
+        estimate.add("alex");
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getAllUsers"),
+                List.class))
+                .thenReturn(estimate);
+        List<String> result = userService.getAllUsers();
         Assert.assertEquals(estimate, result);
     }
 
