@@ -5,20 +5,13 @@ import greenify.server.InputValidator;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -28,7 +21,7 @@ public class User {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     @NotNull
@@ -44,8 +37,7 @@ public class User {
     private Map<String, String> footPrintInputs = new HashMap<>();
 
     @ManyToMany
-    @JoinColumn
-    private Collection<User> friends;
+    private List<User> friends;
 
     public User() {}
 
@@ -147,15 +139,15 @@ public class User {
      * This method gets the friends of the user.
      * @return friends list of the user
      */
-    public ArrayList<User> getFriends() {
-        return (ArrayList<User>)this.friends;
+    public List<User> getFriends() {
+        return this.friends;
     }
 
     /**
      * This method sets the friend list of the user.
      * @param friends friend list of the user
      */
-    public void setFriends(Collection<User> friends) {
+    public void setFriends(List<User> friends) {
         this.friends = friends;
     }
 
@@ -164,7 +156,7 @@ public class User {
      * @param user the friend you want to add.
      */
     public void addFriend(User user) {
-        if (user.equals(this)) {
+        if (user.equals(this) || friends.contains(user)) {
             throw new ApplicationException("Cannot add yourself as a friend");
         } else {
             friends.add(user);
@@ -180,21 +172,6 @@ public class User {
     public String toString() {
         return "User(id=" + this.id + ", name=" + this.name + ", password="
                 + this.password + ")";
-    }
-
-    /**
-     * Returns the name and score of the friends in JSON. Needed for the leaderboard.
-     * @return a JSON object of the friendlist with only names and scores.
-     */
-    public String friendsToString() {
-        String result = "friends=[";
-        for (User u : friends) {
-            result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
-        }
-        if (result.endsWith(", ")) {
-            return result.substring(0, result.lastIndexOf(",")) + "]";
-        }
-        return result + "]";
     }
 
     /** This method checks whether two users are equal or not.
