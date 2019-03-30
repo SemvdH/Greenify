@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
-
 <AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="703.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
@@ -169,38 +167,43 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <VBox layoutX="517.0" layoutY="28.0" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+            <VBox layoutX="80.0" layoutY="150.0" prefHeight="59.0" prefWidth="266.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
                <children>
-                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" textAlignment="CENTER" wrappingWidth="100.79296875">
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="267.1929016113281">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label fx:id="scoreField" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="score" textAlignment="CENTER">
+                  <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" prefHeight="27.0" prefWidth="267.0" text="username" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="517.0" layoutY="121.0" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+            <VBox alignment="CENTER" layoutX="80.0" layoutY="250.0" prefHeight="59.0" prefWidth="266.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
                <children>
                   <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="CO2 footprint" textAlignment="CENTER" wrappingWidth="161.79296875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label fx:id="footprintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="134.0" text="co2 footprint" textAlignment="CENTER">
+                  <Label fx:id="footprintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="162.0" text="co2 footprint" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
+            <PieChart fx:id="pieChart" layoutX="441.0" layoutY="300.0" prefHeight="352.0" prefWidth="363.0" />
+            <ImageView fitHeight="163.0" fitWidth="200.0" layoutX="550.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/butterfly.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="703.0" prefWidth="820.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox layoutX="97.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" />
             <Label fx:id="welcomebacktext" layoutX="69.0" layoutY="53.0" text="Welcome back user!" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="30.0" />
@@ -223,7 +226,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Button fx:id="calculateFootPrintButton" contentDisplay="RIGHT" layoutX="572.0" layoutY="124.0" mnemonicParsing="false" onAction="#openCalculator" prefHeight="74.0" prefWidth="205.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Calculate your &#10;CO2 footprint" textFill="#29721a">
+            <Button fx:id="calculateFootPrintButton" contentDisplay="RIGHT" layoutX="577.0" layoutY="126.0" mnemonicParsing="false" onAction="#openCalculator" prefHeight="74.0" prefWidth="205.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Calculate your     &#10;CO2 footprint" textFill="#29721a">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
                </font>
@@ -235,6 +238,18 @@
                         <!--https://www.flaticon.com/authors/vectors-market-->
                         <!--https://www.flaticon.com-->
                         <!--http://creativecommons.org/licenses/by/3.0/-->
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addFriendButton" contentDisplay="RIGHT" layoutX="596.0" layoutY="220.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add friend" textFill="#29721a">
+               <font>
+                  <Font name="Corbel Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="74.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/friend.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -253,6 +268,9 @@
                   <TableColumn fx:id="friendsColumn" prefWidth="107.0" text="Friend" />
                   <TableColumn fx:id="scoreColumn" prefWidth="108.0" text="Score" />
                </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </AnchorPane>
