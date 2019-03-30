@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 @Service
 public class UserService {
     public UserDto currentUser;
@@ -118,6 +120,42 @@ public class UserService {
     }
 
     /**
+     * Saves the footprint of the user.
+     * @param name name of the user
+     * @return returns the footprint score
+     */
+    @SuppressWarnings("Duplicates")
+    public Float saveFootprint(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/saveFootprint")
+                .queryParam("name", name);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Float result = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), Float.class);
+        return result;
+    }
+
+    /**
+     * Gets the friend list of the user.
+     * @param name name of the user
+     * @return returns the friend list
+     */
+    @SuppressWarnings("Duplicates")
+    public List<String> getFriendNames(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFriends")
+                .queryParam("name", name);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        List<String> result = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), List.class);
+        return result;
+    }
+
+    /**
      * Adds a friend to the user.
      * @param name the username of the current user.
      * @param friend the username of the friend you want to add.
@@ -133,5 +171,20 @@ public class UserService {
         System.out.println(builder.build().encode().toUri());
         ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
                 .encode().toUri(), String.class);
+    }
+
+    /**
+     * Gets the list of all users.
+     */
+    @SuppressWarnings("Duplicates")
+    public List<String> getAllUsers() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getAllUsers");
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        List<String> result = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), List.class);
+        return result;
     }
 }

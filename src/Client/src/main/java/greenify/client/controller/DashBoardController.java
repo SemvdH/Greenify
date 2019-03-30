@@ -28,12 +28,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Class that controls the dashboard fxml file (the GUI Screen).
  */
 @Controller
 public class DashBoardController {
+    public static ObservableList<Friend> data = FXCollections.observableArrayList();
+    public ObservableList<Friend> friendLeaderData = FXCollections.observableArrayList();
+    public ObservableList<Friend> globalLeaderData = FXCollections.observableArrayList();
+
     @Autowired
     UserService userService;
 
@@ -76,6 +81,18 @@ public class DashBoardController {
     @FXML
     private TableColumn<Friend, Float> scoreColumn;
     @FXML
+    private TableView<Friend> globalLeaderboard;
+    @FXML
+    private TableColumn<Friend, String> globalUser;
+    @FXML
+    private TableColumn<Friend, Float> globalScore;
+    @FXML
+    private TableView<Friend> friendLeaderboard;
+    @FXML
+    private TableColumn<Friend, String> friendUser;
+    @FXML
+    private TableColumn<Friend, Float> friendScore;
+    @FXML
     private PieChart pieChart;
     @FXML
     private Label usernameLabel;
@@ -83,7 +100,7 @@ public class DashBoardController {
     /**
      * Loads the the necessary things before anything else.
      */
-    public void initialize() {
+    public void initialize() throws InterruptedException {
         //sets the text of the 'welcome back' text to include the username
         welcomebacktext.setText("Welcome back, " + userService.currentUser.getName() + "!");
         //adds the slide transition to the menu bar
@@ -95,8 +112,11 @@ public class DashBoardController {
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
         friendsColumn.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
-        friendsTable.setItems(FriendController.getData());
-        if(pieChart != null) {
+        globalUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
+        globalScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        friendUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
+        friendScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        if (pieChart != null) {
             ObservableList<PieChart.Data> pieChartData =
                     FXCollections.observableArrayList(
                             new PieChart.Data("Vegan Meal", 100),
@@ -110,6 +130,37 @@ public class DashBoardController {
             pieChart.setMaxSize(1000, 1000);
             pieChart.setData(pieChartData);
         }
+        List<String> friendList = userService.getFriendNames(userService.currentUser.getName());
+        for (int i = 0; i < friendList.size(); i++) {
+            Friend friend = new Friend(friendList.get(i),
+                    userService.getFootprint(friendList.get(i)));
+            data.add(friend);
+        }
+        friendsTable.setItems(data);
+        updateLeaderboard();
+    }
+
+    /**
+     * Sorts the scores of users.
+     * @param users the list of users
+     */
+    public void sortScores(List<String> users) throws InterruptedException {
+        for (int i = 0; i < users.size(); i++) {
+            for (int j = 0; j < users.size(); j++) {
+                Float firstScore = userService.getFootprint(users.get(i));
+                Float secondScore = userService.getFootprint(users.get(j));
+                if (i > j && firstScore < secondScore) {
+                    String temp = users.get(i);
+                    users.set(i, users.get(j));
+                    users.set(j, temp);
+                }
+                if (i < j && firstScore > secondScore) {
+                    String temp = users.get(i);
+                    users.set(i, users.get(j));
+                    users.set(j, temp);
+                }
+            }
+        }
     }
 
     /**
@@ -117,7 +168,6 @@ public class DashBoardController {
      * @param node the node on which the transition needs to act
      */
     public void addFadeTransition(Node node) {
-
         fadeTrans = new FadeTransition(Duration.millis(400), node);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1.0);
@@ -129,14 +179,14 @@ public class DashBoardController {
      * Displays the dashboard pane.
      * @param event the event (clicking the button)
      */
-    public void displayDashboard(ActionEvent event) {
+    public void displayDashboard(ActionEvent event) throws InterruptedException {
         addFadeTransition(dashboardPane);
         System.out.println("display dashboard");
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
-
+        updateLeaderboard();
     }
 
     /**
@@ -193,7 +243,7 @@ public class DashBoardController {
      * Opens the calculator.
      * @throws IOException if the Application doesn't load.
      */
-    public void openCalculator() throws IOException {
+    public void openCalculator() throws IOException, InterruptedException {
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/calculator.fxml"));
         Scene scene = new Scene(calc);
@@ -206,6 +256,10 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * method opend addFriend scene.
+     * @throws IOException when file is not found
+     */
     public void openAddFriend() throws IOException {
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/AddFriend.fxml"));
@@ -215,6 +269,37 @@ public class DashBoardController {
         calcStage.setTitle("Add a new friend - " + userService.currentUser.getName());
         calcStage.show();
     }
+
+    /**
+     * Leaderboard is updaating.
+     * @throws InterruptedException throws exception
+     */
+    public void updateLeaderboard() throws InterruptedException {
+        friendLeaderboard.getItems().clear();
+        globalLeaderboard.getItems().clear();
+        //global leaderboard
+        globalLeaderData.removeAll();
+        List<String> userList = userService.getAllUsers();
+        sortScores(userList);
+        for (int j = 0; j < userList.size(); j++) {
+            Friend user = new Friend(userList.get(j), userService.getFootprint(userList.get(j)));
+            globalLeaderData.add(user);
+        }
+        globalLeaderboard.setItems(globalLeaderData);
+        // friend leaderboard
+        friendLeaderData.removeAll();
+        String name = userService.currentUser.getName();
+        List<String> friendList = userService.getFriendNames(name);
+        friendList.add(name);
+        sortScores(friendList);
+        for (int i = 0; i < friendList.size(); i++) {
+            Friend friend = new Friend(friendList.get(i),
+                    userService.getFootprint(friendList.get(i)));
+            friendLeaderData.add(friend);
+        }
+        friendLeaderboard.setItems(friendLeaderData);
+    }
+
 
     //class for the animations on the navigation buttons
     public class MyButtonSkin extends ButtonSkin {
