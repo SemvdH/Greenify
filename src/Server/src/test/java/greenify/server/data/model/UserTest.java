@@ -1,11 +1,11 @@
 package greenify.server.data.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import greenify.common.ApplicationException;
 
+import greenify.server.AllAchievements;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -99,7 +99,7 @@ public class UserTest {
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
         first.addFriend(second);
-        ArrayList<User> test = new ArrayList<User>();
+        ArrayList<User> test = new ArrayList<>();
         test.add(second);
         assertEquals(first.getFriends(), test);
     }
@@ -108,9 +108,7 @@ public class UserTest {
     public void addYourselfTest() {
         User test = new User(1L, "greenify", "password");
         assertEquals(test.getFriends(), new ArrayList<User>());
-        assertThrows(ApplicationException.class, () -> {
-            test.addFriend(test);
-        });
+        assertThrows(ApplicationException.class, () -> test.addFriend(test));
     }
 
 
@@ -130,5 +128,18 @@ public class UserTest {
         friends.add(second);
         first.setFriends(friends);
         assertEquals(friends, first.getFriends());
+    }
+
+    @Test
+    public void getAchievementsTest() {
+        User user = new User(1L, "greenify", "password");
+        assertEquals(user.getAchievements(), AllAchievements.getDefaults());
+    }
+
+    @Test
+    public void setAchievementsTest() {
+        User user = new User(1L, "greenify", "password");
+        user.setAchievements(null);
+        assertNull(user.getAchievements());
     }
 }

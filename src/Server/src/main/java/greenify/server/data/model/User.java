@@ -1,12 +1,14 @@
 package greenify.server.data.model;
 
 import greenify.common.ApplicationException;
+import greenify.server.AllAchievements;
 import greenify.server.InputValidator;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -47,6 +49,9 @@ public class User {
     @JoinColumn
     private Collection<User> friends;
 
+    @ElementCollection
+    private List<Achievement> achievements;
+
     public User() {}
 
     /**
@@ -60,7 +65,8 @@ public class User {
         this.name = name;
         this.password = password;
         this.setFootPrintInputs(InputValidator.getDefaultValues());
-        this.friends = new ArrayList<User>();
+        this.friends = new ArrayList<>();
+        this.setAchievements(AllAchievements.getDefaults());
     }
 
     /**
@@ -160,7 +166,7 @@ public class User {
     }
 
     /**
-     * Adds a friend to the friendslist of the user.
+     * Adds a friend to the friends list of the user.
      * @param user the friend you want to add.
      */
     public void addFriend(User user) {
@@ -170,6 +176,22 @@ public class User {
             friends.add(user);
             System.out.print("Friend added!");
         }
+    }
+
+    /**
+     * This method sets the achievements of the user.
+     * @param achievements achievements of the user
+     */
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
+    }
+
+    /**
+     * This method gets the achievements of the user.
+     * @return achievements of the user
+     */
+    public List<Achievement> getAchievements() {
+        return this.achievements;
     }
 
     /**
@@ -183,8 +205,8 @@ public class User {
     }
 
     /**
-     * Returns the name and score of the friends in JSON. Needed for the leaderboard.
-     * @return a JSON object of the friendlist with only names and scores.
+     * Returns the name and score of the friends in JSON. Needed for the leader board.
+     * @return a JSON object of the friend list with only names and scores.
      */
     public String friendsToString() {
         String result = "friends=[";
