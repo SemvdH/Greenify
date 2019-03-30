@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -49,9 +50,9 @@
                         <Image url="@../icons/world.png" />
                         <!--image credits:
                         made by prettycons https://www.flaticon.com/authors/prettycons
-                        from https://www.flaticon.com/
-                        flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
-                        -->
+                              from https://www.flaticon.com/
+                              flaticon is licenced by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0
+                              -->
                      </image>
                   </ImageView>
                </graphic>
@@ -107,7 +108,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" onAction="#saveCalculation" mnemonicParsing="false" text="Save">
+            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveCalculation" text="Save">
                <font>
                   <Font size="17.0" />
                </font></Button>
@@ -145,8 +146,9 @@
                </opaqueInsets>
             </Label>
             <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="188.0" layoutY="14.0" stroke="#38573e" />
          </children></AnchorPane>
-      <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+      <AnchorPane fx:id="travelPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
          <children>
             <ScrollPane layoutX="158.0" layoutY="109.0" prefHeight="215.0" prefWidth="499.0">
                <content>
@@ -288,9 +290,10 @@
                </children>
             </HBox>
             <Button fx:id="travelNextButton" layoutX="383.0" layoutY="559.0" mnemonicParsing="false" onAction="#displayHome" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="273.0" layoutY="7.0" stroke="#38573e" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+      <AnchorPane fx:id="homePane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
          <children>
             <Text layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much do you use in your home?">
                <font>
@@ -416,8 +419,9 @@
                   </Label>
                </children>
             </HBox>
+            <Line endX="79.0" layoutX="358.0" layoutY="7.0" stroke="#38573e" />
          </children></AnchorPane>
-      <ScrollPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+      <ScrollPane fx:id="foodPane" layoutY="92.0" pannable="true" prefHeight="611.0" prefWidth="820.0" visible="false">
          <content>
             <AnchorPane prefHeight="1000.0" prefWidth="817.0">
                <children>
@@ -527,11 +531,12 @@
                      </font>
                   </Text>
                   <Button layoutX="378.0" layoutY="926.0" mnemonicParsing="false" onAction="#displayShopping" styleClass="nextButton" text="Next" />
+                  <Line endX="79.0" layoutX="443.0" layoutY="7.0" stroke="#38573e" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+      <AnchorPane fx:id="shoppingPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
          <children>
             <Text layoutX="133.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much do you spend on each of the following?">
                <font>
@@ -578,7 +583,7 @@
                </children>
             </HBox>
             <Slider fx:id="servicesSlider" blockIncrement="3428.0" layoutX="133.0" layoutY="418.0" majorTickUnit="3428.0" max="10284.0" minorTickCount="0" prefHeight="24.0" prefWidth="554.0" showTickLabels="true" showTickMarks="true" />
+            <Line endX="79.0" layoutX="528.0" layoutY="7.0" stroke="#38573e" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
-
