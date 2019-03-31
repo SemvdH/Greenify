@@ -10,11 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -135,6 +131,18 @@ public class CalculatorController {
     @FXML
     private Label servicesLabel;
 
+    //extra pane
+    @FXML
+    private AnchorPane extraPane;
+    @FXML
+    private CheckBox localProduceCheckbox;
+    @FXML
+    private CheckBox bikeCheckbox;
+    @FXML
+    private CheckBox temperatureCheckbox;
+    @FXML
+    private CheckBox solarPanelsCheckbox;
+
     /**
      * initializes the window, performs some actions before loading all other things.
      * it sets the sliders to snap to the ticks.
@@ -243,12 +251,14 @@ public class CalculatorController {
      * Activated when the designated button (navigation button) is clicked
      * @param event the click of the button
      */
+    @SuppressWarnings("Duplicates")
     public void displayGetStarted(ActionEvent event) {
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
         homePane.setVisible(false);
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
+        extraPane.setVisible(false);
 
     }
 
@@ -257,6 +267,7 @@ public class CalculatorController {
      * Activated when the designated button (navigation button) is clicked
      * @param event the click of the button
      */
+    @SuppressWarnings("Duplicates")
     public void displayTravel(ActionEvent event) {
         addSlideInAnimation(travelPane);
         getStartedPane.setVisible(false);
@@ -264,7 +275,7 @@ public class CalculatorController {
         homePane.setVisible(false);
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
-
+        extraPane.setVisible(false);
 
     }
 
@@ -273,12 +284,14 @@ public class CalculatorController {
      * Activated when the designated button (navigation button) is clicked
      * @param event the click of the button
      */
+    @SuppressWarnings("Duplicates")
     public void displayHome(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(true);
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
+        extraPane.setVisible(false);
     }
 
     /**
@@ -286,12 +299,14 @@ public class CalculatorController {
      * Activated when the designated button (navigation button) is clicked
      * @param event the click of the button
      */
+    @SuppressWarnings("Duplicates")
     public void displayFood(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
         foodPane.setVisible(true);
         shoppingPane.setVisible(false);
+        extraPane.setVisible(false);
     }
 
     /**
@@ -299,18 +314,37 @@ public class CalculatorController {
      * Activated when the designated button (navigation button) is clicked
      * @param event the click of the button
      */
+    @SuppressWarnings("Duplicates")
     public void displayShopping(ActionEvent event) {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
         foodPane.setVisible(false);
         shoppingPane.setVisible(true);
+        extraPane.setVisible(false);
+    }
+
+    /**
+     * displays the 'Extra' section of the calculator.
+     * Activated when the designated button (navigation button) is clicked
+     * @param event the click of the designated button
+     */
+    @SuppressWarnings("Duplicates")
+    public void displayExtra(ActionEvent event) {
+        getStartedPane.setVisible(false);
+        travelPane.setVisible(false);
+        homePane.setVisible(false);
+        foodPane.setVisible(false);
+        shoppingPane.setVisible(false);
+        extraPane.setVisible(true);
+
     }
 
     /**
      * The method saves the calculation.
      * @param event user clicks to button
      */
+    @SuppressWarnings("Duplicates")
     public void saveCalc(ActionEvent event) throws InterruptedException {
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
