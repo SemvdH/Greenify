@@ -26,7 +26,7 @@ or without gradle on your device:
 ./gradlew greenify bootrun
 ```
 
-##Running the tests
+## Running the tests
 The tests cover all non-GUI code:
 
 ```
