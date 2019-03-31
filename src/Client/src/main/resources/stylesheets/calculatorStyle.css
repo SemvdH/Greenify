@@ -55,6 +55,22 @@
     -fx-padding: 12;
 }
 
+.check-box .box {
+    -fx-background-color: #d7d8d6;
+    -fx-border-color: transparent;
+    -fx-border-radius: 6px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #ebedea;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #91ad83;
+    -fx-border-radius: 6px;
+    -fx-border-color: transparent;
+}
+
 
 
 
