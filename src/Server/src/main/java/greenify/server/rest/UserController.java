@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -100,6 +101,14 @@ public class UserController {
     public List<String> getAllUsers() {
         List<String> users = userService.getAllUsers();
         return users;
+    }
+
+    /**
+     * This method gets the input map of the user.
+     */
+    @RequestMapping("/getInputs")
+    public Map<String, String> getInputs(@RequestParam(value = "name") String name) {
+        return userService.getInputMap(name);
     }
 
     /**
