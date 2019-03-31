@@ -10,7 +10,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -467,6 +472,18 @@ public class CalculatorController {
                     servicesLabel.getText().replace("€ / month", ""));
         }
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
+        if(localProduceCheckbox.isSelected()) {
+            controller.localProduce.setSelected(true);
+        }
+        if(bikeCheckbox.isSelected()) {
+            controller.bike.setSelected(true);
+        }
+        if(temperatureCheckbox.isSelected()) {
+            controller.loweringTemp.setSelected(true);
+        }
+        if(solarPanelsCheckbox.isSelected()) {
+            controller.solarPanels.setSelected(true);
+        }
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
         current.close();
