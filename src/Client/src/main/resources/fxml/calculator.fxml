@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -157,6 +158,7 @@
                </opaqueInsets>
             </Label>
             <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="147.0" layoutY="14.0" stroke="#545b54" />
          </children></AnchorPane>
       <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
          <children>
@@ -300,6 +302,7 @@
                </children>
             </HBox>
             <Button fx:id="travelNextButton" layoutX="383.0" layoutY="559.0" mnemonicParsing="false" onAction="#displayHome" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="232.0" layoutY="14.0" stroke="#545b54" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
@@ -428,8 +431,9 @@
                   </Label>
                </children>
             </HBox>
+            <Line endX="79.0" layoutX="317.0" layoutY="14.0" stroke="#545b54" />
          </children></AnchorPane>
-      <ScrollPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+      <ScrollPane fx:id="foodPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
          <content>
             <AnchorPane prefHeight="1000.0" prefWidth="817.0">
                <children>
@@ -539,6 +543,7 @@
                      </font>
                   </Text>
                   <Button layoutX="378.0" layoutY="926.0" mnemonicParsing="false" onAction="#displayShopping" styleClass="nextButton" text="Next" />
+                  <Line endX="79.0" layoutX="402.0" layoutY="7.0" stroke="#545b54" />
                </children>
             </AnchorPane>
          </content>
@@ -591,6 +596,7 @@
             </HBox>
             <Slider fx:id="servicesSlider" blockIncrement="3428.0" layoutX="133.0" layoutY="418.0" majorTickUnit="3428.0" max="10284.0" minorTickCount="0" prefHeight="24.0" prefWidth="554.0" showTickLabels="true" showTickMarks="true" />
             <Button layoutX="383.0" layoutY="547.0" mnemonicParsing="false" onAction="#displayExtra" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="487.0" layoutY="7.0" stroke="#545b54" />
          </children></AnchorPane>
       <AnchorPane fx:id="extraPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
          <children>
@@ -619,6 +625,7 @@
                   <Font size="18.0" />
                </font>
             </CheckBox>
+            <Line endX="79.0" layoutX="572.0" layoutY="7.0" stroke="#545b54" />
          </children>
       </AnchorPane>
    </children>
