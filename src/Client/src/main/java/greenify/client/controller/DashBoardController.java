@@ -15,10 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
@@ -29,6 +26,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class that controls the dashboard fxml file (the GUI Screen).
@@ -96,6 +94,60 @@ public class DashBoardController {
     private PieChart pieChart;
     @FXML
     private Label usernameLabel;
+    @FXML
+    private TextField peopleNumber;
+    @FXML
+    private TextField income;
+    @FXML
+    private TextField electricityUsage;
+    @FXML
+    private TextField cleanEnergy;
+    @FXML
+    private TextField naturalGasUsage;
+    @FXML
+    private TextField heatingOilUsage;
+    @FXML
+    private TextField waterUsage;
+    @FXML
+    private TextField livingSpace;
+    @FXML
+    private TextField gasolineMiles;
+    @FXML
+    private TextField gasolineMpg;
+    @FXML
+    private TextField dieselMiles;
+    @FXML
+    private TextField dieselMpg;
+    @FXML
+    private TextField electricMiles;
+    @FXML
+    private TextField electricMpg;
+    @FXML
+    private TextField publicTransportation;
+    @FXML
+    private TextField airPlane;
+    @FXML
+    private TextField goodShopping;
+    @FXML
+    private TextField serviceShopping;
+    @FXML
+    private TextField meat;
+    @FXML
+    private TextField grains;
+    @FXML
+    private TextField dairy;
+    @FXML
+    private TextField fruits;
+    @FXML
+    private TextField snacks;
+    @FXML
+    public CheckBox localProduce;
+    @FXML
+    public CheckBox loweringTemp;
+    @FXML
+    public CheckBox bike;
+    @FXML
+    public CheckBox solarPanels;
 
     /**
      * Loads the the necessary things before anything else.
@@ -200,6 +252,30 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(true);
         friendsPane.setVisible(false);
+        Map<String, String> inputMap = userService.getInputs(userService.currentUser.getName());
+        peopleNumber.setText(inputMap.get("input_size"));
+        income.setText(inputMap.get("input_income"));
+        electricityUsage.setText(inputMap.get("input_footprint_housing_electricity_dollars"));
+        cleanEnergy.setText(inputMap.get("input_footprint_housing_gco2_per_kwh"));
+        naturalGasUsage.setText(inputMap.get("input_footprint_housing_naturalgas_dollars"));
+        heatingOilUsage.setText(inputMap.get("input_footprint_housing_heatingoil_dollars"));
+        waterUsage.setText(inputMap.get("input_footprint_housing_watersewage"));
+        livingSpace.setText(inputMap.get("input_footprint_housing_squarefeet"));
+        gasolineMiles.setText(inputMap.get("input_footprint_transportation_miles1"));
+        gasolineMpg.setText(inputMap.get("input_footprint_transportation_mpg1"));
+        dieselMiles.setText(inputMap.get("input_footprint_transportation_miles2"));
+        dieselMpg.setText(inputMap.get("input_footprint_transportation_mpg2"));
+        electricMiles.setText(inputMap.get("input_footprint_transportation_miles3"));
+        electricMpg.setText(inputMap.get("input_footprint_transportation_mpg3"));
+        publicTransportation.setText(inputMap.get("input_footprint_transportation_publictrans"));
+        airPlane.setText(inputMap.get("input_footprint_transportation_airtotal"));
+        goodShopping.setText(inputMap.get("input_footprint_shopping_goods_total"));
+        serviceShopping.setText(inputMap.get("input_footprint_shopping_services_total"));
+        meat.setText(inputMap.get("input_footprint_shopping_food_meatfisheggs"));
+        grains.setText(inputMap.get("input_footprint_shopping_food_cereals"));
+        dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
+        fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
+        snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
     }
 
     /**
@@ -209,8 +285,7 @@ public class DashBoardController {
     public void displayUser(ActionEvent event) {
         System.out.println(userService.currentUser.getName());
         System.out.println(userService.getFootprint(userService.currentUser.getName()));
-        footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName())
-                + "\n tons CO2/year");
+        footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
         usernameLabel.setText("" + userService.currentUser.getName());
         addFadeTransition(userPane);
         System.out.println("display user");

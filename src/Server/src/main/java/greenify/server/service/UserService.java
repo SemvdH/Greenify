@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -112,6 +113,16 @@ public class UserService {
         } else {
             throw new ApplicationException("Invalid input");
         }
+    }
+
+    /**
+     * This method gets the map of the inputs.
+     * @param name of the user
+     * @return input map
+     */
+    public Map<String, String> getInputMap(String name) {
+        User user = userRepository.findByName(name);
+        return user.getFootPrintInputs();
     }
 
     /**

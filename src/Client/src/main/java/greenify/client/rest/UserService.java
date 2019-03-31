@@ -1,5 +1,6 @@
 package greenify.client.rest;
 
+import com.sun.javafx.collections.MappingChange;
 import greenify.common.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -171,6 +175,23 @@ public class UserService {
         System.out.println(builder.build().encode().toUri());
         ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
                 .encode().toUri(), String.class);
+    }
+
+    /**
+     * Gets the footprint inputs of the user.
+     * @param name the username of the current user.
+     */
+    @SuppressWarnings("Duplicates")
+    public Map<String, String> getInputs(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getInputs")
+                .queryParam("name", name);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Map<String, String> result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), Map.class);
+        return result;
     }
 
     /**

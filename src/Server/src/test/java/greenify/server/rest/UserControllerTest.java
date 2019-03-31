@@ -95,6 +95,19 @@ public class UserControllerTest {
     }
 
     @Test
+    public void getInputMapTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getInputs")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .getInputMap(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
     public void getAllUsersTest() throws Exception {
         mvc.perform(get("/getAllUsers")
                 .accept(MediaType.APPLICATION_JSON))
