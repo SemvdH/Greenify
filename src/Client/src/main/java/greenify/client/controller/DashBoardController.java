@@ -159,7 +159,8 @@ public class DashBoardController {
     public void displayUser(ActionEvent event) {
         System.out.println(userService.currentUser.getName());
         System.out.println(userService.getFootprint(userService.currentUser.getName()));
-        footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
+        footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName())
+                + "\n tons CO2/year");
         usernameLabel.setText("" + userService.currentUser.getName());
         addFadeTransition(userPane);
         System.out.println("display user");
