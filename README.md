@@ -53,8 +53,7 @@ action plan:
 <img src="https://user-images.githubusercontent.com/47633984/55274734-10398a80-52dc-11e9-9fce-5059ac2b3f3b.jpeg" width="100"/>
 
 ## Personal Development Plan:
-
-- This is my core quadrant: <img src="https://user-images.githubusercontent.com/47633984/55274694-4296b800-52db-11e9-9cee-b8d1d5c58e6f.png" width="700"/>
+<img src="https://user-images.githubusercontent.com/47633984/55274694-4296b800-52db-11e9-9cee-b8d1d5c58e6f.png" width="700"/>
 
 My strong points:
 - I am an ambitious person in order to achieve my goal I can study a lot
