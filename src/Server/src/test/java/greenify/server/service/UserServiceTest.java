@@ -20,7 +20,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
@@ -134,6 +136,17 @@ public class UserServiceTest {
                 "input_footprint_shopping_food_dairy_default", "6.5");
         assertEquals("6.5", userService
                 .getInput("alex", "input_footprint_shopping_food_dairy_default"));
+    }
+
+    @Test
+    public void getInputMapTest() {
+        Map<String, String> map = new HashMap<>();
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        alex.setFootPrintInputs(map);
+        assertEquals(map, userService
+                .getInputMap("alex"));
     }
 
     @Test

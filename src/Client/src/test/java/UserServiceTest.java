@@ -11,7 +11,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -83,6 +85,17 @@ public class UserServiceTest {
                 List.class))
                 .thenReturn(estimate);
         List<String> result = userService.getAllUsers();
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void getInputsTest() throws Exception {
+        Map<String, String> estimate = new HashMap<>();
+        estimate.put("Eric", "3");
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getInputs?name=Eric"),
+                Map.class))
+                .thenReturn(estimate);
+        Map<String, String> result = userService.getInputs("Eric");
         Assert.assertEquals(estimate, result);
     }
 
