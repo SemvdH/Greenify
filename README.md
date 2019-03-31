@@ -1,42 +1,42 @@
-﻿#Greenify
+﻿# Greenify
 The easiest way to save CO2 and help the environment! Enter your activities and find out your carbon footprint.
 
-##Getting started 
+## Getting started 
 You can install greenify with gradle, if you already have gradle on your machine, run: 
 
-'''
+```
 gradle install something tralala
-'''
+```
 
 Do you not have gradle on your machine, run:
 
-'''
+```
 ./gradlew install something tralala
-'''
+```
 
 With the following you can start the application
 
-'''
+```
 gradle greenify bootrun
-'''
+```
 
 or without gradle on your device:
 
-'''
+```
 ./gradlew greenify bootrun
-'''
+```
 
 ##Running the tests
 The tests cover all non-GUI code:
 
-'''
+```
 gradle check
-'''
+```
 
-##Licence
+## Licence
 GNU General Public License v3.0
 
-##Contributors
+## Contributors
 
 ### Merel Steenbergen (masteenbergen) 
 <img src="https://user-images.githubusercontent.com/47633984/55274602-13cc1200-52da-11e9-9bd7-686d84929b83.jpg" width="100"/>
