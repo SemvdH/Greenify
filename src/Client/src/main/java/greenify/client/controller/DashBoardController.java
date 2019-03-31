@@ -15,7 +15,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
@@ -95,57 +99,64 @@ public class DashBoardController {
     @FXML
     private Label usernameLabel;
     @FXML
-    private TextField peopleNumber;
+    private Label peopleNumber;
     @FXML
-    private TextField income;
+    private Label income;
     @FXML
-    private TextField electricityUsage;
+    private Label electricityUsage;
     @FXML
-    private TextField cleanEnergy;
+    private Label cleanEnergy;
     @FXML
-    private TextField naturalGasUsage;
+    private Label naturalGasUsage;
     @FXML
-    private TextField heatingOilUsage;
+    private Label heatingOilUsage;
     @FXML
-    private TextField waterUsage;
+    private Label waterUsage;
     @FXML
-    private TextField livingSpace;
+    private Label livingSpace;
     @FXML
-    private TextField gasolineMiles;
+    private Label gasolineMiles;
     @FXML
-    private TextField gasolineMpg;
+    private Label gasolineMpg;
     @FXML
-    private TextField dieselMiles;
+    private Label dieselMiles;
     @FXML
-    private TextField dieselMpg;
+    private Label dieselMpg;
     @FXML
-    private TextField electricMiles;
+    private Label electricMiles;
     @FXML
-    private TextField electricMpg;
+    private Label electricMpg;
     @FXML
-    private TextField publicTransportation;
+    private Label publicTransportation;
     @FXML
-    private TextField airPlane;
+    private Label airPlane;
     @FXML
-    private TextField goodShopping;
+    private Label goodShopping;
     @FXML
-    private TextField serviceShopping;
+    private Label serviceShopping;
     @FXML
-    private TextField meat;
+    private Label meat;
     @FXML
-    private TextField grains;
+    private Label grains;
     @FXML
-    private TextField dairy;
+    private Label dairy;
     @FXML
-    private TextField fruits;
+    private Label fruits;
     @FXML
-    private TextField snacks;
+    private Label snacks;
+
+    //these need to be public because they are used by the calculatorController
+    //suppressing the checkstyle warnings because the fields have to be public
+    @SuppressWarnings("CheckStyle")
     @FXML
     public CheckBox localProduce;
+    @SuppressWarnings("CheckStyle")
     @FXML
     public CheckBox loweringTemp;
+    @SuppressWarnings("CheckStyle")
     @FXML
     public CheckBox bike;
+    @SuppressWarnings("CheckStyle")
     @FXML
     public CheckBox solarPanels;
 
@@ -254,28 +265,33 @@ public class DashBoardController {
         friendsPane.setVisible(false);
         Map<String, String> inputMap = userService.getInputs(userService.currentUser.getName());
         peopleNumber.setText(inputMap.get("input_size"));
-        income.setText(inputMap.get("input_income"));
-        electricityUsage.setText(inputMap.get("input_footprint_housing_electricity_dollars"));
+        income.setText(inputMap.get("input_income") + " €/yr");
+        electricityUsage.setText(inputMap.get("input_footprint_housing_electricity_dollars")
+                + " €/yr");
         cleanEnergy.setText(inputMap.get("input_footprint_housing_gco2_per_kwh"));
-        naturalGasUsage.setText(inputMap.get("input_footprint_housing_naturalgas_dollars"));
-        heatingOilUsage.setText(inputMap.get("input_footprint_housing_heatingoil_dollars"));
-        waterUsage.setText(inputMap.get("input_footprint_housing_watersewage"));
-        livingSpace.setText(inputMap.get("input_footprint_housing_squarefeet"));
+        naturalGasUsage.setText(inputMap.get("input_footprint_housing_naturalgas_dollars")
+                + " €/yr");
+        heatingOilUsage.setText(inputMap.get("input_footprint_housing_heatingoil_dollars")
+                + " €/yr");
+        waterUsage.setText(inputMap.get("input_footprint_housing_watersewage") + " €/yr");
+        livingSpace.setText(inputMap.get("input_footprint_housing_squarefeet") + " m²");
         gasolineMiles.setText(inputMap.get("input_footprint_transportation_miles1"));
         gasolineMpg.setText(inputMap.get("input_footprint_transportation_mpg1"));
         dieselMiles.setText(inputMap.get("input_footprint_transportation_miles2"));
         dieselMpg.setText(inputMap.get("input_footprint_transportation_mpg2"));
         electricMiles.setText(inputMap.get("input_footprint_transportation_miles3"));
         electricMpg.setText(inputMap.get("input_footprint_transportation_mpg3"));
-        publicTransportation.setText(inputMap.get("input_footprint_transportation_publictrans"));
-        airPlane.setText(inputMap.get("input_footprint_transportation_airtotal"));
-        goodShopping.setText(inputMap.get("input_footprint_shopping_goods_total"));
-        serviceShopping.setText(inputMap.get("input_footprint_shopping_services_total"));
+        publicTransportation.setText(inputMap.get("input_footprint_transportation_publictrans")
+                + " mi/yr");
+        airPlane.setText(inputMap.get("input_footprint_transportation_airtotal") + " mi/yr");
+        goodShopping.setText(inputMap.get("input_footprint_shopping_goods_total") + " €/mo");
+        serviceShopping.setText(inputMap.get("input_footprint_shopping_services_total") + " €/mo");
         meat.setText(inputMap.get("input_footprint_shopping_food_meatfisheggs"));
         grains.setText(inputMap.get("input_footprint_shopping_food_cereals"));
         dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
         fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
+        localProduce.setSelected(true);
     }
 
     /**

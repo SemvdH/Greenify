@@ -173,9 +173,9 @@ public class CalculatorController {
             }
         });
 
-        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " km/L");
-        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " km/L");
-        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " km/Le");
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " mpg");
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " mpg");
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " mpge");
 
         cleanEnergyPurchasedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -379,30 +379,30 @@ public class CalculatorController {
                     "input_footprint_transportation_miles1",
                     carTravelGasolineField.getText());
         }
-        if (!carTravelGasolineLabel.getText().replace(" km/L", "").equals("0")) {
+        if (!carTravelGasolineLabel.getText().replace(" mpg", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg1",
-                    carTravelGasolineLabel.getText().replace(" km/L", ""));
+                    carTravelGasolineLabel.getText().replace(" mpg", ""));
         }
         if (!carTravelDieselField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles2",
                     carTravelDieselField.getText());
         }
-        if (!carTravelDieselLabel.getText().replace(" km/L", "").equals("0")) {
+        if (!carTravelDieselLabel.getText().replace(" mpg", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg2",
-                    carTravelDieselLabel.getText().replace(" km/L", ""));
+                    carTravelDieselLabel.getText().replace(" mpg", ""));
         }
         if (!carTravelElectricField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles3",
                     carTravelElectricField.getText());
         }
-        if (!carTravelElectricLabel.getText().replace(" km/Le", "").equals("0")) {
+        if (!carTravelElectricLabel.getText().replace(" mpge", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg3",
-                    carTravelElectricLabel.getText().replace(" km/Le", ""));
+                    carTravelElectricLabel.getText().replace(" mpge", ""));
         }
         if (!electricityField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),

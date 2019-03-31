@@ -6,7 +6,7 @@
 .root {
   -fx-background-color:  #f9fffb;
   /*-fx-font-family: "Designio Regular";*/
-  -fx-font-family: Corbel;    /*this doesn't work for some reason*/
+  /*-fx-font-family: Corbel;    !*this doesn't work for some reason*!*/
 }
 
 #dashboardButton {
@@ -81,7 +81,9 @@
   -fx-background-color: #b7e2c2;
 }
 
-
+.activityField {
+  -fx-font-size: 14px;
+}
 
 
 

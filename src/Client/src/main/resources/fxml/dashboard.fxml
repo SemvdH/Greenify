@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="703.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
@@ -57,28 +56,28 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Label alignment="CENTER" layoutX="20.0" layoutY="100.0" prefHeight="32.0" prefWidth="255.0" text="Get Started!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="20.0" layoutY="100.0" prefHeight="32.0" prefWidth="255.0" text="Get Started!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
             <Pane layoutX="20.0" layoutY="130.0" prefHeight="142.0" prefWidth="255.0" style="-fx-background-color: #f4fff4;">
                <children>
-                  <TextField fx:id="peopleNumber" layoutX="190.0" layoutY="70.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="154.0" text="Number of people">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="income" layoutX="190.0" layoutY="16.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label layoutX="14.0" layoutY="70.0" prefHeight="40.0" prefWidth="154.0" text="Household income">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="income" layoutX="207.0" layoutY="28.0" styleClass="activityField" text="  " textAlignment="CENTER" />
+                  <Label fx:id="peopleNumber" layoutX="204.0" layoutY="82.0" styleClass="activityField" text="  " textAlignment="CENTER" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="20.0" layoutY="275.0" prefHeight="32.0" prefWidth="255.0" text="Home!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="20.0" layoutY="275.0" prefHeight="32.0" prefWidth="255.0" text="Home!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -90,40 +89,40 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="electricityUsage" layoutX="190.0" layoutY="26.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="74.0" prefHeight="40.0" prefWidth="149.0" text="\% of clean energy prog.">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cleanEnergy" layoutX="190.0" layoutY="74.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="122.0" prefHeight="40.0" prefWidth="149.0" text="Natural gas usage">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="naturalGasUsage" layoutX="190.0" layoutY="122.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="168.0" prefHeight="40.0" prefWidth="149.0" text="Heating oil usage">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="heatingOilUsage" layoutX="190.0" layoutY="168.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="216.0" prefHeight="40.0" prefWidth="149.0" text="Water usage">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="waterUsage" layoutX="190.0" layoutY="216.0" prefHeight="40.0" prefWidth="62.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="264.0" prefHeight="40.0" prefWidth="149.0" text="Living space area">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="livingSpace" layoutX="190.0" layoutY="264.0" prefHeight="40.0" prefWidth="62.0" />
+                  <Label fx:id="electricityUsage" layoutX="207.0" layoutY="38.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="cleanEnergy" layoutX="207.0" layoutY="86.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="naturalGasUsage" layoutX="207.0" layoutY="134.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="heatingOilUsage" layoutX="207.0" layoutY="180.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="waterUsage" layoutX="207.0" layoutY="228.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="livingSpace" layoutX="207.0" layoutY="276.0" styleClass="activityField" text="Label" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="32.0" prefWidth="230.0" text="Travel!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="32.0" prefWidth="230.0" text="Travel!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -135,52 +134,52 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="gasolineMiles" layoutX="170.0" layoutY="11.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="55.0" prefHeight="27.0" prefWidth="149.0" text="Gasoline mpg">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="gasolineMpg" layoutX="170.0" layoutY="55.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="99.0" prefHeight="27.0" prefWidth="149.0" text="Diesel miles">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="dieselMiles" layoutX="170.0" layoutY="99.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="143.0" prefHeight="27.0" prefWidth="149.0" text="Diesel mpg">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="dieselMpg" layoutX="170.0" layoutY="143.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="187.0" prefHeight="27.0" prefWidth="149.0" text="Electric miles">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="electricMiles" layoutX="170.0" layoutY="187.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="231.0" prefHeight="27.0" prefWidth="149.0" text="Electric mpg">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="electricMpg" layoutX="170.0" layoutY="231.0" prefHeight="27.0" prefWidth="50.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="275.0" prefHeight="27.0" prefWidth="149.0" text="Public transportation">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="publicTransportation" layoutX="170.0" layoutY="275.0" prefHeight="27.0" prefWidth="50.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="319.0" prefHeight="27.0" prefWidth="149.0" text="Air plane">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="319.0" prefHeight="27.0" prefWidth="149.0" text="Airplane">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="airPlane" layoutX="170.0" layoutY="319.0" prefHeight="27.0" prefWidth="50.0" />
+                  <Label fx:id="gasolineMiles" layoutX="181.0" layoutY="16.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="gasolineMpg" layoutX="181.0" layoutY="60.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="dieselMiles" layoutX="181.0" layoutY="104.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="dieselMpg" layoutX="181.0" layoutY="148.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="electricMiles" layoutX="181.0" layoutY="192.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="electricMpg" layoutX="181.0" layoutY="236.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="publicTransportation" layoutX="181.0" layoutY="280.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="airPlane" layoutX="181.0" layoutY="324.0" styleClass="activityField" text="Label" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="290.0" layoutY="488.0" prefHeight="32.0" prefWidth="230.0" text="Shopping!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="290.0" layoutY="488.0" prefHeight="32.0" prefWidth="230.0" text="Shopping!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -192,16 +191,16 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="goodShopping" layoutX="146.0" layoutY="18.0" prefHeight="40.0" prefWidth="70.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="75.0" prefHeight="59.0" prefWidth="115.0" text="Services &#10;shopping" textAlignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="serviceShopping" layoutX="146.0" layoutY="80.0" prefHeight="40.0" prefWidth="70.0" />
+                  <Label fx:id="goodShopping" layoutX="167.0" layoutY="32.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="serviceShopping" layoutX="167.0" layoutY="96.0" styleClass="activityField" text="Label" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="545.0" layoutY="100.0" prefHeight="32.0" prefWidth="255.0" text="Food!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="545.0" layoutY="100.0" prefHeight="32.0" prefWidth="255.0" text="Food!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -213,34 +212,34 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="meat" layoutX="150.0" layoutY="26.0" prefHeight="46.0" prefWidth="70.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="90.0" prefHeight="46.0" prefWidth="115.0" text="Grains/baked &#10;foods" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="grains" layoutX="150.0" layoutY="90.0" prefHeight="46.0" prefWidth="70.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="154.0" prefHeight="46.0" prefWidth="115.0" text="Dairy">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="dairy" layoutX="150.0" layoutY="154.0" prefHeight="46.0" prefWidth="70.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="218.0" prefHeight="46.0" prefWidth="115.0" text="Fruits vegetables">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fruits" layoutX="150.0" layoutY="218.0" prefHeight="46.0" prefWidth="70.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="282.0" prefHeight="46.0" prefWidth="115.0" text="Snacks drinks">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="snacks" layoutX="150.0" layoutY="282.0" prefHeight="46.0" prefWidth="70.0" />
+                  <Label fx:id="meat" layoutX="171.0" layoutY="41.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="grains" layoutX="171.0" layoutY="105.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="dairy" layoutX="171.0" layoutY="169.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="fruits" layoutX="171.0" layoutY="233.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="snacks" layoutX="171.0" layoutY="297.0" styleClass="activityField" text="Label" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="545.0" layoutY="488.0" prefHeight="32.0" prefWidth="255.0" text="Extras!" textAlignment="CENTER" textFill="#741010">
+            <Label alignment="CENTER" layoutX="545.0" layoutY="488.0" prefHeight="32.0" prefWidth="255.0" text="Extras!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -328,24 +327,12 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button fx:id="addNewActivityButton" contentDisplay="RIGHT" layoutX="577.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayActivities" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add a new activity" textFill="#29721a">
-               <font>
-                  <Font name="Corbel Bold" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="81.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/addActivity1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Text fill="#797676" layoutX="60.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How will you make the world greener today?">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Button fx:id="calculateFootPrintButton" contentDisplay="RIGHT" layoutX="577.0" layoutY="126.0" mnemonicParsing="false" onAction="#openCalculator" prefHeight="74.0" prefWidth="205.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Calculate your     &#10;CO2 footprint" textFill="#29721a">
+            <Button fx:id="calculateFootPrintButton" contentDisplay="RIGHT" layoutX="573.0" layoutY="40.0" mnemonicParsing="false" onAction="#openCalculator" prefHeight="74.0" prefWidth="205.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Calculate your     &#10;CO2 footprint" textFill="#29721a">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
                </font>
@@ -361,7 +348,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="addFriendButton" contentDisplay="RIGHT" layoutX="596.0" layoutY="220.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add friend" textFill="#29721a">
+            <Button fx:id="addFriendButton" contentDisplay="RIGHT" layoutX="592.0" layoutY="134.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Add friend" textFill="#29721a">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
                </font>

@@ -178,7 +178,7 @@
                         </TextField>
                         <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="38.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
                            <children>
-                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mi/year" wrappingWidth="49.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -188,7 +188,7 @@
                         <Slider fx:id="carTravelGasolineSlider" layoutX="14.0" layoutY="122.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
                         <HBox alignment="CENTER" layoutX="204.0" layoutY="77.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
                            <children>
-                              <Label fx:id="carTravelGasolineLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/L">
+                              <Label fx:id="carTravelGasolineLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 mpg">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -197,7 +197,7 @@
                         </HBox>
                         <HBox alignment="CENTER" layoutX="204.0" layoutY="239.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
                            <children>
-                              <Label fx:id="carTravelDieselLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/L">
+                              <Label fx:id="carTravelDieselLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 mpg">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -207,7 +207,7 @@
                         <Slider fx:id="carTravelDieselSlider" layoutX="14.0" layoutY="285.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
                         <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="200.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
                            <children>
-                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mi/year" wrappingWidth="49.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -236,7 +236,7 @@
                         </TextField>
                         <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="365.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
                            <children>
-                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mi/year" wrappingWidth="49.0">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -246,7 +246,7 @@
                         <Slider fx:id="carTravelElectricSlider" layoutX="14.0" layoutY="450.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
                         <HBox alignment="CENTER" layoutX="204.0" layoutY="404.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
                            <children>
-                              <Label fx:id="carTravelElectricLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/Le">
+                              <Label fx:id="carTravelElectricLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 mpge">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -283,18 +283,18 @@
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="394.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="398.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
                <children>
-                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mi/year" wrappingWidth="63.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="495.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="499.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
                <children>
-                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mi/year" wrappingWidth="63.0">
                      <font>
                         <Font size="16.0" />
                      </font>
