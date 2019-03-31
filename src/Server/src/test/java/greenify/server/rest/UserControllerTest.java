@@ -95,6 +95,14 @@ public class UserControllerTest {
     }
 
     @Test
+    public void getAllUsersTest() throws Exception {
+        mvc.perform(get("/getAllUsers")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
     public void getInputTest() throws Exception {
         ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);

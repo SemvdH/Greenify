@@ -8,8 +8,10 @@ import greenify.common.ApplicationException;
 import greenify.common.UserDto;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -18,6 +20,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
@@ -118,7 +121,8 @@ public class UserServiceTest {
         when(calculatorService.calculateFootprint(alex))
                 .thenReturn(15f);
         userService.setInput("alex", "input_footprint_shopping_food_dairy_default", "6.5");
-        assertEquals(15f, alex.getFootPrint(), 0.0);
+        Assert.assertTrue(alex.getFootPrintInputs()
+                .get("input_footprint_shopping_food_dairy_default").equals("6.5"));
     }
 
     @Test
@@ -140,17 +144,50 @@ public class UserServiceTest {
     @Test
     public void getFootprintTest() {
         User alex = new User(1L, "alex", "password");
+        alex.setFootPrint(15F);
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        Assertions.assertEquals(15F, userService.getFootprint("alex"));
+    }
+
+    @Test
+    public void saveFootprintTest() {
+        User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
         when(calculatorService.calculateFootprint(alex))
                 .thenReturn(15f);
-        userService.setInput("alex", "input_footprint_shopping_food_dairy_default", "6.5");
-        assertEquals(15f, userService.getFootprint("alex"), 0.0);
+        userService.saveFootprint("alex");
+        Assertions.assertEquals(15f, userService.saveFootprint("alex"));
+    }
+
+    @Test
+    public void getFriendsTest() {
+        User alex = new User(1L, "alex", "password");
+        User lola = new User(2L, "lola", "pass");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        when(userRepository.findByName(lola.getName()))
+                .thenReturn(lola);
+        alex.addFriend(lola);
+        List<String> friendList = new ArrayList<>();
+        friendList.add("lola");
+        assertEquals(friendList, userService.getFriends("alex"));
     }
 
     @Test
     public void getAllUserTest() {
-        assertEquals(userRepository.findAll(), userService.getAllUsers());
+        User alex = new User(1L, "alex", "password");
+        User lola = new User(2L, "lola", "pass");
+        Iterable<User> users = new ArrayList<>();
+        ((ArrayList<User>) users).add(alex);
+        ((ArrayList<User>) users).add(lola);
+        when(userRepository.findAll())
+                .thenReturn(users);
+        List<String> userList = new ArrayList<>();
+        userList.add("alex");
+        userList.add("lola");
+        assertEquals(userList, userService.getAllUsers());
     }
 
     @Test
@@ -170,16 +207,12 @@ public class UserServiceTest {
     }
 
     @Test
-    public void addFriendsExceptionTest() {
-        assertThrows(ApplicationException.class, () -> userService.addFriend("greenify", null));
+    public void addFriendNullFriendTest() {
+        assertThrows(ApplicationException.class, () -> userService.addFriend("alex", null));
     }
 
     @Test
-    public void leaderboardTest() {
-        User alex = userRepository.findByName("alex");
-        User lola = userRepository.findByName("lola");
-        userService.addFriend("alex", "lola");
-        assertEquals(userService.getLeaderboard("alex"), "friends=[{name=lola, footprint=0.0}]");
-
+    public void addFriendNullUserTest() {
+        assertThrows(ApplicationException.class, () -> userService.addFriend(null, "password"));
     }
 }

@@ -9,8 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -70,20 +71,11 @@ public class UserService {
     public void addFriend(String name, String friend) {
         User user = userRepository.findByName(name);
         User add = userRepository.findByName(friend);
-        if (add == null) {
+        if (user == null || add == null ) {
             throw new ApplicationException("User does not exist");
         }
         user.addFriend(add);
-    }
-
-    /**
-     * Returns the friendlist of the user in JSON.
-     * @param name the username of the user
-     * @return a userDTO of the logged in user
-     */
-    public String getLeaderboard(String name) {
-        User user = userRepository.findByName(name);
-        return user.friendsToString();
+        userRepository.save(user);
     }
 
     /**
@@ -100,8 +92,6 @@ public class UserService {
             if (InputValidator.isValidItem(inputName)
                     && InputValidator.isValidItemValue(inputName, value)) {
                 user.getFootPrintInputs().put(inputName, value);
-                userRepository.save(user);
-                user.setFootPrint(calculatorService.calculateFootprint(user));
                 userRepository.save(user);
             } else {
                 throw new ApplicationException("Invalid input");
@@ -125,11 +115,11 @@ public class UserService {
     }
 
     /**
-     * This method gets the footprint of a user.
+     * This method saves the footprint of a user.
      * @param name name of the user
      * @return footprint of the user
      */
-    public Float getFootprint(String name) {
+    public Float saveFootprint(String name) {
         User user = userRepository.findByName(name);
         user.setFootPrint(calculatorService.calculateFootprint(user));
         userRepository.save(user);
@@ -137,12 +127,40 @@ public class UserService {
     }
 
     /**
-     * This method gets a JSON of XML with all users.
-     * @return JSON/XML of all users
+     * This method gets the footprint of a user.
+     * @param name name of the user
+     * @return footprint of the user
      */
-    @GetMapping(path = "/all")
-    @ResponseBody
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
+    public Float getFootprint(String name) {
+        User user = userRepository.findByName(name);
+        return user.getFootPrint();
+    }
+
+    /**
+     * This method gets the friends of a user.
+     * @param name name of the user
+     * @return list of the friends
+     */
+    public List<String> getFriends(String name) {
+        List<String> result = new ArrayList<>();
+        User user = userRepository.findByName(name);
+        List<User> friends = user.getFriends();
+        for (User person : friends) {
+            result.add(person.getName());
+        }
+        return result;
+    }
+
+    /**
+     * This method gets the list of all users.
+     * @return list of all users
+     */
+    public List<String> getAllUsers() {
+        List<String> result = new ArrayList<>();
+        Iterable<User>  allUsers = userRepository.findAll();
+        for (User person : allUsers) {
+            result.add(person.getName());
+        }
+        return result;
     }
 }

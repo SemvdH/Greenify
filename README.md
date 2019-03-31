@@ -1,13 +1,5 @@
-﻿## Getting your weekly reports
-
-**Jacoco**:  
-Run `maven install` ([Intellij](https://www.jetbrains.com/help/idea/2016.3/getting-started-with-maven.html#execute_maven_goal)/[Eclipse](http://imgur.com/a/6q7pV))
-
-**Checkstyle**:  
-Run `maven site`
-
-# Merel Steenbergen (masteenbergen)
-![Picture:](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Merel_Steenbergen.jpg)
+﻿# Merel Steenbergen (masteenbergen) 
+<img src="https://user-images.githubusercontent.com/47633984/55274602-13cc1200-52da-11e9-9bd7-686d84929b83.jpg" width="100"/>
 
 ## Personal Development Plan
 
@@ -19,26 +11,26 @@ everyone is keeping on track and if not, why is someone slacking?
 What are two of your weaker points?
 1.	I’m a bit of a control freak. Sometimes I find it hard to let other people do things and to mind my own business. 
 2.	I’m competitive. This can be a good thing, because I’m very passionate and really give it 100% if I like something, but it can also lead to hurt feelings when I’m not paying attention. 
- 
-![Core quadrant:](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Core_quadrant_Merel.png)
 
-###    G - Goal
+<img src="https://user-images.githubusercontent.com/47633984/55274622-2d6d5980-52da-11e9-8be0-ac1ef545f7d9.png" width="700"/>
+
+### G - Goal
 I want to improve on letting other people handle things that I actually want to do myself. I also want to improve my programming and am aiming to not make it a competition, but to really make it a group project. This is important, because you almost never work alone in software developing, which is what I want to do after the studies. 
     
-###    R - Reality (Your current situation)
+### R - Reality (Your current situation)
 I’ve already been working on my teamwork skills since high school. I had a subject that had only projects. I’ve also worked with Scrum before, which really helps you focus on your development without letting your project out of sight. I’m better at working together and listening to tips than I was before. 
 
-###    O - Options (Look at possible options)
+### O - Options (Look at possible options)
 Actively watching myself and letting my teammates know that they need to be clear with me if they don’t like something I say or do are the best ways for me to improve. I would rather improve by myself, but for my goals it is better to let my team guide me. It’s about teamwork after all.
 
-###     W - Will (Motivation, plan of action)
+### W - Will (Motivation, plan of action)
 I’m just going to keep working on myself and hope my teammates will work with me. It also helps to work in different teams to get a much more diverse experience. Every team is different, so I’m just going to wait what this team will bring me and how I will have to adjust myself to make the team efficient. 
 
 # Sem van der Hoeven (4896726, semvanderhoeve)
-![Picture location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven.jpg)
+<img src="https://user-images.githubusercontent.com/47633984/55274658-d6b44f80-52da-11e9-9404-a4ae9a210b72.jpg" width="100"/>
 
 ## Personal development plan
-![Core quadrant location](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/doc/Pictures%20Group%20Members/sem_van_der_hoeven_core_quadrant.png)
+<img src="https://user-images.githubusercontent.com/47633984/55274673-0a8f7500-52db-11e9-8d83-e1acbf22aeed.png" width="700"/>
 
 ### G - Goal
 My goal with this project is most of all to be able to efficiently work with a group of people. This is important to me because  I have not worked on a (development) project with a (big) group of people before. I believe I have succeeded in this goal when our project is finished and we have got a passing grade.
@@ -58,12 +50,11 @@ action plan:
 ⋅⋅* deliver things I need to do on time
 
 # Ceren Ugurlu (4851609, cugurlu)
-
-![My Picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/ceren_ugurlu.jpeg)
+<img src="https://user-images.githubusercontent.com/47633984/55274734-10398a80-52dc-11e9-9fce-5059ac2b3f3b.jpeg" width="100"/>
 
 ## Personal Development Plan:
 
-- This is my core quadrant: ![My Core Quadrant](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/Ceren_Ugurlu_Core_Quadrant.png)
+- This is my core quadrant: <img src="https://user-images.githubusercontent.com/47633984/55274694-4296b800-52db-11e9-9cee-b8d1d5c58e6f.png" width="700"/>
 
 My strong points:
 - I am an ambitious person in order to achieve my goal I can study a lot
@@ -98,10 +89,10 @@ Action Plan:
 - While everyone is working on their part, to inform each other about the progress is very important because some parts can be connected. When two people's parts are connected they should act according to that otherwise it can lead problems or a non-compiling code)
 
 # Mika Wauben (4834739, mlwauben)
-![My picture](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/mlwaubenpic.jpg)
+<img src="https://user-images.githubusercontent.com/47633984/55274742-29423b80-52dc-11e9-804d-69feec6d28e0.jpg" width="100"/>
 
 ## Personal Development Plan
-![My core quadrant](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/blob/master/Pictures%20Group%20Members/mlwaubenCoreQuadrant.jpg)
+<img src="https://user-images.githubusercontent.com/47633984/55274719-c18bf080-52db-11e9-9d3f-018ba68dd1f0.jpg" width="700"/>
 
  My strong points:
  1. I am observing and think before I speak. 
@@ -111,14 +102,14 @@ Action Plan:
  1. I like to do things alone. I rather figure something out myself instead of asking for help, even if this takes way too long.
  2. I tend to stay quiet if I'm not absolutely sure my contribution is right or useful. 
 
-###    G - Goal
+### G - Goal
 My goal during this course is getting more experienced in working with things like github, libraries, scrumboard, etc. and asking for help if I need it, since being stuck on something isn’t going to help my groupmates.
     
-###    R - Reality
+### R - Reality
 Every minute that we’re working on the project, I’m also actively working on my goal. 
 
-###    O - Options
+### O - Options
 By working on the project with the chosen programs, I’ll get more experienced in using them. Using those programs for other projects as well will only improve my knowledge. By being active in the groupchat and during the meetings, asking stuff will be easier. 
 
-###     W - Will
+### W - Will
 I will reach my goal by working actively together with my teammates using lots of the useful programs given.    

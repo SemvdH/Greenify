@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UserController {
     @Autowired
@@ -47,7 +49,6 @@ public class UserController {
     public void setInput(@RequestParam(value = "name") String name,
                          @RequestParam(value = "inputName") String inputName,
                          @RequestParam(value = "value") String value) {
-        System.out.println("Here is server controller");
         userService.setInput(name, inputName, value);
     }
 
@@ -70,6 +71,35 @@ public class UserController {
     public Float getFootprint(@RequestParam(value = "name") String name) {
         Float footprint = userService.getFootprint(name);
         return footprint;
+    }
+
+    /**
+     * This method saves footprint for a user.
+     * @param name name of the user
+     */
+    @RequestMapping("/saveFootprint")
+    public Float saveFootprint(@RequestParam(value = "name") String name) {
+        Float footprint = userService.saveFootprint(name);
+        return footprint;
+    }
+
+    /**
+     * This method gets friend list for a user.
+     * @param name name of the user
+     */
+    @RequestMapping("/getFriends")
+    public List<String> getFriendNames(@RequestParam(value = "name") String name) {
+        List<String> friends = userService.getFriends(name);
+        return friends;
+    }
+
+    /**
+     * This method gets the list of all users.
+     */
+    @RequestMapping("/getAllUsers")
+    public List<String> getAllUsers() {
+        List<String> users = userService.getAllUsers();
+        return users;
     }
 
     /**
