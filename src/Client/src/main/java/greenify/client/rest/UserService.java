@@ -231,6 +231,24 @@ public class UserService {
     }
 
     /**
+     * Removes a friend from the friendslist of the user.
+     * @param name the username of the current user.
+     * @param friend the username of the friend you want to remove.
+     */
+    @SuppressWarnings("Duplicates")
+    public void removeFriend(String name, String friend) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/removeFriend")
+                .queryParam("name", name)
+                .queryParam("friend",friend);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
+                .encode().toUri(), String.class);
+    }
+
+    /**
      * Gets the footprint inputs of the user.
      * @param name the username of the current user.
      */
