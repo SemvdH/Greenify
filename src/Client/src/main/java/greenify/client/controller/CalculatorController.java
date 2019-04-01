@@ -472,16 +472,16 @@ public class CalculatorController {
                     servicesLabel.getText().replace("€ / month", ""));
         }
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
-        if(localProduceCheckbox.isSelected()) {
+        if (localProduceCheckbox.isSelected()) {
             controller.localProduce.setSelected(true);
         }
-        if(bikeCheckbox.isSelected()) {
+        if (bikeCheckbox.isSelected()) {
             controller.bike.setSelected(true);
         }
-        if(temperatureCheckbox.isSelected()) {
+        if (temperatureCheckbox.isSelected()) {
             controller.loweringTemp.setSelected(true);
         }
-        if(solarPanelsCheckbox.isSelected()) {
+        if (solarPanelsCheckbox.isSelected()) {
             controller.solarPanels.setSelected(true);
         }
         Window owner = saveButton.getScene().getWindow();

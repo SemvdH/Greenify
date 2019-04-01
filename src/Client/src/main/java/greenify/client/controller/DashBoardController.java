@@ -41,6 +41,21 @@ public class DashBoardController {
     public ObservableList<Friend> friendLeaderData = FXCollections.observableArrayList();
     public ObservableList<Friend> globalLeaderData = FXCollections.observableArrayList();
 
+    //these need to be public because they are used by the calculatorController
+    //suppressing the checkstyle warnings because the fields have to be public
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    public CheckBox localProduce;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    public CheckBox loweringTemp;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    public CheckBox bike;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    public CheckBox solarPanels;
+
     @Autowired
     UserService userService;
 
@@ -144,21 +159,6 @@ public class DashBoardController {
     private Label fruits;
     @FXML
     private Label snacks;
-
-    //these need to be public because they are used by the calculatorController
-    //suppressing the checkstyle warnings because the fields have to be public
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox localProduce;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox loweringTemp;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox bike;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox solarPanels;
 
     /**
      * Loads the the necessary things before anything else.
