@@ -1,6 +1,5 @@
 package greenify.client.controller;
 
-import greenify.client.Friend;
 import greenify.client.rest.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +15,6 @@ import org.springframework.stereotype.Controller;
 public class FriendController {
     @Autowired
     UserService userService;
-
-    @Autowired
-    DashBoardController controller;
 
     @FXML
     private Button addButton;
@@ -55,12 +51,8 @@ public class FriendController {
         }
         //add friend to the current user
         userService.addFriend(userService.currentUser.getName(), userNameText.getText());
-        Friend friend = new Friend(userNameText.getText(),
-                userService.getFootprint(userNameText.getText()));
-        DashBoardController.data.add(friend);
         //close the register window after the user has entered all the credentials
         Stage current = (Stage) owner;
         current.close();
-        controller.updateLeaderboard();
     }
 }

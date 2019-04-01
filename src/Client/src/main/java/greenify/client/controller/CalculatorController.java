@@ -201,10 +201,6 @@ public class CalculatorController {
 
         addSliderListenerGoodsServices(goodsSlider, goodsLabel);
         addSliderListenerGoodsServices(servicesSlider, servicesLabel);
-
-
-
-
     }
 
     /**
@@ -471,19 +467,27 @@ public class CalculatorController {
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
         }
-        Float footprint = userService.saveFootprint(userService.currentUser.getName());
         if (localProduceCheckbox.isSelected()) {
-            controller.localProduce.setSelected(true);
+            localProduceCheckbox.setSelected(true);
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "local_produce", true);
         }
         if (bikeCheckbox.isSelected()) {
-            controller.bike.setSelected(true);
+            bikeCheckbox.setSelected(true);
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "bike", true);
         }
         if (temperatureCheckbox.isSelected()) {
-            controller.loweringTemp.setSelected(true);
+            temperatureCheckbox.setSelected(true);
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "temperature", true);
         }
         if (solarPanelsCheckbox.isSelected()) {
-            controller.solarPanels.setSelected(true);
+            solarPanelsCheckbox.setSelected(true);
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "solar_panels", true);
         }
+        Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
         current.close();

@@ -101,6 +101,22 @@ public class UserService {
     }
 
     /**
+     * This method sets extra input for a user.
+     * @param name name of the user
+     * @param inputName name of the input of the user
+     * @param value value of the input
+     */
+    public void setExtraInput(String name, String inputName, Boolean value) {
+        User user = userRepository.findByName(name);
+        if (user == null) {
+            throw new ApplicationException("User does not exist");
+        } else {
+            user.getExtraInputs().put(inputName, value);
+            userRepository.save(user);
+        }
+    }
+
+    /**
      * This method gets the input value of an input.
      * @param name of the user
      * @param inputName name of the input
@@ -126,6 +142,16 @@ public class UserService {
     }
 
     /**
+     * This method gets the map of extra inputs.
+     * @param name of the user
+     * @return extra input map
+     */
+    public Map<String, Boolean> getExtraInputMap(String name) {
+        User user = userRepository.findByName(name);
+        return user.getExtraInputs();
+    }
+
+    /**
      * This method saves the footprint of a user.
      * @param name name of the user
      * @return footprint of the user
@@ -138,6 +164,18 @@ public class UserService {
     }
 
     /**
+     * This method saves the first footprint of a user.
+     * @param name name of the user
+     * @return footprint of the user
+     */
+    public Float saveFirstFootprint(String name) {
+        User user = userRepository.findByName(name);
+        user.setFirstFootprint(calculatorService.calculateFootprint(user));
+        userRepository.save(user);
+        return user.getFootPrint();
+    }
+
+    /**
      * This method gets the footprint of a user.
      * @param name name of the user
      * @return footprint of the user
@@ -145,6 +183,16 @@ public class UserService {
     public Float getFootprint(String name) {
         User user = userRepository.findByName(name);
         return user.getFootPrint();
+    }
+
+    /**
+     * This method gets the first footprint of a user.
+     * @param name name of the user
+     * @return first footprint of the user
+     */
+    public Float getFirstFootprint(String name) {
+        User user = userRepository.findByName(name);
+        return user.getFirstFootprint();
     }
 
     /**

@@ -40,21 +40,7 @@ public class DashBoardController {
     public static ObservableList<Friend> data = FXCollections.observableArrayList();
     public ObservableList<Friend> friendLeaderData = FXCollections.observableArrayList();
     public ObservableList<Friend> globalLeaderData = FXCollections.observableArrayList();
-
-    //these need to be public because they are used by the calculatorController
-    //suppressing the checkstyle warnings because the fields have to be public
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox localProduce;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox loweringTemp;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox bike;
-    @SuppressWarnings("CheckStyle")
-    @FXML
-    public CheckBox solarPanels;
+    public ObservableList<Friend> developmentData = FXCollections.observableArrayList();
 
     @Autowired
     UserService userService;
@@ -84,11 +70,13 @@ public class DashBoardController {
     @FXML
     private AnchorPane menuBar;
     @FXML
-    private Button addNewActivityButton;
-    @FXML
     private Button calculateFootPrintButton;
     @FXML
     private Label footprintLabel;
+    @FXML
+    private Label firstFootprintLabel;
+    @FXML
+    private Label differenceLabel;
     @FXML
     private Button addFriendButton;
     @FXML
@@ -103,6 +91,12 @@ public class DashBoardController {
     private TableColumn<Friend, String> globalUser;
     @FXML
     private TableColumn<Friend, Float> globalScore;
+    @FXML
+    private TableView<Friend> developmentLeaderboard;
+    @FXML
+    private TableColumn<Friend, String> developmentUser;
+    @FXML
+    private TableColumn<Friend, Float> developmentScore;
     @FXML
     private TableView<Friend> friendLeaderboard;
     @FXML
@@ -159,6 +153,17 @@ public class DashBoardController {
     private Label fruits;
     @FXML
     private Label snacks;
+    @FXML
+    private CheckBox localProduce;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    private CheckBox loweringTemp;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    private CheckBox bike;
+    @SuppressWarnings("CheckStyle")
+    @FXML
+    private CheckBox solarPanels;
 
     /**
      * Loads the the necessary things before anything else.
@@ -177,6 +182,8 @@ public class DashBoardController {
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
         globalUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         globalScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        developmentUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
+        developmentScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         friendUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         friendScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         if (pieChart != null) {
@@ -218,6 +225,31 @@ public class DashBoardController {
                     users.set(j, temp);
                 }
                 if (i < j && firstScore > secondScore) {
+                    String temp = users.get(i);
+                    users.set(i, users.get(j));
+                    users.set(j, temp);
+                }
+            }
+        }
+    }
+
+    /**
+     * Sorts the scores of users.
+     * @param users the list of users
+     */
+    public void sortDiffScores(List<String> users) throws InterruptedException {
+        for (int i = 0; i < users.size(); i++) {
+            for (int j = 0; j < users.size(); j++) {
+                Float firstDiff = userService.getFirstFootprint(users.get(i)) - userService
+                        .getFootprint(users.get(i));
+                Float secondDiff = userService.getFirstFootprint(users.get(j)) - userService
+                        .getFootprint(users.get(j));
+                if (i < j && firstDiff < secondDiff) {
+                    String temp = users.get(i);
+                    users.set(i, users.get(j));
+                    users.set(j, temp);
+                }
+                if (i > j && firstDiff > secondDiff) {
                     String temp = users.get(i);
                     users.set(i, users.get(j));
                     users.set(j, temp);
@@ -291,7 +323,18 @@ public class DashBoardController {
         dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
         fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
-        localProduce.setSelected(true);
+        if (userService.getExtraInputs(userService.currentUser.getName()).get("local_produce")) {
+            localProduce.setSelected(true);
+        }
+        if (userService.getExtraInputs(userService.currentUser.getName()).get("bike")) {
+            bike.setSelected(true);
+        }
+        if (userService.getExtraInputs(userService.currentUser.getName()).get("temperature")) {
+            loweringTemp.setSelected(true);
+        }
+        if (userService.getExtraInputs(userService.currentUser.getName()).get("solar_panels")) {
+            solarPanels.setSelected(true);
+        }
     }
 
     /**
@@ -302,6 +345,11 @@ public class DashBoardController {
         System.out.println(userService.currentUser.getName());
         System.out.println(userService.getFootprint(userService.currentUser.getName()));
         footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
+        firstFootprintLabel.setText("" + userService
+                .getFirstFootprint(userService.currentUser.getName()));
+        Float diff = userService.getFirstFootprint(userService.currentUser.getName()) - userService
+                .getFootprint(userService.currentUser.getName());
+        differenceLabel.setText( "" + diff);
         usernameLabel.setText("" + userService.currentUser.getName());
         addFadeTransition(userPane);
         System.out.println("display user");
@@ -316,13 +364,14 @@ public class DashBoardController {
      * Displays the friends pane.
      * @param event the event (clicking the button)
      */
-    public void displayFriends(ActionEvent event) {
+    public void displayFriends(ActionEvent event) throws InterruptedException {
         addFadeTransition(friendsPane);
         System.out.println("display friends");
         dashboardPane.setVisible(false);
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
+        updateFriends();
     }
 
     //sets the slide in transition for startup
@@ -363,32 +412,59 @@ public class DashBoardController {
     }
 
     /**
-     * Leaderboard is updaating.
+     * Leaderboard is updating.
      * @throws InterruptedException throws exception
      */
     public void updateLeaderboard() throws InterruptedException {
-        friendLeaderboard.getItems().clear();
-        globalLeaderboard.getItems().clear();
-        //global leaderboard
-        globalLeaderData.removeAll();
         List<String> userList = userService.getAllUsers();
+        //global leaderboard
+        globalLeaderboard.getItems().clear();
+        globalLeaderData.removeAll();
         sortScores(userList);
+        //development leaderboard
+        developmentLeaderboard.getItems().clear();
+        developmentData.removeAll();
+        sortDiffScores(userList);
         for (int j = 0; j < userList.size(); j++) {
             Friend user = new Friend(userList.get(j), userService.getFootprint(userList.get(j)));
+            Friend diffUser = new Friend(userList.get(j), userService
+                    .getFirstFootprint(userList.get(j))
+                    - userService.getFootprint(userList.get(j)));
             globalLeaderData.add(user);
+            developmentData.add(diffUser);
         }
         globalLeaderboard.setItems(globalLeaderData);
-        // friend leaderboard
-        friendLeaderData.removeAll();
-        String name = userService.currentUser.getName();
-        List<String> friendList = userService.getFriendNames(name);
-        friendList.add(name);
+        developmentLeaderboard.setItems(developmentData);
+    }
+
+    /**
+     * Friends tables are updating.
+     * @throws InterruptedException throws exception
+     */
+    public void updateFriends() throws InterruptedException {
+        List<String> wholeList = userService.getFriendNames(userService.currentUser.getName());
+        wholeList.add(userService.currentUser.getName());
+        //friend list
+        friendsTable.getItems().clear();
+        data.removeAll();
+        List<String> friendList = userService.getFriendNames(userService.currentUser.getName());
         sortScores(friendList);
+        //friends leaderboard
+        friendLeaderboard.getItems().clear();
+        friendLeaderData.removeAll();
+        sortDiffScores(wholeList);
         for (int i = 0; i < friendList.size(); i++) {
-            Friend friend = new Friend(friendList.get(i),
-                    userService.getFootprint(friendList.get(i)));
-            friendLeaderData.add(friend);
+            Friend user = new Friend(friendList.get(i), userService
+                    .getFootprint(friendList.get(i)));
+            data.add(user);
         }
+        for (int j = 0; j < wholeList.size(); j++) {
+            Friend diffUser = new Friend(wholeList.get(j),
+                    userService.getFirstFootprint(wholeList.get(j))
+                            - userService.getFootprint(wholeList.get(j)));
+            friendLeaderData.add(diffUser);
+        }
+        friendsTable.setItems(data);
         friendLeaderboard.setItems(friendLeaderData);
     }
 

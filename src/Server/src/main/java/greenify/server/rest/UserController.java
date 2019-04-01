@@ -53,6 +53,20 @@ public class UserController {
         userService.setInput(name, inputName, value);
     }
 
+
+    /**
+     * This method sets extra input for a user.
+     * @param name name of the user
+     * @param inputName name of the input of the user
+     * @param value value of the input
+     */
+    @RequestMapping("/setExtraInput")
+    public void setExtraInput(@RequestParam(value = "name") String name,
+                         @RequestParam(value = "inputName") String inputName,
+                         @RequestParam(value = "value") Boolean value) {
+        userService.setExtraInput(name, inputName, value);
+    }
+
     /**
      * This method gets input for a user.
      * @param name name of the user
@@ -85,6 +99,27 @@ public class UserController {
     }
 
     /**
+     * This method saves first footprint for a user.
+     * @param name name of the user
+     */
+    @RequestMapping("/saveFirstFootprint")
+    public Float saveFirstFootprint(@RequestParam(value = "name") String name) {
+        Float footprint = userService.saveFirstFootprint(name);
+        return footprint;
+    }
+
+    /**
+     * This method gets first footprint for a user.
+     * @param name name of the user
+     */
+    @RequestMapping("/getFirst")
+    public Float getFirstFootprint(@RequestParam(value = "name") String name) {
+        System.out.println("hello");
+        Float footprint = userService.getFirstFootprint(name);
+        return footprint;
+    }
+
+    /**
      * This method gets friend list for a user.
      * @param name name of the user
      */
@@ -109,6 +144,14 @@ public class UserController {
     @RequestMapping("/getInputs")
     public Map<String, String> getInputs(@RequestParam(value = "name") String name) {
         return userService.getInputMap(name);
+    }
+
+    /**
+     * This method gets the extra inputs map of the user.
+     */
+    @RequestMapping("/getExtraInputs")
+    public Map<String, Boolean> getExtraInputs(@RequestParam(value = "name") String name) {
+        return userService.getExtraInputMap(name);
     }
 
     /**

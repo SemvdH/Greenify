@@ -57,12 +57,32 @@ public class UserServiceTest {
     }
 
     @Test
+    public void getFirstFootprint() throws Exception {
+        Float estimate = new Float(5);
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getFirst?name=Eric"),
+                Float.class))
+                .thenReturn(estimate);
+        Float result = userService.getFirstFootprint("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
     public void saveFootprint() throws Exception {
         Float estimate = new Float(5);
         Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/saveFootprint?name=Eric"),
                 Float.class))
                 .thenReturn(estimate);
         Float result = userService.saveFootprint("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
+    public void saveFirstFootprint() throws Exception {
+        Float estimate = new Float(5);
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/saveFirstFootprint?name=Eric"),
+                Float.class))
+                .thenReturn(estimate);
+        Float result = userService.saveFirstFootprint("Eric");
         Assert.assertEquals(estimate, result);
     }
 
@@ -100,9 +120,26 @@ public class UserServiceTest {
     }
 
     @Test
+    public void getExtraInputsTest() throws Exception {
+        Map<String, Boolean> estimate = new HashMap<>();
+        estimate.put("solar_panels", true);
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/getExtraInputs?name=Eric"),
+                Map.class))
+                .thenReturn(estimate);
+        Map<String, Boolean> result = userService.getExtraInputs("Eric");
+        Assert.assertEquals(estimate, result);
+    }
+
+    @Test
     public void setInputTest() throws Exception {
         userService.updateInput("Eric", "input_size", "5");
         Mockito.verify(userService).updateInput("Eric", "input_size", "5");
+    }
+
+    @Test
+    public void setExtraInputTest() throws Exception {
+        userService.updateExtraInput("Eric", "solar_panels", true);
+        Mockito.verify(userService).updateExtraInput("Eric", "solar_panels", true);
     }
 
     @Test
