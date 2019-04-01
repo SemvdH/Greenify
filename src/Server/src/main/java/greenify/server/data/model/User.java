@@ -209,6 +209,19 @@ public class User {
     }
 
     /**
+     * Removes a friend from the friendslist of the user.
+     * @param user the friend you want to remove.
+     */
+    public void removeFriend(User user) {
+        if (!friends.contains(user)) {
+            throw new ApplicationException("This user is not your friend!");
+        } else {
+            friends.remove(user);
+            System.out.print("Friend removed");
+        }
+    }
+
+    /**
      * This method gets a human readable (JSON) object.
      * @return the JSON form of the object.
      */

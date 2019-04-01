@@ -18,9 +18,9 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'application'
 
-application {
-    mainClassName = 'greenify.server.Application'
-}
+//application {
+//    mainClassName = 'greenify.server.Application'
+//}
 
 repositories {
     mavenCentral()
