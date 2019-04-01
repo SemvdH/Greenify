@@ -1,6 +1,5 @@
 package greenify.client.rest;
 
-import com.sun.javafx.collections.MappingChange;
 import greenify.common.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.awt.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
