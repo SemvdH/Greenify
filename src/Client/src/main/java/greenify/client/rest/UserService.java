@@ -103,6 +103,26 @@ public class UserService {
     }
 
     /**
+     * Updates the extra input of the user.
+     * @param name name of the user
+     * @param inputName name of the input
+     * @param value value of the input
+     */
+    @SuppressWarnings("Duplicates")
+    public void updateExtraInput(String name, String inputName, Boolean value) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setExtraInput")
+                .queryParam("name", name)
+                .queryParam("inputName", inputName)
+                .queryParam("value",value);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
+                .encode().toUri(), String.class);
+    }
+
+    /**
      * Gets the footprint of the user.
      * @param name name of the user
      * @return returns the footprint score
@@ -121,6 +141,23 @@ public class UserService {
     }
 
     /**
+     * Gets the first footprint of the user.
+     * @param name name of the user
+     * @return returns the footprint score
+     */
+    public Float getFirstFootprint(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFirst")
+                .queryParam("name", name);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Float footprint = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), Float.class);
+        return footprint;
+    }
+
+    /**
      * Saves the footprint of the user.
      * @param name name of the user
      * @return returns the footprint score
@@ -130,6 +167,25 @@ public class UserService {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/saveFootprint")
+                .queryParam("name", name);
+        new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Float result = this.restTemplate.getForObject(builder
+                .build().encode().toUri(), Float.class);
+        return result;
+    }
+
+
+    /**
+     * Saves the first footprint of the user.
+     * @param name name of the user
+     * @return returns the footprint score
+     */
+    @SuppressWarnings("Duplicates")
+    public Float saveFirstFootprint(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/saveFirstFootprint")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -187,6 +243,23 @@ public class UserService {
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         Map<String, String> result = this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), Map.class);
+        return result;
+    }
+
+    /**
+     * Gets the footprint inputs of the user.
+     * @param name the username of the current user.
+     */
+    @SuppressWarnings("Duplicates")
+    public Map<String, Boolean> getExtraInputs(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getExtraInputs")
+                .queryParam("name", name);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        Map<String, Boolean> result = this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), Map.class);
         return result;
     }

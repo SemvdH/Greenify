@@ -93,8 +93,23 @@ public class UserServiceTest {
     }
 
     @Test
+    public void setExtraInputTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        userService.setExtraInput("alex", "solar_panels", true);
+        assertEquals(true, alex.getExtraInputs()
+                .get("solar_panels"));
+    }
+
+    @Test
     public void setInputNullTest() {
         assertThrows(ApplicationException.class, () -> userService.setInput(null, "hello", "5.5"));
+    }
+
+    @Test
+    public void setExtraInputNullTest() {
+        assertThrows(ApplicationException.class, () -> userService.setExtraInput(null, "hello", true));
     }
 
     @Test
@@ -150,6 +165,17 @@ public class UserServiceTest {
     }
 
     @Test
+    public void getExtraInputMapTest() {
+        Map<String, Boolean> map = new HashMap<>();
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        alex.setExtraInputs(map);
+        assertEquals(map, userService
+                .getExtraInputMap("alex"));
+    }
+
+    @Test
     public void getInputExceptionTest() {
         assertThrows(ApplicationException.class, () -> userService.getInput("alex", "hello"));
     }
@@ -164,6 +190,15 @@ public class UserServiceTest {
     }
 
     @Test
+    public void getFirstFootprintTest() {
+        User alex = new User(1L, "alex", "password");
+        alex.setFirstFootprint(15F);
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        Assertions.assertEquals(15F, userService.getFirstFootprint("alex"));
+    }
+
+    @Test
     public void saveFootprintTest() {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
@@ -172,6 +207,17 @@ public class UserServiceTest {
                 .thenReturn(15f);
         userService.saveFootprint("alex");
         Assertions.assertEquals(15f, userService.saveFootprint("alex"));
+    }
+
+    @Test
+    public void saveFirstFootprintTest() {
+        User lola = new User(1L, "lola", "password");
+        when(userRepository.findByName(lola.getName()))
+                .thenReturn(lola);
+        when(calculatorService.calculateFootprint(lola))
+                .thenReturn(0f);
+        userService.saveFirstFootprint("lola");
+        Assertions.assertEquals(0f, userService.saveFirstFootprint("lola"));
     }
 
     @Test

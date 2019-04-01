@@ -180,4 +180,17 @@ public class InputValidator {
         }
         return map;
     }
+
+    /**
+     * This method gets extra values.
+     * @return the map of default values
+     */
+    public static Map<String, Boolean> getExtraValues() {
+        Map<String, Boolean> map = new HashMap<String, Boolean>() { };
+        map.put("local_produce", false);
+        map.put("bike", false);
+        map.put("temperature", false);
+        map.put("solar_panels", false);
+        return map;
+    }
 }

@@ -72,7 +72,21 @@ public class CalculatorService {
      * @return the footprint of the user
      */
     public Float calculateFootprint(User user) {
-        return invokeExternalService(user.getFootPrintInputs());
+        Float footprint =  invokeExternalService(user.getFootPrintInputs());
+        addExtras(user);
+        return footprint;
+    }
+
+    public void addExtras(User user) {
+        if (user.getExtraInputs().get("local_produce")) {
+            user.setFootPrint(user.getFootPrint() - 2);
+        } else if (user.getExtraInputs().get("bike")) {
+            user.setFootPrint(user.getFootPrint() - 2);
+        } else if (user.getExtraInputs().get("temperature")) {
+            user.setFootPrint(user.getFootPrint() - 2);
+        } else if (user.getExtraInputs().get("solar_panels")) {
+            user.setFootPrint(user.getFootPrint() - 2);
+        }
     }
 }
 

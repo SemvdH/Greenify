@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="703.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
@@ -73,8 +73,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="income" layoutX="207.0" layoutY="28.0" styleClass="activityField" text="  " textAlignment="CENTER" />
-                  <Label fx:id="peopleNumber" layoutX="204.0" layoutY="82.0" styleClass="activityField" text="  " textAlignment="CENTER" />
+                  <Label fx:id="peopleNumber" layoutX="207.0" layoutY="28.0" styleClass="activityField" text="  " textAlignment="CENTER" />
+                  <Label fx:id="income" layoutX="204.0" layoutY="82.0" styleClass="activityField" text="  " textAlignment="CENTER" />
                </children>
             </Pane>
             <Label alignment="CENTER" layoutX="20.0" layoutY="275.0" prefHeight="32.0" prefWidth="255.0" text="Home!" textAlignment="CENTER" textFill="#107222">
@@ -296,12 +296,31 @@
             </VBox>
             <VBox alignment="CENTER" layoutX="80.0" layoutY="250.0" prefHeight="59.0" prefWidth="266.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
                <children>
-                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="CO2 footprint" textAlignment="CENTER" wrappingWidth="161.79296875">
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Last CO2 footprint" textAlignment="CENTER" wrappingWidth="161.79296875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
                   <Label fx:id="footprintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="162.0" text="co2 footprint" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="162.0" text="tons CO2 / year" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="80.0" layoutY="400.0" prefHeight="59.0" prefWidth="266.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+               <children>
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="First CO2 footprint" textAlignment="CENTER" wrappingWidth="161.79296875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="firstFootprintLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="162.0" text="co2 footprint" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -319,6 +338,25 @@
                   <Image url="@../icons/butterfly.png" />
                </image>
             </ImageView>
+            <VBox alignment="CENTER" layoutX="80.0" layoutY="550.0" prefHeight="59.0" prefWidth="266.0" style="-fx-background-color: #daefdf; -fx-border-radius: 20%;">
+               <children>
+                  <Text fill="#004d11" strokeType="OUTSIDE" strokeWidth="0.0" text="Development" textAlignment="CENTER" wrappingWidth="161.79296875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="differenceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="239.0" text="co2 footprint difference" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="162.0" text="tons CO2 / year" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children></AnchorPane>
       <AnchorPane fx:id="dashboardPane" layoutX="215.0" prefHeight="703.0" prefWidth="820.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -366,10 +404,10 @@
                   <TableColumn fx:id="globalScore" prefWidth="124.0" text="Score" />
                </columns>
             </TableView>
-            <TableView fx:id="friendLeaderboard" layoutX="302.0" layoutY="220.0" prefHeight="333.0" prefWidth="200.0">
+            <TableView fx:id="developmentLeaderboard" layoutX="302.0" layoutY="220.0" prefHeight="333.0" prefWidth="200.0">
                <columns>
-                  <TableColumn fx:id="friendUser" prefWidth="75.0" text="User" />
-                  <TableColumn fx:id="friendScore" prefWidth="124.0" text="Score" />
+                  <TableColumn fx:id="developmentUser" prefWidth="75.0" text="User" />
+                  <TableColumn fx:id="developmentScore" prefWidth="124.0" text="Score" />
                </columns>
             </TableView>
             <Label layoutX="69.0" layoutY="177.0" prefHeight="46.0" prefWidth="187.0" text="Global Leaderboard" textAlignment="CENTER" textFill="#5f1616">
@@ -377,7 +415,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="315.0" layoutY="177.0" prefHeight="46.0" prefWidth="187.0" text="Friends Leaderboard" textAlignment="CENTER" textFill="#5e1515">
+            <Label layoutX="279.0" layoutY="177.0" prefHeight="46.0" prefWidth="266.0" text="Development Leaderboard" textAlignment="CENTER" textFill="#5e1515">
                <font>
                   <Font size="20.0" />
                </font>
@@ -391,10 +429,29 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="friendsTable" layoutX="60.0" layoutY="130.0" prefHeight="426.0" prefWidth="216.0" style="-fx-background-color: #e1fcd9;">
+            <Text layoutX="117.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friend List">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TableView fx:id="friendsTable" layoutX="60.0" layoutY="170.0" prefHeight="426.0" prefWidth="216.0" style="-fx-background-color: #e1fcd9;">
                <columns>
                   <TableColumn fx:id="friendsColumn" prefWidth="107.0" text="Friend" />
                   <TableColumn fx:id="scoreColumn" prefWidth="108.0" text="Score" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Text layoutX="315.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friend Leaderboard">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TableView fx:id="friendLeaderboard" layoutX="300.0" layoutY="170.0" prefHeight="426.0" prefWidth="216.0" style="-fx-background-color: #e1fcd9;">
+               <columns>
+                  <TableColumn fx:id="friendUser" prefWidth="107.0" text="Friend" />
+                  <TableColumn fx:id="friendScore" prefWidth="108.0" text="Score" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

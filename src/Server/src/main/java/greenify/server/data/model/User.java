@@ -38,8 +38,14 @@ public class User {
     @NotNull
     private Float footPrint = 0.0f;
 
+    @NotNull
+    private Float firstFootprint = 0.0f;
+
     @ElementCollection
     private Map<String, String> footPrintInputs = new HashMap<>();
+
+    @ElementCollection
+    private Map<String, Boolean> extraInputs = new HashMap<>();
 
     @ManyToMany
     private List<User> friends;
@@ -57,6 +63,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.setFootPrintInputs(InputValidator.getDefaultValues());
+        this.setExtraInputs(InputValidator.getExtraValues());
         this.friends = new ArrayList<User>();
     }
 
@@ -125,6 +132,22 @@ public class User {
     }
 
     /**
+     * This method gets the first footPrint of user.
+     * @return the footprint of the user
+     */
+    public Float getFirstFootprint() {
+        return firstFootprint;
+    }
+
+    /**
+     * This method sets the footprint of a user.
+     * @param firstFootprint footprint of a user
+     */
+    public void setFirstFootprint(Float firstFootprint) {
+        this.firstFootprint = firstFootprint;
+    }
+
+    /**
      * This method gets the footprint inputs of the user.
      * @return footprint inputs of the user
      */
@@ -138,6 +161,22 @@ public class User {
      */
     public void setFootPrintInputs(Map<String, String> footPrintInputs) {
         this.footPrintInputs = footPrintInputs;
+    }
+
+    /**
+     * This method gets the extra inputs of the user.
+     * @return extra inputs of the user
+     */
+    public Map<String, Boolean> getExtraInputs() {
+        return extraInputs;
+    }
+
+    /**
+     * This method sets the extra inputs of the user.
+     * @param extraInputs footprint inputs of the user
+     */
+    public void setExtraInputs(Map<String, Boolean> extraInputs) {
+        this.extraInputs = extraInputs;
     }
 
     /**
