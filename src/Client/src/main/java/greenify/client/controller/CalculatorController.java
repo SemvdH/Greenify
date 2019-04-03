@@ -14,12 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -33,6 +28,7 @@ import java.text.DecimalFormat;
 
 @Controller
 public class CalculatorController {
+    private static UserController.AlertHelper AlertHelper;
     @Autowired
     UserService userService;
 
@@ -522,6 +518,7 @@ public class CalculatorController {
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
+//        CalculatorController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Footprint saved!", "Your footprint is saved!");
         current.close();
         controller.updateLeaderboard();
     }
