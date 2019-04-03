@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -69,28 +69,35 @@ public class UserService {
     }
 
     /**
-<<<<<<< HEAD
      * Adds a friend to the friendlist of the user.
      * @param name the username of the user
      * @param friend the name of the friend you want to add.
+     * @throws ApplicationException if the user is not in the database.
      */
     public void addFriend(String name, String friend) {
         User user = userRepository.findByName(name);
         User add = userRepository.findByName(friend);
-        if (add == null) {
+        if (add == null ) {
             throw new ApplicationException("User does not exist");
         }
         user.addFriend(add);
+        userRepository.save(user);
     }
 
     /**
-     * Returns the friendlist of the user in JSON.
+     * Removes a friend from the friendlist of the user.
      * @param name the username of the user
-     * @return a userDTO of the logged in user
+     * @param friend the name of the friend you want to remove.
+     * @throws ApplicationException if the user is not in the database.
      */
-    public String getLeaderboard(String name) {
+    public void removeFriend(String name, String friend) {
         User user = userRepository.findByName(name);
-        return user.friendsToString();
+        User remove = userRepository.findByName(friend);
+        if (remove == null ) {
+            throw new ApplicationException("User does not exist");
+        }
+        user.removeFriend(remove);
+        userRepository.save(user);
     }
 
     /**
@@ -108,12 +115,26 @@ public class UserService {
                     && InputValidator.isValidItemValue(inputName, value)) {
                 user.getFootPrintInputs().put(inputName, value);
                 userRepository.save(user);
-                user.setFootPrint(calculatorService.calculateFootprint(user));
                 achievementService.updateAchievements(user);
-                userRepository.save(user);
             } else {
                 throw new ApplicationException("Invalid input");
             }
+        }
+    }
+
+    /**
+     * This method sets extra input for a user.
+     * @param name name of the user
+     * @param inputName name of the input of the user
+     * @param value value of the input
+     */
+    public void setExtraInput(String name, String inputName, Boolean value) {
+        User user = userRepository.findByName(name);
+        if (user == null) {
+            throw new ApplicationException("User does not exist");
+        } else {
+            user.getExtraInputs().put(inputName, value);
+            userRepository.save(user);
         }
     }
 
@@ -133,15 +154,82 @@ public class UserService {
     }
 
     /**
+     * This method gets the map of the inputs.
+     * @param name of the user
+     * @return input map
+     */
+    public Map<String, String> getInputMap(String name) {
+        User user = userRepository.findByName(name);
+        return user.getFootPrintInputs();
+    }
+
+    /**
+     * This method gets the map of extra inputs.
+     * @param name of the user
+     * @return extra input map
+     */
+    public Map<String, Boolean> getExtraInputMap(String name) {
+        User user = userRepository.findByName(name);
+        return user.getExtraInputs();
+    }
+
+    /**
+     * This method saves the footprint of a user.
+     * @param name name of the user
+     * @return footprint of the user
+     */
+    public Float saveFootprint(String name) {
+        User user = userRepository.findByName(name);
+        user.setFootPrint(calculatorService.calculateFootprint(user));
+        userRepository.save(user);
+        return user.getFootPrint();
+    }
+
+    /**
+     * This method saves the first footprint of a user.
+     * @param name name of the user
+     * @return footprint of the user
+     */
+    public Float saveFirstFootprint(String name) {
+        User user = userRepository.findByName(name);
+        user.setFirstFootprint(calculatorService.calculateFootprint(user));
+        userRepository.save(user);
+        return user.getFootPrint();
+    }
+
+    /**
      * This method gets the footprint of a user.
      * @param name name of the user
      * @return footprint of the user
      */
     public Float getFootprint(String name) {
         User user = userRepository.findByName(name);
-        user.setFootPrint(calculatorService.calculateFootprint(user));
-        userRepository.save(user);
         return user.getFootPrint();
+    }
+
+    /**
+     * This method gets the first footprint of a user.
+     * @param name name of the user
+     * @return first footprint of the user
+     */
+    public Float getFirstFootprint(String name) {
+        User user = userRepository.findByName(name);
+        return user.getFirstFootprint();
+    }
+
+    /**
+     * This method gets the friends of a user.
+     * @param name name of the user
+     * @return list of the friends
+     */
+    public List<String> getFriends(String name) {
+        List<String> result = new ArrayList<>();
+        User user = userRepository.findByName(name);
+        List<User> friends = user.getFriends();
+        for (User person : friends) {
+            result.add(person.getName());
+        }
+        return result;
     }
 
     /**
@@ -189,14 +277,16 @@ public class UserService {
         return user.getAchievements();
     }
 
-
     /**
-     * This method gets a JSON of XML with all users.
-     * @return JSON/XML of all users
+     * This method gets the list of all users.
+     * @return list of all users
      */
-    @GetMapping(path = "/all")
-    @ResponseBody
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<String> getAllUsers() {
+        List<String> result = new ArrayList<>();
+        Iterable<User>  allUsers = userRepository.findAll();
+        for (User person : allUsers) {
+            result.add(person.getName());
+        }
+        return result;
     }
 }

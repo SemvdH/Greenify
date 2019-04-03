@@ -6,8 +6,8 @@ import greenify.server.InputValidator;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -16,7 +16,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,7 +27,7 @@ public class User {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     @NotNull
@@ -40,12 +39,17 @@ public class User {
     @NotNull
     private Float footPrint = 0.0f;
 
+    @NotNull
+    private Float firstFootprint = 0.0f;
+
     @ElementCollection
     private Map<String, String> footPrintInputs = new HashMap<>();
 
+    @ElementCollection
+    private Map<String, Boolean> extraInputs = new HashMap<>();
+
     @ManyToMany
-    @JoinColumn
-    private Collection<User> friends;
+    private List<User> friends;
 
     @ElementCollection
     private Map<String, Boolean> achievements;
@@ -63,7 +67,8 @@ public class User {
         this.name = name;
         this.password = password;
         this.setFootPrintInputs(InputValidator.getDefaultValues());
-        this.friends = new ArrayList<>();
+        this.setExtraInputs(InputValidator.getExtraValues());
+        this.friends = new ArrayList<User>();
         this.setAchievements(AllAchievements.getDefaults());
     }
 
@@ -132,6 +137,22 @@ public class User {
     }
 
     /**
+     * This method gets the first footPrint of user.
+     * @return the footprint of the user
+     */
+    public Float getFirstFootprint() {
+        return firstFootprint;
+    }
+
+    /**
+     * This method sets the footprint of a user.
+     * @param firstFootprint footprint of a user
+     */
+    public void setFirstFootprint(Float firstFootprint) {
+        this.firstFootprint = firstFootprint;
+    }
+
+    /**
      * This method gets the footprint inputs of the user.
      * @return footprint inputs of the user
      */
@@ -148,31 +169,60 @@ public class User {
     }
 
     /**
+     * This method gets the extra inputs of the user.
+     * @return extra inputs of the user
+     */
+    public Map<String, Boolean> getExtraInputs() {
+        return extraInputs;
+    }
+
+    /**
+     * This method sets the extra inputs of the user.
+     * @param extraInputs footprint inputs of the user
+     */
+    public void setExtraInputs(Map<String, Boolean> extraInputs) {
+        this.extraInputs = extraInputs;
+    }
+
+    /**
      * This method gets the friends of the user.
      * @return friends list of the user
      */
-    public ArrayList<User> getFriends() {
-        return (ArrayList<User>)this.friends;
+    public List<User> getFriends() {
+        return this.friends;
     }
 
     /**
      * This method sets the friend list of the user.
      * @param friends friend list of the user
      */
-    public void setFriends(Collection<User> friends) {
+    public void setFriends(List<User> friends) {
         this.friends = friends;
     }
 
     /**
-     * Adds a friend to the friends list of the user.
+     * Adds a friend to the friendslist of the user.
      * @param user the friend you want to add.
      */
     public void addFriend(User user) {
-        if (user.equals(this)) {
+        if (user.equals(this) || friends.contains(user)) {
             throw new ApplicationException("Cannot add yourself as a friend");
         } else {
             friends.add(user);
             System.out.print("Friend added!");
+        }
+    }
+
+    /**
+     * Removes a friend from the friendslist of the user.
+     * @param user the friend you want to remove.
+     */
+    public void removeFriend(User user) {
+        if (!friends.contains(user)) {
+            throw new ApplicationException("This user is not your friend!");
+        } else {
+            friends.remove(user);
+            System.out.print("Friend removed");
         }
     }
 
@@ -200,21 +250,6 @@ public class User {
     public String toString() {
         return "User(id=" + this.id + ", name=" + this.name + ", password="
                 + this.password + ")";
-    }
-
-    /**
-     * Returns the name and score of the friends in JSON. Needed for the leader board.
-     * @return a JSON object of the friend list with only names and scores.
-     */
-    public String friendsToString() {
-        String result = "friends=[";
-        for (User u : friends) {
-            result += "{name=" + u.getName() + ", footprint=" + u.getFootPrint() + "}, ";
-        }
-        if (result.endsWith(", ")) {
-            return result.substring(0, result.lastIndexOf(",")) + "]";
-        }
-        return result + "]";
     }
 
     /** This method checks whether two users are equal or not.

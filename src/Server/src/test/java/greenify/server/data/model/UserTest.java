@@ -6,12 +6,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import greenify.common.ApplicationException;
-
 import greenify.server.AllAchievements;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class UserTest {
 
@@ -101,7 +101,7 @@ public class UserTest {
         User second = new User(1L, "merel", "password");
         assertEquals(first.getFriends(), second.getFriends());
         first.addFriend(second);
-        ArrayList<User> test = new ArrayList<>();
+        ArrayList<User> test = new ArrayList<User>();
         test.add(second);
         assertEquals(first.getFriends(), test);
     }
@@ -110,21 +110,47 @@ public class UserTest {
     public void addYourselfTest() {
         User test = new User(1L, "greenify", "password");
         assertEquals(test.getFriends(), new ArrayList<User>());
-        assertThrows(ApplicationException.class, () -> test.addFriend(test));
+        assertThrows(ApplicationException.class, () -> {
+            test.addFriend(test);
+        });
     }
 
+    @Test
+    public void addTwiceTest() {
+        User test = new User(1L, "greenify", "password");
+        List<User> friendList = new ArrayList<>();
+        friendList.add(test);
+        User user = new User(1L, "green", "pass");
+        user.setFriends(friendList);
+        assertThrows(ApplicationException.class, () -> {
+            user.addFriend(test);
+        });
+    }
 
     @Test
-    public void friendsToStringTest() {
-        User first = new User(1L, "greenify", "password");
-        User second = new User(1L, "merel", "password");
-        first.addFriend(second);
-        assertEquals(first.friendsToString(), "friends=[{name=merel, footprint=0.0}]");
+    public void removeFriendValidTest() {
+        User test = new User(1L, "greenify", "password");
+        List<User> friendList = new ArrayList<>();
+        friendList.add(test);
+        User user = new User(1L, "green", "pass");
+        user.setFriends(friendList);
+        assertEquals(user.getFriends(), friendList);
+        user.removeFriend(test);
+        assertEquals(user.getFriends(), new ArrayList<User>());
+    }
+
+    @Test
+    public void removeFriendInvalidTest() {
+        User user = new User(1L, "greenify", "password");
+        User test = new User(2L, "user", "pass");
+        assertThrows(ApplicationException.class, () -> {
+            user.removeFriend(test);
+        });
     }
 
     @Test
     public void setFriendTest() {
-        Collection<User> friends = new ArrayList<>();
+        List<User> friends = new ArrayList<User>();
         User first = new User(1L, "greenify", "password");
         User second = new User(1L, "merel", "password");
         friends.add(second);

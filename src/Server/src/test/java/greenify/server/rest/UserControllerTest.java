@@ -79,6 +79,25 @@ public class UserControllerTest {
     }
 
     @Test
+    public void setExtraInputTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Boolean> arg3Captor = ArgumentCaptor.forClass(Boolean.class);
+        mvc.perform(get("/setExtraInput")
+                .param("name", "ceren")
+                .param("inputName", "input_size")
+                .param("value", "true")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .setExtraInput(arg1Captor.capture(), arg2Captor.capture(), arg3Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+        assertEquals("input_size", arg2Captor.getValue());
+        assertEquals(true, arg3Captor.getValue());
+    }
+
+    @Test
     public void addFriendTest() throws Exception {
         ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
@@ -92,6 +111,68 @@ public class UserControllerTest {
                 .addFriend(arg1Captor.capture(), arg2Captor.capture());
         assertEquals("ceren", arg1Captor.getValue());
         assertEquals("merel", arg2Captor.getValue());
+    }
+
+    @Test
+    public void removeFriendTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/removeFriend")
+                .param("name", "ceren")
+                .param("friend", "merel")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .removeFriend(arg1Captor.capture(), arg2Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+        assertEquals("merel", arg2Captor.getValue());
+    }
+
+    @Test
+    public void getInputMapTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getInputs")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .getInputMap(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
+    public void getExtraInputMapTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getExtraInputs")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1))
+                .getExtraInputMap(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
+    public void getAllUsersTest() throws Exception {
+        mvc.perform(get("/getAllUsers")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void getFriendNamesTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getFriends")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getFriends(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
     }
 
     @Test
@@ -122,6 +203,42 @@ public class UserControllerTest {
     }
 
     @Test
+    public void getFirstFootprintTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getFirst")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getFirstFootprint(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
+    public void saveFootprintTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/saveFootprint")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).saveFootprint(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
+    public void saveFirstFootprintTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/saveFirstFootprint")
+                .param("name", "ceren")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).saveFirstFootprint(arg1Captor.capture());
+        assertEquals("ceren", arg1Captor.getValue());
+    }
+
+    @Test
     public void getAchievementsTest() throws Exception {
         ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
         mvc.perform(get("/getAchievements")
@@ -132,4 +249,5 @@ public class UserControllerTest {
         verify(userService, times(1)).getAchievements(arg1Captor.capture());
         assertEquals("mika", arg1Captor.getValue());
     }
+
 }
