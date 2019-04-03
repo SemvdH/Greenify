@@ -155,13 +155,25 @@ public class UserController {
     }
 
     /**
-     * This method adds friend for a user.
+     * This method adds a friend to a user.
      * @param name name of the user
-     *
+     * @param friend the name of the user you want to add as a friend.
      */
     @RequestMapping("/addFriend")
     public void addFriend(@RequestParam(value = "name") String name,
                               @RequestParam(value = "friend") String friend) {
         userService.addFriend(name, friend);
     }
+
+    /**
+     * This method removes a friend from a user.
+     * @param name name of the user
+     * @param friend name of the friend you want to remove
+     */
+    @RequestMapping("/removeFriend")
+    public void removeFriend(@RequestParam(value = "name") String name,
+                          @RequestParam(value = "friend") String friend) {
+        userService.removeFriend(name, friend);
+    }
 }
+

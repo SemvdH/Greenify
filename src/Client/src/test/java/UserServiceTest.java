@@ -147,6 +147,14 @@ public class UserServiceTest {
         userService.addFriend("Eric", "Ceren");
         Mockito.verify(userService).addFriend("Eric", "Ceren");
     }
+
+    @Test
+    public void removeFriendTest() throws Exception {
+        userService.addFriend("Eric", "Ceren");
+        Mockito.verify(userService).addFriend("Eric", "Ceren");
+        userService.removeFriend("Eric", "Ceren");
+        Mockito.verify(userService).removeFriend("Eric", "Ceren");
+    }
 }
 
 

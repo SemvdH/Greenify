@@ -266,12 +266,25 @@ public class UserServiceTest {
     }
 
     @Test
-    public void addFriendNullFriendTest() {
-        assertThrows(ApplicationException.class, () -> userService.addFriend("alex", null));
+    public void removeFriendTest() {
+        User alex = userRepository.findByName("alex");
+        User lola = userRepository.findByName("lola");
+        assertEquals(lola.getFriends(), alex.getFriends());
+        userService.addFriend("alex", "lola");
+        ArrayList<User> test = new ArrayList<User>();
+        test.add(lola);
+        assertEquals(alex.getFriends(), test);
+        userService.removeFriend("alex", "lola");
+        assertEquals(lola.getFriends(), alex.getFriends());
     }
 
     @Test
-    public void addFriendNullUserTest() {
-        assertThrows(ApplicationException.class, () -> userService.addFriend(null, "password"));
+    public void removeFriendNullTest() {
+        assertThrows(ApplicationException.class, () -> userService.removeFriend("alex", null));
+    }
+
+    @Test
+    public void addFriendNullFriendTest() {
+        assertThrows(ApplicationException.class, () -> userService.addFriend("alex", null));
     }
 }
