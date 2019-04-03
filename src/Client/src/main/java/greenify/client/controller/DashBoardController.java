@@ -527,5 +527,5 @@ public class DashBoardController {
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }
-
 }
+
