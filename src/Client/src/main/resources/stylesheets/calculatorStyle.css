@@ -29,7 +29,6 @@
 
 .slider {
     -show-value-on-interaction: true;
-    -fx-text-fill: red;
 }
 
 .km-yearBox {
