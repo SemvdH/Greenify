@@ -9,9 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -338,7 +336,8 @@ public class CalculatorController {
     @SuppressWarnings("Duplicates")
     public void displayExtra(ActionEvent event) throws IOException {
 
-        //        Parent extra = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/extraActivities.fxml"));
+        //        Parent extra = FXMLLoader.load(getClass().getClassLoader()
+        //        .getResource("fxml/extraActivities.fxml"));
         //        extraPane.getChildren().setAll(extra);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
