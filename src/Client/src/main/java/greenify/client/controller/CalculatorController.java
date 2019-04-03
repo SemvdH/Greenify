@@ -9,7 +9,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -24,6 +26,7 @@ import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 @Controller
@@ -153,6 +156,7 @@ public class CalculatorController {
      * it sets the sliders to snap to the ticks.
      * it adds listeners to all the sliders for updating the label they are associated with.
      */
+    @SuppressWarnings("Duplicates")
     public void initialize() {
         peopleInHouseholdSlider.setSnapToTicks(true);
         //add listener to slider for amount of people in household
@@ -173,9 +177,9 @@ public class CalculatorController {
             }
         });
 
-        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " mpg");
-        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " mpg");
-        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " mpge");
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " km/L");
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " km/L");
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " km/Le");
 
         cleanEnergyPurchasedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -218,6 +222,7 @@ public class CalculatorController {
         });
     }
 
+    @SuppressWarnings("Duplicates")
     private void addSliderListenerDailyServing(Slider slider, Label label) {
         DecimalFormat df = new DecimalFormat("0.0");
         slider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -331,7 +336,10 @@ public class CalculatorController {
      * @param event the click of the designated button
      */
     @SuppressWarnings("Duplicates")
-    public void displayExtra(ActionEvent event) {
+    public void displayExtra(ActionEvent event) throws IOException {
+
+        //        Parent extra = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/extraActivities.fxml"));
+        //        extraPane.getChildren().setAll(extra);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
