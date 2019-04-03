@@ -422,7 +422,7 @@ public class DashBoardController {
     }
 
     /**
-     * method opend addFriend scene.
+     * method opens addFriend scene.
      * @throws IOException when file is not found
      */
     public void openAddFriend() throws IOException {
