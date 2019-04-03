@@ -117,17 +117,6 @@ public class UserControllerTest {
     public void removeFriendTest() throws Exception {
         ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
-        mvc.perform(get("/addFriend")
-                .param("name", "ceren")
-                .param("friend", "merel")
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk());
-        verify(userService, times(1))
-                .addFriend(arg1Captor.capture(), arg2Captor.capture());
-        assertEquals("ceren", arg1Captor.getValue());
-        assertEquals("merel", arg2Captor.getValue());
-
         mvc.perform(get("/removeFriend")
                 .param("name", "ceren")
                 .param("friend", "merel")
