@@ -2,6 +2,7 @@ package greenify.client.controller;
 
 import greenify.client.Application;
 import greenify.client.rest.UserService;
+import greenify.common.ApplicationException;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -228,7 +229,14 @@ public class RegisterWindowController {
         }
 
         //register the user with the provided username and password
-        userService.registerUser(userNameText.getText(), passwordField.getText());
+        try{
+            userService.registerUser(userNameText.getText(), passwordField.getText());
+        }
+        catch(RuntimeException ex){
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
+                    "This username has already been taken!");
+            return;
+        }
         //close the register window after the user has entered all the credentials
         Stage current = (Stage) owner;
         current.close();
