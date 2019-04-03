@@ -126,6 +126,27 @@ public class UserTest {
     }
 
     @Test
+    public void removeFriendValidTest() {
+        User test = new User(1L, "greenify", "password");
+        List<User> friendList = new ArrayList<>();
+        friendList.add(test);
+        User user = new User(1L, "green", "pass");
+        user.setFriends(friendList);
+        assertEquals(user.getFriends(), friendList);
+        user.removeFriend(test);
+        assertEquals(user.getFriends(), new ArrayList<User>());
+    }
+
+    @Test
+    public void removeFriendInvalidTest() {
+        User user = new User(1L, "greenify", "password");
+        User test = new User(2L, "user", "pass");
+        assertThrows(ApplicationException.class, () -> {
+            user.removeFriend(test);
+        });
+    }
+
+    @Test
     public void setFriendTest() {
         List<User> friends = new ArrayList<User>();
         User first = new User(1L, "greenify", "password");

@@ -64,18 +64,34 @@ public class UserService {
     }
 
     /**
-<<<<<<< HEAD
      * Adds a friend to the friendlist of the user.
      * @param name the username of the user
      * @param friend the name of the friend you want to add.
+     * @throws ApplicationException if the user is not in the database.
      */
     public void addFriend(String name, String friend) {
         User user = userRepository.findByName(name);
         User add = userRepository.findByName(friend);
-        if (user == null || add == null ) {
+        if (add == null ) {
             throw new ApplicationException("User does not exist");
         }
         user.addFriend(add);
+        userRepository.save(user);
+    }
+
+    /**
+     * Removes a friend from the friendlist of the user.
+     * @param name the username of the user
+     * @param friend the name of the friend you want to remove.
+     * @throws ApplicationException if the user is not in the database.
+     */
+    public void removeFriend(String name, String friend) {
+        User user = userRepository.findByName(name);
+        User remove = userRepository.findByName(friend);
+        if (remove == null ) {
+            throw new ApplicationException("User does not exist");
+        }
+        user.removeFriend(remove);
         userRepository.save(user);
     }
 
