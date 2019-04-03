@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class UserController {
     @Autowired
@@ -47,7 +49,6 @@ public class UserController {
     public void setInput(@RequestParam(value = "name") String name,
                          @RequestParam(value = "inputName") String inputName,
                          @RequestParam(value = "value") String value) {
-        System.out.println("Here is server controller");
         userService.setInput(name, inputName, value);
     }
 
@@ -83,9 +84,13 @@ public class UserController {
         userService.addFriend(name, friend);
     }
 
-    /*    @RequestMapping("/addAchievement")
-    public void addAchievement(@RequestParam(value = "name") String name,
-                               @RequestParam(value = "achievement") String achievement) {
-        userService.achievementAchieved(name, achievement);
-        }*/
+    /**
+     * This method gets all achievements of a user.
+     * @param name name of the user
+     * @return map of all achievements of the user
+     */
+    @RequestMapping("/getAchievements")
+    public Map<String, Boolean> getAchievements(@RequestParam(value = "name") String name) {
+        return userService.getAchievements(name);
+    }
 }

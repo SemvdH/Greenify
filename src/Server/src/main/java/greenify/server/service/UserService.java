@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 @Service
 public class UserService {
     @Autowired
@@ -176,6 +178,17 @@ public class UserService {
             throw new ApplicationException("Invalid achievement");
         }
     }
+
+    /**
+     * This method gets all achievements of a user.
+     * @param name name of the user
+     * @return map with all achievements of a user
+     */
+    public Map<String, Boolean> getAchievements(String name) {
+        User user = userRepository.findByName(name);
+        return user.getAchievements();
+    }
+
 
     /**
      * This method gets a JSON of XML with all users.

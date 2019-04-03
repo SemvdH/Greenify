@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Class that controls the dashboard fxml file (the GUI Screen).
@@ -60,6 +62,8 @@ public class DashBoardController {
     private Button calculateFootPrintButton;
     @FXML
     private Label footprintLabel;
+    @FXML
+    private ImageView achiev1image;
 
     /**
      * Loads the the necessary things before anything else.
@@ -74,8 +78,7 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
-
-
+        updateAchievements();
     }
 
     /**
@@ -102,7 +105,7 @@ public class DashBoardController {
         userPane.setVisible(false);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
-
+        updateAchievements();
     }
 
     /**
@@ -170,6 +173,16 @@ public class DashBoardController {
         calcStage.setScene(scene);
         calcStage.setTitle("Calculate CO2 footprint - " + userService.currentUser.getName());
         calcStage.show();
+    }
+
+    /**
+     * Updates the achievements.
+     */
+    public void updateAchievements() {
+        Map achievements = userService.getAchievements(userService.currentUser.getName());
+        achiev1image.setVisible((Boolean)achievements.get("Starting off"));
+        //achiev2image.setVisible(achievements.get("name second achievement"));
+        //Add all achievements here, add updateAchievements to the achievements pane
     }
 
     //class for the animations on the navigation buttons

@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
+import greenify.server.AllAchievements;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
@@ -200,5 +201,10 @@ public class UserServiceTest {
     public void getAchievementTest() {
         assertThrows(ApplicationException.class, () -> userService.getAchievement("alex", "hello"));
         assertEquals(false, userService.getAchievement("alex", "Starting off"));
+    }
+
+    @Test
+    public void getAchievementsTest() {
+        assertEquals(AllAchievements.getDefaults(), userService.getAchievements("alex"));
     }
 }

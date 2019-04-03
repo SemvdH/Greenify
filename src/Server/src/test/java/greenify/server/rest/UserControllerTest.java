@@ -120,4 +120,16 @@ public class UserControllerTest {
         verify(userService, times(1)).getFootprint(arg1Captor.capture());
         assertEquals("ceren", arg1Captor.getValue());
     }
+
+    @Test
+    public void getAchievementsTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getAchievements")
+                .param("name", "mika")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getAchievements(arg1Captor.capture());
+        assertEquals("mika", arg1Captor.getValue());
+    }
 }
