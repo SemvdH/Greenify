@@ -96,19 +96,21 @@ public class CalculatorServiceTest {
     public void addExtrasTest() throws URISyntaxException {
         User user = new User(1L,"greenify", "password");
         Map<String,Boolean> map = new HashMap<String, Boolean>() {{
-            put("local_produce", false);
-            put("bike", false);
-            put("temperature", false);
-            put("solar_panels", false);
-        }};
+                put("local_produce", false);
+                put("bike", false);
+                put("temperature", false);
+                put("solar_panels", false);
+            }
+        };
         user.setExtraInputs(map);
         user.setFootPrint(50f);
         Map<String,Boolean> secondMap = new HashMap<String, Boolean>() {{
-            put("local_produce", true);
-            put("bike", true);
-            put("temperature", true);
-            put("solar_panels", true);
-        }};
+                put("local_produce", true);
+                put("bike", true);
+                put("temperature", true);
+                put("solar_panels", true);
+            }
+        };
         user.setExtraInputs(secondMap);
         calculatorService.addExtras(user);
         mockServer.verify();
