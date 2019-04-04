@@ -155,20 +155,23 @@ public class DashBoardController {
     private Label snacks;
     @FXML
     private CheckBox localProduce;
-    @SuppressWarnings("CheckStyle")
     @FXML
     private CheckBox loweringTemp;
-    @SuppressWarnings("CheckStyle")
     @FXML
     private CheckBox bike;
-    @SuppressWarnings("CheckStyle")
     @FXML
     private CheckBox solarPanels;
 
     /**
      * Loads the the necessary things before anything else.
+     * @throws InterruptedException exception if interrupted
      */
     public void initialize() throws InterruptedException {
+        //set the dashboardPane to visible
+        dashboardPane.setVisible(true);
+        userPane.setVisible(false);
+        activitiesPane.setVisible(false);
+        friendsPane.setVisible(false);
         //sets the text of the 'welcome back' text to include the username
         welcomebacktext.setText("Welcome back, " + userService.currentUser.getName() + "!");
         //adds the slide transition to the menu bar
@@ -314,8 +317,8 @@ public class DashBoardController {
         electricMiles.setText(inputMap.get("input_footprint_transportation_miles3"));
         electricMpg.setText(inputMap.get("input_footprint_transportation_mpg3"));
         publicTransportation.setText(inputMap.get("input_footprint_transportation_publictrans")
-                + " mi/yr");
-        airPlane.setText(inputMap.get("input_footprint_transportation_airtotal") + " mi/yr");
+                + " km/yr");
+        airPlane.setText(inputMap.get("input_footprint_transportation_airtotal") + " km/yr");
         goodShopping.setText(inputMap.get("input_footprint_shopping_goods_total") + " €/mo");
         serviceShopping.setText(inputMap.get("input_footprint_shopping_services_total") + " €/mo");
         meat.setText(inputMap.get("input_footprint_shopping_food_meatfisheggs"));
@@ -395,6 +398,17 @@ public class DashBoardController {
         calcStage.setScene(scene);
         calcStage.setTitle("Calculate CO2 footprint - " + userService.currentUser.getName());
         calcStage.show();
+    }
+
+    public void openExtraActivities(ActionEvent event) throws IOException {
+        Parent extra = Application.load(this.getClass().getClassLoader()
+        .getResource("fxml/extraActivities.fxml"));
+        Scene scene = new Scene(extra);
+        Stage extraStage = new Stage();
+        extraStage.setScene(scene);
+        extraStage.setTitle("Add extra activity - " + userService.currentUser.getName());
+        extraStage.show();
+
     }
 
     /**
@@ -495,4 +509,5 @@ public class DashBoardController {
         }
 
     }
+
 }

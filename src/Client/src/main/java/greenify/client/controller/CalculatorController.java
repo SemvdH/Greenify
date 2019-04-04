@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -9,9 +10,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -151,6 +150,7 @@ public class CalculatorController {
     @FXML
     private CheckBox solarPanelsCheckbox;
 
+
     /**
      * initializes the window, performs some actions before loading all other things.
      * it sets the sliders to snap to the ticks.
@@ -259,6 +259,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayGetStarted(ActionEvent event) {
+
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -275,7 +276,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayTravel(ActionEvent event) {
-        addSlideInAnimation(travelPane);
+
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
         homePane.setVisible(false);
@@ -292,6 +293,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayHome(ActionEvent event) {
+
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(true);
@@ -307,6 +309,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayFood(ActionEvent event) {
+
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -322,6 +325,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayShopping(ActionEvent event) {
+
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -338,8 +342,8 @@ public class CalculatorController {
     @SuppressWarnings("Duplicates")
     public void displayExtra(ActionEvent event) throws IOException {
 
-        //        Parent extra = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/extraActivities.fxml"));
-        //        extraPane.getChildren().setAll(extra);
+        extraPane.getChildren().setAll((Node) Application.load(this.getClass()
+                .getClassLoader().getResource("fxml/extraActivities.fxml")));
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
