@@ -518,8 +518,9 @@ public class CalculatorController {
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
-//        CalculatorController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Footprint saved!", "Your footprint is saved!");
         current.close();
         controller.updateLeaderboard();
+        CalculatorController.AlertHelper.showAlert
+                (Alert.AlertType.CONFIRMATION, owner, "Footprint saved!", "Your footprint is saved!");
     }
 }
