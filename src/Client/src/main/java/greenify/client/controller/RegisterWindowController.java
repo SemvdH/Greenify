@@ -233,7 +233,7 @@ public class RegisterWindowController {
             userService.registerUser(userNameText.getText(), passwordField.getText());
         }
         catch(RuntimeException ex){
-            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
                     "This username has already been taken!");
             return;
         }
