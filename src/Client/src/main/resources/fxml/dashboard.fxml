@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="703.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
@@ -451,6 +451,12 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="achiev1text" layoutX="579.0" layoutY="379.0" prefHeight="17.0" prefWidth="181.0" text="Achievement test label" />
+            <ImageView fx:id="achiev1image" fitHeight="150.0" fitWidth="200.0" layoutX="579.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../achiev1pic.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="friendsPane" layoutX="216.0" prefHeight="703.0" prefWidth="820.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

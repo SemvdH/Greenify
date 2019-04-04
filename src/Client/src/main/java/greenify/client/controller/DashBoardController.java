@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -154,6 +155,8 @@ public class DashBoardController {
     @FXML
     private Label snacks;
     @FXML
+    private ImageView achiev1image;
+    @FXML
     private CheckBox localProduce;
     @FXML
     private CheckBox loweringTemp;
@@ -211,6 +214,7 @@ public class DashBoardController {
         }
         friendsTable.setItems(data);
         updateLeaderboard();
+        updateAchievements();
     }
 
     /**
@@ -285,6 +289,7 @@ public class DashBoardController {
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
         updateLeaderboard();
+        updateAchievements();
     }
 
     /**
@@ -400,9 +405,14 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * Opens extra activities.
+     * @param event the event (clicking the button)
+     * @throws IOException if the Application doesn't load.
+     */
     public void openExtraActivities(ActionEvent event) throws IOException {
         Parent extra = Application.load(this.getClass().getClassLoader()
-        .getResource("fxml/extraActivities.fxml"));
+                .getResource("fxml/extraActivities.fxml"));
         Scene scene = new Scene(extra);
         Stage extraStage = new Stage();
         extraStage.setScene(scene);
@@ -482,6 +492,15 @@ public class DashBoardController {
         friendLeaderboard.setItems(friendLeaderData);
     }
 
+    /**
+     * Updates the achievements.
+     */
+    public void updateAchievements() {
+        Map achievements = userService.getAchievements(userService.currentUser.getName());
+        achiev1image.setVisible((Boolean)achievements.get("Starting off"));
+        //achiev2image.setVisible(achievements.get("name second achievement"));
+        //Add all achievements here, add updateAchievements to the achievements pane
+    }
 
     //class for the animations on the navigation buttons
     public class MyButtonSkin extends ButtonSkin {
@@ -507,7 +526,6 @@ public class DashBoardController {
             scaleDown.setToX(1.0);
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
-
     }
 
 }

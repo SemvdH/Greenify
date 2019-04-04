@@ -283,6 +283,23 @@ public class UserService {
     }
 
     /**
+     * Gets the achievements of a user.
+     * @param name name of the user
+     * @return Map with all achievements
+     */
+    @SuppressWarnings("Duplicates")
+    public Map getAchievements(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getAchievements")
+                .queryParam("name", name);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        return this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), Map.class);
+    }
+
+    /**
      * Gets the list of all users.
      */
     @SuppressWarnings("Duplicates")

@@ -151,7 +151,7 @@ public class InputValidatorTest {
                 put("input_footprint_shopping_services_charity", "146");
                 put("input_footprint_shopping_services_miscservices", "114");
                 put("internal_state_abbreviation", "US");
-            }
+                }
         };
         assertTrue(map.size() == InputValidator.getDefaultValues().size());
     }

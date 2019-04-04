@@ -2,6 +2,7 @@ package greenify.server.service;
 
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
+import greenify.server.AllAchievements;
 import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
@@ -18,6 +19,9 @@ import java.util.Map;
 public class UserService {
     @Autowired
     CalculatorService calculatorService;
+
+    @Autowired
+    AchievementService achievementService;
 
     @Autowired
     UserRepository userRepository;
@@ -37,6 +41,7 @@ public class UserService {
             user.setFootPrintInputs(InputValidator.getDefaultValues());
             Float footprint = calculatorService.calculateFootprint(user);
             user.setFootPrint(footprint);
+            user.setAchievements(AllAchievements.getDefaults());
             userRepository.save(user);
         } else {
             throw new ApplicationException("User already exists");
@@ -110,6 +115,7 @@ public class UserService {
                     && InputValidator.isValidItemValue(inputName, value)) {
                 user.getFootPrintInputs().put(inputName, value);
                 userRepository.save(user);
+                achievementService.updateAchievements(user);
             } else {
                 throw new ApplicationException("Invalid input");
             }
@@ -224,6 +230,51 @@ public class UserService {
             result.add(person.getName());
         }
         return result;
+    }
+
+    /**
+     * This methods sets a achievement.
+     * @param name name of the user
+     * @param achievement name of the achievement
+     * @param achieved (not) achieved
+     */
+    public void setAchievement(String name, String achievement, Boolean achieved) {
+        User user = userRepository.findByName(name);
+        if (user == null) {
+            throw new ApplicationException("User does not exist");
+        } else {
+            if (AllAchievements.isValidAchievement(achievement)) {
+                user.getAchievements().put(achievement, achieved);
+                userRepository.save(user);
+            } else {
+                throw new ApplicationException("Invalid achievement");
+            }
+        }
+    }
+
+    /**
+     * This method gets whether the achievement is achieved.
+     * @param name of the user
+     * @param achievement name of the achievement
+     * @return (not) achieved
+     */
+    public Boolean getAchievement(String name, String achievement) {
+        User user = userRepository.findByName(name);
+        if (AllAchievements.isValidAchievement(achievement)) {
+            return user.getAchievements().get(achievement);
+        } else {
+            throw new ApplicationException("Invalid achievement");
+        }
+    }
+
+    /**
+     * This method gets all achievements of a user.
+     * @param name name of the user
+     * @return map with all achievements of a user
+     */
+    public Map<String, Boolean> getAchievements(String name) {
+        User user = userRepository.findByName(name);
+        return user.getAchievements();
     }
 
     /**
