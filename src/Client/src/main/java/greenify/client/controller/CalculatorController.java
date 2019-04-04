@@ -2,10 +2,7 @@ package greenify.client.controller;
 
 import greenify.client.Application;
 import greenify.client.rest.UserService;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -244,6 +241,19 @@ public class CalculatorController {
         });
     }
 
+    public void addFadeTransAnimation(Node node){
+        FadeTransition fade = new FadeTransition(Duration.millis(350), node);
+        fade.setFromValue(0);
+        fade.setToValue(1.0);
+        TranslateTransition trans = new TranslateTransition(Duration.millis(350), node);
+        trans.setFromY(800);
+        trans.setToY(0);
+        ParallelTransition par = new ParallelTransition();
+        par.setNode(travelPane);
+        par.getChildren().addAll(fade, trans);
+        par.play();
+    }
+
     private void addSlideInAnimation(Node node) {
         Timeline timeline = new Timeline();
         KeyValue keyValue = new KeyValue(node.translateXProperty(), 0, Interpolator.EASE_OUT);
@@ -259,7 +269,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayGetStarted(ActionEvent event) {
-
+        addFadeTransAnimation(getStartedPane);
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -276,7 +286,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayTravel(ActionEvent event) {
-
+        addFadeTransAnimation(travelPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
         homePane.setVisible(false);
@@ -293,7 +303,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayHome(ActionEvent event) {
-
+        addFadeTransAnimation(homePane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(true);
@@ -309,7 +319,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayFood(ActionEvent event) {
-
+        addFadeTransAnimation(foodPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -325,7 +335,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayShopping(ActionEvent event) {
-
+        addFadeTransAnimation(shoppingPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -341,7 +351,7 @@ public class CalculatorController {
      */
     @SuppressWarnings("Duplicates")
     public void displayExtra(ActionEvent event) throws IOException {
-
+        addFadeTransAnimation(extraPane);
         extraPane.getChildren().setAll((Node) Application.load(this.getClass()
                 .getClassLoader().getResource("fxml/extraActivities.fxml")));
         getStartedPane.setVisible(false);
