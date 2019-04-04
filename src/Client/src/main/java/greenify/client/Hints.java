@@ -56,8 +56,8 @@ public class Hints {
     }
 
     /**
-     * returns a random Hint.
-     * @return a random hint as a string
+     * This method gets a random hint from the list of hints.
+     * @return the random hint.
      */
     public String randomHint() {
         Random rand = new Random();

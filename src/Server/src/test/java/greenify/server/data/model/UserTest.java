@@ -2,9 +2,11 @@ package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import greenify.common.ApplicationException;
+import greenify.server.AllAchievements;
 
 import org.junit.Test;
 
@@ -154,5 +156,18 @@ public class UserTest {
         friends.add(second);
         first.setFriends(friends);
         assertEquals(friends, first.getFriends());
+    }
+
+    @Test
+    public void getAchievementsTest() {
+        User user = new User(1L, "greenify", "password");
+        assertEquals(user.getAchievements(), AllAchievements.getDefaults());
+    }
+
+    @Test
+    public void setAchievementsTest() {
+        User user = new User(1L, "greenify", "password");
+        user.setAchievements(null);
+        assertNull(user.getAchievements());
     }
 }

@@ -78,8 +78,8 @@ public class CalculatorService {
     }
 
     /**
-     * Adds extras to the user.
-     * @param user the user to add the extras to
+     * This method adds extra input to the user.
+     * @param user name of the user
      */
     public void addExtras(User user) {
         if (user.getExtraInputs().get("local_produce")) {

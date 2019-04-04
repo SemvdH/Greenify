@@ -1,6 +1,7 @@
 package greenify.server.data.model;
 
 import greenify.common.ApplicationException;
+import greenify.server.AllAchievements;
 import greenify.server.InputValidator;
 import lombok.Data;
 
@@ -50,6 +51,9 @@ public class User {
     @ManyToMany
     private List<User> friends;
 
+    @ElementCollection
+    private Map<String, Boolean> achievements;
+
     public User() {}
 
     /**
@@ -65,6 +69,7 @@ public class User {
         this.setFootPrintInputs(InputValidator.getDefaultValues());
         this.setExtraInputs(InputValidator.getExtraValues());
         this.friends = new ArrayList<User>();
+        this.setAchievements(AllAchievements.getDefaults());
     }
 
     /**
@@ -219,6 +224,22 @@ public class User {
             friends.remove(user);
             System.out.print("Friend removed");
         }
+    }
+
+    /**
+     * This method sets the achievements of the user.
+     * @param achievements achievements of the user
+     */
+    public void setAchievements(Map<String, Boolean> achievements) {
+        this.achievements = achievements;
+    }
+
+    /**
+     * This method gets the achievements of the user.
+     * @return achievements of the user
+     */
+    public Map<String, Boolean> getAchievements() {
+        return this.achievements;
     }
 
     /**

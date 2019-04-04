@@ -155,6 +155,12 @@ public class UserServiceTest {
         userService.removeFriend("Eric", "Ceren");
         Mockito.verify(userService).removeFriend("Eric", "Ceren");
     }
+
+    @Test
+    public void getAchievementsTest() throws Exception {
+        userService.getAchievements("mika");
+        Mockito.verify(userService).getAchievements("mika");
+    }
 }
 
 

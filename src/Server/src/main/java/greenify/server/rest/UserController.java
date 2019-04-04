@@ -161,7 +161,7 @@ public class UserController {
      */
     @RequestMapping("/addFriend")
     public void addFriend(@RequestParam(value = "name") String name,
-                              @RequestParam(value = "friend") String friend) {
+                          @RequestParam(value = "friend") String friend) {
         userService.addFriend(name, friend);
     }
 
@@ -172,8 +172,18 @@ public class UserController {
      */
     @RequestMapping("/removeFriend")
     public void removeFriend(@RequestParam(value = "name") String name,
-                          @RequestParam(value = "friend") String friend) {
+                             @RequestParam(value = "friend") String friend) {
         userService.removeFriend(name, friend);
+    }
+
+    /**
+     * This method gets all achievements of a user.
+     * @param name name of the user
+     * @return map of all achievements of the user
+     */
+    @RequestMapping("/getAchievements")
+    public Map<String, Boolean> getAchievements(@RequestParam(value = "name") String name) {
+        return userService.getAchievements(name);
     }
 }
 

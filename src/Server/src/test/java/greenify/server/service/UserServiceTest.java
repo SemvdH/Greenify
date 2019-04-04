@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
+import greenify.server.AllAchievements;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Assert;
@@ -42,6 +43,9 @@ public class UserServiceTest {
 
     @MockBean
     private CalculatorService calculatorService;
+
+    @MockBean
+    private AchievementService achievementService;
 
     /**
      * setUp method for test.
@@ -109,7 +113,8 @@ public class UserServiceTest {
 
     @Test
     public void setExtraInputNullTest() {
-        assertThrows(ApplicationException.class, () -> userService.setExtraInput(null, "hello", true));
+        assertThrows(ApplicationException.class, () -> userService
+                .setExtraInput(null, "hello", true));
     }
 
     @Test
@@ -286,5 +291,27 @@ public class UserServiceTest {
     @Test
     public void addFriendNullFriendTest() {
         assertThrows(ApplicationException.class, () -> userService.addFriend("alex", null));
+    }
+
+    @Test
+    public void setAchievementTest() {
+        User alex = new User(1L, "alex", "password");
+        when(userRepository.findByName(alex.getName()))
+                .thenReturn(alex);
+        userService.setAchievement("alex",
+                "Starting off", true);
+        assertEquals(true, userService
+                .getAchievement("alex", "Starting off"));
+    }
+
+    @Test
+    public void getAchievementTest() {
+        assertThrows(ApplicationException.class, () -> userService.getAchievement("alex", "hello"));
+        assertEquals(false, userService.getAchievement("alex", "Starting off"));
+    }
+
+    @Test
+    public void getAchievementsTest() {
+        assertEquals(AllAchievements.getDefaults(), userService.getAchievements("alex"));
     }
 }
