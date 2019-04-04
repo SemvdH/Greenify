@@ -62,8 +62,8 @@ public class UserController {
      */
     @RequestMapping("/setExtraInput")
     public void setExtraInput(@RequestParam(value = "name") String name,
-                              @RequestParam(value = "inputName") String inputName,
-                              @RequestParam(value = "value") Boolean value) {
+                         @RequestParam(value = "inputName") String inputName,
+                         @RequestParam(value = "value") Boolean value) {
         userService.setExtraInput(name, inputName, value);
     }
 
@@ -186,3 +186,4 @@ public class UserController {
         return userService.getAchievements(name);
     }
 }
+

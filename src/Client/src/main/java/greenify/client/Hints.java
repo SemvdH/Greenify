@@ -52,11 +52,11 @@ public class Hints {
                 + "utensils and napkins, it saves plastic and paper.");
         hints.add("It takes about 66 days to form a new habit, keep going!");
         hints.add("Get yourself a nice reusable water bottle! It's cheaper and better for "
-                + "the environment to refill than to buy a new one every time it's empty.");
+               + "the environment to refill than to buy a new one every time it's empty.");
     }
 
     /**
-     * This method gets a random hint from the list of hints.
+     * This method returns a random hint from the list of hints.
      * @return the random hint.
      */
     public String randomHint() {

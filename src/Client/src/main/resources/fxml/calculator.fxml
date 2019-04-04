@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.CalculatorController">
    <children>
       <AnchorPane fx:id="calculatorTabs" prefHeight="92.0" prefWidth="820.0" style="-fx-background-color: #677069;">
          <children>
-            <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="188.0">
+            <Button fx:id="calculatorGetStartedButton" contentDisplay="TOP" layoutX="147.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayGetStarted" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Get started" textFill="#d4ddd6" AnchorPane.leftAnchor="147.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -26,7 +40,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorTravelButton" contentDisplay="TOP" layoutX="273.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayTravel" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Travel" textFill="#d4ddd6" AnchorPane.leftAnchor="273.0">
+            <Button fx:id="calculatorTravelButton" contentDisplay="TOP" layoutX="232.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayTravel" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Travel" textFill="#d4ddd6" AnchorPane.leftAnchor="232.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -43,7 +57,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorHomeButton" contentDisplay="TOP" layoutX="358.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayHome" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Home" textFill="#d4ddd6" AnchorPane.leftAnchor="358.0">
+            <Button fx:id="calculatorHomeButton" contentDisplay="TOP" layoutX="317.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayHome" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Home" textFill="#d4ddd6" AnchorPane.leftAnchor="317.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -60,7 +74,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorFoodButton" contentDisplay="TOP" layoutX="443.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayFood" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Food" textFill="#d4ddd6" AnchorPane.leftAnchor="443.0">
+            <Button fx:id="calculatorFoodButton" contentDisplay="TOP" layoutX="402.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayFood" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Food" textFill="#d4ddd6" AnchorPane.leftAnchor="402.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -77,7 +91,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="calculatorShoppingButton" contentDisplay="TOP" layoutX="528.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayShopping" prefHeight="81.0" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Shopping" textFill="#d4ddd6" AnchorPane.leftAnchor="528.0">
+            <Button fx:id="calculatorShoppingButton" contentDisplay="TOP" layoutX="487.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayShopping" prefHeight="81.0" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Shopping" textFill="#d4ddd6" AnchorPane.leftAnchor="487.0">
                <font>
                   <Font name="Corbel Bold" size="16.0" />
                </font>
@@ -94,20 +108,32 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" onAction="#saveCalculation" mnemonicParsing="false" text="Save">
+            <Button fx:id="saveButton" layoutX="702.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveCalc" text="Save">
                <font>
                   <Font size="17.0" />
                </font></Button>
+            <Button fx:id="calculatorExtraButton" contentDisplay="TOP" layoutX="497.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayExtra" prefHeight="81.0" prefWidth="79.0" style="-fx-padding: 0px 0px 0px 0px;" styleClass="navButton" text="Extra" textFill="#d4ddd6" AnchorPane.leftAnchor="572.0">
+               <font>
+                  <Font name="Corbel Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-potted-plant-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" AnchorPane.leftAnchor="0.0">
+      <AnchorPane fx:id="getStartedPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Text layoutX="224.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. How many people live in your household?">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <Slider fx:id="peopleInHouseholdSlider" blockIncrement="1.0" layoutX="260.0" layoutY="147.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Slider fx:id="peopleInHouseholdSlider" blockIncrement="1.0" layoutX="260.0" layoutY="147.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="slidertje" />
             <Label fx:id="peopleInHouseHoldLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="70.0" prefHeight="38.0" prefWidth="44.0" text="0">
                <font>
                   <Font size="20.0" />
@@ -132,12 +158,103 @@
                </opaqueInsets>
             </Label>
             <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="147.0" layoutY="14.0" stroke="#545b54" />
          </children></AnchorPane>
-      <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0">
+      <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
          <children>
             <ScrollPane layoutX="158.0" layoutY="109.0" prefHeight="215.0" prefWidth="499.0">
                <content>
-                  <TextField prefHeight="33.0" prefWidth="497.0" />
+                  <AnchorPane prefHeight="505.0" prefWidth="497.0">
+                     <children>
+                        <Text fill="#505050" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="carTravelGasolineField" layoutX="14.0" layoutY="38.0" prefHeight="31.0" prefWidth="405.0" promptText="16.400" text="0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="38.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelGasolineSlider" layoutX="14.0" layoutY="122.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="77.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelGasolineLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/L">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="239.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelDieselLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/L">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelDieselSlider" layoutX="14.0" layoutY="285.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="200.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="carTravelDieselField" layoutX="14.0" layoutY="200.0" prefHeight="31.0" prefWidth="405.0" promptText="15.400" text="0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Text fill="#505050" layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#505050" layoutX="14.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Electric">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="carTravelElectricField" layoutX="14.0" layoutY="365.0" prefHeight="31.0" prefWidth="405.0" promptText="14.900" text="0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <HBox alignment="CENTER_LEFT" layoutX="419.0" layoutY="365.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+                           <children>
+                              <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="49.0">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Slider fx:id="carTravelElectricSlider" layoutX="14.0" layoutY="450.0" majorTickUnit="15.0" max="115.0" min="10.0" minorTickCount="0" prefHeight="14.0" prefWidth="453.0" showTickLabels="true" showTickMarks="true" />
+                        <HBox alignment="CENTER" layoutX="204.0" layoutY="404.0" prefHeight="31.0" prefWidth="89.0" styleClass="km-indicator">
+                           <children>
+                              <Label fx:id="carTravelElectricLabel" alignment="TOP_CENTER" contentDisplay="CENTER" text="0 km/Le">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
                </content></ScrollPane>
             <Text layoutX="300.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How do you get around?">
                <font>
@@ -153,14 +270,20 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="publicTransitField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="394.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
+            <TextField fx:id="publicTransitField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="394.0" prefHeight="31.0" prefWidth="499.0" promptText="0" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
             <Text fill="#727272" layoutX="350.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airplane travel">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="airplaneTravelField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="495.0" prefHeight="31.0" prefWidth="499.0" promptText="0" />
-            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="394.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+            <TextField fx:id="airplaneTravelField" alignment="CENTER_RIGHT" layoutX="158.0" layoutY="495.0" prefHeight="31.0" prefWidth="499.0" promptText="0" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="398.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
                <children>
                   <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
                      <font>
@@ -169,7 +292,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="495.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
+            <HBox alignment="CENTER_LEFT" layoutX="659.0" layoutY="499.0" prefHeight="31.0" prefWidth="62.0" styleClass="km-yearBox">
                <children>
                   <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="km/year" wrappingWidth="63.0">
                      <font>
@@ -179,11 +302,331 @@
                </children>
             </HBox>
             <Button fx:id="travelNextButton" layoutX="383.0" layoutY="559.0" mnemonicParsing="false" onAction="#displayHome" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="232.0" layoutY="14.0" stroke="#545b54" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
-      <AnchorPane fx:id="foodPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
-      <AnchorPane fx:id="shoppingPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false" />
+      <AnchorPane fx:id="homePane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
+         <children>
+            <Text layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much do you use in your home?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="177.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Electricity">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="electricityField" layoutX="177.0" layoutY="105.0" prefHeight="31.0" prefWidth="434.0" promptText="1,570" text="0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <HBox alignment="CENTER_LEFT" layoutX="616.0" layoutY="105.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€/year" wrappingWidth="41.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <Slider fx:id="waterUsageSlider" blockIncrement="100.0" layoutX="177.0" layoutY="509.0" majorTickUnit="100.0" max="300.0" minorTickCount="0" prefHeight="24.0" prefWidth="499.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="cleanEnergyPurchasedSlider" blockIncrement="25.0" layoutX="177.0" layoutY="188.0" minorTickCount="0" prefHeight="24.0" prefWidth="499.0" showTickLabels="true" showTickMarks="true" />
+            <Text fill="#6f6f6f" layoutX="238.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Percent purchased from clean energy program:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" layoutX="553.0" layoutY="146.0" prefHeight="27.0" prefWidth="55.0" styleClass="km-indicator">
+               <children>
+                  <Label fx:id="cleanEnergyPurchasedLabel" text="0 %">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button layoutX="400.0" layoutY="547.0" mnemonicParsing="false" onAction="#displayFood" styleClass="nextButton" text="Next" />
+            <Text fill="#727272" layoutX="177.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Natural gas">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER_LEFT" layoutX="616.0" layoutY="262.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€/year" wrappingWidth="41.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <TextField fx:id="naturalGasField" layoutX="177.0" layoutY="262.0" prefHeight="31.0" prefWidth="434.0" promptText="2,000" text="0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <HBox alignment="CENTER_LEFT" layoutX="616.0" layoutY="325.0" prefHeight="31.0" prefWidth="54.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€/year" wrappingWidth="41.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <TextField fx:id="heatingOilField" layoutX="177.0" layoutY="325.0" prefHeight="31.0" prefWidth="434.0" promptText="3,100" text="0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Text fill="#727272" layoutX="177.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heating oil &amp; other fuels">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="177.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Living space area">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="livingSpaceField" layoutX="177.0" layoutY="390.0" prefHeight="31.0" prefWidth="434.0" promptText="1,570" text="0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <HBox alignment="CENTER_LEFT" layoutX="616.0" layoutY="390.0" prefHeight="31.0" prefWidth="0.0" styleClass="km-yearBox">
+               <children>
+                  <Text layoutY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="m²" textAlignment="CENTER" wrappingWidth="41.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <Text fill="#727272" layoutX="177.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water usage">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" layoutX="298.0" layoutY="459.0" prefHeight="27.0" prefWidth="258.0" styleClass="km-indicator">
+               <children>
+                  <Label fx:id="waterUsageLabel" text="0% of similar households">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Line endX="79.0" layoutX="317.0" layoutY="14.0" stroke="#545b54" />
+         </children></AnchorPane>
+      <ScrollPane fx:id="foodPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
+         <content>
+            <AnchorPane prefHeight="1000.0" prefWidth="817.0">
+               <children>
+                  <Text layoutX="146.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much does the average person in your household eat?">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#727272" layoutX="146.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meat, fish, eggs">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider fx:id="meatFishEggsSlider" blockIncrement="2.5" layoutX="146.0" layoutY="205.0" majorTickUnit="2.5" max="7.5" minorTickCount="0" prefHeight="24.0" prefWidth="517.0" showTickLabels="true" showTickMarks="true" />
+                  <HBox alignment="CENTER" layoutX="299.0" layoutY="149.0" prefHeight="31.0" prefWidth="220.0" styleClass="km-indicator">
+                     <children>
+                        <Label fx:id="meatFishEggsLabel" text="2.6 daily servings per person">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Text fill="#727272" layoutX="519.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 2,6">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#727272" layoutX="519.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 4,4">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" layoutX="299.0" layoutY="310.0" prefHeight="31.0" prefWidth="220.0" styleClass="km-indicator">
+                     <children>
+                        <Label fx:id="grainsBakedGoodsLabel" text="4.4 daily servings per person">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="grainsBakedGoodsSlider" blockIncrement="4.5" layoutX="146.0" layoutY="366.0" majorTickUnit="4.5" max="13.5" minorTickCount="0" prefHeight="24.0" prefWidth="517.0" showTickLabels="true" showTickMarks="true" />
+                  <Text fill="#727272" layoutX="146.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grains &amp; baked goods">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#727272" layoutX="146.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dairy">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider fx:id="dairySlider" blockIncrement="2.5" layoutX="146.0" layoutY="527.0" majorTickUnit="2.5" max="7.5" minorTickCount="0" prefHeight="24.0" prefWidth="517.0" showTickLabels="true" showTickMarks="true" />
+                  <HBox alignment="CENTER" layoutX="299.0" layoutY="471.0" prefHeight="31.0" prefWidth="220.0" styleClass="km-indicator">
+                     <children>
+                        <Label fx:id="dairyLabel" text="2.4 daily servings per person">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Text fill="#727272" layoutX="519.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 2,4">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#727272" layoutX="524.0" layoutY="776.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 3,7">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" layoutX="304.0" layoutY="810.0" prefHeight="31.0" prefWidth="220.0" styleClass="km-indicator">
+                     <children>
+                        <Label fx:id="snacksDrinksLabel" text="3.7 daily servings per person">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="snacksDrinksSlider" blockIncrement="3.7" layoutX="151.0" layoutY="866.0" majorTickUnit="3.7" max="11.0" minorTickCount="0" prefHeight="24.0" prefWidth="517.0" showTickLabels="true" showTickMarks="true" />
+                  <Text fill="#727272" layoutX="151.0" layoutY="778.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Snacks, drinks etc.">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#727272" layoutX="151.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruits &amp; vegetables">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider fx:id="fruitsVegetablesSlider" blockIncrement="3.9" layoutX="151.0" layoutY="705.0" majorTickUnit="3.9" max="11.6" minorTickCount="0" prefHeight="24.0" prefWidth="517.0" showTickLabels="true" showTickMarks="true" />
+                  <HBox alignment="CENTER" layoutX="304.0" layoutY="649.0" prefHeight="31.0" prefWidth="220.0" styleClass="km-indicator">
+                     <children>
+                        <Label fx:id="fruitsVegetablesLabel" text="3.9 daily servings per person">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Text fill="#727272" layoutX="524.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 3,9">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="378.0" layoutY="926.0" mnemonicParsing="false" onAction="#displayShopping" styleClass="nextButton" text="Next" />
+                  <Line endX="79.0" layoutX="402.0" layoutY="7.0" stroke="#545b54" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <AnchorPane fx:id="shoppingPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
+         <children>
+            <Text layoutX="185.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much do you spend on each of the following?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="133.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goods">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="133.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Services">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="518.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 1.520 € / month">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#727272" layoutX="518.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average: 3.428 € / month">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Slider fx:id="goodsSlider" blockIncrement="1520.0" layoutX="133.0" layoutY="209.0" majorTickUnit="1520.0" max="4560.0" minorTickCount="0" prefHeight="24.0" prefWidth="554.0" showTickLabels="true" showTickMarks="true" />
+            <HBox alignment="CENTER" layoutX="335.0" layoutY="145.0" prefHeight="31.0" prefWidth="150.0" styleClass="km-indicator">
+               <children>
+                  <Label fx:id="goodsLabel" text="1520 € / month">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="335.0" layoutY="348.0" prefHeight="31.0" prefWidth="150.0" styleClass="km-indicator">
+               <children>
+                  <Label fx:id="servicesLabel" text="3428 € / month">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Slider fx:id="servicesSlider" blockIncrement="3428.0" layoutX="133.0" layoutY="418.0" majorTickUnit="3428.0" max="10284.0" minorTickCount="0" prefHeight="24.0" prefWidth="554.0" showTickLabels="true" showTickMarks="true" />
+            <Button layoutX="383.0" layoutY="547.0" mnemonicParsing="false" onAction="#displayExtra" styleClass="nextButton" text="Next" />
+            <Line endX="79.0" layoutX="487.0" layoutY="7.0" stroke="#545b54" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="extraPane" layoutY="92.0" prefHeight="611.0" prefWidth="820.0" visible="false">
+         <children>
+            <Text layoutX="199.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have you done any extra activities to save CO2?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <CheckBox fx:id="localProduceCheckbox" layoutX="233.0" layoutY="189.0" mnemonicParsing="false" styleClass="extraCheckBox" text="Buying local produce" textFill="#727272">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="bikeCheckbox" layoutX="233.0" layoutY="235.0" mnemonicParsing="false" styleClass="extraCheckBox" text="Using your bike instead of your car" textFill="#727272">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="temperatureCheckbox" layoutX="233.0" layoutY="281.0" mnemonicParsing="false" styleClass="extraCheckBox" text="Lowering the temperature of your home" textFill="#727272">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="solarPanelsCheckbox" layoutX="233.0" layoutY="327.0" mnemonicParsing="false" styleClass="extraCheckBox" text="Installing solar panels" textFill="#727272">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Line endX="79.0" layoutX="572.0" layoutY="7.0" stroke="#545b54" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
-

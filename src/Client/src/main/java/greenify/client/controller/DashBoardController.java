@@ -418,10 +418,11 @@ public class DashBoardController {
         extraStage.setScene(scene);
         extraStage.setTitle("Add extra activity - " + userService.currentUser.getName());
         extraStage.show();
+
     }
 
     /**
-     * method opens addFriend scene.
+     * method opend addFriend scene.
      * @throws IOException when file is not found
      */
     public void openAddFriend() throws IOException {
@@ -526,4 +527,5 @@ public class DashBoardController {
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }
+
 }
