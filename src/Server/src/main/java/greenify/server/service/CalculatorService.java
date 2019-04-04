@@ -77,6 +77,10 @@ public class CalculatorService {
         return footprint;
     }
 
+    /**
+     * Adds extras to the user.
+     * @param user the user to add the extras to
+     */
     public void addExtras(User user) {
         if (user.getExtraInputs().get("local_produce")) {
             user.setFootPrint(user.getFootPrint() - 2);

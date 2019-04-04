@@ -400,9 +400,14 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * opens the Extra activities scene.
+     * @param event the click of the button
+     * @throws IOException exception if it can't find the fxml file
+     */
     public void openExtraActivities(ActionEvent event) throws IOException {
         Parent extra = Application.load(this.getClass().getClassLoader()
-        .getResource("fxml/extraActivities.fxml"));
+            .getResource("fxml/extraActivities.fxml"));
         Scene scene = new Scene(extra);
         Stage extraStage = new Stage();
         extraStage.setScene(scene);

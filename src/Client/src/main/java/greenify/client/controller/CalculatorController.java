@@ -2,7 +2,13 @@ package greenify.client.controller;
 
 import greenify.client.Application;
 import greenify.client.rest.UserService;
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.ParallelTransition;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -241,7 +247,11 @@ public class CalculatorController {
         });
     }
 
-    public void addFadeTransAnimation(Node node){
+    /**
+     * adds a fade transition to the given node.
+     * @param node the node to add the transition to
+     */
+    public void addFadeTransAnimation(Node node) {
         FadeTransition fade = new FadeTransition(Duration.millis(350), node);
         fade.setFromValue(0);
         fade.setToValue(1.0);

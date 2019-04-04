@@ -151,6 +151,10 @@ public class ExtraActivityController {
     }
 
     public class TranslateButtonSkin extends ButtonSkin {
+        /**
+         * button skin that sets a translate animation on entering and exiting the button.
+         * @param button the button to set the animation for
+         */
         public TranslateButtonSkin(Button button) {
             super(button);
 
@@ -169,6 +173,11 @@ public class ExtraActivityController {
 
     @SuppressWarnings("Duplicates")
     public class ActivityButtonSkin extends ButtonSkin {
+        /**
+         * button skin for the 'add activity' buttons.
+         * adds scale animations on entering, clicking and extiting the button
+         * @param button the button to set the skin of
+         */
         public ActivityButtonSkin(Button button) {
             super(button);
 
