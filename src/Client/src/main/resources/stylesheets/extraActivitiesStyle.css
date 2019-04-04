@@ -1,6 +1,13 @@
 .navButton {
     -fx-background-color: #6a7a6d;
 }
+.navButton:hover {
+    -fx-background-color: #728475;
+}
+
+.navButton:pressed {
+    -fx-background-color: #8cad91;
+}
 
 .slider .track {
     -fx-background-color: #d3d3d3;
