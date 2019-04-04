@@ -2,6 +2,7 @@ package greenify.client.controller;
 
 import greenify.client.Application;
 import greenify.client.rest.UserService;
+import greenify.common.ApplicationException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 /**
@@ -65,7 +67,14 @@ public class UserController {
             System.out.println("Password is " + passwordField.getText());
         }
         //log the user in with the userService method
-        userService.loginUser(usernameField.getText(), passwordField.getText());
+        try {
+            userService.loginUser(usernameField.getText(), passwordField.getText());
+        }
+        catch(RuntimeException ex){
+            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
+                    "Your username or password is incorrect!");
+            return;
+        }
         Stage current = (Stage) owner;
         //after logging in, close the login window
         current.close();
