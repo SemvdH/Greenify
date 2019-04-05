@@ -65,7 +65,14 @@ public class UserController {
             System.out.println("Password is " + passwordField.getText());
         }
         //log the user in with the userService method
-        userService.loginUser(usernameField.getText(), passwordField.getText());
+        try {
+            userService.loginUser(usernameField.getText(), passwordField.getText());
+        }
+        catch (RuntimeException ex) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
+                    "Your username or password is incorrect!");
+            return;
+        }
         Stage current = (Stage) owner;
         //after logging in, close the login window
         current.close();

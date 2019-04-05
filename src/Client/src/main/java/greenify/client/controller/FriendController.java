@@ -52,7 +52,10 @@ public class FriendController {
         //add friend to the current user
         userService.addFriend(userService.currentUser.getName(), userNameText.getText());
         //close the register window after the user has entered all the credentials
+        String friendName = userNameText.getText();
         Stage current = (Stage) owner;
         current.close();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Friend added!",
+                userNameText.getText() + " is now your friend!");
     }
 }

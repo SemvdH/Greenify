@@ -14,6 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ import java.text.DecimalFormat;
 
 @Controller
 public class CalculatorController {
+    private static UserController.AlertHelper AlertHelper;
     @Autowired
     UserService userService;
 
@@ -524,5 +526,7 @@ public class CalculatorController {
         Stage current = (Stage) owner;
         current.close();
         controller.updateLeaderboard();
+        CalculatorController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
+                owner, "Footprint saved!", "Your footprint is saved!");
     }
 }
