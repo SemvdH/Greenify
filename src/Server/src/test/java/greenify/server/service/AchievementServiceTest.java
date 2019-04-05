@@ -26,6 +26,14 @@ public class AchievementServiceTest {
         }
     }
 
+    @TestConfiguration
+    static class AchievementServiceConfiguration {
+        @Bean
+        public AchievementService achievementService() {
+            return new AchievementService();
+        }
+    }
+
     @Autowired
     private UserService userService;
 
@@ -35,7 +43,7 @@ public class AchievementServiceTest {
     @MockBean
     private CalculatorService calculatorService;
 
-    @MockBean
+    @Autowired
     private AchievementService achievementService;
 
     /**
@@ -46,30 +54,20 @@ public class AchievementServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
-        User lola = new User(2L, "lola", "password");
-        when(userRepository.findByName(lola.getName()))
-                .thenReturn(lola);
+        userService.setInput("alex","input_footprint_shopping_food_otherfood", "9.9");
     }
 
     @Test
     public void updateAchievementsTest() {
         User alex = userRepository.findByName("alex");
-        userService.setInput("alex","input_footprint_shopping_food_otherfood", "9.9");
-//        achievementService.updateAchievements(alex);
-        //Shouldn't even have to call updateAchievements, since it's called in setInput.
-//        userService.setAchievement(alex.getName(), "Starting off", true);
-        // ^should not be here, does not work otherwise and I don't know why
-        System.out.println("\n\n"+ alex.getAchievements() + "\n\n" + alex.getFootPrintInputs().equals(InputValidator.getDefaultValues()));
-//        assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        achievementService.updateAchievements(alex);
+        assertEquals(true, userService.getAchievement("alex", "Starting off"));
     }
 
     @Test
     public void achieveGettingStartedTest() {
         User alex = userRepository.findByName("alex");
-        userService.setInput("alex", "input_size", "5");
         achievementService.achieveGettingStarted(alex);
-        userService.setAchievement(alex.getName(), "Starting off", true);
-        // ^should not be here, does not work otherwise and I don't know why
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
     }
 }
