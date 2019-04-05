@@ -19,17 +19,18 @@ public class Hints {
                 + "footprint, but it will also help your local economy: A win-win!");
         this.hints.add("Did you know that a gas oven only uses 6% of its energy "
                 + "to cook? And an electric oven is not much better at 12%!");
-        this.hints.add("70% of the deforestation of the Amazon rainforest is to provide land for cattle ranches.");
-        this.hints.add("Research shows that reducing meat consumption can increase"
-                + " your life span by 3,6 years");
-        this.hints.add("Vegetarians have a lower risk of getting: Heart disease, high blood pressure, "
-                + "diabetes and cancer than meat eaters.");
+        this.hints.add("70% of the deforestation of the Amazon rainforest is to provide land "
+                + "for cattle ranches.");
+        this.hints.add("Research shows that reducing meat consumption can "
+                + "increase your life span by 3,6 years");
+        this.hints.add("Vegetarians have a lower risk of getting: Heart disease, high blood "
+                + "pressure, diabetes and cancer than meat eaters.");
         this.hints.add("The carbon footprint of a vegetarian diet is about half "
                 + "that of a meat-lover’s diet!");
         this.hints.add("Cycling is good for the environment and for your body, "
                 + "so why not grab your bike instead of your car?");
-        this.hints.add("If we could capture all of the sun’s energy shining on the Earth for just one "
-                + "hour, we could power the entire world for one whole year!");
+        this.hints.add("If we could capture all of the sun’s energy shining on the Earth for just "
+                + "one hour, we could power the entire world for one whole year!");
         this.hints.add("27,000 trees are cut down every day so we can have toilet paper.");
         this.hints.add("Recycle glass bottles! A glass bottle made now will take "
                 + "more than 4,000 years to decompose.");
@@ -60,6 +61,11 @@ public class Hints {
                + "the environment to refill than to buy one every time it's empty.");
         this.hints.add("Only 1% of our planet’s water supply can be used a drinkwater."
                 + " 97% is ocean water and 2% is frozen solid in the Arctic, for now.");
+        this.hints.add("For every two million tons of paper and glass, collected in "
+                + "the Netherlands, close to 90% gets recycled and used to make new products");
+        this.hints.add("In the Netherlands: Whenever you purchase any new, electronic or household "
+                + "equipment, you will automatically be charged a ‘recycling tax’ on it. This is "
+                + "also known as ‘removal tax’, or ‘verwijderingsbijdrage’ in Dutch");
         this.hints.add("Plastic bad, very bad.");
     }
 
