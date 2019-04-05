@@ -69,5 +69,7 @@ public class AchievementServiceTest {
         User alex = userRepository.findByName("alex");
         achievementService.achieveGettingStarted(alex);
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        assertEquals(false, userService.getAchievement("alex", "Social butterfly"));
+
     }
 }
