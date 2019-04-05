@@ -3,6 +3,7 @@ package greenify.client.controller;
 import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.Friend;
+import greenify.client.Hints;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
@@ -45,6 +46,8 @@ public class DashBoardController {
 
     @Autowired
     UserService userService;
+
+    Hints hints = new Hints();
 
     private FadeTransition fadeTrans;       //transition for switching between the different panels
 
@@ -168,12 +171,18 @@ public class DashBoardController {
     private CheckBox bike;
     @FXML
     private CheckBox solarPanels;
+    @FXML
+    private Label hintText;
+    @FXML
+    private Button refreshHintsButton;
 
     /**
      * Loads the the necessary things before anything else.
      * @throws InterruptedException exception if interrupted
      */
     public void initialize() throws InterruptedException {
+        hintText.setWrapText(true);
+        hintText.setText(hints.randomHint());
         //set the dashboardPane to visible
         dashboardPane.setVisible(true);
         userPane.setVisible(false);
@@ -225,6 +234,8 @@ public class DashBoardController {
         addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
         addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
         addExtraActivityButton2.setSkin(new ClickButtonSkin(addExtraActivityButton2));
+
+        addRandomHints();
     }
 
     /**
@@ -413,6 +424,19 @@ public class DashBoardController {
         calcStage.setScene(scene);
         calcStage.setTitle("Calculate CO2 footprint - " + userService.currentUser.getName());
         calcStage.show();
+    }
+
+    public void addRandomHints() {
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.play();
+        hintText.setWrapText(true);
+        hintText.setText(hints.randomHint());
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(400), hintText);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
     }
 
     /**
