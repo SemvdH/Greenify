@@ -114,8 +114,8 @@ public class UserService {
             if (InputValidator.isValidItem(inputName)
                     && InputValidator.isValidItemValue(inputName, value)) {
                 user.getFootPrintInputs().put(inputName, value);
-                userRepository.save(user);
                 achievementService.updateAchievements(user);
+                userRepository.save(user);
             } else {
                 throw new ApplicationException("Invalid input");
             }
@@ -242,16 +242,14 @@ public class UserService {
         User user = userRepository.findByName(name);
         if (user == null) {
             throw new ApplicationException("User does not exist");
-        } else {
-            if (AllAchievements.isValidAchievement(achievement)) {
-                Map<String, Boolean> temp = user.getAchievements();
-                temp.put(achievement, achieved);
-                user.setAchievements(temp);
-                userRepository.save(user);
-            } else {
-                throw new ApplicationException("Invalid achievement");
-            }
         }
+        if (!AllAchievements.isValidAchievement(achievement)) {
+            throw new ApplicationException("Invalid achievement");
+        }
+        Map<String, Boolean> temp = user.getAchievements();
+        temp.put(achievement, achieved);
+        user.setAchievements(temp);
+        userRepository.save(user);
     }
 
     /**

@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
+import jdk.internal.util.xml.impl.Input;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,7 +55,8 @@ public class AchievementServiceTest {
     public void updateAchievementsTest() {
         User alex = userRepository.findByName("alex");
         userService.setInput("alex","input_footprint_shopping_food_otherfood", "9.9");
-        achievementService.updateAchievements(alex);
+//        achievementService.updateAchievements(alex);
+        //Shouldn't even have to call updateAchievements, since it's called in setInput.
 //        userService.setAchievement(alex.getName(), "Starting off", true);
         // ^should not be here, does not work otherwise and I don't know why
         System.out.println("\n\n"+ alex.getAchievements() + "\n\n" + alex.getFootPrintInputs().equals(InputValidator.getDefaultValues()));

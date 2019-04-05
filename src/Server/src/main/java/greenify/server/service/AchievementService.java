@@ -13,8 +13,8 @@ public class AchievementService {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserRepository userRepository;
+//    @Autowired
+//    UserRepository userRepository;
 
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -24,7 +24,8 @@ public class AchievementService {
      */
     public void updateAchievements(User user) {
         achieveGettingStarted(user);
-        userRepository.save(user);
+        System.out.println("\n\nI GOT HERE \n\n");
+//        userRepository.save(user);
     }
 
     /**
@@ -32,9 +33,10 @@ public class AchievementService {
      * @param user user for whom achiev1 changes
      */
     public void achieveGettingStarted(User user) {
+//        System.out.print("\n\nUSERNAME:" + userRepository.findByName(user.getName()) );
         if (!user.getFootPrintInputs().equals(InputValidator.getDefaultValues())) {
             userService.setAchievement(user.getName(), "Starting off", true);
-            userRepository.save(user);
+//            userRepository.save(user);
         }
     }
 
