@@ -172,13 +172,13 @@ public class ExtraActivityController {
     }
 
     @SuppressWarnings("Duplicates")
-    public class ActivityButtonSkin extends ButtonSkin {
+    private class ActivityButtonSkin extends ButtonSkin {
         /**
          * button skin for the 'add activity' buttons.
          * adds scale animations on entering, clicking and extiting the button
          * @param button the button to set the skin of
          */
-        public ActivityButtonSkin(Button button) {
+        private ActivityButtonSkin(Button button) {
             super(button);
 
             //transition to scale up on hover

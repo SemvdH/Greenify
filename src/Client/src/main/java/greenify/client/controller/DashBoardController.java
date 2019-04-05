@@ -81,6 +81,10 @@ public class DashBoardController {
     @FXML
     private Button addFriendButton;
     @FXML
+    private Button addExtraActivityButton;
+    @FXML
+    private Button addExtraActivityButton2;
+    @FXML
     private TableView<Friend> friendsTable;
     @FXML
     private TableColumn<Friend, String> friendsColumn;
@@ -184,6 +188,7 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
+
         friendsColumn.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
         globalUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
@@ -215,6 +220,11 @@ public class DashBoardController {
         friendsTable.setItems(data);
         updateLeaderboard();
         updateAchievements();
+
+        calculateFootPrintButton.setSkin(new ClickButtonSkin(calculateFootPrintButton));
+        addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
+        addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
+        addExtraActivityButton2.setSkin(new ClickButtonSkin(addExtraActivityButton2));
     }
 
     /**
@@ -524,6 +534,46 @@ public class DashBoardController {
             final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100));
             scaleDown.setNode(button);
             scaleDown.setToX(1.0);
+            button.setOnMouseExited(e -> scaleDown.playFromStart());
+        }
+    }
+
+    @SuppressWarnings("Duplicates")
+    private class ClickButtonSkin extends ButtonSkin {
+        /**
+         * button skin for the 'add activity' buttons.
+         * adds scale animations on entering, clicking and exiting the button
+         * @param button the button to set the skin of
+         */
+        private ClickButtonSkin(Button button) {
+            super(button);
+
+            //transition to scale up on hover
+            final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100));
+            //add the node and the position to scale to
+            scaleUp.setNode(button);
+            scaleUp.setToX(1.1);
+            scaleUp.setToY(1.1);
+            //play the transition when hovered over the button
+            button.setOnMouseEntered(e -> scaleUp.playFromStart());
+
+            final ScaleTransition scaleMiddleDown = new ScaleTransition(Duration.millis(50));
+            scaleMiddleDown.setNode(button);
+            scaleMiddleDown.setToX(1.05);
+            scaleMiddleDown.setToY(1.05);
+
+            button.setOnMousePressed(e -> scaleMiddleDown.playFromStart());
+
+            final ScaleTransition scaleMiddleUp = new ScaleTransition(Duration.millis(50));
+            scaleMiddleUp.setNode(button);
+            scaleMiddleUp.setToX(1.1);
+            scaleMiddleUp.setToY(1.1);
+            button.setOnMouseReleased(e -> scaleMiddleUp.playFromStart());
+
+            final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100));
+            scaleDown.setNode(button);
+            scaleDown.setToX(1.0);
+            scaleDown.setToY(1.0);
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }

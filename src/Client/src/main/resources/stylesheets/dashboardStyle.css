@@ -53,10 +53,6 @@
   -fx-border-color: #497251;
 }
 
-#calculateFootPrintButton:pressed {
-  -fx-border-color: #497251;
-}
-
 /*friends table*/
 .table-view .column-header {
   /*-fx-background-color: linear-gradient(#4b7a3d, #588c58);*/
