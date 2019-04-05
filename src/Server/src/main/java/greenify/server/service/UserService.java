@@ -244,7 +244,9 @@ public class UserService {
             throw new ApplicationException("User does not exist");
         } else {
             if (AllAchievements.isValidAchievement(achievement)) {
-                user.getAchievements().put(achievement, achieved);
+                Map<String, Boolean> temp = user.getAchievements();
+                temp.put(achievement, achieved);
+                user.setAchievements(temp);
                 userRepository.save(user);
             } else {
                 throw new ApplicationException("Invalid achievement");

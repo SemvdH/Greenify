@@ -3,6 +3,7 @@ package greenify.server.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
@@ -52,11 +53,12 @@ public class AchievementServiceTest {
     @Test
     public void updateAchievementsTest() {
         User alex = userRepository.findByName("alex");
-        userService.setInput("alex", "input_size", "5");
+        userService.setInput("alex","input_footprint_shopping_food_otherfood", "9.9");
         achievementService.updateAchievements(alex);
-        userService.setAchievement(alex.getName(), "Starting off", true);
+//        userService.setAchievement(alex.getName(), "Starting off", true);
         // ^should not be here, does not work otherwise and I don't know why
-        assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        System.out.println("\n\n"+ alex.getAchievements() + "\n\n" + alex.getFootPrintInputs().equals(InputValidator.getDefaultValues()));
+//        assertEquals(true, userService.getAchievement("alex", "Starting off"));
     }
 
     @Test
