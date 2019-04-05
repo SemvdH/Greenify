@@ -426,6 +426,9 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * This method adds a random hint to the GUI.
+     */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
         fadeOut.setFromValue(1.0);
