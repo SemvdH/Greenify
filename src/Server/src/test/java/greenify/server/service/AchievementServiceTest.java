@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
-import jdk.internal.util.xml.impl.Input;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
