@@ -66,6 +66,15 @@ public class Hints {
         this.hints.add("In the Netherlands: Whenever you purchase any new, electronic or household "
                 + "equipment, you will automatically be charged a ‘recycling tax’ on it. This is "
                 + "also known as ‘removal tax’, or ‘verwijderingsbijdrage’ in Dutch");
+        this.hints.add("Second only to Germany, the Netherlands leads the world in recycling"
+                + ", with 65 percent of all waste recycled.");
+        this.hints.add("If tbe back of your fridge is dusty, it can increase "
+                + "energy consumption by 30 per cent.");
+        this.hints.add("Underinflated tyres decrease fuel economy by up to three percent and"
+                + " lead to increased pollution and higher greenhouse gas emissions.");
+        this.hints.add("Meat production is extremely resource-intensive. "
+                +"If you gave it up just once a week, you would save the 840 gallons "
+                + "of fresh water it takes to produce a single serving.");
         this.hints.add("Plastic bad, very bad.");
     }
 
