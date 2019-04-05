@@ -55,7 +55,7 @@
             </Label>
             <Text fill="#002c0c" layoutX="14.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Random hint!">
                <font>
-                  <Font size="18.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
             <Button fx:id="refreshHintsButton" layoutX="157.0" layoutY="390.0" mnemonicParsing="false" onAction="#addRandomHints" style="-fx-background-color: transparent;">
