@@ -73,13 +73,13 @@ public class Hints {
         this.hints.add("Underinflated tyres decrease fuel economy by up to three percent and"
                 + " lead to increased pollution and higher greenhouse gas emissions.");
         this.hints.add("Meat production is extremely resource-intensive. "
-                +"If you gave it up just once a week, you would save the 840 gallons "
+                + "If you gave it up just once a week, you would save the 840 gallons "
                 + "of fresh water it takes to produce a single serving.");
         this.hints.add("Plastic bad, very bad.");
     }
 
     /**
-     * This method returns a random String.
+     * This method returns an arbitrary String.
      * @return the random hint.
      */
     public String randomHint() {
