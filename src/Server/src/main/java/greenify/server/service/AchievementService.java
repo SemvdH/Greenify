@@ -13,9 +13,6 @@ public class AchievementService {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserRepository userRepository;
-
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     /**
@@ -24,17 +21,28 @@ public class AchievementService {
      */
     public void updateAchievements(User user) {
         achieveGettingStarted(user);
-        userRepository.save(user);
+        achieveSocialButterfly(user);
     }
 
     /**
-     * This method changes achiev1 when this is the case.
+     * This method makes sure the user gets an achievement
+     * upon calculating their footprint for the first time.
      * @param user user for whom achiev1 changes
      */
     public void achieveGettingStarted(User user) {
         if (!user.getFootPrintInputs().equals(InputValidator.getDefaultValues())) {
             userService.setAchievement(user.getName(), "Starting off", true);
-            userRepository.save(user);
+        }
+    }
+
+    /**
+     * This method makes sure the user gets an achievement
+     * when they have added three friends.
+     * @param user user for whom achiev2 changes
+     */
+    public void achieveSocialButterfly(User user) {
+        if (user.getFriends().size() == 3) {
+            userService.setAchievement(user.getName(), "Social butterfly", true);
         }
     }
 

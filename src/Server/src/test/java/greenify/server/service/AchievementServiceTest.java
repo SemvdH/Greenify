@@ -3,6 +3,7 @@ package greenify.server.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
@@ -24,6 +25,14 @@ public class AchievementServiceTest {
         }
     }
 
+    @TestConfiguration
+    static class AchievementServiceConfiguration {
+        @Bean
+        public AchievementService achievementService() {
+            return new AchievementService();
+        }
+    }
+
     @Autowired
     private UserService userService;
 
@@ -33,7 +42,7 @@ public class AchievementServiceTest {
     @MockBean
     private CalculatorService calculatorService;
 
-    @MockBean
+    @Autowired
     private AchievementService achievementService;
 
     /**
@@ -44,28 +53,22 @@ public class AchievementServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
-        User lola = new User(2L, "lola", "password");
-        when(userRepository.findByName(lola.getName()))
-                .thenReturn(lola);
+        userService.setInput("alex","input_footprint_shopping_food_otherfood", "9.9");
     }
 
     @Test
     public void updateAchievementsTest() {
         User alex = userRepository.findByName("alex");
-        userService.setInput("alex", "input_size", "5");
         achievementService.updateAchievements(alex);
-        userService.setAchievement(alex.getName(), "Starting off", true);
-        // ^should not be here, does not work otherwise and I don't know why
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
     }
 
     @Test
     public void achieveGettingStartedTest() {
         User alex = userRepository.findByName("alex");
-        userService.setInput("alex", "input_size", "5");
         achievementService.achieveGettingStarted(alex);
-        userService.setAchievement(alex.getName(), "Starting off", true);
-        // ^should not be here, does not work otherwise and I don't know why
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        assertEquals(false, userService.getAchievement("alex", "Social butterfly"));
+
     }
 }
