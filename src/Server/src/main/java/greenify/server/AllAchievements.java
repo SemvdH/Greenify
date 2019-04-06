@@ -14,8 +14,7 @@ public class AllAchievements {
             new Achievement("Green saver", "You saved * of CO2", false),
             new Achievement("Animal friend", "You have eaten 10 vegetarian meals", false),
             new Achievement("Tom Dumoulin", "You have biked * km", false),
-            new Achievement("Below average!", "You spend less CO2 than average on everything", false),
-            new Achievement("", "", false)
+            new Achievement("Let it shine", "You installed solar panels", false)
     );
 
     /**

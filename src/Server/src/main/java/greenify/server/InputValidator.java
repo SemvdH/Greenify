@@ -191,6 +191,8 @@ public class InputValidator {
         map.put("bike", false);
         map.put("temperature", false);
         map.put("solar_panels", false);
+        map.put("vegetarian", false);
+        map.put("public_transport", false);
         return map;
     }
 }

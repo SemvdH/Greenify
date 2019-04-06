@@ -2,7 +2,6 @@ package greenify.server.service;
 
 import greenify.server.InputValidator;
 import greenify.server.data.model.User;
-import greenify.server.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,6 @@ import org.springframework.stereotype.Service;
 public class AchievementService {
     @Autowired
     UserService userService;
-
-    @Autowired
-    UserRepository userRepository;
 
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -28,8 +24,7 @@ public class AchievementService {
         achieveGreenSaver(user);
         achieveAnimalFriend(user);
         achieveTomDumoulin(user);
-        achieveBelowAverage(user);
-        userRepository.save(user);
+        achieveLetItShine(user);
     }
 
     /**
@@ -39,7 +34,6 @@ public class AchievementService {
     public void achieveGettingStarted(User user) {
         if (!user.getFootPrintInputs().equals(InputValidator.getDefaultValues())) {
             userService.setAchievement(user.getName(), "Starting off", true);
-            userRepository.save(user);
         }
     }
 
@@ -50,7 +44,6 @@ public class AchievementService {
     public void achieveSocialButterfly(User user) {
         if (user.getFriends().size() >= 3) {
             userService.setAchievement(user.getName(), "Social butterfly", true);
-            userRepository.save(user);
         }
     }
 
@@ -61,7 +54,6 @@ public class AchievementService {
     public void achieveGreenSaver(User user) {
         if (43-user.getFootPrint() > 38) {
             userService.setAchievement(user.getName(), "Green saver", true);
-            userRepository.save(user);
         }
     }
 
@@ -70,9 +62,8 @@ public class AchievementService {
      * @param user user for whom achiev4 changes
      */
     public void achieveAnimalFriend(User user) {
-        if (user.getExtraInputs().get("Vegetarian meal")) {
+        if (user.getExtraInputs().get("vegetarian")) {
             userService.setAchievement(user.getName(), "Animal friend", true);
-            userRepository.save(user);
         }
     }
 
@@ -81,9 +72,8 @@ public class AchievementService {
      * @param user user for whom achiev5 changes
      */
     public void achieveTomDumoulin(User user) {
-        if (user.getExtraInputs().get("Bike used")) {
+        if (user.getExtraInputs().get("bike")) {
             userService.setAchievement(user.getName(), "Tom Dumoulin", true);
-            userRepository.save(user);
         }
     }
 
@@ -91,10 +81,9 @@ public class AchievementService {
      * This method changes achiev6 when this is the case.
      * @param user user for whom achiev6 changes
      */
-    public void achieveBelowAverage(User user) {
-        if (Integer.parseInt(user.getFootPrintInputs().get("input_footprint_shopping_food_meatfisheggs_default")) < Integer.parseInt("2.4")) {
-            userService.setAchievement(user.getName(), "Below average", true);
-            userRepository.save(user);
+    public void achieveLetItShine(User user) {
+        if (user.getExtraInputs().get("solar_panels")) {
+            userService.setAchievement(user.getName(), "Let it shine", true);
         }
     }
 
