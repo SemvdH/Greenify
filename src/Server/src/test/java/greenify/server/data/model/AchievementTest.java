@@ -1,6 +1,7 @@
 package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,17 @@ class AchievementTest {
         assertEquals(achievement, other);
     }
 
+    @Test
+    void notEqualsTest() {
+        Achievement test = new Achievement("Starting off",
+                "You did your first green activity", false);
+        assertFalse(achievement.equals(test));
+    }
+
+    @Test
+    void equalsNullTest() {
+        assertFalse(achievement.equals(null));
+    }
     @Test
     void hashCodeTest() {
         assertEquals(achievement, other);

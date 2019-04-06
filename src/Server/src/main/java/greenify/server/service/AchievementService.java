@@ -28,7 +28,8 @@ public class AchievementService {
     }
 
     /**
-     * This method changes achiev1 when this is the case.
+     * This method makes sure the user gets an achievement
+     * upon calculating their footprint for the first time.
      * @param user user for whom achiev1 changes
      */
     public void achieveGettingStarted(User user) {

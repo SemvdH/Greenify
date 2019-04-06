@@ -3,6 +3,7 @@ package greenify.server.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import greenify.server.InputValidator;
 import greenify.server.data.model.User;
 import greenify.server.data.repository.UserRepository;
 import org.junit.Before;
@@ -68,6 +69,8 @@ public class AchievementServiceTest {
         User alex = userRepository.findByName("alex");
         achievementService.achieveGettingStarted(alex);
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        assertEquals(false, userService.getAchievement("alex", "Social butterfly"));
+
     }
 
     @Test
