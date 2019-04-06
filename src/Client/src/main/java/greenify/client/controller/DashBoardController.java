@@ -420,6 +420,13 @@ public class DashBoardController {
         current.close();
         System.out.println("User is logged out");
 
+        //global leaderboard
+        globalLeaderboard.getItems().clear();
+        globalLeaderData.removeAll();
+        //development leaderboard
+        developmentLeaderboard.getItems().clear();
+        developmentData.removeAll();
+
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/LoginWindow.fxml"));
