@@ -52,7 +52,7 @@ public class AchievementService {
      * @param user user for whom achiev3 changes
      */
     public void achieveGreenSaver(User user) {
-        if (43-user.getFootPrint() > 38) {
+        if (43 - user.getFootPrint() > 38) {
             userService.setAchievement(user.getName(), "Green saver", true);
         }
     }

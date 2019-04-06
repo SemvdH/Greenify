@@ -1,11 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
 import greenify.server.AllAchievements;
-import greenify.server.data.model.Achievement;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class AllAchievementsTest {
 

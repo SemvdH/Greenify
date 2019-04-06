@@ -464,6 +464,9 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * Adds a random hint to the left.
+     */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
         fadeOut.setFromValue(1.0);

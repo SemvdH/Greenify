@@ -67,8 +67,7 @@ public class UserController {
         //log the user in with the userService method
         try {
             userService.loginUser(usernameField.getText(), passwordField.getText());
-        }
-        catch (RuntimeException ex) {
+        } catch (RuntimeException ex) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
                     "Your username or password is incorrect!");
             return;
