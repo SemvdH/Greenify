@@ -47,6 +47,15 @@
 #friendsButton:pressed {
   -fx-background-color: #b7e2c2;
 }
+#logOutButton {
+  -fx-background-color: #5a635c;
+}
+#logOutButton:hover {
+  -fx-background-color: #677069;
+}
+#logOutButton:pressed {
+  -fx-background-color: #b7e2c2;
+}
 
 
 #addNewActivityButton:pressed {

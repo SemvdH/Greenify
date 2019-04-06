@@ -44,6 +44,11 @@
                   <Font size="21.0" />
                </font>
             </Button>
+            <Button fx:id="logOutButton" layoutY="270.0" mnemonicParsing="false" onAction="#logOut" prefHeight="45.0" prefWidth="216.0" text="log out ">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
             <Line endX="104.0" layoutX="102.0" layoutY="133.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="109.0" layoutY="223.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
