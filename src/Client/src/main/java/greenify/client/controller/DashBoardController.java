@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.Friend;
 import greenify.client.Hints;
@@ -20,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;

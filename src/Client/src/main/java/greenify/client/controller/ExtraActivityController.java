@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.rest.UserService;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -11,7 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
