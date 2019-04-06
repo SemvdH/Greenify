@@ -1,16 +1,17 @@
 package greenify.client;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Friend {
 
     private SimpleStringProperty friend;
-    private SimpleFloatProperty score;
+    private SimpleDoubleProperty score;
 
-    public Friend(String friend, Float friendScore) {
+    public Friend(String friend, Double friendScore) {
         this.friend =  new SimpleStringProperty(friend);
-        this.score =  new SimpleFloatProperty(friendScore);
+        this.score =  new SimpleDoubleProperty(friendScore);
     }
 
 
@@ -22,11 +23,11 @@ public class Friend {
         this.friend = new SimpleStringProperty(name);
     }
 
-    public Float getScore() {
+    public Double getScore() {
         return score.get();
     }
 
-    public void setScore(Float score) {
-        this.score = new SimpleFloatProperty(score);
+    public void setScore(Double score) {
+        this.score = new SimpleDoubleProperty(score);
     }
 }

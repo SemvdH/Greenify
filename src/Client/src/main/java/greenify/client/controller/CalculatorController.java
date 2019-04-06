@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
@@ -34,7 +33,6 @@ import java.text.DecimalFormat;
 
 @Controller
 public class CalculatorController {
-    private static UserController.AlertHelper AlertHelper;
     @Autowired
     UserService userService;
 
@@ -146,15 +144,6 @@ public class CalculatorController {
     //extra pane
     @FXML
     private AnchorPane extraPane;
-    @FXML
-    private CheckBox localProduceCheckbox;
-    @FXML
-    private CheckBox bikeCheckbox;
-    @FXML
-    private CheckBox temperatureCheckbox;
-    @FXML
-    private CheckBox solarPanelsCheckbox;
-
 
     /**
      * initializes the window, performs some actions before loading all other things.
@@ -372,7 +361,6 @@ public class CalculatorController {
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
         extraPane.setVisible(true);
-
     }
 
     /**
@@ -407,40 +395,13 @@ public class CalculatorController {
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
         }
-        checkCheckBoxes();
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
         current.close();
         controller.updateLeaderboard();
-        CalculatorController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
                 owner, "Footprint saved!", "Your footprint is saved!");
-    }
-
-    /**
-     * Checks the check boxes.
-     */
-    public void checkCheckBoxes() {
-        if (localProduceCheckbox.isSelected()) {
-            localProduceCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "local_produce", true);
-        }
-        if (bikeCheckbox.isSelected()) {
-            bikeCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike", true);
-        }
-        if (temperatureCheckbox.isSelected()) {
-            temperatureCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "temperature", true);
-        }
-        if (solarPanelsCheckbox.isSelected()) {
-            solarPanelsCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "solar_panels", true);
-        }
     }
 
     /**
@@ -477,7 +438,7 @@ public class CalculatorController {
     }
 
     /**
-     * Checks the housing labels.
+     * Checks the house labels.
      */
     public void checkHousingLabels() {
         if (!electricityField.getText().equals("0")) {
@@ -531,30 +492,30 @@ public class CalculatorController {
                     "input_footprint_transportation_miles1",
                     carTravelGasolineField.getText());
         }
-        if (!carTravelGasolineLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!carTravelGasolineLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg1",
-                    carTravelGasolineLabel.getText().replace(" mpg", ""));
+                    carTravelGasolineLabel.getText().replace(" km/L", ""));
         }
         if (!carTravelDieselField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles2",
                     carTravelDieselField.getText());
         }
-        if (!carTravelDieselLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!carTravelDieselLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg2",
-                    carTravelDieselLabel.getText().replace(" mpg", ""));
+                    carTravelDieselLabel.getText().replace(" km/L", ""));
         }
         if (!carTravelElectricField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles3",
                     carTravelElectricField.getText());
         }
-        if (!carTravelElectricLabel.getText().replace(" mpge", "").equals("0")) {
+        if (!carTravelElectricLabel.getText().replace(" km/Le", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg3",
-                    carTravelElectricLabel.getText().replace(" mpge", ""));
+                    carTravelElectricLabel.getText().replace(" km/Le", ""));
         }
     }
 }

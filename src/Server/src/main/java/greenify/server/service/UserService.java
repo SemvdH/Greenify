@@ -128,12 +128,14 @@ public class UserService {
      * @param inputName name of the input of the user
      * @param value value of the input
      */
-    public void setExtraInput(String name, String inputName, Boolean value) {
+    public void setExtraInput(String name, String inputName, String value) {
         User user = userRepository.findByName(name);
         if (user == null) {
             throw new ApplicationException("User does not exist");
         } else {
-            user.getExtraInputs().put(inputName, value);
+            String oldValue = user.getExtraInputs().get(inputName);
+            Integer total = Integer.parseInt(oldValue) + Integer.parseInt(value);
+            user.getExtraInputs().put(inputName, total + "");
             userRepository.save(user);
         }
     }
@@ -168,7 +170,7 @@ public class UserService {
      * @param name of the user
      * @return extra input map
      */
-    public Map<String, Boolean> getExtraInputMap(String name) {
+    public Map<String, String> getExtraInputMap(String name) {
         User user = userRepository.findByName(name);
         return user.getExtraInputs();
     }

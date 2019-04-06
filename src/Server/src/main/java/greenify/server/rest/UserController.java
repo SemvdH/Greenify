@@ -63,7 +63,7 @@ public class UserController {
     @RequestMapping("/setExtraInput")
     public void setExtraInput(@RequestParam(value = "name") String name,
                          @RequestParam(value = "inputName") String inputName,
-                         @RequestParam(value = "value") Boolean value) {
+                         @RequestParam(value = "value") String value) {
         userService.setExtraInput(name, inputName, value);
     }
 
@@ -150,7 +150,7 @@ public class UserController {
      * This method gets the extra inputs map of the user.
      */
     @RequestMapping("/getExtraInputs")
-    public Map<String, Boolean> getExtraInputs(@RequestParam(value = "name") String name) {
+    public Map<String, String> getExtraInputs(@RequestParam(value = "name") String name) {
         return userService.getExtraInputMap(name);
     }
 

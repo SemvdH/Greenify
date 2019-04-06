@@ -8,19 +8,27 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class ExtraActivityController {
-
     @Autowired
     UserService userService;
+
+    @Autowired
+    CalculatorController calculatorController;
+
+    @Autowired
+    DashBoardController controller;
 
     @FXML
     private AnchorPane veganMealPane;
@@ -59,6 +67,8 @@ public class ExtraActivityController {
     private Slider solarPanelsSlider;
     @FXML
     private Label solarPanelsLabel;
+    @FXML
+    private Button saveButton;
 
     /**
      * initializes the sliders and labels before loading.
@@ -78,7 +88,6 @@ public class ExtraActivityController {
         displayBikeButton.setSkin(new TranslateButtonSkin(displayBikeButton));
         displayTemperatureButton.setSkin(new TranslateButtonSkin(displayTemperatureButton));
         displaySolarPanelButton.setSkin(new TranslateButtonSkin(displaySolarPanelButton));
-
     }
 
     /**
@@ -148,6 +157,43 @@ public class ExtraActivityController {
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
         solarPanelPane.setVisible(true);
+    }
+
+    /**
+     * The method updates the values
+     */
+    @SuppressWarnings("Duplicates")
+    public void save(ActionEvent event) throws InterruptedException {
+        Window owner = saveButton.getScene().getWindow();
+        Float footprint = userService.saveFootprint(userService.currentUser.getName());
+        controller.updateLeaderboard();
+        Stage current = (Stage) owner;
+        current.close();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Activities are added!",
+                 "Your new activities are added!");
+    }
+
+    /**
+     * The method updates the values of extras.
+     * @param event user clicks to button
+     */
+    @SuppressWarnings("Duplicates")
+    public void updateExtras(ActionEvent event) throws InterruptedException {
+        if (!bikeLabel.getText().replace(" km", "").equals("0")) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "bike",
+                    bikeLabel.getText().replace(" km", ""));
+        }
+        if (!solarPanelsLabel.getText().equals("0")) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "solar_panels",
+                    solarPanelsLabel.getText());
+        }
+        if (!temperatureLabel.getText().replace(" Degrees", "").equals("0")) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "bike",
+                    temperatureLabel.getText().replace(" Degrees", ""));
+        }
     }
 
     public class TranslateButtonSkin extends ButtonSkin {

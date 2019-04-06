@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -22,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
+<AnchorPane prefHeight="702.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.DashBoardController">
    <children>
       <AnchorPane fx:id="menuBar" prefHeight="703.0" prefWidth="216.0" style="-fx-background-color: #5a635c;">
          <children>
@@ -51,7 +43,7 @@
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="logOutButton" layoutX="48.0" layoutY="644.0" mnemonicParsing="false" onAction="#logOut" prefHeight="45.0" prefWidth="120.0" text="log out ">
+            <Button fx:id="logOutButton" layoutY="270.0" mnemonicParsing="false" onAction="#logOut" prefHeight="45.0" prefWidth="216.0" text="log out ">
                <font>
                   <Font size="21.0" />
                </font>
@@ -60,6 +52,8 @@
             <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="109.0" layoutY="223.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line fx:id="pathLine" endX="100.0" endY="28.0" fill="#1b9736" layoutX="8.0" layoutY="323.0" startX="-100.0" startY="28.0" stroke="#5a635c" />
+            <Line endX="104.0" layoutX="105.0" layoutY="271.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" />
+            <Line endX="104.0" layoutX="106.0" layoutY="270.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Label fx:id="hintText" alignment="TOP_LEFT" layoutX="14.0" layoutY="420.0" prefHeight="218.0" prefWidth="187.0" text="Hints" textFill="#c2cdc4">
                <font>
                   <Font size="15.0" />
@@ -282,25 +276,25 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="localProduce" layoutX="195.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label fx:id="localProduce" layoutX="195.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="39.0" prefHeight="27.0" prefWidth="183.0" text="Using bike">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="bike" layoutX="195.0" layoutY="39.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label fx:id="bike" layoutX="195.0" layoutY="39.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="71.0" prefHeight="27.0" prefWidth="183.0" text="Lowering the temperature">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="loweringTemp" layoutX="195.0" layoutY="71.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label fx:id="loweringTemp" layoutX="195.0" layoutY="71.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="103.0" prefHeight="27.0" prefWidth="183.0" text="Installing solar panels">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="solarPanels" layoutX="195.0" layoutY="103.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label fx:id="solarPanels" layoutX="195.0" layoutY="103.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
                </children>
             </Pane>
             <Button fx:id="addExtraActivityButton2" contentDisplay="RIGHT" layoutX="545.0" layoutY="14.0" mnemonicParsing="false" onAction="#openExtraActivities" style="-fx-background-color: transparent;" text="Add extra activity!" textFill="#147219">
