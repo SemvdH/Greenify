@@ -1,9 +1,14 @@
 package greenify.client.controller;
 
-import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.rest.UserService;
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.ParallelTransition;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,7 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
@@ -36,12 +40,11 @@ import java.util.concurrent.TimeUnit;
  */
 @Controller
 public class RegisterWindowController {
-
     @Autowired
     UserService userService;
 
     @Autowired
-    DashBoardController controller;
+    ExtraActivityController extraActivityController;
 
     //navigation panes
     @FXML
@@ -149,15 +152,6 @@ public class RegisterWindowController {
     @FXML
     private AnchorPane extraPane;
     @FXML
-    private CheckBox localProduceCheckbox;
-    @FXML
-    private CheckBox bikeCheckbox;
-    @FXML
-    private CheckBox temperatureCheckbox;
-    @FXML
-    private CheckBox solarPanelsCheckbox;
-
-    @FXML
     private TextField userNameText;
     @FXML
     private PasswordField passwordField;
@@ -177,7 +171,6 @@ public class RegisterWindowController {
         addSlideAnimation(1100, passwordField, 300);
         TimeUnit.MILLISECONDS.sleep(300);
         addSlideAnimation(1100, passwordField2, -420);
-        signUpButton.setSkin(new SignUpButtonSkin(signUpButton));
     }
 
     /**
@@ -267,9 +260,9 @@ public class RegisterWindowController {
             }
         });
 
-        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " mpg");
-        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " mpg");
-        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " mpge");
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " km/L");
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " km/L");
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " km/Le");
 
         cleanEnergyPurchasedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -312,6 +305,7 @@ public class RegisterWindowController {
         });
     }
 
+    @SuppressWarnings("Duplicates")
     private void addSliderListenerDailyServing(Slider slider, Label label) {
         DecimalFormat df = new DecimalFormat("0.0");
         slider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -333,6 +327,23 @@ public class RegisterWindowController {
         });
     }
 
+    /**
+     * adds a fade transition to the given node.
+     * @param node the node to add the transition to
+     */
+    public void addFadeTransAnimation(Node node) {
+        FadeTransition fade = new FadeTransition(Duration.millis(350), node);
+        fade.setFromValue(0);
+        fade.setToValue(1.0);
+        TranslateTransition trans = new TranslateTransition(Duration.millis(350), node);
+        trans.setFromY(800);
+        trans.setToY(0);
+        ParallelTransition par = new ParallelTransition();
+        par.setNode(travelPane);
+        par.getChildren().addAll(fade, trans);
+        par.play();
+    }
+
     private void addSlideInAnimation(Node node) {
         Timeline timeline = new Timeline();
         KeyValue keyValue = new KeyValue(node.translateXProperty(), 0, Interpolator.EASE_OUT);
@@ -348,6 +359,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayGetStarted(ActionEvent event) {
+        addFadeTransAnimation(getStartedPane);
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -363,7 +375,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayTravel(ActionEvent event) {
-        addSlideInAnimation(travelPane);
+        addFadeTransAnimation(travelPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
         homePane.setVisible(false);
@@ -380,6 +392,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayHome(ActionEvent event) {
+        addFadeTransAnimation(homePane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(true);
@@ -395,6 +408,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayFood(ActionEvent event) {
+        addFadeTransAnimation(foodPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -410,6 +424,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayShopping(ActionEvent event) {
+        addFadeTransAnimation(shoppingPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -424,7 +439,10 @@ public class RegisterWindowController {
      * @param event the click of the designated button
      */
     @SuppressWarnings("Duplicates")
-    public void displayExtra(ActionEvent event) {
+    public void displayExtra(ActionEvent event) throws IOException {
+        addFadeTransAnimation(extraPane);
+        extraPane.getChildren().setAll((Node) Application.load(this.getClass()
+                .getClassLoader().getResource("fxml/extraActivities.fxml")));
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -466,27 +484,13 @@ public class RegisterWindowController {
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
         }
-        if (localProduceCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "local_produce", true);
-        }
-        if (bikeCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike", true);
-        }
-        if (temperatureCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "temperature", true);
-        }
-        if (solarPanelsCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "solar_panels", true);
-        }
         Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         Stage current = (Stage) owner;
         current.close();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
+                owner, "Footprint saved!", "Your footprint is saved!");
     }
 
     /**
@@ -577,57 +581,30 @@ public class RegisterWindowController {
                     "input_footprint_transportation_miles1",
                     carTravelGasolineField.getText());
         }
-        if (!carTravelGasolineLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!carTravelGasolineLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg1",
-                    carTravelGasolineLabel.getText().replace(" mpg", ""));
+                    carTravelGasolineLabel.getText().replace(" km/L", ""));
         }
         if (!carTravelDieselField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles2",
                     carTravelDieselField.getText());
         }
-        if (!carTravelDieselLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!carTravelDieselLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg2",
-                    carTravelDieselLabel.getText().replace(" mpg", ""));
+                    carTravelDieselLabel.getText().replace(" km/L", ""));
         }
         if (!carTravelElectricField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_miles3",
                     carTravelElectricField.getText());
         }
-        if (!carTravelElectricLabel.getText().replace(" mpge", "").equals("0")) {
+        if (!carTravelElectricLabel.getText().replace(" km/Le", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg3",
-                    carTravelElectricLabel.getText().replace(" mpge", ""));
-        }
-    }
-
-    @SuppressWarnings("Duplicates")
-    private class SignUpButtonSkin extends ButtonSkin {
-        /**
-         * button skin for the 'add activity' buttons.
-         * adds scale animations on entering, clicking and extiting the button
-         * @param button the button to set the skin of
-         */
-        private SignUpButtonSkin(Button button) {
-            super(button);
-
-            //transition to scale up on hover
-            final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(85));
-            //add the node and the position to scale to
-            scaleUp.setNode(button);
-            scaleUp.setToX(1.1);
-            scaleUp.setToY(1.1);
-            //play the transition when hovered over the button
-            button.setOnMouseEntered(e -> scaleUp.playFromStart());
-
-            final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(85));
-            scaleDown.setNode(button);
-            scaleDown.setToX(1.0);
-            scaleDown.setToY(1.0);
-            button.setOnMouseExited(e -> scaleDown.playFromStart());
+                    carTravelElectricLabel.getText().replace(" km/Le", ""));
         }
     }
 }
