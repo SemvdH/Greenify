@@ -1,12 +1,9 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.rest.UserService;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -180,6 +177,7 @@ public class RegisterWindowController {
         addSlideAnimation(1100, passwordField, 300);
         TimeUnit.MILLISECONDS.sleep(300);
         addSlideAnimation(1100, passwordField2, -420);
+        signUpButton.setSkin(new SignUpButtonSkin(signUpButton));
     }
 
     /**
@@ -603,6 +601,33 @@ public class RegisterWindowController {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg3",
                     carTravelElectricLabel.getText().replace(" mpge", ""));
+        }
+    }
+
+    @SuppressWarnings("Duplicates")
+    private class SignUpButtonSkin extends ButtonSkin {
+        /**
+         * button skin for the 'add activity' buttons.
+         * adds scale animations on entering, clicking and extiting the button
+         * @param button the button to set the skin of
+         */
+        private SignUpButtonSkin(Button button) {
+            super(button);
+
+            //transition to scale up on hover
+            final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(85));
+            //add the node and the position to scale to
+            scaleUp.setNode(button);
+            scaleUp.setToX(1.1);
+            scaleUp.setToY(1.1);
+            //play the transition when hovered over the button
+            button.setOnMouseEntered(e -> scaleUp.playFromStart());
+
+            final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(85));
+            scaleDown.setNode(button);
+            scaleDown.setToX(1.0);
+            scaleDown.setToY(1.0);
+            button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }
 }

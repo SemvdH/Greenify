@@ -49,12 +49,13 @@
 }
 #logOutButton {
   -fx-background-color: #5a635c;
+  -fx-text-fill: #b8bcb9;
 }
 #logOutButton:hover {
-  -fx-background-color: #677069;
+  -fx-background-color: #c64b4b;
 }
 #logOutButton:pressed {
-  -fx-background-color: #b7e2c2;
+  -fx-background-color: #c9a9a9;
 }
 
 

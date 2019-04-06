@@ -1,13 +1,12 @@
-.button {
+#signUpButton {
     -fx-background-color: #005e07;
     -fx-text-fill: #c4eec9;
-    -fx-font-weight: bold;
 }
 
-.button:hover {
+#signUpButton:hover {
     -fx-background-color: #11911b;
 }
 
-.button:pressed {
+#signUpButton:pressed {
     -fx-background-color: #1a8c23;
 }
