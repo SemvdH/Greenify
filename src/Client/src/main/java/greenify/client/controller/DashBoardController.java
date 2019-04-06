@@ -420,6 +420,13 @@ public class DashBoardController {
         current.close();
         System.out.println("User is logged out");
 
+        //global leaderboard
+        globalLeaderboard.getItems().clear();
+        globalLeaderData.removeAll();
+        //development leaderboard
+        developmentLeaderboard.getItems().clear();
+        developmentData.removeAll();
+
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/LoginWindow.fxml"));
@@ -457,6 +464,9 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * Adds a random hint to the left.
+     */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
         fadeOut.setFromValue(1.0);

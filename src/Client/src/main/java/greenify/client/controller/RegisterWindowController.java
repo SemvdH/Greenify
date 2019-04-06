@@ -230,8 +230,7 @@ public class RegisterWindowController {
         //register the user with the provided username and password
         try {
             userService.registerUser(userNameText.getText(), passwordField.getText());
-        }
-        catch (RuntimeException ex) {
+        } catch (RuntimeException ex) {
             UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
                     "This username has already been taken!");
             return;
@@ -456,6 +455,115 @@ public class RegisterWindowController {
             userService.updateInput(userService.currentUser.getName(), "input_size",
                     peopleInHouseHoldLabel.getText());
         }
+        checkTransportLabels();
+        checkHousingLabels();
+        checkFoodLabels();
+        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_goods_total",
+                    goodsLabel.getText().replace("€ / month", ""));
+        }
+        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_services_total",
+                    servicesLabel.getText().replace("€ / month", ""));
+        }
+        if (localProduceCheckbox.isSelected()) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "local_produce", true);
+        }
+        if (bikeCheckbox.isSelected()) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "bike", true);
+        }
+        if (temperatureCheckbox.isSelected()) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "temperature", true);
+        }
+        if (solarPanelsCheckbox.isSelected()) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "solar_panels", true);
+        }
+        Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
+        Float footprint = userService.saveFootprint(userService.currentUser.getName());
+        Window owner = saveButton.getScene().getWindow();
+        Stage current = (Stage) owner;
+        current.close();
+    }
+
+    /**
+     * Checks the food labels.
+     */
+    public void checkFoodLabels() {
+        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_food_meatfisheggs",
+                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
+        }
+        if (!grainsBakedGoodsLabel.getText()
+                .replace(" daily servings per person", "").equals("4.4")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_food_cereals",
+                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
+        }
+        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_food_dairy",
+                    dairyLabel.getText().replace(" daily servings per person", ""));
+        }
+        if (!fruitsVegetablesLabel.getText()
+                .replace(" daily servings per person", "").equals("3.9")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_food_fruitvegetables",
+                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
+        }
+        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_shopping_food_otherfood",
+                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
+        }
+    }
+
+    /**
+     * Checks the housing labels.
+     */
+    public void checkHousingLabels() {
+        if (!electricityField.getText().equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_electricity_dollars",
+                    electricityField.getText());
+        }
+        if (!cleanEnergyPurchasedLabel.getText().replace(" %", "").equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_gco2_per_kwh",
+                    cleanEnergyPurchasedLabel.getText().replace(" %", ""));
+        }
+        if (!naturalGasField.getText().equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_naturalgas_dollars",
+                    naturalGasField.getText());
+        }
+        if (!heatingOilField.getText().equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_heatingoil_dollars",
+                    heatingOilField.getText());
+        }
+        if (!livingSpaceField.getText().equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_squarefeet",
+                    livingSpaceField.getText());
+        }
+        if (!waterUsageLabel.getText().replace("% of similar households", "").equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_housing_watersewage",
+                    waterUsageLabel.getText().replace("% of similar households", ""));
+        }
+    }
+
+    /**
+     * Checks the transport labels.
+     */
+    public void checkTransportLabels() {
         if (!publicTransitField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_publictrans",
@@ -496,93 +604,5 @@ public class RegisterWindowController {
                     "input_footprint_transportation_mpg3",
                     carTravelElectricLabel.getText().replace(" mpge", ""));
         }
-        if (!electricityField.getText().equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_electricity_dollars",
-                    electricityField.getText());
-        }
-        if (!cleanEnergyPurchasedLabel.getText().replace(" %", "").equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_gco2_per_kwh",
-                    cleanEnergyPurchasedLabel.getText().replace(" %", ""));
-        }
-        if (!naturalGasField.getText().equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_naturalgas_dollars",
-                    naturalGasField.getText());
-        }
-        if (!heatingOilField.getText().equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_heatingoil_dollars",
-                    heatingOilField.getText());
-        }
-        if (!livingSpaceField.getText().equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_squarefeet",
-                    livingSpaceField.getText());
-        }
-        if (!waterUsageLabel.getText().replace("% of similar households", "").equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_housing_watersewage",
-                    waterUsageLabel.getText().replace("% of similar households", ""));
-        }
-        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_meatfisheggs",
-                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
-        }
-        if (!grainsBakedGoodsLabel.getText()
-                .replace(" daily servings per person", "").equals("4.4")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_cereals",
-                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
-        }
-        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_dairy",
-                    dairyLabel.getText().replace(" daily servings per person", ""));
-        }
-        if (!fruitsVegetablesLabel.getText()
-                .replace(" daily servings per person", "").equals("3.9")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_fruitvegetables",
-                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
-        }
-        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_otherfood",
-                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
-        }
-        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_goods_total",
-                    goodsLabel.getText().replace("€ / month", ""));
-        }
-        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_services_total",
-                    servicesLabel.getText().replace("€ / month", ""));
-        }
-        if (localProduceCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "local_produce", true);
-        }
-        if (bikeCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike", true);
-        }
-        if (temperatureCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "temperature", true);
-        }
-        if (solarPanelsCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "solar_panels", true);
-        }
-        Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
-        Float footprint = userService.saveFootprint(userService.currentUser.getName());
-        Window owner = saveButton.getScene().getWindow();
-        Stage current = (Stage) owner;
-        current.close();
     }
 }

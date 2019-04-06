@@ -2,7 +2,6 @@ package greenify.server.service;
 
 import greenify.server.InputValidator;
 import greenify.server.data.model.User;
-import greenify.server.data.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,10 @@ public class AchievementService {
     public void updateAchievements(User user) {
         achieveGettingStarted(user);
         achieveSocialButterfly(user);
+        achieveGreenSaver(user);
+        achieveAnimalFriend(user);
+        achieveTomDumoulin(user);
+        achieveLetItShine(user);
     }
 
     /**
@@ -36,13 +39,52 @@ public class AchievementService {
     }
 
     /**
-     * This method makes sure the user gets an achievement
-     * when they have added three friends.
+     * This method changes achiev2 when this is the case.
      * @param user user for whom achiev2 changes
      */
     public void achieveSocialButterfly(User user) {
-        if (user.getFriends().size() == 3) {
+        if (user.getFriends().size() >= 3) {
             userService.setAchievement(user.getName(), "Social butterfly", true);
+        }
+    }
+
+    /**
+     * This method changes achiev3 when this is the case.
+     * @param user user for whom achiev3 changes
+     */
+    public void achieveGreenSaver(User user) {
+        if (43 - user.getFootPrint() > 38) {
+            userService.setAchievement(user.getName(), "Green saver", true);
+        }
+    }
+
+    /**
+     * This method changes achiev4 when this is the case.
+     * @param user user for whom achiev4 changes
+     */
+    public void achieveAnimalFriend(User user) {
+        if (user.getExtraInputs().get("vegetarian")) {
+            userService.setAchievement(user.getName(), "Animal friend", true);
+        }
+    }
+
+    /**
+     * This method changes achiev5 when this is the case.
+     * @param user user for whom achiev5 changes
+     */
+    public void achieveTomDumoulin(User user) {
+        if (user.getExtraInputs().get("bike")) {
+            userService.setAchievement(user.getName(), "Tom Dumoulin", true);
+        }
+    }
+
+    /**
+     * This method changes achiev6 when this is the case.
+     * @param user user for whom achiev6 changes
+     */
+    public void achieveLetItShine(User user) {
+        if (user.getExtraInputs().get("solar_panels")) {
+            userService.setAchievement(user.getName(), "Let it shine", true);
         }
     }
 

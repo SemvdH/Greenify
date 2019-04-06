@@ -61,6 +61,7 @@ public class AchievementServiceTest {
         User alex = userRepository.findByName("alex");
         achievementService.updateAchievements(alex);
         assertEquals(true, userService.getAchievement("alex", "Starting off"));
+        assertEquals(false, userService.getAchievement("alex", "Social butterfly"));
     }
 
     @Test
@@ -71,4 +72,43 @@ public class AchievementServiceTest {
         assertEquals(false, userService.getAchievement("alex", "Social butterfly"));
 
     }
+
+    @Test
+    public void achieveSocialButterflyTest() {
+        User alex = userRepository.findByName("alex");
+        alex.addFriend(new User(2L, "Bubbles", "Bubbles"));
+        alex.addFriend(new User(3L, "Cheese", "crackers"));
+        alex.addFriend(new User(4L, "Perry", "Doofenshmirtz"));
+        achievementService.achieveSocialButterfly(alex);
+        assertEquals(true, userService.getAchievement("alex", "Social butterfly"));
+    }
+
+    @Test
+    public void achieveGreenSaverTest() {
+        User alex = userRepository.findByName("alex");
+        achievementService.achieveGreenSaver(alex);
+        assertEquals(true, userService.getAchievement("alex", "Green saver"));
+    }
+
+    @Test
+    public void achieveAnimalFriendTest() {
+        User alex = userRepository.findByName("alex");
+        achievementService.achieveAnimalFriend(alex);
+        assertEquals(false, userService.getAchievement("alex", "Animal friend"));
+    }
+
+    @Test
+    public void achieveTomDumoulinTest() {
+        User alex = userRepository.findByName("alex");
+        achievementService.achieveTomDumoulin(alex);
+        assertEquals(false, userService.getAchievement("alex", "Tom Dumoulin"));
+    }
+
+    @Test
+    public void achieveLetItShineTest() {
+        User alex = userRepository.findByName("alex");
+        achievementService.achieveLetItShine(alex);
+        assertEquals(false, userService.getAchievement("alex", "Let it shine"));
+    }
+
 }

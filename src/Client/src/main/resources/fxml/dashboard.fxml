@@ -54,6 +54,7 @@
             <Line endX="104.0" layoutX="109.0" layoutY="223.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line fx:id="pathLine" endX="100.0" endY="28.0" fill="#1b9736" layoutX="8.0" layoutY="323.0" startX="-100.0" startY="28.0" stroke="#5a635c" />
             <Line endX="104.0" layoutX="105.0" layoutY="271.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" />
+            <Line endX="104.0" layoutX="106.0" layoutY="270.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Label fx:id="hintText" alignment="TOP_LEFT" layoutX="14.0" layoutY="420.0" prefHeight="218.0" prefWidth="187.0" text="Hints" textFill="#c2cdc4">
                <font>
                   <Font size="15.0" />
@@ -474,7 +475,7 @@
             <ImageView fx:id="achiev1image" fitHeight="150.0" fitWidth="200.0" layoutX="579.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
 
                <image>
-                  <Image url="@../achiev1pic.jpg" />
+                  <Image url="@../icons/achiev1pic.jpg" />
                   <!-- image from shutterstock.com - 1038138760 -->
                </image>
             </ImageView>
