@@ -31,6 +31,10 @@ public class ExtraActivityController {
     @FXML
     private AnchorPane solarPanelPane;
     @FXML
+    private AnchorPane localProducePane;
+    @FXML
+    private AnchorPane publicTransportPane;
+    @FXML
     private Button displayVeganMealButton;
     @FXML
     private Button displayBikeButton;
@@ -38,6 +42,10 @@ public class ExtraActivityController {
     private Button displayTemperatureButton;
     @FXML
     private Button displaySolarPanelButton;
+    @FXML
+    private Button displayLocalProduceButton;
+    @FXML
+    private Button displayPublicTransportButton;
 
     @FXML
     private Button addVeganMealButton;
@@ -47,6 +55,10 @@ public class ExtraActivityController {
     private Button addTemperatureButton;
     @FXML
     private Button addSolarPanelsButton;
+    @FXML
+    private Button addLocalProduceButton;
+    @FXML
+    private Button addPublicTransportButton;
     @FXML
     private Slider bikeSlider;
     @FXML
@@ -59,6 +71,11 @@ public class ExtraActivityController {
     private Slider solarPanelsSlider;
     @FXML
     private Label solarPanelsLabel;
+    @FXML
+    private Label publicTransportLabel;
+    @FXML
+    private Slider publicTransportSlider;
+
 
     /**
      * initializes the sliders and labels before loading.
@@ -68,16 +85,21 @@ public class ExtraActivityController {
         coupleSliderToLabel(bikeSlider, bikeLabel, " km", false);
         coupleSliderToLabel(temperatureSlider, temperatureLabel, " Degrees", true);
         coupleSliderToLabel(solarPanelsSlider, solarPanelsLabel, "", true);
+        coupleSliderToLabel(publicTransportSlider, publicTransportLabel, " km", false);
 
         addVeganMealButton.setSkin(new ActivityButtonSkin(addVeganMealButton));
         addBikeButton.setSkin(new ActivityButtonSkin(addBikeButton));
         addTemperatureButton.setSkin(new ActivityButtonSkin(addTemperatureButton));
         addSolarPanelsButton.setSkin(new ActivityButtonSkin(addSolarPanelsButton));
+        addLocalProduceButton.setSkin(new ActivityButtonSkin(addLocalProduceButton));
+        addPublicTransportButton.setSkin(new ActivityButtonSkin(addPublicTransportButton));
 
         displayVeganMealButton.setSkin(new TranslateButtonSkin(displayVeganMealButton));
         displayBikeButton.setSkin(new TranslateButtonSkin(displayBikeButton));
         displayTemperatureButton.setSkin(new TranslateButtonSkin(displayTemperatureButton));
         displaySolarPanelButton.setSkin(new TranslateButtonSkin(displaySolarPanelButton));
+        displayLocalProduceButton.setSkin(new TranslateButtonSkin(displayLocalProduceButton));
+        displayPublicTransportButton.setSkin(new TranslateButtonSkin(displayPublicTransportButton));
 
     }
 
@@ -90,7 +112,7 @@ public class ExtraActivityController {
      * @param string the string to be placed after the outputted value of the slider
      * @param snapToTicks whether the slider should snap to ticks or not
      */
-    public void coupleSliderToLabel(Slider slider, Label label, String string,
+    private void coupleSliderToLabel(Slider slider, Label label, String string,
                                     boolean snapToTicks) {
         slider.setSnapToTicks(snapToTicks);
         slider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -112,6 +134,8 @@ public class ExtraActivityController {
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
         solarPanelPane.setVisible(false);
+        localProducePane.setVisible(false);
+        publicTransportPane.setVisible(false);
     }
 
     /**
@@ -124,6 +148,8 @@ public class ExtraActivityController {
         bikePane.setVisible(true);
         temperaturePane.setVisible(false);
         solarPanelPane.setVisible(false);
+        localProducePane.setVisible(false);
+        publicTransportPane.setVisible(false);
     }
 
     /**
@@ -136,6 +162,8 @@ public class ExtraActivityController {
         bikePane.setVisible(false);
         temperaturePane.setVisible(true);
         solarPanelPane.setVisible(false);
+        localProducePane.setVisible(false);
+        publicTransportPane.setVisible(false);
     }
 
     /**
@@ -148,14 +176,90 @@ public class ExtraActivityController {
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
         solarPanelPane.setVisible(true);
+        localProducePane.setVisible(false);
+        publicTransportPane.setVisible(false);
     }
 
-    public class TranslateButtonSkin extends ButtonSkin {
+    /**
+     * displays the local produce section.
+     * @param event the click of the designated button
+     */
+    public void displayLocalProduce(ActionEvent event) {
+        veganMealPane.setVisible(false);
+        bikePane.setVisible(false);
+        temperaturePane.setVisible(false);
+        solarPanelPane.setVisible(false);
+        localProducePane.setVisible(true);
+        publicTransportPane.setVisible(false);
+    }
+
+    /**
+     * displays the public transport section.
+     * @param event the click of the designated button
+     */
+    public void displayPublicTransport(ActionEvent event) {
+        veganMealPane.setVisible(false);
+        bikePane.setVisible(false);
+        temperaturePane.setVisible(false);
+        solarPanelPane.setVisible(false);
+        localProducePane.setVisible(false);
+        publicTransportPane.setVisible(true);
+    }
+
+    public void confirmVeganMeal(ActionEvent event) {
+        System.out.println("confirm adding vegetarian meal");
+    }
+
+    /**
+     * Adds the activity of buying local produce to the user's account.
+     * @param event the click of the 'add activity' button in the designated section
+     */
+    public void confirmLocalProduce(ActionEvent event) {
+        System.out.println("confirm adding buying local produce");
+        userService.updateExtraInput(userService.currentUser.getName(),
+                "local_produce", true);
+    }
+
+    /**
+     * adds the activity of using your bike instead of your car to the user's account.
+     * @param event the click of the 'add activity' button in the designated section
+     */
+    public void confirmBike(ActionEvent event) {
+        System.out.println("confirm adding using bike instead of car");
+        userService.updateExtraInput(userService.currentUser.getName(),
+                "bike", true);
+    }
+
+    public void confirmPublicTransport(ActionEvent event) {
+        System.out.println("confirm adding using public transport instead of car");
+    }
+
+    /**
+     * Adds the activity of lowering the home temperature to the user's account.
+     * @param event the click of the 'add activity' button in the designated section
+     */
+    public void confirmTemperature(ActionEvent event) {
+        System.out.println("confirm adding lowering home temperature");
+        userService.updateExtraInput(userService.currentUser.getName(),
+                "temperature", true);
+    }
+
+    /**
+     * Adds the activity of buying solar panels to the user's account.
+     * @param event the click of the 'add activity' button in the designated section
+     */
+    public void confirmSolarPanels(ActionEvent event) {
+        System.out.println("confirm adding buying solar panels");
+        userService.updateExtraInput(userService.currentUser.getName(),
+                "solar_panels", true);
+    }
+
+    private class TranslateButtonSkin extends ButtonSkin {
         /**
          * button skin that sets a translate animation on entering and exiting the button.
          * @param button the button to set the animation for
          */
-        public TranslateButtonSkin(Button button) {
+        private TranslateButtonSkin(Button button) {
             super(button);
 
             TranslateTransition transEnter = new TranslateTransition(Duration.millis(50));
@@ -175,7 +279,7 @@ public class ExtraActivityController {
     private class ActivityButtonSkin extends ButtonSkin {
         /**
          * button skin for the 'add activity' buttons.
-         * adds scale animations on entering, clicking and extiting the button
+         * adds scale animations on entering, clicking and exiting the button
          * @param button the button to set the skin of
          */
         private ActivityButtonSkin(Button button) {
