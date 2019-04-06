@@ -101,8 +101,8 @@ public class UserServiceTest {
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
-        userService.setExtraInput("alex", "solar_panels", true);
-        assertEquals(true, alex.getExtraInputs()
+        userService.setExtraInput("alex", "solar_panels", "5");
+        assertEquals("5", alex.getExtraInputs()
                 .get("solar_panels"));
     }
 
@@ -114,7 +114,7 @@ public class UserServiceTest {
     @Test
     public void setExtraInputNullTest() {
         assertThrows(ApplicationException.class, () -> userService
-                .setExtraInput(null, "hello", true));
+                .setExtraInput(null, "hello", "6"));
     }
 
     @Test
@@ -171,7 +171,7 @@ public class UserServiceTest {
 
     @Test
     public void getExtraInputMapTest() {
-        Map<String, Boolean> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         User alex = new User(1L, "alex", "password");
         when(userRepository.findByName(alex.getName()))
                 .thenReturn(alex);
@@ -286,6 +286,18 @@ public class UserServiceTest {
     @Test
     public void removeFriendNullTest() {
         assertThrows(ApplicationException.class, () -> userService.removeFriend("alex", null));
+    }
+
+    @Test
+    public void setAchievementNullUserTest() {
+        assertThrows(ApplicationException.class, () -> userService
+                .setAchievement("ceren", "Starting off", true));
+    }
+
+    @Test
+    public void invalidAchievementTest() {
+        assertThrows(ApplicationException.class, () -> userService
+                .setAchievement("alex", "greenify", true));
     }
 
     @Test

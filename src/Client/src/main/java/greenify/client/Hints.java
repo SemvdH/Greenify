@@ -55,7 +55,7 @@ public class Hints {
                 + "utensils and napkins, it saves plastic and paper.");
         this.hints.add("It takes about 66 days to form a new habit, keep going!");
         this.hints.add("Get yourself a nice reusable water bottle! It's cheaper and better for "
-               + "the environment to refill than to buy a new one every time it's empty.");
+                + "the environment to refill than to buy a new one every time it's empty.");
         this.hints.add("Recycle glass bottles!"
                 + " A glass bottle made in our time will take more than 4,000 years"
                 + " to decompose.");
@@ -75,3 +75,4 @@ public class Hints {
     }
 
 }
+

@@ -3,11 +3,3 @@
     -fx-text-fill: #c4eec9;
     -fx-font-weight: bold;
 }
-
-.button:hover {
-    -fx-background-color: #11911b;
-}
-
-.button:pressed {
-    -fx-background-color: #1a8c23;
-}

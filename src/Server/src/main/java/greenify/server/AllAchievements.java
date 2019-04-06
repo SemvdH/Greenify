@@ -37,5 +37,5 @@ public class AllAchievements {
         }
         return all;
     }
-
 }
+

@@ -1,7 +1,11 @@
 import static org.junit.Assert.assertEquals;
 
 import greenify.server.AllAchievements;
+import greenify.server.data.model.Achievement;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class AllAchievementsTest {
 
@@ -15,6 +19,21 @@ class AllAchievementsTest {
 
     @Test
     void getDefaultsTest() {
-        assertEquals(6, AllAchievements.getDefaults().size());
+        List<Achievement> all = new ArrayList<Achievement>() {{
+                add(new Achievement(
+                    "Starting off", "You did your first green activity", false));
+                add(new Achievement(
+                    "Social butterfly", "You added three friends", false));
+                add(new Achievement(
+                    "Green saver", "You saved * of CO2", false));
+                add(new Achievement(
+                    "Animal friend", "You have eaten 10 vegetarian meals", false));
+                add(new Achievement(
+                    "Tom Dumoulin", "You have biked * km", false));
+                add(new Achievement(
+                    "Let it shine", "You installed solar panels", false));
+            }
+        };
+        assertEquals(all.size(), AllAchievements.getDefaults().size());
     }
 }

@@ -1,10 +1,7 @@
 package greenify.client.controller;
 
-import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.rest.UserService;
-import javafx.animation.FillTransition;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -13,10 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -39,11 +34,6 @@ public class UserController {
     private Button loginButton;
     @FXML
     private Button signUpButton;
-
-    public void initialize() {
-        loginButton.setSkin(new LoginButtonSkin(loginButton));
-        signUpButton.setSkin(new LoginButtonSkin(signUpButton));
-    }
 
     /**
      * Handles when the user clicks on the login button.
@@ -145,39 +135,11 @@ public class UserController {
         Parent registerWindow = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/RegisterWindow.fxml"));
         Scene registerScene = new Scene(registerWindow);
-        registerScene.getStylesheets().add(Application.class.getClassLoader()
-                .getResource("stylesheets/registerWindowStyle.css").toExternalForm());
         Stage registerStage = new Stage();
         registerStage.setScene(registerScene);
         registerStage.setTitle("Enter register credentials");
         registerStage.show();
     }
 
-    @SuppressWarnings("Duplicates")
-    private class LoginButtonSkin extends ButtonSkin {
-        /**
-         * button skin for the 'add activity' buttons.
-         * adds scale animations on entering, clicking and extiting the button
-         * @param button the button to set the skin of
-         */
-        private LoginButtonSkin(Button button) {
-            super(button);
-
-            //transition to scale up on hover
-            final ScaleTransition scaleUp = new ScaleTransition(Duration.millis(85));
-            //add the node and the position to scale to
-            scaleUp.setNode(button);
-            scaleUp.setToX(1.1);
-            scaleUp.setToY(1.1);
-            //play the transition when hovered over the button
-            button.setOnMouseEntered(e -> scaleUp.playFromStart());
-
-            final ScaleTransition scaleDown = new ScaleTransition(Duration.millis(85));
-            scaleDown.setNode(button);
-            scaleDown.setToX(1.0);
-            scaleDown.setToY(1.0);
-            button.setOnMouseExited(e -> scaleDown.playFromStart());
-        }
-    }
-
 }
+

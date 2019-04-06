@@ -1,9 +1,6 @@
 package greenify.server.service;
 
-import greenify.server.InputValidator;
 import greenify.server.data.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +8,6 @@ import org.springframework.stereotype.Service;
 public class AchievementService {
     @Autowired
     UserService userService;
-
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     /**
      * This method updates all achievements of a user.
@@ -33,9 +28,7 @@ public class AchievementService {
      * @param user user for whom achiev1 changes
      */
     public void achieveGettingStarted(User user) {
-        if (!user.getFootPrintInputs().equals(InputValidator.getDefaultValues())) {
-            userService.setAchievement(user.getName(), "Starting off", true);
-        }
+        userService.setAchievement(user.getName(), "Starting off", true);
     }
 
     /**
@@ -53,7 +46,7 @@ public class AchievementService {
      * @param user user for whom achiev3 changes
      */
     public void achieveGreenSaver(User user) {
-        if (43 - user.getFootPrint() > 38) {
+        if (20 > user.getFootPrint()) {
             userService.setAchievement(user.getName(), "Green saver", true);
         }
     }
@@ -63,7 +56,8 @@ public class AchievementService {
      * @param user user for whom achiev4 changes
      */
     public void achieveAnimalFriend(User user) {
-        if (user.getExtraInputs().get("vegetarian")) {
+        int vegan = Integer.parseInt(user.getExtraInputs().get("vegan"));
+        if (vegan > 10) {
             userService.setAchievement(user.getName(), "Animal friend", true);
         }
     }
@@ -73,7 +67,8 @@ public class AchievementService {
      * @param user user for whom achiev5 changes
      */
     public void achieveTomDumoulin(User user) {
-        if (user.getExtraInputs().get("bike")) {
+        int bike = Integer.parseInt(user.getExtraInputs().get("bike"));
+        if (bike > 15) {
             userService.setAchievement(user.getName(), "Tom Dumoulin", true);
         }
     }
@@ -83,7 +78,8 @@ public class AchievementService {
      * @param user user for whom achiev6 changes
      */
     public void achieveLetItShine(User user) {
-        if (user.getExtraInputs().get("solar_panels")) {
+        int solar_panels = Integer.parseInt(user.getExtraInputs().get("solar_panels"));
+        if (solar_panels >= 2) {
             userService.setAchievement(user.getName(), "Let it shine", true);
         }
     }

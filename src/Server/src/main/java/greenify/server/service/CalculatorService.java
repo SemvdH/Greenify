@@ -72,8 +72,14 @@ public class CalculatorService {
      * @return the footprint of the user
      */
     public Float calculateFootprint(User user) {
-        Float footprint =  invokeExternalService(user.getFootPrintInputs());
         addExtras(user);
+        Float footprint =  invokeExternalService(user.getFootPrintInputs());
+        footprint = footprint - (float) (Float.parseFloat(user
+                .getExtraInputs().get("solar_panels")) * 1.2);
+        footprint = footprint - Float.parseFloat(user
+                .getExtraInputs().get("temperature")) / 4;
+        footprint = footprint - (float) (Float.parseFloat(user
+                .getExtraInputs().get("local_produce")) * 0.1);
         return footprint;
     }
 
@@ -82,15 +88,20 @@ public class CalculatorService {
      * @param user name of the user
      */
     public void addExtras(User user) {
-        if (user.getExtraInputs().get("local_produce")) {
-            user.setFootPrint(user.getFootPrint() - 2);
-        } else if (user.getExtraInputs().get("bike")) {
-            user.setFootPrint(user.getFootPrint() - 2);
-        } else if (user.getExtraInputs().get("temperature")) {
-            user.setFootPrint(user.getFootPrint() - 2);
-        } else if (user.getExtraInputs().get("solar_panels")) {
-            user.setFootPrint(user.getFootPrint() - 2);
-        }
+        Map<String, String> inputs = user.getFootPrintInputs();
+        Float netPublic = Float.parseFloat(user.getFootPrintInputs()
+                .get("input_footprint_transportation_publictrans"))
+                - Float.parseFloat(user.getExtraInputs().get("bike"));
+        Float netCar = Float.parseFloat(user.getFootPrintInputs()
+                .get("input_footprint_transportation_miles1"))
+                - Float.parseFloat(user.getExtraInputs().get("car"));
+        Float netVegan = Float.parseFloat(user.getFootPrintInputs()
+                .get("input_footprint_shopping_food_fruitvegetables"))
+                + Float.parseFloat(user.getExtraInputs().get("vegan"));
+        inputs.put("input_footprint_transportation_publictrans", netPublic + "");
+        inputs.put("input_footprint_transportation_miles1", netCar + "");
+        inputs.put("input_footprint_shopping_food_fruitvegetables", netVegan + "");
+        user.setFootPrintInputs(inputs);
     }
 }
 
