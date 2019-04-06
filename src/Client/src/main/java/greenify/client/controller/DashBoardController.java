@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Class that controls the dashboard fxml file (the GUI Screen).
@@ -69,6 +71,8 @@ public class DashBoardController {
     private Button userButton;
     @FXML
     private Button friendsButton;
+    @FXML
+    private Button logOutButton;
     @FXML
     private Line pathLine;
     @FXML
@@ -197,7 +201,7 @@ public class DashBoardController {
         activitiesButton.setSkin(new MyButtonSkin(activitiesButton));
         userButton.setSkin(new MyButtonSkin(userButton));
         friendsButton.setSkin(new MyButtonSkin(friendsButton));
-
+        logOutButton.setSkin(new MyButtonSkin(logOutButton));
         friendsColumn.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
         globalUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
@@ -401,6 +405,33 @@ public class DashBoardController {
         activitiesPane.setVisible(false);
         friendsPane.setVisible(true);
         updateFriends();
+    }
+
+    /**
+     * Logs out the user
+     * @param event the event (clicking the button)
+     * @throws IOException if the Application doesn't load.
+     */
+    public void logOut(ActionEvent event) throws IOException {
+        //get the current window
+        Window owner = logOutButton.getScene().getWindow();
+        Stage current = (Stage) owner;
+        //close current window (log out)
+        current.close();
+        System.out.println("User is logged out");
+
+        //load the fxml file
+        Parent dash = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/LoginWindow.fxml"));
+        Scene scene = new Scene(dash);
+        //add the stylesheet for the CSS
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader()
+                .getResource("stylesheets/LoginWindowStyle.css")).toExternalForm());
+        Stage appStage = new Stage();
+        appStage.setScene(scene);
+        //set the title
+        appStage.setTitle("Greenify");
+        appStage.show();
     }
 
     //sets the slide in transition for startup
