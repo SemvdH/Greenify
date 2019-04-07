@@ -276,6 +276,7 @@ public class UserService {
      */
     public Map<String, Boolean> getAchievements(String name) {
         User user = userRepository.findByName(name);
+        achievementService.updateAchievements(user);
         return user.getAchievements();
     }
 
