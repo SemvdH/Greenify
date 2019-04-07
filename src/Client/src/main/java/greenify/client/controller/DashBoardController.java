@@ -165,7 +165,17 @@ public class DashBoardController {
     @FXML
     private Label snacks;
     @FXML
-    private ImageView achiev1image;
+    private ImageView achieve1;
+    @FXML
+    private ImageView achieve2;
+    @FXML
+    private ImageView achieve3;
+    @FXML
+    private ImageView achieve4;
+    @FXML
+    private ImageView achieve5;
+    @FXML
+    private ImageView achieve6;
     @FXML
     private Label hintText;
     @FXML
@@ -232,7 +242,6 @@ public class DashBoardController {
         friendsTable.setItems(data);
         updateLeaderboard();
         updateAchievements();
-
         calculateFootPrintButton.setSkin(new ClickButtonSkin(calculateFootPrintButton));
         addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
         addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
@@ -563,9 +572,36 @@ public class DashBoardController {
      */
     public void updateAchievements() {
         Map achievements = userService.getAchievements(userService.currentUser.getName());
-        achiev1image.setVisible((Boolean)achievements.get("Starting off"));
-        //achiev2image.setVisible(achievements.get("name second achievement"));
-        //Add all achievements here, add updateAchievements to the achievements pane
+        if((Boolean)achievements.get("Starting off")) {
+            achieve1.setOpacity(1);
+        } else {
+            achieve1.setOpacity(0.3);
+        }
+        if((Boolean)achievements.get("Social butterfly")) {
+            achieve2.setOpacity(1);
+        } else {
+            achieve2.setOpacity(0.3);
+        }
+        if((Boolean)achievements.get("Green saver")) {
+            achieve3.setOpacity(1);
+        } else {
+            achieve3.setOpacity(0.3);
+        }
+        if((Boolean)achievements.get("Animal friend")) {
+            achieve4.setOpacity(1);
+        } else {
+            achieve4.setOpacity(0.3);
+        }
+        if((Boolean)achievements.get("Tom Dumoulin")) {
+            achieve5.setOpacity(1);
+        } else {
+            achieve5.setOpacity(0.3);
+        }
+        if((Boolean)achievements.get("Let it shine")) {
+            achieve6.setOpacity(1);
+        } else {
+            achieve6.setOpacity(0.3);
+        }
     }
 
     //class for the animations on the navigation buttons

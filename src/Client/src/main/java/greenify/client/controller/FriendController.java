@@ -16,6 +16,9 @@ public class FriendController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    DashBoardController dashBoardController;
+
     @FXML
     private Button addButton;
     @FXML
@@ -54,6 +57,7 @@ public class FriendController {
         //close the register window after the user has entered all the credentials
         String friendName = userNameText.getText();
         Stage current = (Stage) owner;
+        dashBoardController.updateAchievements();
         current.close();
         UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Friend added!",
                 userNameText.getText() + " is now your friend!");

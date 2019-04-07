@@ -167,6 +167,7 @@ public class ExtraActivityController {
         Window owner = saveButton.getScene().getWindow();
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         controller.updateLeaderboard();
+        controller.updateAchievements();
         Stage current = (Stage) owner;
         current.close();
         UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Activities are added!",
@@ -194,6 +195,8 @@ public class ExtraActivityController {
                     "bike",
                     temperatureLabel.getText().replace(" Degrees", ""));
         }
+        controller.updateAchievements();
+        controller.updateLeaderboard();
     }
 
     public class TranslateButtonSkin extends ButtonSkin {
