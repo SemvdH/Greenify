@@ -83,6 +83,8 @@ public class ExtraActivityController {
     private Label publicTransportLabel;
     @FXML
     private Slider publicTransportSlider;
+    @FXML
+    private Button saveButton;
 
 
     /**
@@ -214,56 +216,10 @@ public class ExtraActivityController {
         publicTransportPane.setVisible(true);
     }
 
-    public void confirmVeganMeal(ActionEvent event) {
-        System.out.println("confirm adding vegetarian meal");
-    }
+
 
     /**
-     * Adds the activity of buying local produce to the user's account.
-     * @param event the click of the 'add activity' button in the designated section
-     */
-    public void confirmLocalProduce(ActionEvent event) {
-        System.out.println("confirm adding buying local produce");
-        userService.updateExtraInput(userService.currentUser.getName(),
-                "local_produce", true);
-    }
-
-    /**
-     * adds the activity of using your bike instead of your car to the user's account.
-     * @param event the click of the 'add activity' button in the designated section
-     */
-    public void confirmBike(ActionEvent event) {
-        System.out.println("confirm adding using bike instead of car");
-        userService.updateExtraInput(userService.currentUser.getName(),
-                "bike", true);
-    }
-
-    public void confirmPublicTransport(ActionEvent event) {
-        System.out.println("confirm adding using public transport instead of car");
-    }
-
-    /**
-     * Adds the activity of lowering the home temperature to the user's account.
-     * @param event the click of the 'add activity' button in the designated section
-     */
-    public void confirmTemperature(ActionEvent event) {
-        System.out.println("confirm adding lowering home temperature");
-        userService.updateExtraInput(userService.currentUser.getName(),
-                "temperature", true);
-    }
-
-    /**
-     * Adds the activity of buying solar panels to the user's account.
-     * @param event the click of the 'add activity' button in the designated section
-     */
-    public void confirmSolarPanels(ActionEvent event) {
-        System.out.println("confirm adding buying solar panels");
-        userService.updateExtraInput(userService.currentUser.getName(),
-                "solar_panels", true);
-    }
-
-    /**
-     * The method updates the values
+     * The method updates the values.
      */
     @SuppressWarnings("Duplicates")
     public void save(ActionEvent event) throws InterruptedException {
