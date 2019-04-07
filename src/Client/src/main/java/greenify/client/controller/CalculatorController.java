@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
@@ -34,7 +33,6 @@ import java.text.DecimalFormat;
 
 @Controller
 public class CalculatorController {
-    private static UserController.AlertHelper AlertHelper;
     @Autowired
     UserService userService;
 
@@ -146,15 +144,6 @@ public class CalculatorController {
     //extra pane
     @FXML
     private AnchorPane extraPane;
-    @FXML
-    private CheckBox localProduceCheckbox;
-    @FXML
-    private CheckBox bikeCheckbox;
-    @FXML
-    private CheckBox temperatureCheckbox;
-    @FXML
-    private CheckBox solarPanelsCheckbox;
-
 
     /**
      * initializes the window, performs some actions before loading all other things.
@@ -372,7 +361,6 @@ public class CalculatorController {
         foodPane.setVisible(false);
         shoppingPane.setVisible(false);
         extraPane.setVisible(true);
-
     }
 
     /**
@@ -394,46 +382,65 @@ public class CalculatorController {
             userService.updateInput(userService.currentUser.getName(), "input_size",
                     peopleInHouseHoldLabel.getText());
         }
-        if (!publicTransitField.getText().equals("0")) {
+        checkTransportLabels();
+        checkHousingLabels();
+        checkFoodLabels();
+        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_publictrans",
-                    publicTransitField.getText());
+                    "input_footprint_shopping_goods_total",
+                    goodsLabel.getText().replace("€ / month", ""));
         }
-        if (!airplaneTravelField.getText().equals("0")) {
+        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_airtotal",
-                    airplaneTravelField.getText());
+                    "input_footprint_shopping_services_total",
+                    servicesLabel.getText().replace("€ / month", ""));
         }
-        if (!carTravelGasolineField.getText().equals("0")) {
+        Float footprint = userService.saveFootprint(userService.currentUser.getName());
+        Window owner = saveButton.getScene().getWindow();
+        Stage current = (Stage) owner;
+        current.close();
+        controller.updateLeaderboard();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
+                owner, "Footprint saved!", "Your footprint is saved!");
+    }
+
+    /**
+     * Checks the food labels.
+     */
+    public void checkFoodLabels() {
+        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles1",
-                    carTravelGasolineField.getText());
+                    "input_footprint_shopping_food_meatfisheggs",
+                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelGasolineLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!grainsBakedGoodsLabel.getText()
+                .replace(" daily servings per person", "").equals("4.4")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg1",
-                    carTravelGasolineLabel.getText().replace(" mpg", ""));
+                    "input_footprint_shopping_food_cereals",
+                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelDieselField.getText().equals("0")) {
+        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles2",
-                    carTravelDieselField.getText());
+                    "input_footprint_shopping_food_dairy",
+                    dairyLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelDieselLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!fruitsVegetablesLabel.getText()
+                .replace(" daily servings per person", "").equals("3.9")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg2",
-                    carTravelDieselLabel.getText().replace(" mpg", ""));
+                    "input_footprint_shopping_food_fruitvegetables",
+                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelElectricField.getText().equals("0")) {
+        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles3",
-                    carTravelElectricField.getText());
+                    "input_footprint_shopping_food_otherfood",
+                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelElectricLabel.getText().replace(" mpge", "").equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg3",
-                    carTravelElectricLabel.getText().replace(" mpge", ""));
-        }
+    }
+
+    /**
+     * Checks the house labels.
+     */
+    public void checkHousingLabels() {
         if (!electricityField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_housing_electricity_dollars",
@@ -464,69 +471,51 @@ public class CalculatorController {
                     "input_footprint_housing_watersewage",
                     waterUsageLabel.getText().replace("% of similar households", ""));
         }
-        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
+    }
+
+    /**
+     * Checks the transport labels.
+     */
+    public void checkTransportLabels() {
+        if (!publicTransitField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_meatfisheggs",
-                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_publictrans",
+                    publicTransitField.getText());
         }
-        if (!grainsBakedGoodsLabel.getText()
-                .replace(" daily servings per person", "").equals("4.4")) {
+        if (!airplaneTravelField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_cereals",
-                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_airtotal",
+                    airplaneTravelField.getText());
         }
-        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
+        if (!carTravelGasolineField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_dairy",
-                    dairyLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_miles1",
+                    carTravelGasolineField.getText());
         }
-        if (!fruitsVegetablesLabel.getText()
-                .replace(" daily servings per person", "").equals("3.9")) {
+        if (!carTravelGasolineLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_fruitvegetables",
-                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_mpg1",
+                    carTravelGasolineLabel.getText().replace(" km/L", ""));
         }
-        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
+        if (!carTravelDieselField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_otherfood",
-                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_miles2",
+                    carTravelDieselField.getText());
         }
-        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
+        if (!carTravelDieselLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_goods_total",
-                    goodsLabel.getText().replace("€ / month", ""));
+                    "input_footprint_transportation_mpg2",
+                    carTravelDieselLabel.getText().replace(" km/L", ""));
         }
-        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
+        if (!carTravelElectricField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_services_total",
-                    servicesLabel.getText().replace("€ / month", ""));
+                    "input_footprint_transportation_miles3",
+                    carTravelElectricField.getText());
         }
-        if (localProduceCheckbox.isSelected()) {
-            localProduceCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "local_produce", true);
+        if (!carTravelElectricLabel.getText().replace(" km/Le", "").equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_transportation_mpg3",
+                    carTravelElectricLabel.getText().replace(" km/Le", ""));
         }
-        if (bikeCheckbox.isSelected()) {
-            bikeCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike", true);
-        }
-        if (temperatureCheckbox.isSelected()) {
-            temperatureCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "temperature", true);
-        }
-        if (solarPanelsCheckbox.isSelected()) {
-            solarPanelsCheckbox.setSelected(true);
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "solar_panels", true);
-        }
-        Float footprint = userService.saveFootprint(userService.currentUser.getName());
-        Window owner = saveButton.getScene().getWindow();
-        Stage current = (Stage) owner;
-        current.close();
-        controller.updateLeaderboard();
-        CalculatorController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
-                owner, "Footprint saved!", "Your footprint is saved!");
     }
 }

@@ -12,26 +12,28 @@ public class Hints {
     }
 
     /**
-     * This method adds all the Strings to the arraylist.
+     * This method adds all the Strings to the array list.
      */
     private void initHints() {
         this.hints.add("Buying local produce will not only decrease your carbon "
                 + "footprint, but also help your local economy: A win-win!");
         this.hints.add("Did you know that a gas oven only uses 6% of its energy "
                 + "to cook? And an electric oven is not much better at 12%.");
-        this.hints.add("70% of the deforestation of the Amazon is to provide land for cattle ranches.");
+        this.hints.add("70% of the deforestation of the Amazon is to provide land for "
+                + "cattle ranches.");
         this.hints.add("Research shows that reducing meat consumption can increase"
                 + " your life span by 3.6 years");
-        this.hints.add("Vegetarians have a lower risk of getting heart disease, high blood pressure, "
-                + "diabetes and cancer than meat eaters.");
+        this.hints.add("Vegetarians have a lower risk of getting heart disease, high blood "
+                + "pressure, diabetes and cancer than meat eaters.");
         this.hints.add("Did you know? The carbon footprint of a vegetarian diet is about half "
                 + "that of a meat-lover’s diet!");
         this.hints.add("Cycling is good for the environment AND for your body, "
                 + "so why not grab your bike instead of your car?");
-        this.hints.add("If we could capture all of the sun’s energy shining on the Earth for just one "
-                + "hour, we could power the entire world for one year!");
+        this.hints.add("If we could capture all of the sun’s energy shining on the Earth"
+                + " for just one hour, we could power the entire world for one year!");
         this.hints.add("27,000 trees are cut down each day so we can have toilet paper.");
-        this.hints.add("A glass bottle made in our time will take more than 4,000 years to decompose.");
+        this.hints.add("A glass bottle made in our time will take more than 4,000 years "
+                + "to decompose.");
         this.hints.add("Don't forget to turn off the lights and heating in rooms"
                 + " you're not using at the moment!");
         this.hints.add("Did you know that about 4.5% of the Dutch population does not eat meat?");
@@ -53,7 +55,7 @@ public class Hints {
                 + "utensils and napkins, it saves plastic and paper.");
         this.hints.add("It takes about 66 days to form a new habit, keep going!");
         this.hints.add("Get yourself a nice reusable water bottle! It's cheaper and better for "
-               + "the environment to refill than to buy a new one every time it's empty.");
+                + "the environment to refill than to buy a new one every time it's empty.");
         this.hints.add("Recycle glass bottles!"
                 + " A glass bottle made in our time will take more than 4,000 years"
                 + " to decompose.");
@@ -63,7 +65,7 @@ public class Hints {
     }
 
     /**
-     * This method returns a random String.
+     * This method gets a random String.
      * @return the random hint.
      */
     public String randomHint() {
@@ -73,3 +75,4 @@ public class Hints {
     }
 
 }
+

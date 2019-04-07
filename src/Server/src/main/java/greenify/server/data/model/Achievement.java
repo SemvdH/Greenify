@@ -86,14 +86,11 @@ public class Achievement {
      */
     @Override
     public boolean equals(Object other) {
-        if(other == null){
-            return false;
-        }
         if (other instanceof Achievement) {
             Achievement that = (Achievement) other;
             return achieved == that.achieved
                     && name.equals(that.name)
-                    && Objects.equals(description, that.description);
+                    && description.equals(that.description);
         }
         return false;
     }

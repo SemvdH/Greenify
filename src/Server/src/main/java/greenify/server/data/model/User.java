@@ -46,7 +46,7 @@ public class User {
     private Map<String, String> footPrintInputs = new HashMap<>();
 
     @ElementCollection
-    private Map<String, Boolean> extraInputs = new HashMap<>();
+    private Map<String, String> extraInputs = new HashMap<>();
 
     @ManyToMany
     private List<User> friends;
@@ -172,7 +172,7 @@ public class User {
      * This method gets the extra inputs of the user.
      * @return extra inputs of the user
      */
-    public Map<String, Boolean> getExtraInputs() {
+    public Map<String, String> getExtraInputs() {
         return extraInputs;
     }
 
@@ -180,7 +180,7 @@ public class User {
      * This method sets the extra inputs of the user.
      * @param extraInputs footprint inputs of the user
      */
-    public void setExtraInputs(Map<String, Boolean> extraInputs) {
+    public void setExtraInputs(Map<String, String> extraInputs) {
         this.extraInputs = extraInputs;
     }
 

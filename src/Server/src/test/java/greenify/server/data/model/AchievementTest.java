@@ -1,8 +1,8 @@
 package greenify.server.data.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,12 +27,12 @@ class AchievementTest {
     @Test
     public void toStringTest() {
         assertEquals("Achievement(name=SavedCO2, "
-                + "description=You saved 100 cow farts of CO2!, achieved=true)",
+                        + "description=You saved 100 cow farts of CO2!, achieved=true)",
                 achievement.toString());
     }
 
     @Test
-    void equalsTest() {
+    public void equalsTest() {
         assertEquals(achievement.getName(), other.getName());
         assertEquals(achievement.getDescription(), other.getDescription());
         assertEquals(achievement.isAchieved(), other.isAchieved());
@@ -40,18 +40,35 @@ class AchievementTest {
     }
 
     @Test
-    void notEqualsTest() {
-        Achievement test = new Achievement("Starting off",
-                "You did your first green activity", false);
-        assertFalse(achievement.equals(test));
+    public void notEqualAchievedTest() {
+        Achievement first = new Achievement("greenify", "description", true);
+        Achievement second = new Achievement("greenify", "description", false);
+        assertNotEquals(first, second);
     }
 
     @Test
-    void equalsNullTest() {
-        assertFalse(achievement.equals(null));
+    public void notEqualNameTest() {
+        Achievement first = new Achievement("greenify", "description", true);
+        Achievement second = new Achievement("ceren", "description", true);
+        assertNotEquals(first, second);
     }
+
     @Test
-    void hashCodeTest() {
+    public void notEqualDescriptionTest() {
+        Achievement first = new Achievement("greenify", "hello", false);
+        Achievement second = new Achievement("greenify", "description", false);
+        assertNotEquals(first, second);
+    }
+
+    @Test
+    public void instanceOfTest() {
+        Achievement first = new Achievement();
+        Object second = new Object();
+        assertNotEquals(first, second);
+    }
+
+    @Test
+    public void hashCodeTest() {
         assertEquals(achievement, other);
         assertEquals(achievement.hashCode(), other.hashCode());
     }

@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -168,15 +167,15 @@ public class DashBoardController {
     @FXML
     private ImageView achiev1image;
     @FXML
-    private CheckBox localProduce;
-    @FXML
-    private CheckBox loweringTemp;
-    @FXML
-    private CheckBox bike;
-    @FXML
-    private CheckBox solarPanels;
-    @FXML
     private Label hintText;
+    @FXML
+    private Label solarPanels;
+    @FXML
+    private Label localProduce;
+    @FXML
+    private Label bike;
+    @FXML
+    private Label loweringTemp;
     @FXML
     private Button refreshHintsButton;
 
@@ -249,8 +248,8 @@ public class DashBoardController {
     public void sortScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
-                Float firstScore = userService.getFootprint(users.get(i));
-                Float secondScore = userService.getFootprint(users.get(j));
+                Double firstScore = userService.getFootprint(users.get(i));
+                Double secondScore = userService.getFootprint(users.get(j));
                 if (i > j && firstScore < secondScore) {
                     String temp = users.get(i);
                     users.set(i, users.get(j));
@@ -272,9 +271,9 @@ public class DashBoardController {
     public void sortDiffScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
-                Float firstDiff = userService.getFirstFootprint(users.get(i)) - userService
+                Double firstDiff = userService.getFirstFootprint(users.get(i)) - userService
                         .getFootprint(users.get(i));
-                Float secondDiff = userService.getFirstFootprint(users.get(j)) - userService
+                Double secondDiff = userService.getFirstFootprint(users.get(j)) - userService
                         .getFootprint(users.get(j));
                 if (i < j && firstDiff < secondDiff) {
                     String temp = users.get(i);
@@ -356,18 +355,11 @@ public class DashBoardController {
         dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
         fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
-        if (userService.getExtraInputs(userService.currentUser.getName()).get("local_produce")) {
-            localProduce.setSelected(true);
-        }
-        if (userService.getExtraInputs(userService.currentUser.getName()).get("bike")) {
-            bike.setSelected(true);
-        }
-        if (userService.getExtraInputs(userService.currentUser.getName()).get("temperature")) {
-            loweringTemp.setSelected(true);
-        }
-        if (userService.getExtraInputs(userService.currentUser.getName()).get("solar_panels")) {
-            solarPanels.setSelected(true);
-        }
+        Map<String, String> extraMap = userService.getExtraInputs(userService.currentUser.getName());
+        localProduce.setText(extraMap.get("local_produce"));
+        bike.setText(extraMap.get("bike"));
+        solarPanels.setText(extraMap.get("solar_panels"));
+        loweringTemp.setText(extraMap.get("temperature"));
     }
 
     /**
@@ -380,9 +372,9 @@ public class DashBoardController {
         footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
         firstFootprintLabel.setText("" + userService
                 .getFirstFootprint(userService.currentUser.getName()));
-        Float diff = userService.getFirstFootprint(userService.currentUser.getName()) - userService
+        Double diff = userService.getFirstFootprint(userService.currentUser.getName()) - userService
                 .getFootprint(userService.currentUser.getName());
-        differenceLabel.setText( "" + diff);
+        differenceLabel.setText( "" + Math.round(diff * 10) / 10.0);
         usernameLabel.setText("" + userService.currentUser.getName());
         addFadeTransition(userPane);
         System.out.println("display user");
@@ -390,7 +382,6 @@ public class DashBoardController {
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
-
     }
 
     /**
@@ -419,6 +410,13 @@ public class DashBoardController {
         //close current window (log out)
         current.close();
         System.out.println("User is logged out");
+
+        //global leaderboard
+        globalLeaderboard.getItems().clear();
+        globalLeaderData.removeAll();
+        //development leaderboard
+        developmentLeaderboard.getItems().clear();
+        developmentData.removeAll();
 
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
@@ -457,6 +455,9 @@ public class DashBoardController {
         calcStage.show();
     }
 
+    /**
+     * Adds a random hint to the left.
+     */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
         fadeOut.setFromValue(1.0);
@@ -516,9 +517,9 @@ public class DashBoardController {
         sortDiffScores(userList);
         for (int j = 0; j < userList.size(); j++) {
             Friend user = new Friend(userList.get(j), userService.getFootprint(userList.get(j)));
-            Friend diffUser = new Friend(userList.get(j), userService
-                    .getFirstFootprint(userList.get(j))
-                    - userService.getFootprint(userList.get(j)));
+            double diff = Math.round((userService.getFirstFootprint(userList.get(j))
+                    - userService.getFootprint(userList.get(j))) * 10) / 10.0;
+            Friend diffUser = new Friend(userList.get(j), diff);
             globalLeaderData.add(user);
             developmentData.add(diffUser);
         }
@@ -548,9 +549,9 @@ public class DashBoardController {
             data.add(user);
         }
         for (int j = 0; j < wholeList.size(); j++) {
-            Friend diffUser = new Friend(wholeList.get(j),
-                    userService.getFirstFootprint(wholeList.get(j))
-                            - userService.getFootprint(wholeList.get(j)));
+            double diff = Math.round((userService.getFirstFootprint(wholeList.get(j))
+                    - userService.getFootprint(wholeList.get(j))) * 10) / 10.0;
+            Friend diffUser = new Friend(wholeList.get(j), diff);
             friendLeaderData.add(diffUser);
         }
         friendsTable.setItems(data);
@@ -632,6 +633,4 @@ public class DashBoardController {
             button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }
-
 }
-

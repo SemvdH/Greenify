@@ -109,13 +109,13 @@ public class UserService {
      * @param value value of the input
      */
     @SuppressWarnings("Duplicates")
-    public void updateExtraInput(String name, String inputName, Boolean value) {
+    public void updateExtraInput(String name, String inputName, String value) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setExtraInput")
                 .queryParam("name", name)
                 .queryParam("inputName", inputName)
-                .queryParam("value",value);
+                .queryParam("value", value);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
@@ -128,15 +128,16 @@ public class UserService {
      * @return returns the footprint score
      */
     @SuppressWarnings("Duplicates")
-    public Float getFootprint(String name) {
+    public double getFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFootprint")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        Float result = this.restTemplate.getForObject(builder
+        Float footprint = this.restTemplate.getForObject(builder
                 .build().encode().toUri(), Float.class);
+        double result = Math.round(footprint * 10) / 10.0;
         return result;
     }
 
@@ -145,7 +146,7 @@ public class UserService {
      * @param name name of the user
      * @return returns the footprint score
      */
-    public Float getFirstFootprint(String name) {
+    public double getFirstFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFirst")
@@ -154,7 +155,8 @@ public class UserService {
         System.out.println(builder.build().encode().toUri());
         Float footprint = this.restTemplate.getForObject(builder
                 .build().encode().toUri(), Float.class);
-        return footprint;
+        double result = Math.round(footprint * 10) / 10.0;
+        return result;
     }
 
     /**
@@ -270,14 +272,14 @@ public class UserService {
      * @param name the username of the current user.
      */
     @SuppressWarnings("Duplicates")
-    public Map<String, Boolean> getExtraInputs(String name) {
+    public Map<String, String> getExtraInputs(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getExtraInputs")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
-        Map<String, Boolean> result = this.restTemplate.getForObject(builder.build()
+        Map<String, String> result = this.restTemplate.getForObject(builder.build()
                 .encode().toUri(), Map.class);
         return result;
     }

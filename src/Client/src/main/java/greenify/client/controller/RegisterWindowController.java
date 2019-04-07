@@ -2,9 +2,11 @@ package greenify.client.controller;
 
 import greenify.client.Application;
 import greenify.client.rest.UserService;
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
@@ -16,7 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
@@ -39,12 +40,11 @@ import java.util.concurrent.TimeUnit;
  */
 @Controller
 public class RegisterWindowController {
-
     @Autowired
     UserService userService;
 
     @Autowired
-    DashBoardController controller;
+    ExtraActivityController extraActivityController;
 
     //navigation panes
     @FXML
@@ -152,15 +152,6 @@ public class RegisterWindowController {
     @FXML
     private AnchorPane extraPane;
     @FXML
-    private CheckBox localProduceCheckbox;
-    @FXML
-    private CheckBox bikeCheckbox;
-    @FXML
-    private CheckBox temperatureCheckbox;
-    @FXML
-    private CheckBox solarPanelsCheckbox;
-
-    @FXML
     private TextField userNameText;
     @FXML
     private PasswordField passwordField;
@@ -230,8 +221,7 @@ public class RegisterWindowController {
         //register the user with the provided username and password
         try {
             userService.registerUser(userNameText.getText(), passwordField.getText());
-        }
-        catch (RuntimeException ex) {
+        } catch (RuntimeException ex) {
             UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
                     "This username has already been taken!");
             return;
@@ -270,9 +260,9 @@ public class RegisterWindowController {
             }
         });
 
-        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " mpg");
-        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " mpg");
-        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " mpge");
+        addSliderListenerCarUsage(carTravelGasolineSlider, carTravelGasolineLabel, " km/L");
+        addSliderListenerCarUsage(carTravelDieselSlider, carTravelDieselLabel, " km/L");
+        addSliderListenerCarUsage(carTravelElectricSlider, carTravelElectricLabel, " km/Le");
 
         cleanEnergyPurchasedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -315,6 +305,7 @@ public class RegisterWindowController {
         });
     }
 
+    @SuppressWarnings("Duplicates")
     private void addSliderListenerDailyServing(Slider slider, Label label) {
         DecimalFormat df = new DecimalFormat("0.0");
         slider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -336,6 +327,23 @@ public class RegisterWindowController {
         });
     }
 
+    /**
+     * adds a fade transition to the given node.
+     * @param node the node to add the transition to
+     */
+    public void addFadeTransAnimation(Node node) {
+        FadeTransition fade = new FadeTransition(Duration.millis(350), node);
+        fade.setFromValue(0);
+        fade.setToValue(1.0);
+        TranslateTransition trans = new TranslateTransition(Duration.millis(350), node);
+        trans.setFromY(800);
+        trans.setToY(0);
+        ParallelTransition par = new ParallelTransition();
+        par.setNode(travelPane);
+        par.getChildren().addAll(fade, trans);
+        par.play();
+    }
+
     private void addSlideInAnimation(Node node) {
         Timeline timeline = new Timeline();
         KeyValue keyValue = new KeyValue(node.translateXProperty(), 0, Interpolator.EASE_OUT);
@@ -351,6 +359,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayGetStarted(ActionEvent event) {
+        addFadeTransAnimation(getStartedPane);
         getStartedPane.setVisible(true);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -366,7 +375,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayTravel(ActionEvent event) {
-        addSlideInAnimation(travelPane);
+        addFadeTransAnimation(travelPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(true);
         homePane.setVisible(false);
@@ -383,6 +392,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayHome(ActionEvent event) {
+        addFadeTransAnimation(homePane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(true);
@@ -398,6 +408,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayFood(ActionEvent event) {
+        addFadeTransAnimation(foodPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -413,6 +424,7 @@ public class RegisterWindowController {
      */
     @SuppressWarnings("Duplicates")
     public void displayShopping(ActionEvent event) {
+        addFadeTransAnimation(shoppingPane);
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -427,7 +439,10 @@ public class RegisterWindowController {
      * @param event the click of the designated button
      */
     @SuppressWarnings("Duplicates")
-    public void displayExtra(ActionEvent event) {
+    public void displayExtra(ActionEvent event) throws IOException {
+        addFadeTransAnimation(extraPane);
+        extraPane.getChildren().setAll((Node) Application.load(this.getClass()
+                .getClassLoader().getResource("fxml/extraActivities.fxml")));
         getStartedPane.setVisible(false);
         travelPane.setVisible(false);
         homePane.setVisible(false);
@@ -456,46 +471,65 @@ public class RegisterWindowController {
             userService.updateInput(userService.currentUser.getName(), "input_size",
                     peopleInHouseHoldLabel.getText());
         }
-        if (!publicTransitField.getText().equals("0")) {
+        checkTransportLabels();
+        checkHousingLabels();
+        checkFoodLabels();
+        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_publictrans",
-                    publicTransitField.getText());
+                    "input_footprint_shopping_goods_total",
+                    goodsLabel.getText().replace("€ / month", ""));
         }
-        if (!airplaneTravelField.getText().equals("0")) {
+        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_airtotal",
-                    airplaneTravelField.getText());
+                    "input_footprint_shopping_services_total",
+                    servicesLabel.getText().replace("€ / month", ""));
         }
-        if (!carTravelGasolineField.getText().equals("0")) {
+        Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
+        Float footprint = userService.saveFootprint(userService.currentUser.getName());
+        Window owner = saveButton.getScene().getWindow();
+        Stage current = (Stage) owner;
+        current.close();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
+                owner, "Footprint saved!", "Your footprint is saved!");
+    }
+
+    /**
+     * Checks the food labels.
+     */
+    public void checkFoodLabels() {
+        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles1",
-                    carTravelGasolineField.getText());
+                    "input_footprint_shopping_food_meatfisheggs",
+                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelGasolineLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!grainsBakedGoodsLabel.getText()
+                .replace(" daily servings per person", "").equals("4.4")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg1",
-                    carTravelGasolineLabel.getText().replace(" mpg", ""));
+                    "input_footprint_shopping_food_cereals",
+                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelDieselField.getText().equals("0")) {
+        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles2",
-                    carTravelDieselField.getText());
+                    "input_footprint_shopping_food_dairy",
+                    dairyLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelDieselLabel.getText().replace(" mpg", "").equals("0")) {
+        if (!fruitsVegetablesLabel.getText()
+                .replace(" daily servings per person", "").equals("3.9")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg2",
-                    carTravelDieselLabel.getText().replace(" mpg", ""));
+                    "input_footprint_shopping_food_fruitvegetables",
+                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelElectricField.getText().equals("0")) {
+        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_miles3",
-                    carTravelElectricField.getText());
+                    "input_footprint_shopping_food_otherfood",
+                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
         }
-        if (!carTravelElectricLabel.getText().replace(" mpge", "").equals("0")) {
-            userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_transportation_mpg3",
-                    carTravelElectricLabel.getText().replace(" mpge", ""));
-        }
+    }
+
+    /**
+     * Checks the housing labels.
+     */
+    public void checkHousingLabels() {
         if (!electricityField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_housing_electricity_dollars",
@@ -526,63 +560,51 @@ public class RegisterWindowController {
                     "input_footprint_housing_watersewage",
                     waterUsageLabel.getText().replace("% of similar households", ""));
         }
-        if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
+    }
+
+    /**
+     * Checks the transport labels.
+     */
+    public void checkTransportLabels() {
+        if (!publicTransitField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_meatfisheggs",
-                    meatFishEggsLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_publictrans",
+                    publicTransitField.getText());
         }
-        if (!grainsBakedGoodsLabel.getText()
-                .replace(" daily servings per person", "").equals("4.4")) {
+        if (!airplaneTravelField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_cereals",
-                    grainsBakedGoodsLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_airtotal",
+                    airplaneTravelField.getText());
         }
-        if (!dairyLabel.getText().replace(" daily servings per person", "").equals("2.4")) {
+        if (!carTravelGasolineField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_dairy",
-                    dairyLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_miles1",
+                    carTravelGasolineField.getText());
         }
-        if (!fruitsVegetablesLabel.getText()
-                .replace(" daily servings per person", "").equals("3.9")) {
+        if (!carTravelGasolineLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_fruitvegetables",
-                    fruitsVegetablesLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_mpg1",
+                    carTravelGasolineLabel.getText().replace(" km/L", ""));
         }
-        if (!snacksDrinksLabel.getText().replace(" daily servings per person", "").equals("3.7")) {
+        if (!carTravelDieselField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_food_otherfood",
-                    snacksDrinksLabel.getText().replace(" daily servings per person", ""));
+                    "input_footprint_transportation_miles2",
+                    carTravelDieselField.getText());
         }
-        if (!goodsLabel.getText().replace(" € / month", "").equals("1520")) {
+        if (!carTravelDieselLabel.getText().replace(" km/L", "").equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_goods_total",
-                    goodsLabel.getText().replace("€ / month", ""));
+                    "input_footprint_transportation_mpg2",
+                    carTravelDieselLabel.getText().replace(" km/L", ""));
         }
-        if (!servicesLabel.getText().replace(" € / month", "").equals("3428")) {
+        if (!carTravelElectricField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
-                    "input_footprint_shopping_services_total",
-                    servicesLabel.getText().replace("€ / month", ""));
+                    "input_footprint_transportation_miles3",
+                    carTravelElectricField.getText());
         }
-        if (localProduceCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "local_produce", true);
+        if (!carTravelElectricLabel.getText().replace(" km/Le", "").equals("0")) {
+            userService.updateInput(userService.currentUser.getName(),
+                    "input_footprint_transportation_mpg3",
+                    carTravelElectricLabel.getText().replace(" km/Le", ""));
         }
-        if (bikeCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike", true);
-        }
-        if (temperatureCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "temperature", true);
-        }
-        if (solarPanelsCheckbox.isSelected()) {
-            userService.updateExtraInput(userService.currentUser.getName(),
-                    "solar_panels", true);
-        }
-        Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
-        Float footprint = userService.saveFootprint(userService.currentUser.getName());
-        Window owner = saveButton.getScene().getWindow();
-        Stage current = (Stage) owner;
-        current.close();
     }
 }

@@ -82,11 +82,11 @@ public class UserControllerTest {
     public void setExtraInputTest() throws Exception {
         ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<Boolean> arg3Captor = ArgumentCaptor.forClass(Boolean.class);
+        ArgumentCaptor<String> arg3Captor = ArgumentCaptor.forClass(String.class);
         mvc.perform(get("/setExtraInput")
                 .param("name", "ceren")
                 .param("inputName", "input_size")
-                .param("value", "true")
+                .param("value", "5")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -94,7 +94,7 @@ public class UserControllerTest {
                 .setExtraInput(arg1Captor.capture(), arg2Captor.capture(), arg3Captor.capture());
         assertEquals("ceren", arg1Captor.getValue());
         assertEquals("input_size", arg2Captor.getValue());
-        assertEquals(true, arg3Captor.getValue());
+        assertEquals("5", arg3Captor.getValue());
     }
 
     @Test
