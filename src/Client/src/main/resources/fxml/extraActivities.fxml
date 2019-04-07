@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -11,15 +17,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="611.0" prefWidth="820.0" stylesheets="@../stylesheets/extraActivitiesStyle.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.ExtraActivityController">
+<AnchorPane prefHeight="611.0" prefWidth="820.0" stylesheets="@../stylesheets/extraActivitiesStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.ExtraActivityController">
    <children>
       <AnchorPane prefHeight="611.0" prefWidth="107.0">
          <children>
-            <Button fx:id="displayVeganMealButton" contentDisplay="TOP" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#displayVeganMeal" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+            <Button fx:id="displayVeganMealButton" contentDisplay="TOP" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#displayVeganMeal" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
                      <image>
                         <Image url="@../icons/icons8-vegan-food-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayLocalProduceButton" contentDisplay="TOP" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#displayLocalProduce" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
+                     <image>
+                        <Image url="@../icons/localProduce.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -32,16 +47,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="displayTemperatureButton" contentDisplay="TOP" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#displayTemperature" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icons8-temperature-inside-64.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="displaySolarPanelButton" contentDisplay="TOP" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#displaySolarPanel" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+            <Button fx:id="displaySolarPanelButton" contentDisplay="TOP" layoutX="14.0" layoutY="467.0" mnemonicParsing="false" onAction="#displaySolarPanel" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,9 +56,27 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="displayTemperatureButton" contentDisplay="TOP" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#displayTemperature" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-temperature-inside-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayPublicTransportButton" contentDisplay="TOP" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#displayPublicTransport" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
+                     <image>
+                        <Image url="@../icons/publicTransport.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="veganMealPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0" visible="false">
+      <AnchorPane fx:id="veganMealPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0">
          <children>
              <Line fx:id="line1" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
             <Text layoutX="248.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eating a vegetarian meal">
@@ -148,7 +172,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="solarPanelPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0">
+      <AnchorPane fx:id="solarPanelPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0" visible="false">
          <children>
              <Line fx:id="line4" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
             <Text layoutX="262.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Installing solar panels">
@@ -185,6 +209,64 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="saveButton" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="97.0" onAction="#save" text="SAVE!" />
+      <AnchorPane fx:id="localProducePane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0" visible="false">
+         <children>
+            <Line fx:id="line11" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
+            <Text layoutX="264.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buying local produce">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="addLocalProduceButton" contentDisplay="TOP" layoutX="267.0" layoutY="226.0" mnemonicParsing="false" onAction="#updateExtras" prefHeight="150.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="Add activity!" textFill="#23652b">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="116.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addActivity1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="publicTransportPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0" visible="false">
+         <children>
+            <Line fx:id="line21" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
+            <Text layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Using your public transport instead of your car">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Slider fx:id="publicTransportSlider" layoutX="144.0" layoutY="271.0" majorTickUnit="20.0" max="200.0" minorTickCount="0" prefHeight="24.0" prefWidth="427.0" showTickLabels="true" showTickMarks="true" />
+            <Text fill="#727272" layoutX="151.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many km did you travel using public transport &#10;that you would have traveled with your car?" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="addPublicTransportButton" contentDisplay="TOP" layoutX="267.0" layoutY="351.0" mnemonicParsing="false" onAction="#updateExtras" prefHeight="150.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="Add activity!" textFill="#23652b">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="116.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addActivity1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox alignment="CENTER" layoutX="305.0" layoutY="204.0" prefHeight="36.0" prefWidth="107.0" styleClass="textHolder">
+               <children>
+                  <Label fx:id="publicTransportLabel" text="0 km">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
