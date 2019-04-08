@@ -16,10 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -187,13 +184,24 @@ public class DashBoardController {
     @FXML
     private Label loweringTemp;
     @FXML
-    private Button refreshHintsButton;
+    private Button achiev1Tip;
+    @FXML
+    private Button achiev2Tip;
+    @FXML
+    private Button achiev3Tip;
+    @FXML
+    private Button achiev4Tip;
+    @FXML
+    private Button achiev5Tip;
+    @FXML
+    private Button achiev6Tip;
 
     /**
      * Loads the the necessary things before anything else.
      * @throws InterruptedException exception if interrupted
      */
     public void initialize() throws InterruptedException {
+
         hintText.setWrapText(true);
         hintText.setText(hints.randomHint());
         //set the dashboardPane to visible
