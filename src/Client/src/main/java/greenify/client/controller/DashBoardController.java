@@ -271,9 +271,9 @@ public class DashBoardController {
 
         addToolTip(achiev1Tip, "Starting off \n You did your first green activity!");
         addToolTip(achiev2Tip, "Social Butterfly \n You added three friends");
-        addToolTip(achiev3Tip, "Green Saver \n You saved * of CO2");
+        addToolTip(achiev3Tip, "Green Saver \n You saved 20 tonnes of CO2");
         addToolTip(achiev4Tip, "Animal Friend \n You have eaten 10 vegetarian meals");
-        addToolTip(achiev5Tip, "Tom Dumoulin \n You have biked * km");
+        addToolTip(achiev5Tip, "Tom Dumoulin \n You have biked 15 km");
         addToolTip(achiev6Tip, "Let it shine \n You installed solar panels");
     }
 
