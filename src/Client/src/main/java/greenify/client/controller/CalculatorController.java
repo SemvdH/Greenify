@@ -403,7 +403,6 @@ public class CalculatorController {
         Window owner = saveButton.getScene().getWindow();
         controller.updateLeaderboard();
         controller.updateAchievements();
-        Stage current = (Stage) owner;
         UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
                 owner, "Footprint saved!", "Your footprint is saved!");
         Stage current = (Stage) owner;
