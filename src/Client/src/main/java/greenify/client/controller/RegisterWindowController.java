@@ -30,6 +30,7 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -221,7 +222,7 @@ public class RegisterWindowController {
         //register the user with the provided username and password
         try {
             userService.registerUser(userNameText.getText(), passwordField.getText());
-        } catch (Exception ex) {
+        } catch (HttpClientErrorException ex) {
             UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
                     "This username has already been taken!");
             return;
@@ -486,7 +487,7 @@ public class RegisterWindowController {
         }
         try {
             extraActivityController.updateExtras();
-        } catch (Exception ex) {
+        } catch (NullPointerException ex) {
             System.out.println("Continue");
         }
         Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());

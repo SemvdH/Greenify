@@ -518,7 +518,7 @@ public class DashBoardController {
     }
 
     /**
-     * Adds a random hint to the left.
+     * This method adds a random hint to the side bar.
      */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
