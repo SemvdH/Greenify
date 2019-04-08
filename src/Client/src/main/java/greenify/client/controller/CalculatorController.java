@@ -408,7 +408,8 @@ public class CalculatorController {
     /**
      * Checks the food labels.
      */
-    public void checkFoodLabels() {
+    @SuppressWarnings("Duplicates")
+    private void checkFoodLabels() {
         if (!meatFishEggsLabel.getText().replace(" daily servings per person", "").equals("2.6")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_shopping_food_meatfisheggs",
@@ -441,7 +442,8 @@ public class CalculatorController {
     /**
      * Checks the house labels.
      */
-    public void checkHousingLabels() {
+    @SuppressWarnings("Duplicates")
+    private void checkHousingLabels() {
         if (!electricityField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_housing_electricity_dollars",
@@ -477,7 +479,8 @@ public class CalculatorController {
     /**
      * Checks the transport labels.
      */
-    public void checkTransportLabels() {
+    @SuppressWarnings("Duplicates")
+    private void checkTransportLabels() {
         if (!publicTransitField.getText().equals("0")) {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_publictrans",

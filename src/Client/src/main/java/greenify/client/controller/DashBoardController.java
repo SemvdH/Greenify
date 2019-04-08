@@ -25,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
@@ -636,47 +637,55 @@ public class DashBoardController {
      */
     public void updateAchievements() {
         Map achievements = userService.getAchievements(userService.currentUser.getName());
+        ColorAdjust desaturate = new ColorAdjust();
+        desaturate.setSaturation(-0.75);
         if ((Boolean)achievements.get("Starting off")) {
             achieve1.setOpacity(1);
         } else {
+            achieve1.setEffect(desaturate);
             achieve1.setOpacity(0.3);
         }
         if ((Boolean)achievements.get("Social butterfly")) {
             achieve2.setOpacity(1);
         } else {
+            achieve2.setEffect(desaturate);
             achieve2.setOpacity(0.3);
         }
         if ((Boolean)achievements.get("Green saver")) {
             achieve3.setOpacity(1);
         } else {
+            achieve3.setEffect(desaturate);
             achieve3.setOpacity(0.3);
         }
         if ((Boolean)achievements.get("Animal friend")) {
             achieve4.setOpacity(1);
         } else {
+            achieve4.setEffect(desaturate);
             achieve4.setOpacity(0.3);
         }
         if ((Boolean)achievements.get("Tom Dumoulin")) {
             achieve5.setOpacity(1);
         } else {
+            achieve5.setEffect(desaturate);
             achieve5.setOpacity(0.3);
         }
         if ((Boolean)achievements.get("Let it shine")) {
             achieve6.setOpacity(1);
         } else {
+            achieve6.setEffect(desaturate);
             achieve6.setOpacity(0.3);
         }
     }
 
     //class for the animations on the navigation buttons
-    public class MyButtonSkin extends ButtonSkin {
+    private class MyButtonSkin extends ButtonSkin {
         /**
          * adds a skin and scale animation to a button.
          * the scale transition is for hovering over it so it then scales up
          * and scales down when you stop hovering over it.
          * @param button the button to add the animation to
          */
-        public MyButtonSkin(Button button) {
+        private MyButtonSkin(Button button) {
             //inherit the button properties
             super(button);
             //transition to scale up on hover
