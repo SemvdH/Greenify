@@ -63,7 +63,6 @@
             <Line endX="104.0" layoutX="105.0" layoutY="178.0" scaleY="0.7" startX="-100.0" stroke="#e3ffe8" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line endX="104.0" layoutX="109.0" layoutY="223.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Line fx:id="pathLine" endX="100.0" endY="28.0" fill="#1b9736" layoutX="8.0" layoutY="323.0" startX="-100.0" startY="28.0" stroke="#5a635c" />
-            <Line endX="104.0" layoutX="105.0" layoutY="271.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" />
             <Line endX="104.0" layoutX="106.0" layoutY="270.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Label fx:id="hintText" alignment="TOP_LEFT" layoutX="14.0" layoutY="420.0" prefHeight="218.0" prefWidth="187.0" text="Hints" textFill="#c2cdc4">
                <font>
@@ -84,6 +83,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Line endX="104.0" layoutX="108.0" layoutY="88.0" startX="-100.0" stroke="#e3ffe8" strokeWidth="0.7" />
          </children></AnchorPane>
       <AnchorPane fx:id="activitiesPane" layoutX="214.0" prefHeight="703.0" prefWidth="820.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

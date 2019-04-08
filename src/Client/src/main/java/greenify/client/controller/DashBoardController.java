@@ -516,6 +516,7 @@ public class DashBoardController {
      * Opens the calculator.
      * @throws IOException if the Application doesn't load.
      */
+    @SuppressWarnings("Duplicates")
     public void openCalculator() throws IOException, InterruptedException {
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/calculator.fxml"));
@@ -579,6 +580,7 @@ public class DashBoardController {
      * Leaderboard is updating.
      * @throws InterruptedException throws exception
      */
+    @SuppressWarnings("Duplicates")
     public void updateLeaderboard() throws InterruptedException {
         //global leaderboard
         globalLeaderboard.getItems().clear();
@@ -607,6 +609,7 @@ public class DashBoardController {
      * Friends tables are updating.
      * @throws InterruptedException throws exception
      */
+    @SuppressWarnings("Duplicates")
     public void updateFriends() throws InterruptedException {
         List<String> wholeList = userService.getFriendNames(userService.currentUser.getName());
         wholeList.add(userService.currentUser.getName());
