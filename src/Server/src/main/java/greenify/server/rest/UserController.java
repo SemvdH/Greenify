@@ -185,5 +185,15 @@ public class UserController {
     public Map<String, Boolean> getAchievements(@RequestParam(value = "name") String name) {
         return userService.getAchievements(name);
     }
+
+    /**
+     * This method gets the result for schema.
+     * @param name name of the user
+     * @return map of all results of the user
+     */
+    @RequestMapping("/getResults")
+    public Map<String, String> getResults(@RequestParam(value = "name") String name) {
+        return userService.getResults(name);
+    }
 }
 
