@@ -163,6 +163,12 @@ public class UserServiceTest {
         userService.getAchievements("mika");
         Mockito.verify(userService).getAchievements("mika");
     }
+
+    @Test
+    public void getResultsTest() throws Exception {
+        userService.getResults("mika");
+        Mockito.verify(userService).getResults("mika");
+    }
 }
 
 

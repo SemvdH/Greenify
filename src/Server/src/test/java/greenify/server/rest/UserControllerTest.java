@@ -250,4 +250,16 @@ public class UserControllerTest {
         assertEquals("mika", arg1Captor.getValue());
     }
 
+    @Test
+    public void getResultsTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/getResults")
+                .param("name", "mika")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).getResults(arg1Captor.capture());
+        assertEquals("mika", arg1Captor.getValue());
+    }
+
 }
