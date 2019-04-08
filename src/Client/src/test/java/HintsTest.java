@@ -1,5 +1,6 @@
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import greenify.client.Hints;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class HintsTest {
     public void hintsContainsTest() {
         Hints test = new Hints();
         assertTrue(test.hints.contains("27,000 trees are cut down "
-                + "each day so we can have toilet paper."));
+                + "every day so we can have toilet paper."));
     }
 
     @Test
@@ -24,6 +25,20 @@ public class HintsTest {
         String random = test.randomHint();
         assertTrue(test.hints.contains(random));
     }
+
+    @Test
+    public void hintsContainsTestTwo() {
+        Hints test = new Hints();
+        assertTrue(test.hints.contains("Plastic bad, very bad."));
+    }
+
+
+    @Test
+    public void hintsNotNullTest() {
+        Hints test = new Hints();
+        assertNotNull(test.hints);
+    }
+
 }
 
 

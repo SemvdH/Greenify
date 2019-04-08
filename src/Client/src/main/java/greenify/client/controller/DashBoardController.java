@@ -237,20 +237,6 @@ public class DashBoardController {
         developmentScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         friendUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         friendScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
-        if (pieChart != null) {
-            ObservableList<PieChart.Data> pieChartData =
-                    FXCollections.observableArrayList(
-                            new PieChart.Data("Vegan Meal", 100),
-                            new PieChart.Data("Public Transport", 200),
-                            new PieChart.Data("Home Temperature", 50),
-                            new PieChart.Data("Bike", 75),
-                            new PieChart.Data("Local Product", 110),
-                            new PieChart.Data("Solar Panel", 300)
-                    );
-            pieChart.setTitle("FOOTPRINT DISTRIBUTION");
-            pieChart.setMaxSize(1000, 1000);
-            pieChart.setData(pieChartData);
-        }
         List<String> friendList = userService.getFriendNames(userService.currentUser.getName());
         for (int i = 0; i < friendList.size(); i++) {
             Friend friend = new Friend(friendList.get(i),
@@ -260,6 +246,7 @@ public class DashBoardController {
         friendsTable.setItems(data);
         updateLeaderboard();
         updateAchievements();
+        updatePiechart();
         calculateFootPrintButton.setSkin(new ClickButtonSkin(calculateFootPrintButton));
         addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
         addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
@@ -317,7 +304,7 @@ public class DashBoardController {
      * Sorts the scores of users.
      * @param users the list of users
      */
-    private void sortScores(List<String> users) {
+    public void sortScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
                 Double first = userService.getFootprint(users.get(i));
@@ -340,7 +327,7 @@ public class DashBoardController {
      * Sorts the scores of users.
      * @param users the list of users
      */
-    private List<String> sortDiffScores(List<String> users) throws InterruptedException {
+    public List<String> sortDiffScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
                 Double firstDiff = userService.getFirstFootprint(users.get(i)) - userService
@@ -366,7 +353,7 @@ public class DashBoardController {
      * Adds a fade transition for switching between the different panes.
      * @param node the node on which the transition needs to act
      */
-    private void addFadeTransition(Node node) {
+    public void addFadeTransition(Node node) {
         fadeTrans = new FadeTransition(Duration.millis(400), node);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1.0);
@@ -440,7 +427,7 @@ public class DashBoardController {
      * Displays the user profile pane.
      * @param event the event (clicking the button)
      */
-    public void displayUser(ActionEvent event) {
+    public void displayUser(ActionEvent event) throws InterruptedException {
         System.out.println(userService.currentUser.getName());
         System.out.println(userService.getFootprint(userService.currentUser.getName()));
         footprintLabel.setText("" + userService.getFootprint(userService.currentUser.getName()));
@@ -456,6 +443,7 @@ public class DashBoardController {
         userPane.setVisible(true);
         activitiesPane.setVisible(false);
         friendsPane.setVisible(false);
+        updatePiechart();
     }
 
     /**
@@ -531,7 +519,7 @@ public class DashBoardController {
     }
 
     /**
-     * Adds a random hint to the left.
+     * This method adds a random hint to the side bar.
      */
     public void addRandomHints() {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(400), hintText);
@@ -603,6 +591,32 @@ public class DashBoardController {
         }
         globalLeaderboard.setItems(globalLeaderData);
         developmentLeaderboard.setItems(developmentData);
+    }
+
+    /**
+     * The method updating piechart.
+     * @throws InterruptedException exception
+     */
+    public void updatePiechart() throws InterruptedException {
+        Map<String, String> resultMap = userService.getResults(userService.currentUser.getName());
+        if (pieChart != null) {
+            ObservableList<PieChart.Data> pieChartData =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Transport",
+                                    Double.parseDouble(resultMap.get("transport"))),
+                            new PieChart.Data("Housing",
+                                    Double.parseDouble(resultMap.get("housing"))),
+                            new PieChart.Data("Food",
+                                    Double.parseDouble(resultMap.get("food"))),
+                            new PieChart.Data("Goods",
+                                    Double.parseDouble(resultMap.get("goods"))),
+                            new PieChart.Data("Services",
+                                    Double.parseDouble(resultMap.get("services")))
+                    );
+            pieChart.setTitle("FOOTPRINT DISTRIBUTION");
+            pieChart.setMaxSize(1000, 1000);
+            pieChart.setData(pieChartData);
+        }
     }
 
     /**

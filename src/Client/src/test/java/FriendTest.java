@@ -1,8 +1,8 @@
+import static org.junit.Assert.assertEquals;
+
 import greenify.client.Friend;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import static org.junit.Assert.*;
 
 public class FriendTest {
     @Test

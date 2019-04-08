@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import greenify.client.rest.UserService;
 import greenify.common.UserDto;
 import org.junit.Test;
@@ -13,9 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -162,6 +162,12 @@ public class UserServiceTest {
     public void getAchievementsTest() throws Exception {
         userService.getAchievements("mika");
         Mockito.verify(userService).getAchievements("mika");
+    }
+
+    @Test
+    public void getResultsTest() throws Exception {
+        userService.getResults("mika");
+        Mockito.verify(userService).getResults("mika");
     }
 }
 

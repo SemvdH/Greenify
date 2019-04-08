@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -67,7 +68,7 @@ public class UserController {
         //log the user in with the userService method
         try {
             userService.loginUser(usernameField.getText(), passwordField.getText());
-        } catch (RuntimeException ex) {
+        } catch (HttpClientErrorException ex) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
                     "Your username or password is incorrect!");
             return;

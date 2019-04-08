@@ -398,7 +398,11 @@ public class CalculatorController {
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
         }
-        extraActivityController.updateExtras();
+        try {
+            extraActivityController.updateExtras();
+        } catch (Exception ex) {
+            System.out.println("continue");
+        }
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         controller.updateLeaderboard();

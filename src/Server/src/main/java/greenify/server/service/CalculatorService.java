@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -107,6 +108,44 @@ public class CalculatorService {
         inputs.put("input_footprint_shopping_food_fruitvegetables", netVegan + "");
         inputs.put("input_footprint_shopping_goods_total", netShopping + "");
         user.setFootPrintInputs(inputs);
+    }
+
+    public Map<String, String> getResults(Map<String, String> map) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("accept", MediaType.APPLICATION_JSON_VALUE);
+        headers.set("app_id", "a98272e3");
+        headers.set("app_key", "b9167c4918cb2b3143614b595065d83b");
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl("https://apis.berkeley.edu/coolclimate/footprint");
+        for (String inputId : map.keySet()) {
+            builder = builder.queryParam(inputId, map.get(inputId));
+        }
+        ResponseEntity<String> response = restTemplate
+                .exchange(builder.build().encode().toUri(), HttpMethod.GET,
+                        entity, String.class);
+        String transport = response.getBody().substring(Objects.requireNonNull(response.getBody())
+                .indexOf("<result_transport_total>")
+                + 24, response.getBody().indexOf("</result_transport_total>"));
+        String housing = response.getBody().substring(Objects.requireNonNull(response.getBody())
+                .indexOf("<result_housing_total>")
+                + 22, response.getBody().indexOf("</result_housing_total>"));
+        String food = response.getBody().substring(Objects.requireNonNull(response.getBody())
+                .indexOf("<result_food_total>")
+                + 19, response.getBody().indexOf("</result_food_total>"));
+        String goods = response.getBody().substring(Objects.requireNonNull(response.getBody())
+                .indexOf("<result_goods_total>")
+                + 20, response.getBody().indexOf("</result_goods_total>"));
+        String services = response.getBody().substring(Objects.requireNonNull(response.getBody())
+                .indexOf("<result_services_total>")
+                + 23, response.getBody().indexOf("</result_services_total>"));
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("transport", transport);
+        resultMap.put("housing", housing);
+        resultMap.put("food", food);
+        resultMap.put("goods", goods);
+        resultMap.put("services", services);
+        return resultMap;
     }
 }
 

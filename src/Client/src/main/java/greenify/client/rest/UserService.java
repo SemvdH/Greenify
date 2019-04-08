@@ -302,6 +302,23 @@ public class UserService {
     }
 
     /**
+     * Gets the results of a user.
+     * @param name name of the user
+     * @return Map with all results
+     */
+    @SuppressWarnings("Duplicates")
+    public Map<String, String> getResults(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getResults")
+                .queryParam("name", name);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        return this.restTemplate.getForObject(builder.build()
+                .encode().toUri(), Map.class);
+    }
+
+    /**
      * Gets the list of all users.
      */
     @SuppressWarnings("Duplicates")

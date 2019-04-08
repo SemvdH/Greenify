@@ -281,6 +281,17 @@ public class UserService {
     }
 
     /**
+     * This method gets all achievements of a user.
+     * @param name name of the user
+     * @return map with all achievements of a user
+     */
+    public Map<String, String> getResults(String name) {
+        User user = userRepository.findByName(name);
+        Map<String, String> results = calculatorService.getResults(user.getFootPrintInputs());
+        return results;
+    }
+
+    /**
      * This method gets the list of all users.
      * @return list of all users
      */
