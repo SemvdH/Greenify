@@ -221,7 +221,7 @@ public class RegisterWindowController {
         //register the user with the provided username and password
         try {
             userService.registerUser(userNameText.getText(), passwordField.getText());
-        } catch (RuntimeException ex) {
+        } catch (Exception ex) {
             UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
                     "This username has already been taken!");
             return;
@@ -483,6 +483,11 @@ public class RegisterWindowController {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
+        }
+        try {
+            extraActivityController.updateExtras();
+        } catch (Exception ex) {
+            System.out.println("Continue");
         }
         Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
