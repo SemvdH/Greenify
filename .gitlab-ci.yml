@@ -35,3 +35,13 @@ test:
       - build
       - .gradle
       
+# Code coverage badge
+code-coverage:
+  stage: code-coverage
+  script: 
+    - mvn -B clean verify
+  after_script:
+    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; print 100*covered/instructions, "% instructrions covered" }' target/site/jacoco/jacoco.csv
+    - awk -F"," '{ instructions += $6 + $7; covered += $7 } END { print covered, "/", instructions, " branches covered"; print 100*covered/instructions, "% branches covered" }' target/site/jacoco/jacoco.csv
+    - echo \"$(cat target/site/jacoco/jacoco.csv)% covered\"
+  coverage: '/(\d+.\d+) % +branches covered/'
