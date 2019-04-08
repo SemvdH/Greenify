@@ -53,6 +53,17 @@
   -fx-border-color: #497251;
 }
 
+#logOutButton {
+  -fx-background-color: #5a635c;
+  -fx-text-fill: #e3efe4;
+}
+#logOutButton:hover {
+  -fx-background-color: #e08f8f;
+}
+#logOutButton:pressed {
+  -fx-background-color: #ba3737;
+}
+
 /*friends table*/
 .table-view .column-header {
   /*-fx-background-color: linear-gradient(#4b7a3d, #588c58);*/

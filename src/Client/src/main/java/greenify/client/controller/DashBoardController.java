@@ -317,7 +317,7 @@ public class DashBoardController {
      * Sorts the scores of users.
      * @param users the list of users
      */
-    public void sortScores(List<String> users) throws InterruptedException {
+    private void sortScores(List<String> users) {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
                 Double first = userService.getFootprint(users.get(i));
@@ -340,7 +340,7 @@ public class DashBoardController {
      * Sorts the scores of users.
      * @param users the list of users
      */
-    public List<String> sortDiffScores(List<String> users) throws InterruptedException {
+    private List<String> sortDiffScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
                 Double firstDiff = userService.getFirstFootprint(users.get(i)) - userService
@@ -366,7 +366,7 @@ public class DashBoardController {
      * Adds a fade transition for switching between the different panes.
      * @param node the node on which the transition needs to act
      */
-    public void addFadeTransition(Node node) {
+    private void addFadeTransition(Node node) {
         fadeTrans = new FadeTransition(Duration.millis(400), node);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1.0);
