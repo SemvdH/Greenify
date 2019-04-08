@@ -8,13 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,8 +80,6 @@ public class ExtraActivityController {
     private Label publicTransportLabel;
     @FXML
     private Slider publicTransportSlider;
-    @FXML
-    private Button saveButton;
 
 
     /**
@@ -216,29 +211,26 @@ public class ExtraActivityController {
         publicTransportPane.setVisible(true);
     }
 
-
-
     /**
      * The method updates the values.
      */
     @SuppressWarnings("Duplicates")
-    public void save(ActionEvent event) throws InterruptedException {
-        Window owner = saveButton.getScene().getWindow();
-        Float footprint = userService.saveFootprint(userService.currentUser.getName());
-        controller.updateLeaderboard();
-        controller.updateAchievements();
-        Stage current = (Stage) owner;
-        current.close();
-        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Activities are added!",
-                 "Your new activities are added!");
+    public void save(ActionEvent event) {
+        try {
+            updateExtras();
+            Float footprint = userService.saveFootprint(userService.currentUser.getName());
+            controller.updateLeaderboard();
+            controller.updateAchievements();
+        } catch (Exception ex) {
+            System.out.println("continue");
+        }
     }
 
     /**
      * The method updates the values of extras.
-     * @param event user clicks to button
      */
     @SuppressWarnings("Duplicates")
-    public void updateExtras(ActionEvent event) throws InterruptedException {
+    public void updateExtras() throws InterruptedException {
         if (!bikeLabel.getText().replace(" km", "").equals("0")) {
             userService.updateExtraInput(userService.currentUser.getName(),
                     "bike",
@@ -251,11 +243,44 @@ public class ExtraActivityController {
         }
         if (!temperatureLabel.getText().replace(" Degrees", "").equals("0")) {
             userService.updateExtraInput(userService.currentUser.getName(),
-                    "bike",
+                    "temperature",
                     temperatureLabel.getText().replace(" Degrees", ""));
         }
-        controller.updateAchievements();
-        controller.updateLeaderboard();
+        if (!publicTransportLabel.getText().replace(" km", "").equals("0")) {
+            userService.updateExtraInput(userService.currentUser.getName(),
+                    "public_transport",
+                    publicTransportLabel.getText().replace(" km", ""));
+        }
+    }
+
+    /**
+     * The method updates the values of extras.
+     */
+    @SuppressWarnings("Duplicates")
+    public void updateExtraVegan() throws InterruptedException {
+        try {
+            userService.updateExtraInput(userService.currentUser.getName(), "vegan", "1");
+            Float footprint = userService.saveFootprint(userService.currentUser.getName());
+            controller.updateAchievements();
+            controller.updateLeaderboard();
+        } catch (Exception ex) {
+            System.out.println("continue");
+        }
+    }
+
+    /**
+     * The method updates the values of extras.
+     */
+    @SuppressWarnings("Duplicates")
+    public void updateExtraLocal() throws InterruptedException {
+        try {
+            userService.updateExtraInput(userService.currentUser.getName(), "local_produce", "1");
+            Float footprint = userService.saveFootprint(userService.currentUser.getName());
+            controller.updateAchievements();
+            controller.updateLeaderboard();
+        } catch (Exception ex) {
+            System.out.println("continue");
+        }
     }
 
     public class TranslateButtonSkin extends ButtonSkin {
