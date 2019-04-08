@@ -81,5 +81,16 @@
   -fx-font-size: 14px;
 }
 
+.toolTipButton {
+  -fx-background-color: transparent;
+  -fx-padding: 0 0 0 0;
+}
+
+.tooltip {
+  -fx-background-color: #d0f2d3;
+  -fx-text-fill: #364c38;
+  -fx-font-size: 14px;
+}
+
 
 
