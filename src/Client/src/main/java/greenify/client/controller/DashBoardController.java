@@ -6,8 +6,10 @@ import greenify.client.Friend;
 import greenify.client.Hints;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +18,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.*;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -28,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -258,6 +266,9 @@ public class DashBoardController {
 
         addRandomHints();
 
+        Tooltip tooltip = new Tooltip("tip");
+        hackTooltipStartTiming(tooltip);
+
         addToolTip(achiev1Tip, "Starting off \n You did your first green activity!");
         addToolTip(achiev2Tip, "Social Butterfly \n You added three friends");
         addToolTip(achiev3Tip, "Green Saver \n You saved * of CO2");
@@ -271,8 +282,35 @@ public class DashBoardController {
      * @param button the button to add the tooltip to.
      * @param message the message to be displayed in the tooltip.
      */
-    public void addToolTip(Button button, String message) {
+    private void addToolTip(Button button, String message) {
         button.setTooltip(new Tooltip(message));
+    }
+
+    /**
+     * changes the delay time between hovering over something with a tooltip and when the
+     * tooltip is displayed.
+     * @param tooltip the tooltip to change the delay of
+     */
+    private static void hackTooltipStartTiming(Tooltip tooltip) {
+
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+            fieldBehavior.setAccessible(true);
+            Object objBehavior = fieldBehavior.get(tooltip);
+
+            Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+            fieldTimer.setAccessible(true);
+            Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add(new KeyFrame(new Duration(150)));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+            e.getMessage();
+        } catch (IllegalAccessException e) {
+            e.getMessage();
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -389,7 +427,8 @@ public class DashBoardController {
         dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
         fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
-        Map<String, String> extraMap = userService.getExtraInputs(userService.currentUser.getName());
+        Map<String, String> extraMap = userService.getExtraInputs(userService.currentUser
+                .getName());
         localProduce.setText(extraMap.get("local_produce"));
         bike.setText(extraMap.get("bike"));
         solarPanels.setText(extraMap.get("solar_panels"));
@@ -433,7 +472,7 @@ public class DashBoardController {
     }
 
     /**
-     * Logs out the user
+     * Logs out the user.
      * @param event the event (clicking the button)
      * @throws IOException if the Application doesn't load.
      */
@@ -597,32 +636,32 @@ public class DashBoardController {
      */
     public void updateAchievements() {
         Map achievements = userService.getAchievements(userService.currentUser.getName());
-        if((Boolean)achievements.get("Starting off")) {
+        if ((Boolean)achievements.get("Starting off")) {
             achieve1.setOpacity(1);
         } else {
             achieve1.setOpacity(0.3);
         }
-        if((Boolean)achievements.get("Social butterfly")) {
+        if ((Boolean)achievements.get("Social butterfly")) {
             achieve2.setOpacity(1);
         } else {
             achieve2.setOpacity(0.3);
         }
-        if((Boolean)achievements.get("Green saver")) {
+        if ((Boolean)achievements.get("Green saver")) {
             achieve3.setOpacity(1);
         } else {
             achieve3.setOpacity(0.3);
         }
-        if((Boolean)achievements.get("Animal friend")) {
+        if ((Boolean)achievements.get("Animal friend")) {
             achieve4.setOpacity(1);
         } else {
             achieve4.setOpacity(0.3);
         }
-        if((Boolean)achievements.get("Tom Dumoulin")) {
+        if ((Boolean)achievements.get("Tom Dumoulin")) {
             achieve5.setOpacity(1);
         } else {
             achieve5.setOpacity(0.3);
         }
-        if((Boolean)achievements.get("Let it shine")) {
+        if ((Boolean)achievements.get("Let it shine")) {
             achieve6.setOpacity(1);
         } else {
             achieve6.setOpacity(0.3);

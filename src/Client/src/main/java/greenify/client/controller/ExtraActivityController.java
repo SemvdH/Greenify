@@ -229,7 +229,8 @@ public class ExtraActivityController {
         controller.updateAchievements();
         Stage current = (Stage) owner;
         current.close();
-        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Activities are added!",
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner,
+                "Activities are added!",
                  "Your new activities are added!");
     }
 
