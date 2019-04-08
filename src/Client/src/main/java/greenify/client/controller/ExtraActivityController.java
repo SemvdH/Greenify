@@ -221,7 +221,7 @@ public class ExtraActivityController {
             Float footprint = userService.saveFootprint(userService.currentUser.getName());
             controller.updateLeaderboard();
             controller.updateAchievements();
-        } catch (Exception ex) {
+        } catch (InterruptedException ex) {
             System.out.println("continue");
         }
     }
@@ -263,7 +263,7 @@ public class ExtraActivityController {
             Float footprint = userService.saveFootprint(userService.currentUser.getName());
             controller.updateAchievements();
             controller.updateLeaderboard();
-        } catch (Exception ex) {
+        } catch (NullPointerException ex) {
             System.out.println("continue");
         }
     }
@@ -278,7 +278,7 @@ public class ExtraActivityController {
             Float footprint = userService.saveFootprint(userService.currentUser.getName());
             controller.updateAchievements();
             controller.updateLeaderboard();
-        } catch (Exception ex) {
+        } catch (NullPointerException ex) {
             System.out.println("continue");
         }
     }

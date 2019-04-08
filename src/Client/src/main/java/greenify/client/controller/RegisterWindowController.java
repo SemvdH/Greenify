@@ -487,7 +487,7 @@ public class RegisterWindowController {
         }
         try {
             extraActivityController.updateExtras();
-        } catch (Exception ex) {
+        } catch (NullPointerException ex) {
             System.out.println("Continue");
         }
         Float firstFootprint = userService.saveFirstFootprint(userService.currentUser.getName());
