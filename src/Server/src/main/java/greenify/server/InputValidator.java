@@ -190,7 +190,7 @@ public class InputValidator {
         map.put("vegan", "0");
         map.put("local_produce", "0");
         map.put("bike", "0");
-        map.put("car", "0");
+        map.put("public_transport", "0");
         map.put("temperature", "0");
         map.put("solar_panels", "0");
         return map;

@@ -263,7 +263,6 @@ public class DashBoardController {
         addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
         addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
         addExtraActivityButton2.setSkin(new ClickButtonSkin(addExtraActivityButton2));
-
         addRandomHints();
 
         Tooltip tooltip = new Tooltip("tip");
@@ -317,30 +316,31 @@ public class DashBoardController {
      * Sorts the scores of users.
      * @param users the list of users
      */
-    public void sortScores(List<String> users) throws InterruptedException {
+    public List<String> sortScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
-                Double firstScore = userService.getFootprint(users.get(i));
-                Double secondScore = userService.getFootprint(users.get(j));
-                if (i > j && firstScore < secondScore) {
+                Double first = userService.getFootprint(users.get(i));
+                Double second = userService.getFootprint(users.get(j));
+                if (i < j && first > second) {
                     String temp = users.get(i);
                     users.set(i, users.get(j));
                     users.set(j, temp);
                 }
-                if (i < j && firstScore > secondScore) {
+                if (i > j && first < second) {
                     String temp = users.get(i);
                     users.set(i, users.get(j));
                     users.set(j, temp);
                 }
             }
         }
+        return users;
     }
 
     /**
      * Sorts the scores of users.
      * @param users the list of users
      */
-    public void sortDiffScores(List<String> users) throws InterruptedException {
+    public List<String> sortDiffScores(List<String> users) throws InterruptedException {
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size(); j++) {
                 Double firstDiff = userService.getFirstFootprint(users.get(i)) - userService
@@ -359,6 +359,7 @@ public class DashBoardController {
                 }
             }
         }
+        return users;
     }
 
     /**
@@ -427,8 +428,8 @@ public class DashBoardController {
         dairy.setText(inputMap.get("input_footprint_shopping_food_dairy"));
         fruits.setText(inputMap.get("input_footprint_shopping_food_fruitvegetables"));
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
-        Map<String, String> extraMap = userService.getExtraInputs(userService.currentUser
-                .getName());
+        Map<String, String> extraMap = userService
+                .getExtraInputs(userService.currentUser.getName());
         localProduce.setText(extraMap.get("local_produce"));
         bike.setText(extraMap.get("bike"));
         solarPanels.setText(extraMap.get("solar_panels"));
@@ -579,21 +580,23 @@ public class DashBoardController {
      * @throws InterruptedException throws exception
      */
     public void updateLeaderboard() throws InterruptedException {
-        List<String> userList = userService.getAllUsers();
         //global leaderboard
         globalLeaderboard.getItems().clear();
         globalLeaderData.removeAll();
-        sortScores(userList);
+        List<String> userList = userService.getAllUsers();
+        List<String> firstList = sortScores(userList);
         //development leaderboard
         developmentLeaderboard.getItems().clear();
         developmentData.removeAll();
-        sortDiffScores(userList);
-        for (int j = 0; j < userList.size(); j++) {
-            Friend user = new Friend(userList.get(j), userService.getFootprint(userList.get(j)));
-            double diff = Math.round((userService.getFirstFootprint(userList.get(j))
-                    - userService.getFootprint(userList.get(j))) * 10) / 10.0;
-            Friend diffUser = new Friend(userList.get(j), diff);
+        List<String> secondList = sortDiffScores(userList);
+        for (int i = userList.size() - 1; i >= 0; i--) {
+            Friend user = new Friend(firstList.get(i), userService.getFootprint(firstList.get(i)));
             globalLeaderData.add(user);
+        }
+        for (int j = 0; j < userList.size(); j++) {
+            double diff = Math.round((userService.getFirstFootprint(secondList.get(j))
+                    - userService.getFootprint(secondList.get(j))) * 10) / 10.0;
+            Friend diffUser = new Friend(secondList.get(j), diff);
             developmentData.add(diffUser);
         }
         globalLeaderboard.setItems(globalLeaderData);

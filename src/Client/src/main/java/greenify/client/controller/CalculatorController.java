@@ -39,6 +39,9 @@ public class CalculatorController {
     @Autowired
     DashBoardController controller;
 
+    @Autowired
+    ExtraActivityController extraActivityController;
+
     //navigation panes
     @FXML
     private AnchorPane getStartedPane;
@@ -395,10 +398,12 @@ public class CalculatorController {
                     "input_footprint_shopping_services_total",
                     servicesLabel.getText().replace("€ / month", ""));
         }
+        extraActivityController.updateExtras();
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
         Window owner = saveButton.getScene().getWindow();
         controller.updateLeaderboard();
         controller.updateAchievements();
+        Stage current = (Stage) owner;
         UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION,
                 owner, "Footprint saved!", "Your footprint is saved!");
         Stage current = (Stage) owner;
