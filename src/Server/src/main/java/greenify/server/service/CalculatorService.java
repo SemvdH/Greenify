@@ -91,16 +91,21 @@ public class CalculatorService {
         Map<String, String> inputs = user.getFootPrintInputs();
         Float netPublic = Float.parseFloat(user.getFootPrintInputs()
                 .get("input_footprint_transportation_publictrans"))
-                - Float.parseFloat(user.getExtraInputs().get("bike"));
+                + Float.parseFloat(user.getExtraInputs().get("public_transport"));
         Float netCar = Float.parseFloat(user.getFootPrintInputs()
                 .get("input_footprint_transportation_miles1"))
-                - Float.parseFloat(user.getExtraInputs().get("car"));
+                - Float.parseFloat(user.getExtraInputs().get("public_transport"))
+                - Float.parseFloat(user.getExtraInputs().get("bike"));
         Float netVegan = Float.parseFloat(user.getFootPrintInputs()
                 .get("input_footprint_shopping_food_fruitvegetables"))
                 + Float.parseFloat(user.getExtraInputs().get("vegan"));
+        Float netShopping = Float.parseFloat(user.getFootPrintInputs()
+                .get("input_footprint_shopping_goods_total"))
+                - Float.parseFloat(user.getExtraInputs().get("local_produce")) * 100;
         inputs.put("input_footprint_transportation_publictrans", netPublic + "");
         inputs.put("input_footprint_transportation_miles1", netCar + "");
         inputs.put("input_footprint_shopping_food_fruitvegetables", netVegan + "");
+        inputs.put("input_footprint_shopping_goods_total", netShopping + "");
         user.setFootPrintInputs(inputs);
     }
 }
