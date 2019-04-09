@@ -339,5 +339,4 @@ public class UserServiceTest {
         userService.deleteAccount("alex");
         verify(userRepository, times(1)).delete(alex);
     }
-    
 }

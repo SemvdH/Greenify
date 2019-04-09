@@ -262,4 +262,16 @@ public class UserControllerTest {
         assertEquals("mika", arg1Captor.getValue());
     }
 
+    @Test
+    public void deleteAccountTest() throws Exception {
+        ArgumentCaptor<String> arg1Captor = ArgumentCaptor.forClass(String.class);
+        mvc.perform(get("/deleteAccount")
+                .param("name", "merel")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(userService, times(1)).deleteAccount(arg1Captor.capture());
+        assertEquals("merel", arg1Captor.getValue());
+    }
+
 }
