@@ -195,5 +195,14 @@ public class UserController {
     public Map<String, String> getResults(@RequestParam(value = "name") String name) {
         return userService.getResults(name);
     }
+
+    /**
+     * This method deletes a user from the database.
+     * @param name name of the user
+     */
+    @RequestMapping("/deleteAccount")
+    public void removeFriend(@RequestParam(value = "name") String name) {
+        userService.deleteAccount(name);
+    }
 }
 
