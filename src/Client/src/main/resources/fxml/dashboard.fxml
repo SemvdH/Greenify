@@ -241,71 +241,83 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Pane layoutX="545.0" layoutY="130.0" prefHeight="342.0" prefWidth="255.0" style="-fx-background-color: #f4fff4;">
+            <Pane layoutX="545.0" layoutY="130.0" prefHeight="255.0" prefWidth="255.0" style="-fx-background-color: #f4fff4;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="26.0" prefHeight="46.0" prefWidth="115.0" text="Meat fish eggs">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="46.0" prefWidth="115.0" text="Meat fish eggs">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="90.0" prefHeight="46.0" prefWidth="115.0" text="Grains/baked &#10;foods" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="60.0" prefHeight="46.0" prefWidth="115.0" text="Grains/baked &#10;foods" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="154.0" prefHeight="46.0" prefWidth="115.0" text="Dairy">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="106.0" prefHeight="46.0" prefWidth="115.0" text="Dairy">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="218.0" prefHeight="46.0" prefWidth="115.0" text="Fruits vegetables">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="152.0" prefHeight="46.0" prefWidth="115.0" text="Fruits vegetables">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="282.0" prefHeight="46.0" prefWidth="115.0" text="Snacks drinks">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="198.0" prefHeight="46.0" prefWidth="115.0" text="Snacks drinks">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="meat" layoutX="171.0" layoutY="41.0" styleClass="activityField" text="Label" />
-                  <Label fx:id="grains" layoutX="171.0" layoutY="105.0" styleClass="activityField" text="Label" />
-                  <Label fx:id="dairy" layoutX="171.0" layoutY="169.0" styleClass="activityField" text="Label" />
-                  <Label fx:id="fruits" layoutX="171.0" layoutY="233.0" styleClass="activityField" text="Label" />
-                  <Label fx:id="snacks" layoutX="171.0" layoutY="297.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="meat" layoutX="171.0" layoutY="29.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="grains" layoutX="171.0" layoutY="75.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="dairy" layoutX="171.0" layoutY="121.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="fruits" layoutX="171.0" layoutY="167.0" styleClass="activityField" text="Label" />
+                  <Label fx:id="snacks" layoutX="171.0" layoutY="213.0" styleClass="activityField" text="Label" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="545.0" layoutY="488.0" prefHeight="32.0" prefWidth="255.0" text="Extras!" textAlignment="CENTER" textFill="#107222">
+            <Label alignment="CENTER" layoutX="545.0" layoutY="385.0" prefHeight="32.0" prefWidth="255.0" text="Extras!" textAlignment="CENTER" textFill="#107222">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Pane layoutX="545.0" layoutY="520.0" prefHeight="129.0" prefWidth="255.0" style="-fx-background-color: #f4fff4;">
+            <Pane layoutX="545.0" layoutY="412.0" prefHeight="238.0" prefWidth="255.0" style="-fx-background-color: #f4fff4;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="7.0" prefHeight="27.0" prefWidth="183.0" text="Buying local produce">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="56.0" prefHeight="27.0" prefWidth="183.0" text="Buying local produce">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="localProduce" layoutX="195.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="39.0" prefHeight="27.0" prefWidth="183.0" text="Using bike">
+                  <Label fx:id="localProduce" layoutX="189.0" layoutY="56.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="92.0" prefHeight="27.0" prefWidth="183.0" text="Using bike">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="bike" layoutX="195.0" layoutY="39.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="71.0" prefHeight="27.0" prefWidth="183.0" text="Lowering the temperature">
+                  <Label fx:id="bike" layoutX="189.0" layoutY="92.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="164.0" prefHeight="27.0" prefWidth="183.0" text="Lowering the temperature">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="loweringTemp" layoutX="195.0" layoutY="71.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="103.0" prefHeight="27.0" prefWidth="183.0" text="Installing solar panels">
+                  <Label fx:id="loweringTemp" layoutX="188.0" layoutY="164.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="200.0" prefHeight="27.0" prefWidth="183.0" text="Installing solar panels">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="solarPanels" layoutX="195.0" layoutY="103.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label fx:id="solarPanels" layoutX="188.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="128.0" prefHeight="27.0" prefWidth="183.0" text="Using public transport">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publicTrans" layoutX="188.0" layoutY="128.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="20.0" prefHeight="27.0" prefWidth="183.0" text="Eating vegetarian meal">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="veganMeal" layoutX="188.0" layoutY="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" />
                </children>
             </Pane>
             <Button fx:id="addExtraActivityButton2" contentDisplay="RIGHT" layoutX="545.0" layoutY="14.0" mnemonicParsing="false" onAction="#openExtraActivities" style="-fx-background-color: transparent;" text="Add extra activity!" textFill="#147219">

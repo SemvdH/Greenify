@@ -185,13 +185,17 @@ public class DashBoardController {
     @FXML
     private Label hintText;
     @FXML
-    private Label solarPanels;
+    private Label veganMeal;
     @FXML
     private Label localProduce;
     @FXML
     private Label bike;
     @FXML
+    private Label publicTrans;
+    @FXML
     private Label loweringTemp;
+    @FXML
+    private Label solarPanels;
     @FXML
     private Button achiev1Tip;
     @FXML
@@ -417,10 +421,12 @@ public class DashBoardController {
         snacks.setText(inputMap.get("input_footprint_shopping_food_otherfood"));
         Map<String, String> extraMap = userService
                 .getExtraInputs(userService.currentUser.getName());
+        veganMeal.setText(extraMap.get("vegan"));
         localProduce.setText(extraMap.get("local_produce"));
         bike.setText(extraMap.get("bike"));
-        solarPanels.setText(extraMap.get("solar_panels"));
+        publicTrans.setText(extraMap.get("public_transport"));
         loweringTemp.setText(extraMap.get("temperature"));
+        solarPanels.setText(extraMap.get("solar_panels"));
     }
 
     /**
