@@ -230,7 +230,7 @@ public class RegisterWindowController {
         //close the register window after the user has entered all the credentials
         Stage current = (Stage) owner;
         current.close();
-
+        
         Parent calc = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/FirstCalculator.fxml"));
         Scene scene = new Scene(calc);

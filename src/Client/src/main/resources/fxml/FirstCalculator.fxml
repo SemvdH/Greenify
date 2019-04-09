@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.RegisterWindowController">
+<AnchorPane prefHeight="703.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.RegisterWindowController">
     <children>
         <AnchorPane fx:id="calculatorTabs" prefHeight="92.0" prefWidth="820.0" style="-fx-background-color: #677069;">
             <children>
@@ -146,6 +154,12 @@
                 </Label>
                 <Button fx:id="getStartedNextButton" layoutX="383.0" layoutY="406.0" mnemonicParsing="false" onAction="#displayTravel" styleClass="nextButton" text="Next" />
                 <Line endX="79.0" layoutX="147.0" layoutY="14.0" stroke="#545b54" />
+            <Text layoutX="296.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Greenify!">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This application will help you decrease your CO2-footprint. In the next screen, you will be asked to fill in certain things, like your yearly energy costs. These values will help us calculate your CO2-footprint. Warning: If you don't fill anything in, the calculator will use a default value based on averages, so if you want a value to be zero, please fill in zero. After that, you'll be able to see your score and compare your footprint to those of your friends. Let's go green and save the planet!" textAlignment="CENTER" wrappingWidth="714.0" />
             </children></AnchorPane>
         <AnchorPane fx:id="travelPane" layoutY="85.0" prefHeight="618.0" prefWidth="820.0" visible="false">
             <children>
