@@ -152,8 +152,6 @@ public class UserServiceTest {
 
     @Test
     public void removeFriendTest() throws Exception {
-        userService.addFriend("Eric", "Ceren");
-        Mockito.verify(userService).addFriend("Eric", "Ceren");
         userService.removeFriend("Eric", "Ceren");
         Mockito.verify(userService).removeFriend("Eric", "Ceren");
     }
@@ -168,6 +166,12 @@ public class UserServiceTest {
     public void getResultsTest() throws Exception {
         userService.getResults("mika");
         Mockito.verify(userService).getResults("mika");
+    }
+
+    @Test
+    public void deleteAccountTest() throws Exception {
+        userService.deleteAccount("merel");
+        Mockito.verify(userService).deleteAccount("merel");
     }
 }
 
