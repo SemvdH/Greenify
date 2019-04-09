@@ -332,4 +332,20 @@ public class UserService {
                 .build().encode().toUri(), List.class);
         return result;
     }
+
+    /**
+     * Removes a user from the database.
+     * @param name the username of the current user.
+     */
+    @SuppressWarnings("Duplicates")
+    public void deleteAccount(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/deleteAccount")
+                .queryParam("name", name);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        System.out.println(builder.build().encode().toUri());
+        ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
+                .encode().toUri(), String.class);
+    }
 }
