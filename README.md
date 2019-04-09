@@ -1,35 +1,33 @@
-﻿# Greenify
+# Greenify
 The easiest way to save CO2 and help the environment! Enter your activities and find out your carbon footprint.
+![loginscreen](/uploads/beaa1efa87d77179600a34953b9b34c9/loginscreen.png)
+![application](/uploads/6fdd73ce8c8b55d63f31dd36755ebafd/application.png)
+
+## Badges
+[![build status](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/badges/master/build.svg)](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template) 
 
 ## Getting started 
-You can install greenify with gradle, if you already have gradle on your machine, run: 
+You can run greenify with gradle. To start the server, run: 
 
 ```
-gradle install something tralala
-```
-
-Do you not have gradle on your machine, run:
-
-```
-./gradlew install something tralala
+cd <FILE-LOCATION>/greenify/src/server
+gradle build
+gradle bootrun
 ```
 
 With the following you can start the application
 
 ```
-gradle greenify bootrun
-```
-
-or without gradle on your device:
-
-```
-./gradlew greenify bootrun
+cd <FILE-LOCATION>/greenify/src/client
+gradle build
+gradle bootrun
 ```
 
 ## Running the tests
 The tests cover all non-GUI code:
 
 ```
+cd <FILE-LOCATION>/greenify
 gradle check
 ```
 
