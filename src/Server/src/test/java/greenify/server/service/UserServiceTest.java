@@ -2,7 +2,7 @@ package greenify.server.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import greenify.common.ApplicationException;
 import greenify.common.UserDto;
@@ -326,4 +326,18 @@ public class UserServiceTest {
     public void getAchievementsTest() {
         assertEquals(AllAchievements.getDefaults(), userService.getAchievements("alex"));
     }
+
+    @Test
+    public void deleteAccountException() {
+        assertThrows(ApplicationException.class, () -> userService.deleteAccount("merel"));
+    }
+
+    @Test
+    public void deleteAccount() {
+        User alex = new User(1L, "alex", "password");
+        doNothing().when(userRepository).delete(alex);
+        userService.deleteAccount("alex");
+        verify(userRepository, times(1)).delete(alex);
+    }
+    
 }
