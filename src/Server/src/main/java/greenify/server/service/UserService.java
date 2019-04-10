@@ -303,4 +303,15 @@ public class UserService {
         }
         return result;
     }
+
+    /**
+     * This method gets the list of all users.
+     */
+    public void deleteAccount(String name) {
+        User user = userRepository.findByName(name);
+        if (user == null) {
+            throw new ApplicationException("User doesn't exist");
+        }
+        userRepository.delete(user);
+    }
 }

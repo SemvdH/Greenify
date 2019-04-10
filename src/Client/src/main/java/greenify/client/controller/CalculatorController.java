@@ -400,7 +400,7 @@ public class CalculatorController {
         }
         try {
             extraActivityController.updateExtras();
-        } catch (Exception ex) {
+        } catch (NullPointerException ex) {
             System.out.println("continue");
         }
         Float footprint = userService.saveFootprint(userService.currentUser.getName());
