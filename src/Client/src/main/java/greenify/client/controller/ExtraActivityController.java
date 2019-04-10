@@ -2,12 +2,15 @@ package greenify.client.controller;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.rest.UserService;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -129,12 +132,26 @@ public class ExtraActivityController {
         });
     }
 
+    public void addFadeTransAnimation(Node node) {
+        FadeTransition fade = new FadeTransition(Duration.millis(350), node);
+        fade.setFromValue(0);
+        fade.setToValue(1.0);
+        TranslateTransition trans = new TranslateTransition(Duration.millis(350), node);
+        trans.setFromX(-800);
+        trans.setToX(0);
+        ParallelTransition par = new ParallelTransition();
+        par.setNode(node);
+        par.getChildren().addAll(fade, trans);
+        par.play();
+    }
+
     /**
      * displays the vegetarian meal section.
      * @param event the click of the designated button
      */
     public void displayVeganMeal(ActionEvent event) {
         // System.out.println("display vm");
+        addFadeTransAnimation(veganMealPane);
         veganMealPane.setVisible(true);
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
@@ -149,6 +166,7 @@ public class ExtraActivityController {
      */
     public void displayBike(ActionEvent event) {
         // System.out.println("display b");
+        addFadeTransAnimation(bikePane);
         veganMealPane.setVisible(false);
         bikePane.setVisible(true);
         temperaturePane.setVisible(false);
@@ -163,6 +181,7 @@ public class ExtraActivityController {
      */
     public void displayTemperature(ActionEvent event) {
         // System.out.println("display t");
+        addFadeTransAnimation(temperaturePane);
         veganMealPane.setVisible(false);
         bikePane.setVisible(false);
         temperaturePane.setVisible(true);
@@ -177,6 +196,7 @@ public class ExtraActivityController {
      */
     public void displaySolarPanel(ActionEvent event) {
         // System.out.println("display sp");
+        addFadeTransAnimation(solarPanelPane);
         veganMealPane.setVisible(false);
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
@@ -190,6 +210,7 @@ public class ExtraActivityController {
      * @param event the click of the designated button
      */
     public void displayLocalProduce(ActionEvent event) {
+        addFadeTransAnimation(localProducePane);
         veganMealPane.setVisible(false);
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);
@@ -203,6 +224,7 @@ public class ExtraActivityController {
      * @param event the click of the designated button
      */
     public void displayPublicTransport(ActionEvent event) {
+        addFadeTransAnimation(publicTransportPane);
         veganMealPane.setVisible(false);
         bikePane.setVisible(false);
         temperaturePane.setVisible(false);

@@ -461,14 +461,14 @@
             </Button>
             <TableView fx:id="globalLeaderboard" layoutX="56.0" layoutY="220.0" prefHeight="333.0" prefWidth="200.0">
                <columns>
-                  <TableColumn fx:id="globalUser" prefWidth="75.0" text="User" />
-                  <TableColumn fx:id="globalScore" prefWidth="124.0" text="Score" />
+                  <TableColumn fx:id="globalUser" prefWidth="121.0" text="User" />
+                  <TableColumn fx:id="globalScore" prefWidth="78.0" text="Score" />
                </columns>
             </TableView>
             <TableView fx:id="developmentLeaderboard" layoutX="302.0" layoutY="220.0" prefHeight="333.0" prefWidth="200.0">
                <columns>
-                  <TableColumn fx:id="developmentUser" prefWidth="75.0" text="User" />
-                  <TableColumn fx:id="developmentScore" prefWidth="124.0" text="Score" />
+                  <TableColumn fx:id="developmentUser" prefWidth="126.0" text="User" />
+                  <TableColumn fx:id="developmentScore" prefWidth="73.0" text="Score" />
                </columns>
             </TableView>
             <Label layoutX="69.0" layoutY="177.0" prefHeight="46.0" prefWidth="187.0" text="Global Leaderboard" textAlignment="CENTER" textFill="#5f1616">
