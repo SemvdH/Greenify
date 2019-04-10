@@ -143,6 +143,8 @@ public class UserController {
         Parent registerWindow = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/RegisterWindow.fxml"));
         Scene registerScene = new Scene(registerWindow);
+        registerScene.getStylesheets().add(this.getClass().getClassLoader()
+                .getResource("stylesheets/registerWindowStyle.css").toExternalForm());
         Stage registerStage = new Stage();
         registerStage.setScene(registerScene);
         registerStage.setTitle("Enter register credentials");

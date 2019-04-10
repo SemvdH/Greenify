@@ -1,5 +1,6 @@
 #signUpButton {
-    -fx-background-color: #005e07;
+    /*-fx-background-color: #005e07;*/
+    -fx-background-color: red;
     -fx-text-fill: #c4eec9;
 }
 
