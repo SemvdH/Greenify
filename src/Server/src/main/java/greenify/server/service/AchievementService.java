@@ -78,8 +78,8 @@ public class AchievementService {
      * @param user user for whom achiev6 changes
      */
     public void achieveLetItShine(User user) {
-        int solar_panels = Integer.parseInt(user.getExtraInputs().get("solar_panels"));
-        if (solar_panels >= 2) {
+        int solarPanels = Integer.parseInt(user.getExtraInputs().get("solar_panels"));
+        if (solarPanels >= 2) {
             userService.setAchievement(user.getName(), "Let it shine", true);
         }
     }

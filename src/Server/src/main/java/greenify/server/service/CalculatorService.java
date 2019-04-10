@@ -110,6 +110,11 @@ public class CalculatorService {
         user.setFootPrintInputs(inputs);
     }
 
+    /**
+     * Gets the result of the CO2-calculation from the CoolClimate website
+     * @param map results that the user filled in
+     * @return the results from the website.
+     */
     public Map<String, String> getResults(Map<String, String> map) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("accept", MediaType.APPLICATION_JSON_VALUE);
