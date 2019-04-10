@@ -201,7 +201,7 @@ public class UserController {
      * @param name name of the user
      */
     @RequestMapping("/deleteAccount")
-    public void removeFriend(@RequestParam(value = "name") String name) {
+    public void deleteAccount(@RequestParam(value = "name") String name) {
         userService.deleteAccount(name);
     }
 }
