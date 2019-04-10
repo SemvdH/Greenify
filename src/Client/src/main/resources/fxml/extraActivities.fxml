@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -8,63 +9,6 @@
 
 <AnchorPane prefHeight="611.0" prefWidth="820.0" stylesheets="@../stylesheets/extraActivitiesStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="greenify.client.controller.ExtraActivityController">
    <children>
-      <AnchorPane prefHeight="611.0" prefWidth="107.0">
-         <children>
-            <Button fx:id="displayVeganMealButton" contentDisplay="TOP" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#displayVeganMeal" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
-                     <image>
-                        <Image url="@../icons/icons8-vegan-food-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="displayLocalProduceButton" contentDisplay="TOP" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#displayLocalProduce" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
-                     <image>
-                        <Image url="@../icons/localProduce.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="displayBikeButton" contentDisplay="TOP" layoutX="14.0" layoutY="224.0" mnemonicParsing="false" onAction="#displayBike" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icons8-bicycle-filled-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="displaySolarPanelButton" contentDisplay="TOP" layoutX="14.0" layoutY="467.0" mnemonicParsing="false" onAction="#displaySolarPanel" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icons8-solar-panel-filled-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="displayTemperatureButton" contentDisplay="TOP" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#displayTemperature" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icons8-temperature-inside-64.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="displayPublicTransportButton" contentDisplay="TOP" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#displayPublicTransport" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
-                     <image>
-                        <Image url="@../icons/publicTransport.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="veganMealPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0">
          <children>
              <Line fx:id="line1" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
@@ -255,6 +199,63 @@
                   </Label>
                </children>
             </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="611.0" prefWidth="107.0">
+         <children>
+            <Button fx:id="displayVeganMealButton" contentDisplay="TOP" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#displayVeganMeal" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
+                     <image>
+                        <Image url="@../icons/icons8-vegan-food-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayLocalProduceButton" contentDisplay="TOP" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#displayLocalProduce" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
+                     <image>
+                        <Image url="@../icons/localProduce.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayBikeButton" contentDisplay="TOP" layoutX="14.0" layoutY="224.0" mnemonicParsing="false" onAction="#displayBike" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-bicycle-filled-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="displaySolarPanelButton" contentDisplay="TOP" layoutX="14.0" layoutY="467.0" mnemonicParsing="false" onAction="#displaySolarPanel" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-solar-panel-filled-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayTemperatureButton" contentDisplay="TOP" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#displayTemperature" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-temperature-inside-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="displayPublicTransportButton" contentDisplay="TOP" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#displayPublicTransport" prefHeight="70.0" prefWidth="82.0" styleClass="navButton">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="navButton">
+                     <image>
+                        <Image url="@../icons/publicTransport.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

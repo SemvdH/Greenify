@@ -1,5 +1,6 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
@@ -7,8 +8,10 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -172,6 +175,8 @@ public class RegisterWindowController {
         addSlideAnimation(1100, passwordField, 300);
         TimeUnit.MILLISECONDS.sleep(300);
         addSlideAnimation(1100, passwordField2, -420);
+
+        signUpButton.setSkin(new registerButtonSkin(signUpButton));
     }
 
     /**
@@ -611,6 +616,39 @@ public class RegisterWindowController {
             userService.updateInput(userService.currentUser.getName(),
                     "input_footprint_transportation_mpg3",
                     carTravelElectricLabel.getText().replace(" km/Le", ""));
+        }
+    }
+
+    @SuppressWarnings("Duplicates")
+    public class registerButtonSkin extends ButtonSkin {
+        public registerButtonSkin(Button button) {
+            super(button);
+
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));
+            scaleUp.setToX(1.2);
+            scaleUp.setToY(1.2);
+            scaleUp.setNode(button);
+            button.setOnMouseEntered(e -> scaleUp.playFromStart());
+
+            ScaleTransition scaleMiddleDown = new ScaleTransition(Duration.millis(50));
+
+            scaleMiddleDown.setToX(1.1);
+            scaleMiddleDown.setToY(1.1);
+            scaleMiddleDown.setNode(button);
+            button.setOnMousePressed(e -> scaleMiddleDown.playFromStart());
+
+            ScaleTransition scaleMiddleUp = new ScaleTransition(Duration.millis(50));
+
+            scaleMiddleUp.setToX(1.2);
+            scaleMiddleUp.setToY(1.2);
+            scaleMiddleUp.setNode(button);
+            button.setOnMouseReleased(e -> scaleMiddleUp.playFromStart());
+
+            ScaleTransition scaleDown = new ScaleTransition(Duration.millis(200));
+            scaleDown.setToX(1.0);
+            scaleDown.setToY(1.0);
+            scaleDown.setNode(button);
+            button.setOnMouseExited(e -> scaleDown.playFromStart());
         }
     }
 }

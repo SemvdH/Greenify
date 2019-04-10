@@ -1,7 +1,9 @@
 package greenify.client.controller;
 
+import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
 import greenify.client.rest.UserService;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -12,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
@@ -36,6 +39,10 @@ public class UserController {
     @FXML
     private Button signUpButton;
 
+    public void initialize() {
+        loginButton.setSkin(new LoginButtonSkin(loginButton));
+        signUpButton.setSkin(new LoginButtonSkin(signUpButton));
+    }
     /**
      * Handles when the user clicks on the login button.
      * it checks if the username and password fields are filled
@@ -136,10 +143,46 @@ public class UserController {
         Parent registerWindow = Application.load(this.getClass().getClassLoader()
                 .getResource("fxml/RegisterWindow.fxml"));
         Scene registerScene = new Scene(registerWindow);
+        registerScene.getStylesheets().add(this.getClass().getClassLoader()
+                .getResource("stylesheets/registerWindowStyle.css").toExternalForm());
         Stage registerStage = new Stage();
         registerStage.setScene(registerScene);
         registerStage.setTitle("Enter register credentials");
         registerStage.show();
+    }
+
+    @SuppressWarnings("Duplicates")
+    public class LoginButtonSkin extends ButtonSkin {
+        public LoginButtonSkin(Button button) {
+            super(button);
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));
+            scaleUp.setToX(1.1);
+            scaleUp.setToY(1.1);
+            scaleUp.setNode(button);
+            button.setOnMouseEntered(e -> scaleUp.playFromStart());
+
+            ScaleTransition scaleMiddleDown = new ScaleTransition(Duration.millis(50));
+            scaleMiddleDown.setFromX(1.1);
+            scaleMiddleDown.setFromY(1.1);
+            scaleMiddleDown.setToX(1.05);
+            scaleMiddleDown.setToY(1.05);
+            scaleMiddleDown.setNode(button);
+            button.setOnMousePressed(e -> scaleMiddleDown.playFromStart());
+
+            ScaleTransition scaleMiddleUp = new ScaleTransition(Duration.millis(50));
+            scaleMiddleUp.setFromX(1.05);
+            scaleMiddleUp.setFromY(1.05);
+            scaleMiddleUp.setToX(1.1);
+            scaleMiddleUp.setToY(1.1);
+            scaleMiddleUp.setNode(button);
+            button.setOnMouseReleased(e -> scaleMiddleUp.playFromStart());
+
+            ScaleTransition scaleDown = new ScaleTransition(Duration.millis(200));
+            scaleDown.setToX(1.0);
+            scaleDown.setToY(1.0);
+            scaleDown.setNode(button);
+            button.setOnMouseExited(e -> scaleDown.playFromStart());
+        }
     }
 
 }
