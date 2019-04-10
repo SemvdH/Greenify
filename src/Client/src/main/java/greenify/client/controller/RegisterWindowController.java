@@ -24,6 +24,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -46,6 +47,10 @@ public class RegisterWindowController {
 
     @Autowired
     ExtraActivityController extraActivityController;
+
+    @FXML
+    private Text explainText;
+
 
     //navigation panes
     @FXML
@@ -160,6 +165,9 @@ public class RegisterWindowController {
     private PasswordField passwordField2;
     @FXML
     private Button signUpButton;
+
+
+
     //@FXML
     //private Line uNamePathLine;
 
@@ -185,6 +193,18 @@ public class RegisterWindowController {
         slideIn.setFromX(from);
         slideIn.setToX(0);
         slideIn.play();
+    }
+
+    public void showExplanation(ActionEvent event) throws InterruptedException {
+        System.out.println(explainText.isVisible());
+        if (explainText.isVisible()) {
+            System.out.println("set to false");
+            explainText.setVisible(false);
+        } else {
+            System.out.println("set to true");
+            explainText.setVisible(true);
+        }
+
     }
 
     /**
