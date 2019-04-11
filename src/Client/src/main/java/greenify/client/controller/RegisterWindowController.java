@@ -621,6 +621,10 @@ public class RegisterWindowController {
 
     @SuppressWarnings("Duplicates")
     public class registerButtonSkin extends ButtonSkin {
+        /**
+         * registers button skins.
+         * @param button clicking
+         */
         public registerButtonSkin(Button button) {
             super(button);
 

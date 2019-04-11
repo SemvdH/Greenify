@@ -23,9 +23,13 @@ public class FriendController {
     private Button addButton;
     @FXML
     private TextField userNameText;
+    @FXML
+    private Button removeButton;
+    @FXML
+    private TextField removeUserNameText;
 
     /**
-     * Signs up the user.
+     * Add a new friend.
      * @param event the click of the sign up button
      */
     @FXML
@@ -58,8 +62,48 @@ public class FriendController {
         String friendName = userNameText.getText();
         Stage current = (Stage) owner;
         dashBoardController.updateAchievements();
+        dashBoardController.updateFriends();
         current.close();
         UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Friend added!",
                 userNameText.getText() + " is now your friend!");
+    }
+
+    /**
+     * Removes one of the friends of the user.
+     * @param event the click of the sign up button
+     */
+    @FXML
+    public void removeFriend(ActionEvent event) throws InterruptedException {
+        //set the window to the current window (for displaying the alerts)
+        Window owner = removeButton.getScene().getWindow();
+        //check if the username field is empty
+        if (removeUserNameText.getText().isEmpty()) {
+            //if so, display an alert
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Username Error!",
+                    "Please enter a username!");
+            return;
+        } else if (removeUserNameText.getText().equals(userService.currentUser.getName())) {
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                    "You are not your friend!");
+            return;
+        } else if (!userService.getFriendNames(userService.currentUser.getName())
+                .contains(removeUserNameText.getText())) {
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                    "You do not have a friend with this username!");
+            return;
+        } else if (!userService.getAllUsers().contains(removeUserNameText.getText())) {
+            UserController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                    "The user does not exist!");
+            return;
+        }
+        //add friend to the current user
+        userService.removeFriend(userService.currentUser.getName(), removeUserNameText.getText());
+        //close the register window after the user has entered all the credentials
+        Stage current = (Stage) owner;
+        dashBoardController.updateFriends();
+        dashBoardController.updateAchievements();
+        current.close();
+        UserController.AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Friend removed!",
+                removeUserNameText.getText() + " is not your friend anymore!");
     }
 }
