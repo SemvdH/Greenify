@@ -43,6 +43,7 @@ public class UserController {
         loginButton.setSkin(new LoginButtonSkin(loginButton));
         signUpButton.setSkin(new LoginButtonSkin(signUpButton));
     }
+
     /**
      * Handles when the user clicks on the login button.
      * it checks if the username and password fields are filled
@@ -52,7 +53,6 @@ public class UserController {
      */
     @FXML
     protected void handleLoginButtonAction(ActionEvent event) throws IOException {
-
         Window owner = loginButton.getScene().getWindow(); //get the current window
         if (usernameField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
@@ -153,6 +153,10 @@ public class UserController {
 
     @SuppressWarnings("Duplicates")
     public class LoginButtonSkin extends ButtonSkin {
+        /**
+         * method for the skin of login button.
+         * @param button clicking
+         */
         public LoginButtonSkin(Button button) {
             super(button);
             ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));
