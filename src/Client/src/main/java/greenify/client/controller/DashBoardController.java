@@ -93,6 +93,10 @@ public class DashBoardController {
     @FXML
     private Button addFriendButton;
     @FXML
+    private Button addFriend;
+    @FXML
+    private Button removeFriend;
+    @FXML
     private Button addExtraActivityButton;
     @FXML
     private Button addExtraActivityButton2;
@@ -466,6 +470,7 @@ public class DashBoardController {
         updateFriends();
     }
 
+
     /**
      * Logs out the user.
      * @param event the event (clicking the button)
@@ -567,6 +572,20 @@ public class DashBoardController {
         Stage calcStage = new Stage();
         calcStage.setScene(scene);
         calcStage.setTitle("Add a new friend - " + userService.currentUser.getName());
+        calcStage.show();
+    }
+
+    /**
+     * method opens removeFriend scene.
+     * @throws IOException when file is not found
+     */
+    public void openRemoveFriend() throws IOException {
+        Parent calc = Application.load(this.getClass().getClassLoader()
+                .getResource("fxml/RemoveFriend.fxml"));
+        Scene scene = new Scene(calc);
+        Stage calcStage = new Stage();
+        calcStage.setScene(scene);
+        calcStage.setTitle("Remove your friend - " + userService.currentUser.getName());
         calcStage.show();
     }
 
