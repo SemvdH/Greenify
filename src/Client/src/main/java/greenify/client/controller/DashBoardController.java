@@ -109,17 +109,23 @@ public class DashBoardController {
     @FXML
     private TableView<Friend> globalLeaderboard;
     @FXML
+    private TableColumn<Friend, Integer> globalPlace;
+    @FXML
     private TableColumn<Friend, String> globalUser;
     @FXML
     private TableColumn<Friend, Float> globalScore;
     @FXML
     private TableView<Friend> developmentLeaderboard;
     @FXML
+    private TableColumn<Friend, Integer> developmentPlace;
+    @FXML
     private TableColumn<Friend, String> developmentUser;
     @FXML
     private TableColumn<Friend, Float> developmentScore;
     @FXML
     private TableView<Friend> friendLeaderboard;
+    @FXML
+    private TableColumn<Friend, Integer> friendPlace;
     @FXML
     private TableColumn<Friend, String> friendUser;
     @FXML
@@ -239,15 +245,18 @@ public class DashBoardController {
         logOutButton.setSkin(new MyButtonSkin(logOutButton));
         friendsColumn.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        globalPlace.setCellValueFactory(new PropertyValueFactory<>("Place"));
         globalUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         globalScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         developmentUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
+        developmentPlace.setCellValueFactory(new PropertyValueFactory<>("Place"));
         developmentScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        friendPlace.setCellValueFactory(new PropertyValueFactory<>("Place"));
         friendUser.setCellValueFactory(new PropertyValueFactory<>("Friend"));
         friendScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         List<String> friendList = userService.getFriendNames(userService.currentUser.getName());
         for (int i = 0; i < friendList.size(); i++) {
-            Friend friend = new Friend(friendList.get(i),
+            Friend friend = new Friend(i, friendList.get(i),
                     userService.getFootprint(friendList.get(i)));
             data.add(friend);
         }
@@ -490,6 +499,9 @@ public class DashBoardController {
         //development leaderboard
         developmentLeaderboard.getItems().clear();
         developmentData.removeAll();
+        //friends leaderboard
+        friendLeaderboard.getItems().clear();
+        friendLeaderData.removeAll();
 
         //load the fxml file
         Parent dash = Application.load(this.getClass().getClassLoader()
@@ -604,14 +616,15 @@ public class DashBoardController {
         List<String> userList = userService.getAllUsers();
         sortScores(userList);
         for (int i = userList.size() - 1; i >= 0; i--) {
-            Friend user = new Friend(userList.get(i), userService.getFootprint(userList.get(i)));
+            Friend user = new Friend(userList.size() - i, userList.get(i),
+                    userService.getFootprint(userList.get(i)));
             globalLeaderData.add(user);
         }
         List<String> secondList = sortDiffScores(userList);
         for (int j = 0; j < userList.size(); j++) {
             double diff = Math.round((userService.getFirstFootprint(secondList.get(j))
                     - userService.getFootprint(secondList.get(j))) * 10) / 10.0;
-            Friend diffUser = new Friend(secondList.get(j), diff);
+            Friend diffUser = new Friend(j + 1, secondList.get(j), diff);
             developmentData.add(diffUser);
         }
         globalLeaderboard.setItems(globalLeaderData);
@@ -662,14 +675,14 @@ public class DashBoardController {
         friendLeaderData.removeAll();
         sortDiffScores(wholeList);
         for (int i = friendList.size() - 1; i >= 0 ; i--) {
-            Friend user = new Friend(friendList.get(i), userService
+            Friend user = new Friend(i, friendList.get(i), userService
                     .getFootprint(friendList.get(i)));
             data.add(user);
         }
         for (int j = 0; j < wholeList.size(); j++) {
             double diff = Math.round((userService.getFirstFootprint(wholeList.get(j))
                     - userService.getFootprint(wholeList.get(j))) * 10) / 10.0;
-            Friend diffUser = new Friend(wholeList.get(j), diff);
+            Friend diffUser = new Friend(j + 1, wholeList.get(j), diff);
             friendLeaderData.add(diffUser);
         }
         friendsTable.setItems(data);
