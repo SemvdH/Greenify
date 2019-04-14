@@ -209,7 +209,6 @@ public class User {
             throw new ApplicationException("Cannot add yourself as a friend");
         } else {
             friends.add(user);
-            System.out.print("Friend added!");
         }
     }
 
@@ -222,7 +221,6 @@ public class User {
             throw new ApplicationException("This user is not your friend!");
         } else {
             friends.remove(user);
-            System.out.print("Friend removed");
         }
     }
 
