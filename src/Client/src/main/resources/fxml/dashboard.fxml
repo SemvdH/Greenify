@@ -614,12 +614,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="removeFriend" contentDisplay="RIGHT" layoutX="575.0" layoutY="150.0" mnemonicParsing="false" onAction="#openRemoveFriend" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Remove friend" textFill="#29721a">
+            <Button fx:id="removeFriend" contentDisplay="RIGHT" layoutX="560.0" layoutY="150.0" mnemonicParsing="false" onAction="#openRemoveFriend" prefHeight="74.0" prefWidth="200.0" style="-fx-border-radius: 20px; -fx-padding: 0px 0px 0px 0px; -fx-background-color: transparent;" text="Remove friend" textFill="#29721a">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="74.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="70.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/remove_friend.png" />
                      </image>

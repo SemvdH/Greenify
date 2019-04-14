@@ -30,7 +30,7 @@ public class UserServiceTest {
     @Test
     public void userRegisterTest() throws Exception {
         UserDto testUser = new UserDto(1L, "Eric");
-        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/registerUser?name=Eric&password=password"),
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/registerUser?name=Eric&password=5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"),
                 UserDto.class))
                 .thenReturn(testUser);
 
@@ -41,7 +41,7 @@ public class UserServiceTest {
     @Test
     public void userLoginTest() throws Exception {
         UserDto testUser = new UserDto(1L, "Eric");
-        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/loginUser?name=Eric&password=password"),
+        Mockito.when(restTemplate.getForObject(new java.net.URI("http://localhost:8080/loginUser?name=Eric&password=5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"),
                 UserDto.class))
                 .thenReturn(testUser);
         UserDto user = userService.loginUser("Eric", "password");

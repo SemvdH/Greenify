@@ -114,7 +114,6 @@ public class UserController {
      */
     @RequestMapping("/getFirst")
     public Float getFirstFootprint(@RequestParam(value = "name") String name) {
-        System.out.println("hello");
         Float footprint = userService.getFirstFootprint(name);
         return footprint;
     }

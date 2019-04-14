@@ -36,6 +36,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
 
@@ -197,7 +198,7 @@ public class RegisterWindowController {
      * @param event the click of the sign up button
      */
     @FXML
-    public void handleSignUpButton(ActionEvent event) throws IOException {
+    public void handleSignUpButton(ActionEvent event) throws IOException, NoSuchAlgorithmException {
         //set the window to the current window (for displaying the alerts)
         Window owner = signUpButton.getScene().getWindow();
         //check if the username field is empty

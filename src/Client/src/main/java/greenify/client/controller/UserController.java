@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
@@ -52,7 +53,8 @@ public class UserController {
      * @throws IOException an exception for logging in the user
      */
     @FXML
-    protected void handleLoginButtonAction(ActionEvent event) throws IOException {
+    protected void handleLoginButtonAction(ActionEvent event)
+            throws IOException, NoSuchAlgorithmException {
         Window owner = loginButton.getScene().getWindow(); //get the current window
         if (usernameField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
