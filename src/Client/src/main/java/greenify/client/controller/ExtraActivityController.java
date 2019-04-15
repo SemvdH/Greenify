@@ -132,6 +132,10 @@ public class ExtraActivityController {
         });
     }
 
+    /**
+     * add transition animation.
+     * @param node adding animation
+     */
     public void addFadeTransAnimation(Node node) {
         FadeTransition fade = new FadeTransition(Duration.millis(350), node);
         fade.setFromValue(0);

@@ -63,7 +63,6 @@ public class CalculatorService {
                 .indexOf("<result_grand_total>")
                 + 20, response.getBody().indexOf("</result_grand_total>"));
         // to do: in not HTTP 200 or exception case throws exception
-        System.out.println(Float.parseFloat(result));
         return Float.parseFloat(result);
     }
 

@@ -2,6 +2,7 @@ package greenify.client.rest;
 
 import greenify.common.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
@@ -12,12 +13,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class UserService {
     public UserDto currentUser;
+
+    @Value( "${server.address:http://localhost:8080}" )
+    String serverAddress = "http://localhost:8080";
 
     @Autowired
     RestTemplate restTemplate;
@@ -36,16 +43,17 @@ public class UserService {
     @SuppressWarnings("Duplicates")
     //this suppressWarnings is to get rid of the errors of duplicate code
     //because the methods are very similar
-    public UserDto registerUser(String name, String password) {
+    public UserDto registerUser(String name, String password) throws NoSuchAlgorithmException {
         //headers for http
         HttpHeaders headers = new HttpHeaders();
         //set the accept header in JSON value
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         //connect to the server with the needed url
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/registerUser")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/registerUser")
                 .queryParam("name", name)
                 //getting the name from the database
-                .queryParam("password", password);
+                .queryParam("password", hashPassword(password));
         //getting the password from the database
 
         //create a http entity to be sent
@@ -67,13 +75,14 @@ public class UserService {
      * @return a userDTO
      */
     @SuppressWarnings("Duplicates")
-    public UserDto loginUser(String name, String password) {
+    public UserDto loginUser(String name, String password) throws NoSuchAlgorithmException {
         //this method is almost the same as the registerUser one, but with a different link
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/loginUser")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/loginUser")
                 .queryParam("name", name)
-                .queryParam("password", password);
+                .queryParam("password", hashPassword(password));
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         UserDto result = this.restTemplate.getForObject(builder.build()
@@ -92,7 +101,7 @@ public class UserService {
     public void updateInput(String name, String inputName, String value) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setInput")
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(serverAddress + "/setInput")
                 .queryParam("name", name)
                 .queryParam("inputName", inputName)
                 .queryParam("value",value);
@@ -112,7 +121,8 @@ public class UserService {
     public void updateExtraInput(String name, String inputName, String value) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/setExtraInput")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/setExtraInput")
                 .queryParam("name", name)
                 .queryParam("inputName", inputName)
                 .queryParam("value", value);
@@ -131,7 +141,8 @@ public class UserService {
     public double getFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFootprint")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getFootprint")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -149,7 +160,7 @@ public class UserService {
     public double getFirstFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFirst")
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(serverAddress + "/getFirst")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -168,7 +179,8 @@ public class UserService {
     public Float saveFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/saveFootprint")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/saveFootprint")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -187,7 +199,8 @@ public class UserService {
     public Float saveFirstFootprint(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/saveFirstFootprint")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/saveFirstFootprint")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -205,7 +218,8 @@ public class UserService {
     public List<String> getFriendNames(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getFriends")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getFriends")
                 .queryParam("name", name);
         new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -223,7 +237,8 @@ public class UserService {
     public void addFriend(String name, String friend) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/addFriend")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/addFriend")
                 .queryParam("name", name)
                 .queryParam("friend",friend);
         HttpEntity<?> entity = new HttpEntity<>(headers);
@@ -241,7 +256,8 @@ public class UserService {
     public void removeFriend(String name, String friend) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/removeFriend")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/removeFriend")
                 .queryParam("name", name)
                 .queryParam("friend",friend);
         HttpEntity<?> entity = new HttpEntity<>(headers);
@@ -258,7 +274,8 @@ public class UserService {
     public Map<String, String> getInputs(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getInputs")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getInputs")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -275,7 +292,8 @@ public class UserService {
     public Map<String, String> getExtraInputs(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getExtraInputs")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getExtraInputs")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -293,7 +311,8 @@ public class UserService {
     public Map getAchievements(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getAchievements")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getAchievements")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -310,7 +329,8 @@ public class UserService {
     public Map<String, String> getResults(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getResults")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getResults")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
@@ -325,7 +345,8 @@ public class UserService {
     public List<String> getAllUsers() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/getAllUsers");
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/getAllUsers");
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         List<String> result = this.restTemplate.getForObject(builder
@@ -341,11 +362,33 @@ public class UserService {
     public void deleteAccount(String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/deleteAccount")
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl(serverAddress + "/deleteAccount")
                 .queryParam("name", name);
         HttpEntity<?> entity = new HttpEntity<>(headers);
         System.out.println(builder.build().encode().toUri());
         ResponseEntity<String> authenticateResponse = this.restTemplate.getForEntity(builder.build()
                 .encode().toUri(), String.class);
+    }
+
+    /**
+     * Hashes the password of a user.
+     * @param password password of the user
+     * @return hashed password
+     * @throws NoSuchAlgorithmException when there is no such algorithm
+     */
+    public String hashPassword(String password)
+            throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < encodedHash.length; i++) {
+            String hex = Integer.toHexString(0xff & encodedHash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }

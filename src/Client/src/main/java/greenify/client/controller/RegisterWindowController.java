@@ -36,6 +36,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
 
@@ -180,7 +181,7 @@ public class RegisterWindowController {
         TimeUnit.MILLISECONDS.sleep(300);
         addSlideAnimation(1100, passwordField2, -420);
 
-        signUpButton.setSkin(new registerButtonSkin(signUpButton));
+        signUpButton.setSkin(new RegisterButtonSkin(signUpButton));
     }
 
     /**
@@ -209,7 +210,7 @@ public class RegisterWindowController {
      * @param event the click of the sign up button
      */
     @FXML
-    public void handleSignUpButton(ActionEvent event) throws IOException {
+    public void handleSignUpButton(ActionEvent event) throws IOException, NoSuchAlgorithmException {
         //set the window to the current window (for displaying the alerts)
         Window owner = signUpButton.getScene().getWindow();
         //check if the username field is empty
@@ -632,8 +633,12 @@ public class RegisterWindowController {
     }
 
     @SuppressWarnings("Duplicates")
-    public class registerButtonSkin extends ButtonSkin {
-        public registerButtonSkin(Button button) {
+    public class RegisterButtonSkin extends ButtonSkin {
+        /**
+         * registers button skins.
+         * @param button clicking
+         */
+        public RegisterButtonSkin(Button button) {
             super(button);
 
             ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));

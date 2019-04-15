@@ -39,8 +39,8 @@ test {
 }
 
 bootJar {
-    baseName = 'gs-consuming-rest'
-    version =  '0.1.0'
+    baseName = 'greenify'
+    version =  '1.0.0'
 }
 
 repositories {
@@ -48,6 +48,7 @@ repositories {
 }
 
 dependencies {
+    compile "org.bouncycastle:bcprov-jdk16:1.46", "org.bouncycastle:bcpg-jdk16:1.46", "org.bouncycastle:bcmail-jdk16:1.46", "org.bouncycastle:bctsp-jdk16:1.46"
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework:spring-web")
     compile("com.fasterxml.jackson.core:jackson-databind")

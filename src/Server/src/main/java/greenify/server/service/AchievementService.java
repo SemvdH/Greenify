@@ -38,6 +38,8 @@ public class AchievementService {
     public void achieveSocialButterfly(User user) {
         if (user.getFriends().size() >= 3) {
             userService.setAchievement(user.getName(), "Social butterfly", true);
+        } else {
+            userService.setAchievement(user.getName(), "Social butterfly", false);
         }
     }
 
@@ -48,6 +50,8 @@ public class AchievementService {
     public void achieveGreenSaver(User user) {
         if (20 > user.getFootPrint()) {
             userService.setAchievement(user.getName(), "Green saver", true);
+        } else {
+            userService.setAchievement(user.getName(), "Green saver", false);
         }
     }
 
@@ -59,6 +63,8 @@ public class AchievementService {
         int vegan = Integer.parseInt(user.getExtraInputs().get("vegan"));
         if (vegan > 10) {
             userService.setAchievement(user.getName(), "Animal friend", true);
+        } else {
+            userService.setAchievement(user.getName(), "Animal friend", false);
         }
     }
 
@@ -70,6 +76,8 @@ public class AchievementService {
         int bike = Integer.parseInt(user.getExtraInputs().get("bike"));
         if (bike > 15) {
             userService.setAchievement(user.getName(), "Tom Dumoulin", true);
+        } else {
+            userService.setAchievement(user.getName(), "Tom Dumoulin", false);
         }
     }
 
@@ -81,6 +89,8 @@ public class AchievementService {
         int solarPanels = Integer.parseInt(user.getExtraInputs().get("solar_panels"));
         if (solarPanels >= 2) {
             userService.setAchievement(user.getName(), "Let it shine", true);
+        } else {
+            userService.setAchievement(user.getName(), "Let it shine", false);
         }
     }
 

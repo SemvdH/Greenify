@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
@@ -43,6 +44,7 @@ public class UserController {
         loginButton.setSkin(new LoginButtonSkin(loginButton));
         signUpButton.setSkin(new LoginButtonSkin(signUpButton));
     }
+
     /**
      * Handles when the user clicks on the login button.
      * it checks if the username and password fields are filled
@@ -51,8 +53,8 @@ public class UserController {
      * @throws IOException an exception for logging in the user
      */
     @FXML
-    protected void handleLoginButtonAction(ActionEvent event) throws IOException {
-
+    protected void handleLoginButtonAction(ActionEvent event)
+            throws IOException, NoSuchAlgorithmException {
         Window owner = loginButton.getScene().getWindow(); //get the current window
         if (usernameField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Log-in Error!",
@@ -153,6 +155,10 @@ public class UserController {
 
     @SuppressWarnings("Duplicates")
     public class LoginButtonSkin extends ButtonSkin {
+        /**
+         * method for the skin of login button.
+         * @param button clicking
+         */
         public LoginButtonSkin(Button button) {
             super(button);
             ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));

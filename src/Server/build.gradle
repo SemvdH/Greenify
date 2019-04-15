@@ -7,6 +7,19 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.heroku.sdk.heroku-gradle" version "1.0.4"
+}
+
+heroku {
+    appName = "greenify43"
+    includes = ["${buildDir}/libs/greenify-server-1.0.0.jar"]
+    includeBuildDir = false
+    processTypes(
+            web: "java -Dserver.port=\$PORT -jar src/Server/build/libs/greenify-server-1.0.0.jar"
+    )
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -16,8 +29,8 @@ apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
 
 bootJar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+    baseName = 'greenify-server'
+    version =  '1.0.0'
 }
 
 test {
