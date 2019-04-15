@@ -1,26 +1,17 @@
 # Greenify
 The easiest way to save CO2 and help the environment! Enter your activities and find out your carbon footprint.
-![loginscreen](/uploads/beaa1efa87d77179600a34953b9b34c9/loginscreen.png)
-![application](/uploads/6fdd73ce8c8b55d63f31dd36755ebafd/application.png)
+![loginScreen](/uploads/e4812575794836a217a3a21ceb676c6a/loginScreen.png)
+![you](/uploads/093956805aede6de942bcbfeecd84eb7/you.png)
 
 ## Badges
 [![build status](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template/badges/master/build.svg)](https://gitlab.ewi.tudelft.nl/cse1105/2018-2019/oopp-group-43/template) 
 
 ## Getting started 
-You can run greenify with gradle. To start the server, run: 
+To start Greenify:
 
 ```
-cd <FILE-LOCATION>/greenify/src/server
-gradle build
-gradle bootrun
-```
-
-With the following you can start the application
-
-```
-cd <FILE-LOCATION>/greenify/src/client
-gradle build
-gradle bootrun
+cd <FILE-LOCATION>/greenify/src/Client/build/libs
+java -Dserver.address="https://greenify43.herokuapp.com" -jar greenify-1.0.0.jar
 ```
 
 ## Running the tests
