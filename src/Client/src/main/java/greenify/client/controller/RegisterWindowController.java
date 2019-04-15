@@ -50,6 +50,8 @@ public class RegisterWindowController {
     @Autowired
     ExtraActivityController extraActivityController;
 
+    @FXML
+    private Text explainText;
     //navigation panes
     @FXML
     private AnchorPane getStartedPane;
@@ -163,6 +165,8 @@ public class RegisterWindowController {
     private PasswordField passwordField2;
     @FXML
     private Button signUpButton;
+
+
     //@FXML
     //private Line uNamePathLine;
 
@@ -190,6 +194,14 @@ public class RegisterWindowController {
         slideIn.setFromX(from);
         slideIn.setToX(0);
         slideIn.play();
+    }
+
+    public void showExplanation(ActionEvent event) {
+        if (explainText.isVisible()) {
+            explainText.setVisible(false);
+        } else {
+            explainText.setVisible(true);
+        }
     }
 
     /**
