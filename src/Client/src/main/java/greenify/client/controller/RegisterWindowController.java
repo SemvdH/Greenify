@@ -197,6 +197,10 @@ public class RegisterWindowController {
         slideIn.play();
     }
 
+    /**
+     * Shows an explanation of the application.
+     * @param event the click of the question mark button
+     */
     public void showExplanation(ActionEvent event) {
         if (explainText.isVisible()) {
             explainText.setVisible(false);
