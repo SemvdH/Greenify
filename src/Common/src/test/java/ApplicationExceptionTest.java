@@ -1,8 +1,7 @@
-import greenify.common.ApplicationException;
-import greenify.common.ErrorResponse;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+
+import greenify.common.ApplicationException;
+import org.junit.Test;
 
 public class ApplicationExceptionTest {
 
