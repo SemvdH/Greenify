@@ -167,7 +167,7 @@
       <AnchorPane fx:id="publicTransportPane" layoutX="107.0" prefHeight="611.0" prefWidth="713.0" visible="false">
          <children>
             <Line fx:id="line21" endX="79.0" layoutX="465.0" layoutY="7.0" stroke="#545b54" />
-            <Text layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Using your public transport instead of your car">
+            <Text layoutX="153.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Using public transport instead of your car">
                <font>
                   <Font size="20.0" />
                </font>
