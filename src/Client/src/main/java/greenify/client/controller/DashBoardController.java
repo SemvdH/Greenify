@@ -268,6 +268,8 @@ public class DashBoardController {
         addFriendButton.setSkin(new ClickButtonSkin(addFriendButton));
         addExtraActivityButton.setSkin(new ClickButtonSkin(addExtraActivityButton));
         addExtraActivityButton2.setSkin(new ClickButtonSkin(addExtraActivityButton2));
+        addFriend.setSkin(new ClickButtonSkin(addFriend));
+        removeFriend.setSkin(new ClickButtonSkin(removeFriend));
         addRandomHints();
 
         Tooltip tooltip = new Tooltip("tip");
