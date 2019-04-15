@@ -2,7 +2,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-import greenify.client.Hints;
+import greenify.client.features.Hints;
 import org.junit.Test;
 
 public class HintsTest {

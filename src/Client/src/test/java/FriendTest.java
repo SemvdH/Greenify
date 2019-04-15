@@ -1,6 +1,6 @@
 import static org.junit.Assert.assertEquals;
 
-import greenify.client.Friend;
+import greenify.client.features.Friend;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 

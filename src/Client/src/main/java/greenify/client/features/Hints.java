@@ -1,4 +1,4 @@
-package greenify.client;
+package greenify.client.features;
 
 import java.util.ArrayList;
 import java.util.Random;

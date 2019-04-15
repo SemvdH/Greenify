@@ -2,8 +2,8 @@ package greenify.client.controller;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
 import greenify.client.Application;
-import greenify.client.Friend;
-import greenify.client.Hints;
+import greenify.client.features.Friend;
+import greenify.client.features.Hints;
 import greenify.client.rest.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
