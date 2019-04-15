@@ -371,6 +371,12 @@ public class UserService {
                 .encode().toUri(), String.class);
     }
 
+    /**
+     * Hashes the password of a user.
+     * @param password password of the user
+     * @return hashed password
+     * @throws NoSuchAlgorithmException when there is no such algorithm
+     */
     public String hashPassword(String password)
             throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");

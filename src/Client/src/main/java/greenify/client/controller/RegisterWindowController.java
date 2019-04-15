@@ -177,7 +177,7 @@ public class RegisterWindowController {
         TimeUnit.MILLISECONDS.sleep(300);
         addSlideAnimation(1100, passwordField2, -420);
 
-        signUpButton.setSkin(new registerButtonSkin(signUpButton));
+        signUpButton.setSkin(new RegisterButtonSkin(signUpButton));
     }
 
     /**
@@ -621,12 +621,12 @@ public class RegisterWindowController {
     }
 
     @SuppressWarnings("Duplicates")
-    public class registerButtonSkin extends ButtonSkin {
+    public class RegisterButtonSkin extends ButtonSkin {
         /**
          * registers button skins.
          * @param button clicking
          */
-        public registerButtonSkin(Button button) {
+        public RegisterButtonSkin(Button button) {
             super(button);
 
             ScaleTransition scaleUp = new ScaleTransition(Duration.millis(140));
